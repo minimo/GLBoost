@@ -12,8 +12,20 @@
     "metalsmith-sass": {
         "outputStyle": "expanded"
     },
+    "metalsmith-collections": {
+      "blogPosts": {
+        "pattern":"*.md"
+      }
+    },
     "metalsmith-permalinks": {
-      "pattern": ":title"
+      "linksets": [{
+          "match": { "collection": "blogPosts" },
+          "pattern": "blog/:date/:filename",
+          "date": "YYYY-MM-DD"
+      },{
+          "match": { "collection": "rootFiles" },
+          "pattern": ""
+      }]
     },
     "metalsmith-templates": {
       "engine": "swig",

@@ -20,11 +20,9 @@
 
   <p>Links</p>
   <ul>
-      {% for blogPost in collections.blogPosts %}
       <li>
-          <a href="{{blogPost.path}}">{{blogPost.title}}</a>
+          <a href="{{collections.blogPosts[0].path}}">{{collections.blogPosts[0].title}}</a>
       </li>
-      {% endfor %}
   </ul>
 </body>
 </html>

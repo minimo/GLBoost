@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta charset="utf-8">
-<title>{{ title }}</title>
+<title>GLBoost Official Page</title>
 <meta name="description" content="">
 <meta name="author" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,17 +14,17 @@
 <![endif]-->
 </head>
 <body>
-  <h1>{{ title }}</h1>
-  <time>{{ date | date('Y-m-d') }}</time>
-  {{ contents | safe }}
+  <h1>GLBoost Official Page</h1>
+  <time>2016-02-24</time>
+  <h1 id="glboost">GLBoost</h1>
+<p>A New WebGL Rendering Library for 3D Graphics Geeks</p>
+
 
   <p>Links</p>
   <ul>
-      {% for blogPost in collections.blogPosts %}
       <li>
-          <a href="{{blogPost.path}}">{{blogPost.title}}</a>
+          <a href="blog/2016-02-25/first-blog-post">GLBoost Blog started.</a>
       </li>
-      {% endfor %}
   </ul>
 </body>
 </html>
