@@ -1,0 +1,23 @@
+{
+  "source": "./_posts",
+  "destination": "./",
+  "metadata": {
+    "title": "GLBoost Official Page",
+    "description": "GLBoost Official Page"
+  },
+  "plugins": {
+    "metalsmith-watch": "*.md",
+    "metalsmith-drafts": true,
+    "metalsmith-markdown": true,
+    "metalsmith-sass": {
+        "outputStyle": "expanded"
+    },
+    "metalsmith-permalinks": {
+      "pattern": ":title"
+    },
+    "metalsmith-templates": {
+      "engine": "swig",
+      "directory": "_layouts"
+    }
+  }
+}
