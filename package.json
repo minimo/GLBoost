@@ -4,6 +4,7 @@
   "description": "GLBoost Official Page",
   "main": "index.js",
   "scripts": {
+    "build": "node node_modules/.bin/metalsmith",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -1,6 +1,6 @@
 {
   "source": "./_posts",
-  "destination": "./",
+  "destination": "./site",
   "metadata": {
     "title": "GLBoost Official Page",
     "description": "GLBoost Official Page"
