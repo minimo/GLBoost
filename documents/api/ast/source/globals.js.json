@@ -1,0 +1,4449 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": false,
+          "object": {
+            "type": "Identifier",
+            "name": "window",
+            "range": [
+              0,
+              6
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 6
+              }
+            }
+          },
+          "property": {
+            "type": "Identifier",
+            "name": "GLBoost",
+            "range": [
+              7,
+              14
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 7
+              },
+              "end": {
+                "line": 1,
+                "column": 14
+              }
+            }
+          },
+          "range": [
+            0,
+            14
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 14
+            }
+          }
+        },
+        "right": {
+          "type": "LogicalExpression",
+          "operator": "||",
+          "left": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "window",
+              "range": [
+                17,
+                23
+              ],
+              "loc": {
+                "start": {
+                  "line": 1,
+                  "column": 17
+                },
+                "end": {
+                  "line": 1,
+                  "column": 23
+                }
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "GLBoost",
+              "range": [
+                24,
+                31
+              ],
+              "loc": {
+                "start": {
+                  "line": 1,
+                  "column": 24
+                },
+                "end": {
+                  "line": 1,
+                  "column": 31
+                }
+              }
+            },
+            "range": [
+              17,
+              31
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 17
+              },
+              "end": {
+                "line": 1,
+                "column": 31
+              }
+            }
+          },
+          "right": {
+            "type": "ObjectExpression",
+            "properties": [
+              {
+                "type": "Property",
+                "key": {
+                  "type": "Identifier",
+                  "name": "REVISION",
+                  "range": [
+                    37,
+                    45
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 1,
+                      "column": 37
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 45
+                    }
+                  }
+                },
+                "value": {
+                  "type": "Literal",
+                  "value": "1",
+                  "raw": "'1'",
+                  "range": [
+                    47,
+                    50
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 1,
+                      "column": 47
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 50
+                    }
+                  }
+                },
+                "kind": "init",
+                "method": false,
+                "shorthand": false,
+                "computed": false,
+                "range": [
+                  37,
+                  50
+                ],
+                "loc": {
+                  "start": {
+                    "line": 1,
+                    "column": 37
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 50
+                  }
+                }
+              }
+            ],
+            "range": [
+              35,
+              52
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 35
+              },
+              "end": {
+                "line": 1,
+                "column": 52
+              }
+            }
+          },
+          "range": [
+            17,
+            52
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 17
+            },
+            "end": {
+              "line": 1,
+              "column": 52
+            }
+          }
+        },
+        "range": [
+          0,
+          52
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 52
+          }
+        }
+      },
+      "range": [
+        0,
+        53
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 53
+        }
+      }
+    },
+    {
+      "type": "VariableDeclaration",
+      "declarations": [
+        {
+          "type": "VariableDeclarator",
+          "id": {
+            "type": "Identifier",
+            "name": "global",
+            "range": [
+              59,
+              65
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 4
+              },
+              "end": {
+                "line": 3,
+                "column": 10
+              }
+            }
+          },
+          "init": {
+            "type": "Identifier",
+            "name": "window",
+            "range": [
+              68,
+              74
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 13
+              },
+              "end": {
+                "line": 3,
+                "column": 19
+              }
+            }
+          },
+          "range": [
+            59,
+            74
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 4
+            },
+            "end": {
+              "line": 3,
+              "column": 19
+            }
+          }
+        }
+      ],
+      "kind": "var",
+      "range": [
+        55,
+        75
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "global",
+              "range": [
+                77,
+                83
+              ],
+              "loc": {
+                "start": {
+                  "line": 5,
+                  "column": 0
+                },
+                "end": {
+                  "line": 5,
+                  "column": 6
+                }
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "GLBoost",
+              "range": [
+                84,
+                91
+              ],
+              "loc": {
+                "start": {
+                  "line": 5,
+                  "column": 7
+                },
+                "end": {
+                  "line": 5,
+                  "column": 14
+                }
+              }
+            },
+            "range": [
+              77,
+              91
+            ],
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 0
+              },
+              "end": {
+                "line": 5,
+                "column": 14
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "POSITION",
+            "raw": "\"POSITION\"",
+            "range": [
+              92,
+              102
+            ],
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 15
+              },
+              "end": {
+                "line": 5,
+                "column": 25
+              }
+            }
+          },
+          "range": [
+            77,
+            103
+          ],
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 0
+            },
+            "end": {
+              "line": 5,
+              "column": 26
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "position",
+          "raw": "'position'",
+          "range": [
+            106,
+            116
+          ],
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 29
+            },
+            "end": {
+              "line": 5,
+              "column": 39
+            }
+          }
+        },
+        "range": [
+          77,
+          116
+        ],
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 0
+          },
+          "end": {
+            "line": 5,
+            "column": 39
+          }
+        }
+      },
+      "range": [
+        77,
+        117
+      ],
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 40
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "global",
+              "range": [
+                118,
+                124
+              ],
+              "loc": {
+                "start": {
+                  "line": 6,
+                  "column": 0
+                },
+                "end": {
+                  "line": 6,
+                  "column": 6
+                }
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "GLBoost",
+              "range": [
+                125,
+                132
+              ],
+              "loc": {
+                "start": {
+                  "line": 6,
+                  "column": 7
+                },
+                "end": {
+                  "line": 6,
+                  "column": 14
+                }
+              }
+            },
+            "range": [
+              118,
+              132
+            ],
+            "loc": {
+              "start": {
+                "line": 6,
+                "column": 0
+              },
+              "end": {
+                "line": 6,
+                "column": 14
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "COLOR",
+            "raw": "\"COLOR\"",
+            "range": [
+              133,
+              140
+            ],
+            "loc": {
+              "start": {
+                "line": 6,
+                "column": 15
+              },
+              "end": {
+                "line": 6,
+                "column": 22
+              }
+            }
+          },
+          "range": [
+            118,
+            141
+          ],
+          "loc": {
+            "start": {
+              "line": 6,
+              "column": 0
+            },
+            "end": {
+              "line": 6,
+              "column": 23
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "color",
+          "raw": "'color'",
+          "range": [
+            144,
+            151
+          ],
+          "loc": {
+            "start": {
+              "line": 6,
+              "column": 26
+            },
+            "end": {
+              "line": 6,
+              "column": 33
+            }
+          }
+        },
+        "range": [
+          118,
+          151
+        ],
+        "loc": {
+          "start": {
+            "line": 6,
+            "column": 0
+          },
+          "end": {
+            "line": 6,
+            "column": 33
+          }
+        }
+      },
+      "range": [
+        118,
+        152
+      ],
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 0
+        },
+        "end": {
+          "line": 6,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "global",
+              "range": [
+                153,
+                159
+              ],
+              "loc": {
+                "start": {
+                  "line": 7,
+                  "column": 0
+                },
+                "end": {
+                  "line": 7,
+                  "column": 6
+                }
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "GLBoost",
+              "range": [
+                160,
+                167
+              ],
+              "loc": {
+                "start": {
+                  "line": 7,
+                  "column": 7
+                },
+                "end": {
+                  "line": 7,
+                  "column": 14
+                }
+              }
+            },
+            "range": [
+              153,
+              167
+            ],
+            "loc": {
+              "start": {
+                "line": 7,
+                "column": 0
+              },
+              "end": {
+                "line": 7,
+                "column": 14
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "NORMAL",
+            "raw": "\"NORMAL\"",
+            "range": [
+              168,
+              176
+            ],
+            "loc": {
+              "start": {
+                "line": 7,
+                "column": 15
+              },
+              "end": {
+                "line": 7,
+                "column": 23
+              }
+            }
+          },
+          "range": [
+            153,
+            177
+          ],
+          "loc": {
+            "start": {
+              "line": 7,
+              "column": 0
+            },
+            "end": {
+              "line": 7,
+              "column": 24
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "normal",
+          "raw": "'normal'",
+          "range": [
+            180,
+            188
+          ],
+          "loc": {
+            "start": {
+              "line": 7,
+              "column": 27
+            },
+            "end": {
+              "line": 7,
+              "column": 35
+            }
+          }
+        },
+        "range": [
+          153,
+          188
+        ],
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 0
+          },
+          "end": {
+            "line": 7,
+            "column": 35
+          }
+        }
+      },
+      "range": [
+        153,
+        189
+      ],
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 0
+        },
+        "end": {
+          "line": 7,
+          "column": 36
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "global",
+              "range": [
+                190,
+                196
+              ],
+              "loc": {
+                "start": {
+                  "line": 8,
+                  "column": 0
+                },
+                "end": {
+                  "line": 8,
+                  "column": 6
+                }
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "GLBoost",
+              "range": [
+                197,
+                204
+              ],
+              "loc": {
+                "start": {
+                  "line": 8,
+                  "column": 7
+                },
+                "end": {
+                  "line": 8,
+                  "column": 14
+                }
+              }
+            },
+            "range": [
+              190,
+              204
+            ],
+            "loc": {
+              "start": {
+                "line": 8,
+                "column": 0
+              },
+              "end": {
+                "line": 8,
+                "column": 14
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "TEXCOORD",
+            "raw": "\"TEXCOORD\"",
+            "range": [
+              205,
+              215
+            ],
+            "loc": {
+              "start": {
+                "line": 8,
+                "column": 15
+              },
+              "end": {
+                "line": 8,
+                "column": 25
+              }
+            }
+          },
+          "range": [
+            190,
+            216
+          ],
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 0
+            },
+            "end": {
+              "line": 8,
+              "column": 26
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "texcoord",
+          "raw": "'texcoord'",
+          "range": [
+            219,
+            229
+          ],
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 29
+            },
+            "end": {
+              "line": 8,
+              "column": 39
+            }
+          }
+        },
+        "range": [
+          190,
+          229
+        ],
+        "loc": {
+          "start": {
+            "line": 8,
+            "column": 0
+          },
+          "end": {
+            "line": 8,
+            "column": 39
+          }
+        }
+      },
+      "range": [
+        190,
+        230
+      ],
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 0
+        },
+        "end": {
+          "line": 8,
+          "column": 40
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "global",
+              "range": [
+                231,
+                237
+              ],
+              "loc": {
+                "start": {
+                  "line": 9,
+                  "column": 0
+                },
+                "end": {
+                  "line": 9,
+                  "column": 6
+                }
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "GLBoost",
+              "range": [
+                238,
+                245
+              ],
+              "loc": {
+                "start": {
+                  "line": 9,
+                  "column": 7
+                },
+                "end": {
+                  "line": 9,
+                  "column": 14
+                }
+              }
+            },
+            "range": [
+              231,
+              245
+            ],
+            "loc": {
+              "start": {
+                "line": 9,
+                "column": 0
+              },
+              "end": {
+                "line": 9,
+                "column": 14
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "POINTS",
+            "raw": "\"POINTS\"",
+            "range": [
+              246,
+              254
+            ],
+            "loc": {
+              "start": {
+                "line": 9,
+                "column": 15
+              },
+              "end": {
+                "line": 9,
+                "column": 23
+              }
+            }
+          },
+          "range": [
+            231,
+            255
+          ],
+          "loc": {
+            "start": {
+              "line": 9,
+              "column": 0
+            },
+            "end": {
+              "line": 9,
+              "column": 24
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "POINTS",
+          "raw": "'POINTS'",
+          "range": [
+            258,
+            266
+          ],
+          "loc": {
+            "start": {
+              "line": 9,
+              "column": 27
+            },
+            "end": {
+              "line": 9,
+              "column": 35
+            }
+          }
+        },
+        "range": [
+          231,
+          266
+        ],
+        "loc": {
+          "start": {
+            "line": 9,
+            "column": 0
+          },
+          "end": {
+            "line": 9,
+            "column": 35
+          }
+        }
+      },
+      "range": [
+        231,
+        267
+      ],
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 0
+        },
+        "end": {
+          "line": 9,
+          "column": 36
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "global",
+              "range": [
+                268,
+                274
+              ],
+              "loc": {
+                "start": {
+                  "line": 10,
+                  "column": 0
+                },
+                "end": {
+                  "line": 10,
+                  "column": 6
+                }
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "GLBoost",
+              "range": [
+                275,
+                282
+              ],
+              "loc": {
+                "start": {
+                  "line": 10,
+                  "column": 7
+                },
+                "end": {
+                  "line": 10,
+                  "column": 14
+                }
+              }
+            },
+            "range": [
+              268,
+              282
+            ],
+            "loc": {
+              "start": {
+                "line": 10,
+                "column": 0
+              },
+              "end": {
+                "line": 10,
+                "column": 14
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "LINES",
+            "raw": "\"LINES\"",
+            "range": [
+              283,
+              290
+            ],
+            "loc": {
+              "start": {
+                "line": 10,
+                "column": 15
+              },
+              "end": {
+                "line": 10,
+                "column": 22
+              }
+            }
+          },
+          "range": [
+            268,
+            291
+          ],
+          "loc": {
+            "start": {
+              "line": 10,
+              "column": 0
+            },
+            "end": {
+              "line": 10,
+              "column": 23
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "LINES",
+          "raw": "'LINES'",
+          "range": [
+            294,
+            301
+          ],
+          "loc": {
+            "start": {
+              "line": 10,
+              "column": 26
+            },
+            "end": {
+              "line": 10,
+              "column": 33
+            }
+          }
+        },
+        "range": [
+          268,
+          301
+        ],
+        "loc": {
+          "start": {
+            "line": 10,
+            "column": 0
+          },
+          "end": {
+            "line": 10,
+            "column": 33
+          }
+        }
+      },
+      "range": [
+        268,
+        302
+      ],
+      "loc": {
+        "start": {
+          "line": 10,
+          "column": 0
+        },
+        "end": {
+          "line": 10,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "global",
+              "range": [
+                303,
+                309
+              ],
+              "loc": {
+                "start": {
+                  "line": 11,
+                  "column": 0
+                },
+                "end": {
+                  "line": 11,
+                  "column": 6
+                }
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "GLBoost",
+              "range": [
+                310,
+                317
+              ],
+              "loc": {
+                "start": {
+                  "line": 11,
+                  "column": 7
+                },
+                "end": {
+                  "line": 11,
+                  "column": 14
+                }
+              }
+            },
+            "range": [
+              303,
+              317
+            ],
+            "loc": {
+              "start": {
+                "line": 11,
+                "column": 0
+              },
+              "end": {
+                "line": 11,
+                "column": 14
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "LINE_STRIP",
+            "raw": "\"LINE_STRIP\"",
+            "range": [
+              318,
+              330
+            ],
+            "loc": {
+              "start": {
+                "line": 11,
+                "column": 15
+              },
+              "end": {
+                "line": 11,
+                "column": 27
+              }
+            }
+          },
+          "range": [
+            303,
+            331
+          ],
+          "loc": {
+            "start": {
+              "line": 11,
+              "column": 0
+            },
+            "end": {
+              "line": 11,
+              "column": 28
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "LINE_STRIP",
+          "raw": "'LINE_STRIP'",
+          "range": [
+            334,
+            346
+          ],
+          "loc": {
+            "start": {
+              "line": 11,
+              "column": 31
+            },
+            "end": {
+              "line": 11,
+              "column": 43
+            }
+          }
+        },
+        "range": [
+          303,
+          346
+        ],
+        "loc": {
+          "start": {
+            "line": 11,
+            "column": 0
+          },
+          "end": {
+            "line": 11,
+            "column": 43
+          }
+        }
+      },
+      "range": [
+        303,
+        347
+      ],
+      "loc": {
+        "start": {
+          "line": 11,
+          "column": 0
+        },
+        "end": {
+          "line": 11,
+          "column": 44
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "global",
+              "range": [
+                348,
+                354
+              ],
+              "loc": {
+                "start": {
+                  "line": 12,
+                  "column": 0
+                },
+                "end": {
+                  "line": 12,
+                  "column": 6
+                }
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "GLBoost",
+              "range": [
+                355,
+                362
+              ],
+              "loc": {
+                "start": {
+                  "line": 12,
+                  "column": 7
+                },
+                "end": {
+                  "line": 12,
+                  "column": 14
+                }
+              }
+            },
+            "range": [
+              348,
+              362
+            ],
+            "loc": {
+              "start": {
+                "line": 12,
+                "column": 0
+              },
+              "end": {
+                "line": 12,
+                "column": 14
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "LINE_LOOP",
+            "raw": "\"LINE_LOOP\"",
+            "range": [
+              363,
+              374
+            ],
+            "loc": {
+              "start": {
+                "line": 12,
+                "column": 15
+              },
+              "end": {
+                "line": 12,
+                "column": 26
+              }
+            }
+          },
+          "range": [
+            348,
+            375
+          ],
+          "loc": {
+            "start": {
+              "line": 12,
+              "column": 0
+            },
+            "end": {
+              "line": 12,
+              "column": 27
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "LINE_LOOP",
+          "raw": "'LINE_LOOP'",
+          "range": [
+            378,
+            389
+          ],
+          "loc": {
+            "start": {
+              "line": 12,
+              "column": 30
+            },
+            "end": {
+              "line": 12,
+              "column": 41
+            }
+          }
+        },
+        "range": [
+          348,
+          389
+        ],
+        "loc": {
+          "start": {
+            "line": 12,
+            "column": 0
+          },
+          "end": {
+            "line": 12,
+            "column": 41
+          }
+        }
+      },
+      "range": [
+        348,
+        390
+      ],
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 0
+        },
+        "end": {
+          "line": 12,
+          "column": 42
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "global",
+              "range": [
+                391,
+                397
+              ],
+              "loc": {
+                "start": {
+                  "line": 13,
+                  "column": 0
+                },
+                "end": {
+                  "line": 13,
+                  "column": 6
+                }
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "GLBoost",
+              "range": [
+                398,
+                405
+              ],
+              "loc": {
+                "start": {
+                  "line": 13,
+                  "column": 7
+                },
+                "end": {
+                  "line": 13,
+                  "column": 14
+                }
+              }
+            },
+            "range": [
+              391,
+              405
+            ],
+            "loc": {
+              "start": {
+                "line": 13,
+                "column": 0
+              },
+              "end": {
+                "line": 13,
+                "column": 14
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "TRIANGLES",
+            "raw": "\"TRIANGLES\"",
+            "range": [
+              406,
+              417
+            ],
+            "loc": {
+              "start": {
+                "line": 13,
+                "column": 15
+              },
+              "end": {
+                "line": 13,
+                "column": 26
+              }
+            }
+          },
+          "range": [
+            391,
+            418
+          ],
+          "loc": {
+            "start": {
+              "line": 13,
+              "column": 0
+            },
+            "end": {
+              "line": 13,
+              "column": 27
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "TRIANGLES",
+          "raw": "'TRIANGLES'",
+          "range": [
+            421,
+            432
+          ],
+          "loc": {
+            "start": {
+              "line": 13,
+              "column": 30
+            },
+            "end": {
+              "line": 13,
+              "column": 41
+            }
+          }
+        },
+        "range": [
+          391,
+          432
+        ],
+        "loc": {
+          "start": {
+            "line": 13,
+            "column": 0
+          },
+          "end": {
+            "line": 13,
+            "column": 41
+          }
+        }
+      },
+      "range": [
+        391,
+        433
+      ],
+      "loc": {
+        "start": {
+          "line": 13,
+          "column": 0
+        },
+        "end": {
+          "line": 13,
+          "column": 42
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "global",
+              "range": [
+                434,
+                440
+              ],
+              "loc": {
+                "start": {
+                  "line": 14,
+                  "column": 0
+                },
+                "end": {
+                  "line": 14,
+                  "column": 6
+                }
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "GLBoost",
+              "range": [
+                441,
+                448
+              ],
+              "loc": {
+                "start": {
+                  "line": 14,
+                  "column": 7
+                },
+                "end": {
+                  "line": 14,
+                  "column": 14
+                }
+              }
+            },
+            "range": [
+              434,
+              448
+            ],
+            "loc": {
+              "start": {
+                "line": 14,
+                "column": 0
+              },
+              "end": {
+                "line": 14,
+                "column": 14
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "TRIANGLE_STRIP",
+            "raw": "\"TRIANGLE_STRIP\"",
+            "range": [
+              449,
+              465
+            ],
+            "loc": {
+              "start": {
+                "line": 14,
+                "column": 15
+              },
+              "end": {
+                "line": 14,
+                "column": 31
+              }
+            }
+          },
+          "range": [
+            434,
+            466
+          ],
+          "loc": {
+            "start": {
+              "line": 14,
+              "column": 0
+            },
+            "end": {
+              "line": 14,
+              "column": 32
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "TRIANGLE_STRIP",
+          "raw": "'TRIANGLE_STRIP'",
+          "range": [
+            469,
+            485
+          ],
+          "loc": {
+            "start": {
+              "line": 14,
+              "column": 35
+            },
+            "end": {
+              "line": 14,
+              "column": 51
+            }
+          }
+        },
+        "range": [
+          434,
+          485
+        ],
+        "loc": {
+          "start": {
+            "line": 14,
+            "column": 0
+          },
+          "end": {
+            "line": 14,
+            "column": 51
+          }
+        }
+      },
+      "range": [
+        434,
+        486
+      ],
+      "loc": {
+        "start": {
+          "line": 14,
+          "column": 0
+        },
+        "end": {
+          "line": 14,
+          "column": 52
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "global",
+              "range": [
+                487,
+                493
+              ],
+              "loc": {
+                "start": {
+                  "line": 15,
+                  "column": 0
+                },
+                "end": {
+                  "line": 15,
+                  "column": 6
+                }
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "GLBoost",
+              "range": [
+                494,
+                501
+              ],
+              "loc": {
+                "start": {
+                  "line": 15,
+                  "column": 7
+                },
+                "end": {
+                  "line": 15,
+                  "column": 14
+                }
+              }
+            },
+            "range": [
+              487,
+              501
+            ],
+            "loc": {
+              "start": {
+                "line": 15,
+                "column": 0
+              },
+              "end": {
+                "line": 15,
+                "column": 14
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "STATIC_DRAW",
+            "raw": "\"STATIC_DRAW\"",
+            "range": [
+              502,
+              515
+            ],
+            "loc": {
+              "start": {
+                "line": 15,
+                "column": 15
+              },
+              "end": {
+                "line": 15,
+                "column": 28
+              }
+            }
+          },
+          "range": [
+            487,
+            516
+          ],
+          "loc": {
+            "start": {
+              "line": 15,
+              "column": 0
+            },
+            "end": {
+              "line": 15,
+              "column": 29
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "STATIC_DRAW",
+          "raw": "'STATIC_DRAW'",
+          "range": [
+            519,
+            532
+          ],
+          "loc": {
+            "start": {
+              "line": 15,
+              "column": 32
+            },
+            "end": {
+              "line": 15,
+              "column": 45
+            }
+          }
+        },
+        "range": [
+          487,
+          532
+        ],
+        "loc": {
+          "start": {
+            "line": 15,
+            "column": 0
+          },
+          "end": {
+            "line": 15,
+            "column": 45
+          }
+        }
+      },
+      "range": [
+        487,
+        533
+      ],
+      "loc": {
+        "start": {
+          "line": 15,
+          "column": 0
+        },
+        "end": {
+          "line": 15,
+          "column": 46
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "global",
+              "range": [
+                534,
+                540
+              ],
+              "loc": {
+                "start": {
+                  "line": 16,
+                  "column": 0
+                },
+                "end": {
+                  "line": 16,
+                  "column": 6
+                }
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "GLBoost",
+              "range": [
+                541,
+                548
+              ],
+              "loc": {
+                "start": {
+                  "line": 16,
+                  "column": 7
+                },
+                "end": {
+                  "line": 16,
+                  "column": 14
+                }
+              }
+            },
+            "range": [
+              534,
+              548
+            ],
+            "loc": {
+              "start": {
+                "line": 16,
+                "column": 0
+              },
+              "end": {
+                "line": 16,
+                "column": 14
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "STREAM_DRAW",
+            "raw": "\"STREAM_DRAW\"",
+            "range": [
+              549,
+              562
+            ],
+            "loc": {
+              "start": {
+                "line": 16,
+                "column": 15
+              },
+              "end": {
+                "line": 16,
+                "column": 28
+              }
+            }
+          },
+          "range": [
+            534,
+            563
+          ],
+          "loc": {
+            "start": {
+              "line": 16,
+              "column": 0
+            },
+            "end": {
+              "line": 16,
+              "column": 29
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "STREAM_DRAW",
+          "raw": "'STREAM_DRAW'",
+          "range": [
+            566,
+            579
+          ],
+          "loc": {
+            "start": {
+              "line": 16,
+              "column": 32
+            },
+            "end": {
+              "line": 16,
+              "column": 45
+            }
+          }
+        },
+        "range": [
+          534,
+          579
+        ],
+        "loc": {
+          "start": {
+            "line": 16,
+            "column": 0
+          },
+          "end": {
+            "line": 16,
+            "column": 45
+          }
+        }
+      },
+      "range": [
+        534,
+        580
+      ],
+      "loc": {
+        "start": {
+          "line": 16,
+          "column": 0
+        },
+        "end": {
+          "line": 16,
+          "column": 46
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "global",
+              "range": [
+                581,
+                587
+              ],
+              "loc": {
+                "start": {
+                  "line": 17,
+                  "column": 0
+                },
+                "end": {
+                  "line": 17,
+                  "column": 6
+                }
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "GLBoost",
+              "range": [
+                588,
+                595
+              ],
+              "loc": {
+                "start": {
+                  "line": 17,
+                  "column": 7
+                },
+                "end": {
+                  "line": 17,
+                  "column": 14
+                }
+              }
+            },
+            "range": [
+              581,
+              595
+            ],
+            "loc": {
+              "start": {
+                "line": 17,
+                "column": 0
+              },
+              "end": {
+                "line": 17,
+                "column": 14
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "DYNAMIC_DRAW",
+            "raw": "\"DYNAMIC_DRAW\"",
+            "range": [
+              596,
+              610
+            ],
+            "loc": {
+              "start": {
+                "line": 17,
+                "column": 15
+              },
+              "end": {
+                "line": 17,
+                "column": 29
+              }
+            }
+          },
+          "range": [
+            581,
+            611
+          ],
+          "loc": {
+            "start": {
+              "line": 17,
+              "column": 0
+            },
+            "end": {
+              "line": 17,
+              "column": 30
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "DYNAMIC_DRAW",
+          "raw": "'DYNAMIC_DRAW'",
+          "range": [
+            614,
+            628
+          ],
+          "loc": {
+            "start": {
+              "line": 17,
+              "column": 33
+            },
+            "end": {
+              "line": 17,
+              "column": 47
+            }
+          }
+        },
+        "range": [
+          581,
+          628
+        ],
+        "loc": {
+          "start": {
+            "line": 17,
+            "column": 0
+          },
+          "end": {
+            "line": 17,
+            "column": 47
+          }
+        }
+      },
+      "range": [
+        581,
+        629
+      ],
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 0
+        },
+        "end": {
+          "line": 17,
+          "column": 48
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "global",
+              "range": [
+                630,
+                636
+              ],
+              "loc": {
+                "start": {
+                  "line": 18,
+                  "column": 0
+                },
+                "end": {
+                  "line": 18,
+                  "column": 6
+                }
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "GLBoost",
+              "range": [
+                637,
+                644
+              ],
+              "loc": {
+                "start": {
+                  "line": 18,
+                  "column": 7
+                },
+                "end": {
+                  "line": 18,
+                  "column": 14
+                }
+              }
+            },
+            "range": [
+              630,
+              644
+            ],
+            "loc": {
+              "start": {
+                "line": 18,
+                "column": 0
+              },
+              "end": {
+                "line": 18,
+                "column": 14
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "BLENDTARGET1",
+            "raw": "\"BLENDTARGET1\"",
+            "range": [
+              645,
+              659
+            ],
+            "loc": {
+              "start": {
+                "line": 18,
+                "column": 15
+              },
+              "end": {
+                "line": 18,
+                "column": 29
+              }
+            }
+          },
+          "range": [
+            630,
+            660
+          ],
+          "loc": {
+            "start": {
+              "line": 18,
+              "column": 0
+            },
+            "end": {
+              "line": 18,
+              "column": 30
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "shapetarget_1",
+          "raw": "'shapetarget_1'",
+          "range": [
+            663,
+            678
+          ],
+          "loc": {
+            "start": {
+              "line": 18,
+              "column": 33
+            },
+            "end": {
+              "line": 18,
+              "column": 48
+            }
+          }
+        },
+        "range": [
+          630,
+          678
+        ],
+        "loc": {
+          "start": {
+            "line": 18,
+            "column": 0
+          },
+          "end": {
+            "line": 18,
+            "column": 48
+          }
+        }
+      },
+      "range": [
+        630,
+        679
+      ],
+      "loc": {
+        "start": {
+          "line": 18,
+          "column": 0
+        },
+        "end": {
+          "line": 18,
+          "column": 49
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "global",
+              "range": [
+                680,
+                686
+              ],
+              "loc": {
+                "start": {
+                  "line": 19,
+                  "column": 0
+                },
+                "end": {
+                  "line": 19,
+                  "column": 6
+                }
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "GLBoost",
+              "range": [
+                687,
+                694
+              ],
+              "loc": {
+                "start": {
+                  "line": 19,
+                  "column": 7
+                },
+                "end": {
+                  "line": 19,
+                  "column": 14
+                }
+              }
+            },
+            "range": [
+              680,
+              694
+            ],
+            "loc": {
+              "start": {
+                "line": 19,
+                "column": 0
+              },
+              "end": {
+                "line": 19,
+                "column": 14
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "BLENDTARGET2",
+            "raw": "\"BLENDTARGET2\"",
+            "range": [
+              695,
+              709
+            ],
+            "loc": {
+              "start": {
+                "line": 19,
+                "column": 15
+              },
+              "end": {
+                "line": 19,
+                "column": 29
+              }
+            }
+          },
+          "range": [
+            680,
+            710
+          ],
+          "loc": {
+            "start": {
+              "line": 19,
+              "column": 0
+            },
+            "end": {
+              "line": 19,
+              "column": 30
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "shapetarget_2",
+          "raw": "'shapetarget_2'",
+          "range": [
+            713,
+            728
+          ],
+          "loc": {
+            "start": {
+              "line": 19,
+              "column": 33
+            },
+            "end": {
+              "line": 19,
+              "column": 48
+            }
+          }
+        },
+        "range": [
+          680,
+          728
+        ],
+        "loc": {
+          "start": {
+            "line": 19,
+            "column": 0
+          },
+          "end": {
+            "line": 19,
+            "column": 48
+          }
+        }
+      },
+      "range": [
+        680,
+        729
+      ],
+      "loc": {
+        "start": {
+          "line": 19,
+          "column": 0
+        },
+        "end": {
+          "line": 19,
+          "column": 49
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "global",
+              "range": [
+                730,
+                736
+              ],
+              "loc": {
+                "start": {
+                  "line": 20,
+                  "column": 0
+                },
+                "end": {
+                  "line": 20,
+                  "column": 6
+                }
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "GLBoost",
+              "range": [
+                737,
+                744
+              ],
+              "loc": {
+                "start": {
+                  "line": 20,
+                  "column": 7
+                },
+                "end": {
+                  "line": 20,
+                  "column": 14
+                }
+              }
+            },
+            "range": [
+              730,
+              744
+            ],
+            "loc": {
+              "start": {
+                "line": 20,
+                "column": 0
+              },
+              "end": {
+                "line": 20,
+                "column": 14
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "BLENDTARGET3",
+            "raw": "\"BLENDTARGET3\"",
+            "range": [
+              745,
+              759
+            ],
+            "loc": {
+              "start": {
+                "line": 20,
+                "column": 15
+              },
+              "end": {
+                "line": 20,
+                "column": 29
+              }
+            }
+          },
+          "range": [
+            730,
+            760
+          ],
+          "loc": {
+            "start": {
+              "line": 20,
+              "column": 0
+            },
+            "end": {
+              "line": 20,
+              "column": 30
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "shapetarget_3",
+          "raw": "'shapetarget_3'",
+          "range": [
+            763,
+            778
+          ],
+          "loc": {
+            "start": {
+              "line": 20,
+              "column": 33
+            },
+            "end": {
+              "line": 20,
+              "column": 48
+            }
+          }
+        },
+        "range": [
+          730,
+          778
+        ],
+        "loc": {
+          "start": {
+            "line": 20,
+            "column": 0
+          },
+          "end": {
+            "line": 20,
+            "column": 48
+          }
+        }
+      },
+      "range": [
+        730,
+        779
+      ],
+      "loc": {
+        "start": {
+          "line": 20,
+          "column": 0
+        },
+        "end": {
+          "line": 20,
+          "column": 49
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "global",
+              "range": [
+                780,
+                786
+              ],
+              "loc": {
+                "start": {
+                  "line": 21,
+                  "column": 0
+                },
+                "end": {
+                  "line": 21,
+                  "column": 6
+                }
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "GLBoost",
+              "range": [
+                787,
+                794
+              ],
+              "loc": {
+                "start": {
+                  "line": 21,
+                  "column": 7
+                },
+                "end": {
+                  "line": 21,
+                  "column": 14
+                }
+              }
+            },
+            "range": [
+              780,
+              794
+            ],
+            "loc": {
+              "start": {
+                "line": 21,
+                "column": 0
+              },
+              "end": {
+                "line": 21,
+                "column": 14
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "BLENDTARGET4",
+            "raw": "\"BLENDTARGET4\"",
+            "range": [
+              795,
+              809
+            ],
+            "loc": {
+              "start": {
+                "line": 21,
+                "column": 15
+              },
+              "end": {
+                "line": 21,
+                "column": 29
+              }
+            }
+          },
+          "range": [
+            780,
+            810
+          ],
+          "loc": {
+            "start": {
+              "line": 21,
+              "column": 0
+            },
+            "end": {
+              "line": 21,
+              "column": 30
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "shapetarget_4",
+          "raw": "'shapetarget_4'",
+          "range": [
+            813,
+            828
+          ],
+          "loc": {
+            "start": {
+              "line": 21,
+              "column": 33
+            },
+            "end": {
+              "line": 21,
+              "column": 48
+            }
+          }
+        },
+        "range": [
+          780,
+          828
+        ],
+        "loc": {
+          "start": {
+            "line": 21,
+            "column": 0
+          },
+          "end": {
+            "line": 21,
+            "column": 48
+          }
+        }
+      },
+      "range": [
+        780,
+        829
+      ],
+      "loc": {
+        "start": {
+          "line": 21,
+          "column": 0
+        },
+        "end": {
+          "line": 21,
+          "column": 49
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "global",
+              "range": [
+                830,
+                836
+              ],
+              "loc": {
+                "start": {
+                  "line": 22,
+                  "column": 0
+                },
+                "end": {
+                  "line": 22,
+                  "column": 6
+                }
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "GLBoost",
+              "range": [
+                837,
+                844
+              ],
+              "loc": {
+                "start": {
+                  "line": 22,
+                  "column": 7
+                },
+                "end": {
+                  "line": 22,
+                  "column": 14
+                }
+              }
+            },
+            "range": [
+              830,
+              844
+            ],
+            "loc": {
+              "start": {
+                "line": 22,
+                "column": 0
+              },
+              "end": {
+                "line": 22,
+                "column": 14
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "BLENDTARGET5",
+            "raw": "\"BLENDTARGET5\"",
+            "range": [
+              845,
+              859
+            ],
+            "loc": {
+              "start": {
+                "line": 22,
+                "column": 15
+              },
+              "end": {
+                "line": 22,
+                "column": 29
+              }
+            }
+          },
+          "range": [
+            830,
+            860
+          ],
+          "loc": {
+            "start": {
+              "line": 22,
+              "column": 0
+            },
+            "end": {
+              "line": 22,
+              "column": 30
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "shapetarget_5",
+          "raw": "'shapetarget_5'",
+          "range": [
+            863,
+            878
+          ],
+          "loc": {
+            "start": {
+              "line": 22,
+              "column": 33
+            },
+            "end": {
+              "line": 22,
+              "column": 48
+            }
+          }
+        },
+        "range": [
+          830,
+          878
+        ],
+        "loc": {
+          "start": {
+            "line": 22,
+            "column": 0
+          },
+          "end": {
+            "line": 22,
+            "column": 48
+          }
+        }
+      },
+      "range": [
+        830,
+        879
+      ],
+      "loc": {
+        "start": {
+          "line": 22,
+          "column": 0
+        },
+        "end": {
+          "line": 22,
+          "column": 49
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "global",
+              "range": [
+                880,
+                886
+              ],
+              "loc": {
+                "start": {
+                  "line": 23,
+                  "column": 0
+                },
+                "end": {
+                  "line": 23,
+                  "column": 6
+                }
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "GLBoost",
+              "range": [
+                887,
+                894
+              ],
+              "loc": {
+                "start": {
+                  "line": 23,
+                  "column": 7
+                },
+                "end": {
+                  "line": 23,
+                  "column": 14
+                }
+              }
+            },
+            "range": [
+              880,
+              894
+            ],
+            "loc": {
+              "start": {
+                "line": 23,
+                "column": 0
+              },
+              "end": {
+                "line": 23,
+                "column": 14
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "BLENDTARGET6",
+            "raw": "\"BLENDTARGET6\"",
+            "range": [
+              895,
+              909
+            ],
+            "loc": {
+              "start": {
+                "line": 23,
+                "column": 15
+              },
+              "end": {
+                "line": 23,
+                "column": 29
+              }
+            }
+          },
+          "range": [
+            880,
+            910
+          ],
+          "loc": {
+            "start": {
+              "line": 23,
+              "column": 0
+            },
+            "end": {
+              "line": 23,
+              "column": 30
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "shapetarget_6",
+          "raw": "'shapetarget_6'",
+          "range": [
+            913,
+            928
+          ],
+          "loc": {
+            "start": {
+              "line": 23,
+              "column": 33
+            },
+            "end": {
+              "line": 23,
+              "column": 48
+            }
+          }
+        },
+        "range": [
+          880,
+          928
+        ],
+        "loc": {
+          "start": {
+            "line": 23,
+            "column": 0
+          },
+          "end": {
+            "line": 23,
+            "column": 48
+          }
+        }
+      },
+      "range": [
+        880,
+        929
+      ],
+      "loc": {
+        "start": {
+          "line": 23,
+          "column": 0
+        },
+        "end": {
+          "line": 23,
+          "column": 49
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "global",
+              "range": [
+                930,
+                936
+              ],
+              "loc": {
+                "start": {
+                  "line": 24,
+                  "column": 0
+                },
+                "end": {
+                  "line": 24,
+                  "column": 6
+                }
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "GLBoost",
+              "range": [
+                937,
+                944
+              ],
+              "loc": {
+                "start": {
+                  "line": 24,
+                  "column": 7
+                },
+                "end": {
+                  "line": 24,
+                  "column": 14
+                }
+              }
+            },
+            "range": [
+              930,
+              944
+            ],
+            "loc": {
+              "start": {
+                "line": 24,
+                "column": 0
+              },
+              "end": {
+                "line": 24,
+                "column": 14
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "BLENDTARGET7",
+            "raw": "\"BLENDTARGET7\"",
+            "range": [
+              945,
+              959
+            ],
+            "loc": {
+              "start": {
+                "line": 24,
+                "column": 15
+              },
+              "end": {
+                "line": 24,
+                "column": 29
+              }
+            }
+          },
+          "range": [
+            930,
+            960
+          ],
+          "loc": {
+            "start": {
+              "line": 24,
+              "column": 0
+            },
+            "end": {
+              "line": 24,
+              "column": 30
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "shapetarget_7",
+          "raw": "'shapetarget_7'",
+          "range": [
+            963,
+            978
+          ],
+          "loc": {
+            "start": {
+              "line": 24,
+              "column": 33
+            },
+            "end": {
+              "line": 24,
+              "column": 48
+            }
+          }
+        },
+        "range": [
+          930,
+          978
+        ],
+        "loc": {
+          "start": {
+            "line": 24,
+            "column": 0
+          },
+          "end": {
+            "line": 24,
+            "column": 48
+          }
+        }
+      },
+      "range": [
+        930,
+        979
+      ],
+      "loc": {
+        "start": {
+          "line": 24,
+          "column": 0
+        },
+        "end": {
+          "line": 24,
+          "column": 49
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "global",
+              "range": [
+                980,
+                986
+              ],
+              "loc": {
+                "start": {
+                  "line": 25,
+                  "column": 0
+                },
+                "end": {
+                  "line": 25,
+                  "column": 6
+                }
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "GLBoost",
+              "range": [
+                987,
+                994
+              ],
+              "loc": {
+                "start": {
+                  "line": 25,
+                  "column": 7
+                },
+                "end": {
+                  "line": 25,
+                  "column": 14
+                }
+              }
+            },
+            "range": [
+              980,
+              994
+            ],
+            "loc": {
+              "start": {
+                "line": 25,
+                "column": 0
+              },
+              "end": {
+                "line": 25,
+                "column": 14
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "BLENDTARGET8",
+            "raw": "\"BLENDTARGET8\"",
+            "range": [
+              995,
+              1009
+            ],
+            "loc": {
+              "start": {
+                "line": 25,
+                "column": 15
+              },
+              "end": {
+                "line": 25,
+                "column": 29
+              }
+            }
+          },
+          "range": [
+            980,
+            1010
+          ],
+          "loc": {
+            "start": {
+              "line": 25,
+              "column": 0
+            },
+            "end": {
+              "line": 25,
+              "column": 30
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "shapetarget_8",
+          "raw": "'shapetarget_8'",
+          "range": [
+            1013,
+            1028
+          ],
+          "loc": {
+            "start": {
+              "line": 25,
+              "column": 33
+            },
+            "end": {
+              "line": 25,
+              "column": 48
+            }
+          }
+        },
+        "range": [
+          980,
+          1028
+        ],
+        "loc": {
+          "start": {
+            "line": 25,
+            "column": 0
+          },
+          "end": {
+            "line": 25,
+            "column": 48
+          }
+        }
+      },
+      "range": [
+        980,
+        1029
+      ],
+      "loc": {
+        "start": {
+          "line": 25,
+          "column": 0
+        },
+        "end": {
+          "line": 25,
+          "column": 49
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "global",
+              "range": [
+                1030,
+                1036
+              ],
+              "loc": {
+                "start": {
+                  "line": 26,
+                  "column": 0
+                },
+                "end": {
+                  "line": 26,
+                  "column": 6
+                }
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "GLBoost",
+              "range": [
+                1037,
+                1044
+              ],
+              "loc": {
+                "start": {
+                  "line": 26,
+                  "column": 7
+                },
+                "end": {
+                  "line": 26,
+                  "column": 14
+                }
+              }
+            },
+            "range": [
+              1030,
+              1044
+            ],
+            "loc": {
+              "start": {
+                "line": 26,
+                "column": 0
+              },
+              "end": {
+                "line": 26,
+                "column": 14
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "BLENDTARGET9",
+            "raw": "\"BLENDTARGET9\"",
+            "range": [
+              1045,
+              1059
+            ],
+            "loc": {
+              "start": {
+                "line": 26,
+                "column": 15
+              },
+              "end": {
+                "line": 26,
+                "column": 29
+              }
+            }
+          },
+          "range": [
+            1030,
+            1060
+          ],
+          "loc": {
+            "start": {
+              "line": 26,
+              "column": 0
+            },
+            "end": {
+              "line": 26,
+              "column": 30
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "shapetarget_9",
+          "raw": "'shapetarget_9'",
+          "range": [
+            1063,
+            1078
+          ],
+          "loc": {
+            "start": {
+              "line": 26,
+              "column": 33
+            },
+            "end": {
+              "line": 26,
+              "column": 48
+            }
+          }
+        },
+        "range": [
+          1030,
+          1078
+        ],
+        "loc": {
+          "start": {
+            "line": 26,
+            "column": 0
+          },
+          "end": {
+            "line": 26,
+            "column": 48
+          }
+        }
+      },
+      "range": [
+        1030,
+        1079
+      ],
+      "loc": {
+        "start": {
+          "line": 26,
+          "column": 0
+        },
+        "end": {
+          "line": 26,
+          "column": 49
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "global",
+              "range": [
+                1080,
+                1086
+              ],
+              "loc": {
+                "start": {
+                  "line": 27,
+                  "column": 0
+                },
+                "end": {
+                  "line": 27,
+                  "column": 6
+                }
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "GLBoost",
+              "range": [
+                1087,
+                1094
+              ],
+              "loc": {
+                "start": {
+                  "line": 27,
+                  "column": 7
+                },
+                "end": {
+                  "line": 27,
+                  "column": 14
+                }
+              }
+            },
+            "range": [
+              1080,
+              1094
+            ],
+            "loc": {
+              "start": {
+                "line": 27,
+                "column": 0
+              },
+              "end": {
+                "line": 27,
+                "column": 14
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "BLENDTARGET10",
+            "raw": "\"BLENDTARGET10\"",
+            "range": [
+              1095,
+              1110
+            ],
+            "loc": {
+              "start": {
+                "line": 27,
+                "column": 15
+              },
+              "end": {
+                "line": 27,
+                "column": 30
+              }
+            }
+          },
+          "range": [
+            1080,
+            1111
+          ],
+          "loc": {
+            "start": {
+              "line": 27,
+              "column": 0
+            },
+            "end": {
+              "line": 27,
+              "column": 31
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "shapetarget_10",
+          "raw": "'shapetarget_10'",
+          "range": [
+            1114,
+            1130
+          ],
+          "loc": {
+            "start": {
+              "line": 27,
+              "column": 34
+            },
+            "end": {
+              "line": 27,
+              "column": 50
+            }
+          }
+        },
+        "range": [
+          1080,
+          1130
+        ],
+        "loc": {
+          "start": {
+            "line": 27,
+            "column": 0
+          },
+          "end": {
+            "line": 27,
+            "column": 50
+          }
+        }
+      },
+      "range": [
+        1080,
+        1131
+      ],
+      "loc": {
+        "start": {
+          "line": 27,
+          "column": 0
+        },
+        "end": {
+          "line": 27,
+          "column": 51
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "global",
+              "range": [
+                1132,
+                1138
+              ],
+              "loc": {
+                "start": {
+                  "line": 28,
+                  "column": 0
+                },
+                "end": {
+                  "line": 28,
+                  "column": 6
+                }
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "GLBoost",
+              "range": [
+                1139,
+                1146
+              ],
+              "loc": {
+                "start": {
+                  "line": 28,
+                  "column": 7
+                },
+                "end": {
+                  "line": 28,
+                  "column": 14
+                }
+              }
+            },
+            "range": [
+              1132,
+              1146
+            ],
+            "loc": {
+              "start": {
+                "line": 28,
+                "column": 0
+              },
+              "end": {
+                "line": 28,
+                "column": 14
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "RADIAN",
+            "raw": "\"RADIAN\"",
+            "range": [
+              1147,
+              1155
+            ],
+            "loc": {
+              "start": {
+                "line": 28,
+                "column": 15
+              },
+              "end": {
+                "line": 28,
+                "column": 23
+              }
+            }
+          },
+          "range": [
+            1132,
+            1156
+          ],
+          "loc": {
+            "start": {
+              "line": 28,
+              "column": 0
+            },
+            "end": {
+              "line": 28,
+              "column": 24
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "radian",
+          "raw": "'radian'",
+          "range": [
+            1159,
+            1167
+          ],
+          "loc": {
+            "start": {
+              "line": 28,
+              "column": 27
+            },
+            "end": {
+              "line": 28,
+              "column": 35
+            }
+          }
+        },
+        "range": [
+          1132,
+          1167
+        ],
+        "loc": {
+          "start": {
+            "line": 28,
+            "column": 0
+          },
+          "end": {
+            "line": 28,
+            "column": 35
+          }
+        }
+      },
+      "range": [
+        1132,
+        1168
+      ],
+      "loc": {
+        "start": {
+          "line": 28,
+          "column": 0
+        },
+        "end": {
+          "line": 28,
+          "column": 36
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": true,
+          "object": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "global",
+              "range": [
+                1169,
+                1175
+              ],
+              "loc": {
+                "start": {
+                  "line": 29,
+                  "column": 0
+                },
+                "end": {
+                  "line": 29,
+                  "column": 6
+                }
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "GLBoost",
+              "range": [
+                1176,
+                1183
+              ],
+              "loc": {
+                "start": {
+                  "line": 29,
+                  "column": 7
+                },
+                "end": {
+                  "line": 29,
+                  "column": 14
+                }
+              }
+            },
+            "range": [
+              1169,
+              1183
+            ],
+            "loc": {
+              "start": {
+                "line": 29,
+                "column": 0
+              },
+              "end": {
+                "line": 29,
+                "column": 14
+              }
+            }
+          },
+          "property": {
+            "type": "Literal",
+            "value": "DEGREE",
+            "raw": "\"DEGREE\"",
+            "range": [
+              1184,
+              1192
+            ],
+            "loc": {
+              "start": {
+                "line": 29,
+                "column": 15
+              },
+              "end": {
+                "line": 29,
+                "column": 23
+              }
+            }
+          },
+          "range": [
+            1169,
+            1193
+          ],
+          "loc": {
+            "start": {
+              "line": 29,
+              "column": 0
+            },
+            "end": {
+              "line": 29,
+              "column": 24
+            }
+          }
+        },
+        "right": {
+          "type": "Literal",
+          "value": "degree",
+          "raw": "'degree'",
+          "range": [
+            1196,
+            1204
+          ],
+          "loc": {
+            "start": {
+              "line": 29,
+              "column": 27
+            },
+            "end": {
+              "line": 29,
+              "column": 35
+            }
+          }
+        },
+        "range": [
+          1169,
+          1204
+        ],
+        "loc": {
+          "start": {
+            "line": 29,
+            "column": 0
+          },
+          "end": {
+            "line": 29,
+            "column": 35
+          }
+        }
+      },
+      "range": [
+        1169,
+        1205
+      ],
+      "loc": {
+        "start": {
+          "line": 29,
+          "column": 0
+        },
+        "end": {
+          "line": 29,
+          "column": 36
+        }
+      }
+    },
+    {
+      "type": "ExportDefaultDeclaration",
+      "declaration": {
+        "type": "MemberExpression",
+        "computed": false,
+        "object": {
+          "type": "Identifier",
+          "name": "global",
+          "range": [
+            1223,
+            1229
+          ],
+          "loc": {
+            "start": {
+              "line": 32,
+              "column": 15
+            },
+            "end": {
+              "line": 32,
+              "column": 21
+            }
+          }
+        },
+        "property": {
+          "type": "Identifier",
+          "name": "GLBoost",
+          "range": [
+            1230,
+            1237
+          ],
+          "loc": {
+            "start": {
+              "line": 32,
+              "column": 22
+            },
+            "end": {
+              "line": 32,
+              "column": 29
+            }
+          }
+        },
+        "range": [
+          1223,
+          1237
+        ],
+        "loc": {
+          "start": {
+            "line": 32,
+            "column": 15
+          },
+          "end": {
+            "line": 32,
+            "column": 29
+          }
+        },
+        "leadingComments": [],
+        "trailingComments": []
+      },
+      "range": [
+        1208,
+        1238
+      ],
+      "loc": {
+        "start": {
+          "line": 32,
+          "column": 0
+        },
+        "end": {
+          "line": 32,
+          "column": 30
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": false,
+          "object": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "global",
+              "range": [
+                1240,
+                1246
+              ],
+              "loc": {
+                "start": {
+                  "line": 34,
+                  "column": 0
+                },
+                "end": {
+                  "line": 34,
+                  "column": 6
+                }
+              }
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "GLBoost",
+              "range": [
+                1247,
+                1254
+              ],
+              "loc": {
+                "start": {
+                  "line": 34,
+                  "column": 7
+                },
+                "end": {
+                  "line": 34,
+                  "column": 14
+                }
+              }
+            },
+            "range": [
+              1240,
+              1254
+            ],
+            "loc": {
+              "start": {
+                "line": 34,
+                "column": 0
+              },
+              "end": {
+                "line": 34,
+                "column": 14
+              }
+            }
+          },
+          "property": {
+            "type": "Identifier",
+            "name": "isThisGLVersion_2",
+            "range": [
+              1255,
+              1272
+            ],
+            "loc": {
+              "start": {
+                "line": 34,
+                "column": 15
+              },
+              "end": {
+                "line": 34,
+                "column": 32
+              }
+            }
+          },
+          "range": [
+            1240,
+            1272
+          ],
+          "loc": {
+            "start": {
+              "line": 34,
+              "column": 0
+            },
+            "end": {
+              "line": 34,
+              "column": 32
+            }
+          }
+        },
+        "right": {
+          "type": "FunctionExpression",
+          "id": {
+            "type": "Identifier",
+            "name": "isThisGLVersion_2",
+            "range": [
+              1255,
+              1272
+            ],
+            "loc": {
+              "start": {
+                "line": 34,
+                "column": 15
+              },
+              "end": {
+                "line": 34,
+                "column": 32
+              }
+            }
+          },
+          "params": [
+            {
+              "type": "Identifier",
+              "name": "gl",
+              "range": [
+                1284,
+                1286
+              ],
+              "loc": {
+                "start": {
+                  "line": 34,
+                  "column": 44
+                },
+                "end": {
+                  "line": 34,
+                  "column": 46
+                }
+              }
+            }
+          ],
+          "body": {
+            "type": "BlockStatement",
+            "body": [
+              {
+                "type": "IfStatement",
+                "test": {
+                  "type": "BinaryExpression",
+                  "operator": "===",
+                  "left": {
+                    "type": "UnaryExpression",
+                    "operator": "typeof",
+                    "argument": {
+                      "type": "Identifier",
+                      "name": "WebGL2RenderingContext",
+                      "range": [
+                        1303,
+                        1325
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 35,
+                          "column": 13
+                        },
+                        "end": {
+                          "line": 35,
+                          "column": 35
+                        }
+                      }
+                    },
+                    "prefix": true,
+                    "range": [
+                      1296,
+                      1325
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 35,
+                        "column": 6
+                      },
+                      "end": {
+                        "line": 35,
+                        "column": 35
+                      }
+                    }
+                  },
+                  "right": {
+                    "type": "Literal",
+                    "value": "undefined",
+                    "raw": "\"undefined\"",
+                    "range": [
+                      1330,
+                      1341
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 35,
+                        "column": 40
+                      },
+                      "end": {
+                        "line": 35,
+                        "column": 51
+                      }
+                    }
+                  },
+                  "range": [
+                    1296,
+                    1341
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 35,
+                      "column": 6
+                    },
+                    "end": {
+                      "line": 35,
+                      "column": 51
+                    }
+                  }
+                },
+                "consequent": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "Literal",
+                        "value": false,
+                        "raw": "false",
+                        "range": [
+                          1356,
+                          1361
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 36,
+                            "column": 11
+                          },
+                          "end": {
+                            "line": 36,
+                            "column": 16
+                          }
+                        }
+                      },
+                      "range": [
+                        1349,
+                        1362
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 36,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 36,
+                          "column": 17
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    1343,
+                    1366
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 35,
+                      "column": 53
+                    },
+                    "end": {
+                      "line": 37,
+                      "column": 3
+                    }
+                  }
+                },
+                "alternate": null,
+                "range": [
+                  1292,
+                  1366
+                ],
+                "loc": {
+                  "start": {
+                    "line": 35,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 37,
+                    "column": 3
+                  }
+                }
+              },
+              {
+                "type": "ReturnStatement",
+                "argument": {
+                  "type": "BinaryExpression",
+                  "operator": "instanceof",
+                  "left": {
+                    "type": "Identifier",
+                    "name": "gl",
+                    "range": [
+                      1376,
+                      1378
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 38,
+                        "column": 9
+                      },
+                      "end": {
+                        "line": 38,
+                        "column": 11
+                      }
+                    }
+                  },
+                  "right": {
+                    "type": "Identifier",
+                    "name": "WebGL2RenderingContext",
+                    "range": [
+                      1390,
+                      1412
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 38,
+                        "column": 23
+                      },
+                      "end": {
+                        "line": 38,
+                        "column": 45
+                      }
+                    }
+                  },
+                  "range": [
+                    1376,
+                    1412
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 38,
+                      "column": 9
+                    },
+                    "end": {
+                      "line": 38,
+                      "column": 45
+                    }
+                  }
+                },
+                "range": [
+                  1369,
+                  1413
+                ],
+                "loc": {
+                  "start": {
+                    "line": 38,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 38,
+                    "column": 46
+                  }
+                }
+              }
+            ],
+            "range": [
+              1288,
+              1415
+            ],
+            "loc": {
+              "start": {
+                "line": 34,
+                "column": 48
+              },
+              "end": {
+                "line": 39,
+                "column": 1
+              }
+            }
+          },
+          "generator": false,
+          "expression": false,
+          "range": [
+            1275,
+            1415
+          ],
+          "loc": {
+            "start": {
+              "line": 34,
+              "column": 35
+            },
+            "end": {
+              "line": 39,
+              "column": 1
+            }
+          }
+        },
+        "range": [
+          1240,
+          1415
+        ],
+        "loc": {
+          "start": {
+            "line": 34,
+            "column": 0
+          },
+          "end": {
+            "line": 39,
+            "column": 1
+          }
+        }
+      },
+      "range": [
+        1240,
+        1416
+      ],
+      "loc": {
+        "start": {
+          "line": 34,
+          "column": 0
+        },
+        "end": {
+          "line": 39,
+          "column": 2
+        }
+      }
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    0,
+    1416
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 39,
+      "column": 2
+    }
+  },
+  "comments": []
+}

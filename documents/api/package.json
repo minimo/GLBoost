@@ -1,0 +1,35 @@
+  {
+  "name": "glboost",
+  "version": "0.0.1",
+  "description": "A New WebGL Rendering Library for 3D Graphics Geeks",
+  "main": "glboost.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "build": "rollup -c rollup.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "esdoc": "esdoc -c esdoc.json",
+    "build-examples": "npm run standalone",
+    "standalone": "npm run standalone:custom_shader && npm run standalone:custom_shader_2 && npm run standalone:particles",
+    "standalone:custom_shader": "rollup -c examples/standalone/custom_shader/rollup.config.js",
+    "standalone:custom_shader_2": "rollup -c examples/standalone/custom_shader_2/rollup.config.js",
+    "standalone:particles": "rollup -c examples/standalone/particles/rollup.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emadurandal/GLBoost.git"
+  },
+  "author": "emadurandal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/emadurandal/GLBoost/issues"
+  },
+  "homepage": "https://github.com/emadurandal/GLBoost#readme",
+  "devDependencies": {
+    "babel-preset-es2015-rollup": "^1.0.0",
+    "esdoc": "^0.4.3",
+    "rollup": "^0.21.2",
+    "rollup-plugin-babel": "^2.2.0"
+  }
+}
