@@ -42,12 +42,12 @@
         {{ contents | safe }}
 
           <p>
-            {% if previous %}
-              <a href="/{{ previous.path }}">&lt;&lt;previous:&quot;{{previous.title}}&quot;</a>
+            {% if next %}
+              <a href="/{{ next.path }}">&lt;&lt;previous:&quot;{{next.title}}&quot;</a>
             {% endif %}
             &nbsp;
-            {% if next %}
-              <a href="/{{ next.path }}">next:&quot;{{next.title}}&quot;&gt;&gt;</a>
+            {% if previous %}
+              <a href="/{{ previous.path }}">next:&quot;{{previous.title}}&quot;&gt;&gt;</a>
             {% endif %}
           </p>
 
