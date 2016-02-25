@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "node node_modules/.bin/metalsmith",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy": "rsync -a _build/ ./ && rm -rf _build/"
   },
   "repository": {
     "type": "git",

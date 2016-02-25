@@ -13,7 +13,7 @@ The embarrassing thing is that my english is still limited.
 So if I write something strange, please give me some slack:)
 
 GLBoost aim 3D geeks and Heavy 3D Game Program use.
-It is still under early development stage and has not even explicit version number.
+It is still under early development stage and does not have even explicit version number.
 
 But I have a great enthusiasm for this library.
 I'm planning to release ver 0.0.1 within this year.
