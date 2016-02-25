@@ -7,22 +7,37 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="">
-<!--[if lt IE 9]>
-<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+<link rel="stylesheet" href="/assets/styles/semantic/dist/semantic.min.css">
+<script src="//code.jquery.com/jquery-2.2.1.min.js"></script>
+<script src="/assets/styles/semantic/dist/semantic.min.js"></script>
 </head>
 <body>
-  <h1>{{ title }}</h1>
-  <time>{{ date | date('Y-m-d') }}</time>
-  {{ contents | safe }}
-
-  <p>Links</p>
-  <ul>
-      <li>
-          <a href="{{collections.blogPosts[0].path}}">{{collections.blogPosts[0].title}}</a>
-      </li>
-  </ul>
+  <div class="ui inverted segment">
+    <div class="ui inverted secondary pointing menu">
+      <a class="item active" href="/">
+        Home
+      </a>
+      <a class="item" href="documents/api" target="_blank">
+        API
+      </a>
+      <a class="item" href="/blog/">
+        Blog
+      </a>
+    </div>
+  </div>
+  <div class="ui masthead vertical segment">
+    <div class="ui container">
+      <h1 class="ui header">
+        {{ title }}
+        <div class="sub header">
+        {{ subtitle }}
+        </div>
+      </h1>
+      <div class="ui divider"></div>
+      <div class="main ui intro container">
+        {{ contents | safe }}
+      </div>
+    </div>
+  </div>
 </body>
 </html>

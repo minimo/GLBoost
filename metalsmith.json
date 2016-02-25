@@ -23,6 +23,9 @@
           "pattern": "blog/:date/:filename",
           "date": "YYYY-MM-DD"
       },{
+          "match": { "collection": "blogIndex" },
+          "pattern": "blog"
+      },{
           "match": { "collection": "rootFiles" },
           "pattern": ""
       }]
