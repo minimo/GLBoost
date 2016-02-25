@@ -8,12 +8,15 @@
 <meta name="author" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/assets/styles/semantic/dist/semantic.min.css">
+<link rel="stylesheet" href="/assets/styles/main.css">
 <script src="//code.jquery.com/jquery-2.2.1.min.js"></script>
 <script src="/assets/styles/semantic/dist/semantic.min.js"></script>
 </head>
 <body>
   <div class="ui inverted segment">
     <div class="ui inverted secondary pointing menu">
+      <img class="item glboostLogo" src="https://github.com/emadurandal/GLBoost/raw/master/logo.png" />
+      <img class="item glboostLogoHidden" />
       <a class="item" href="/">
         Home
       </a>
@@ -36,17 +39,19 @@
       <div class="ui divider"></div>
       <div class="main ui intro container">
         {{ contents | safe }}
-        <ul>
+        <div class="ui list">
             {% for blogPost in collections.blogPosts %}
-            <li>
-                <a href="/{{blogPost.path}}">
-                  <h2>{{blogPost.title}} ({{blogPost.date}})</h2>
-                </a>
-                <hr />
-                <h2>{{blogPost.contents | safe }}</h2>
-            </li>
+            <div class="item">
+                <h2 class="ui top attached header">
+                  <a href="/{{blogPost.path}}">{{blogPost.title}} ({{blogPost.date}})</a>
+                </h2>
+                <div class="ui attached segment">
+                  {{blogPost.contents | safe }}
+                </div>
+                <div class="ui divider hidden"></div>
+            </div>
             {% endfor %}
-        </ul>
+        </div>
       </div>
     </div>
   </div>

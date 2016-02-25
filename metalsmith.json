@@ -14,7 +14,9 @@
     },
     "metalsmith-collections": {
       "blogPosts": {
-        "pattern":"*.md"
+        "pattern":"*.md",
+        "sortBy": "date",
+        "reverse": true
       }
     },
     "metalsmith-permalinks": {
