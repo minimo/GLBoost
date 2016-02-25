@@ -9,24 +9,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/assets/styles/semantic/dist/semantic.min.css">
 <link rel="stylesheet" href="/assets/styles/main.css">
+<style>
+  body { overflow-y: hidden; }
+</style>
 <script src="//code.jquery.com/jquery-2.2.1.min.js"></script>
 <script src="/assets/styles/semantic/dist/semantic.min.js"></script>
 </head>
-<body>
-  {% include "./_navHeader.html" with {activeLink: 'home'} only %}
-  <div class="ui masthead vertical segment">
-    <div class="ui container">
-      <h1 class="ui header">
-        {{ title }}
-        <div class="sub header">
-        {{ subtitle }}
-        </div>
-      </h1>
-      <div class="ui divider"></div>
-      <div class="main ui intro container">
-        {{ contents | safe }}
-      </div>
-    </div>
-  </div>
+<body onresize="resizeFrame()">
+  {% include "./_navHeader.html" with {activeLink: 'api'} only %}
+  <iframe id="api-iframe" style="width:100%;" src="/documents/api"></iframe>
 </body>
+<script>
+  function resizeFrame(){
+
+    var naviHeader = document.getElementById("navi-header");
+    var newHeight	= document.documentElement.clientHeight - $(naviHeader).outerHeight(true);
+
+    var iframe		= document.getElementById("api-iframe");
+    iframe.style.height = newHeight +"px";
+
+  }
+
+  resizeFrame();
+
+</script>
 </html>

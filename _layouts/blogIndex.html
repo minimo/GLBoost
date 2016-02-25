@@ -13,21 +13,7 @@
 <script src="/assets/styles/semantic/dist/semantic.min.js"></script>
 </head>
 <body>
-  <div class="ui inverted segment">
-    <div class="ui inverted secondary pointing menu">
-      <img class="item glboostLogo" src="https://github.com/emadurandal/GLBoost/raw/master/logo.png" />
-      <img class="item glboostLogoHidden" />
-      <a class="item" href="/">
-        Home
-      </a>
-      <a class="item" href="/documents/api" target="_blank">
-        API
-      </a>
-      <a class="item active" href="/blog/">
-        Blog
-      </a>
-    </div>
-  </div>
+  {% include "./_navHeader.html" with {activeLink: 'blog'} only %}
   <div class="ui masthead vertical segment">
     <div class="ui container">
       <h1 class="ui header">

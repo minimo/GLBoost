@@ -15,7 +15,7 @@
 
 <header>
   <a href="./">Home</a>
-  
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
   <a href="identifiers.html">Reference</a>
   <a href="source.html">Source</a>
   
@@ -123,17 +123,91 @@ WebGL&#x306E;&#x9762;&#x5012;&#x304F;&#x3055;&#x3044;&#x90E8;&#x5206;&#x3092;&#x
 <li>Microsoft Edge (Xbox One included)</li>
 <li>Internet Explorer 11 (note that <a href="https://cdnjs.com/libraries/babel-core/5.8.34">browser-polyfill.min.js</a> is required)</li>
 </ul>
-<h2 id="roadmap">Roadmap</h2>
-<h3 id="coming-soon">Coming Soon</h3>
-<ul>
-<li>Allow access to WebGL Context and Resources</li>
-</ul>
-<h3 id="near-future">Near Future</h3>
-<ul>
-<li>Physically Based Rendering</li>
-<li>Both Forward Rendering and Deferred Rendering Support</li>
-<li>High-level API for beginners</li>
-</ul>
+<h2 id="how-to-use">How to use</h2>
+<ol>
+<li>Include <code>build/glboost.js</code> in your html file.</li>
+</ol>
+<pre><code class="lang-html"><code class="source-code prettyprint">&lt;script src=&quot;./glboost.js&quot;&gt;&lt;/script&gt;</code>
+</code></pre>
+<ol>
+<li>Put canvas tag in body element.</li>
+</ol>
+<pre><code class="lang-html"><code class="source-code prettyprint">&lt;body&gt;
+  &lt;canvas id=&quot;world&quot; width=&quot;600&quot; height=&quot;600&quot;&gt;&lt;/canvas&gt;
+&lt;/body&gt;</code>
+</code></pre>
+<ol>
+<li>Write your codes.</li>
+</ol>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">// setup GLBoost renderer
+var canvas = document.getElementById(&quot;world&quot;);
+var renderer = new GLBoost.Renderer({
+  canvas: canvas,
+  clearColor: {
+    red: 0.0,
+    green: 0.0,
+    blue: 0.0,
+    alpha: 1
+  }
+});
+
+// make a scene
+var scene = new GLBoost.Scene();
+
+// setup material
+var material = new GLBoost.ClassicMaterial(&apos;#world&apos;);
+var texture = new GLBoost.Texture(&apos;resouces/texture.png&apos;, &apos;#world&apos;); // earth.jpg
+material.diffuseTexture = texture;
+var shader = new GLBoost.PhongShader(&apos;#world&apos;);
+material.shader = shader;
+
+// make a Sphere geometry
+var geometry = new GLBoost.Sphere(20, 24, 24, null, &quot;#world&quot;);
+
+// set Sphere geometry and material to make a Mesh.
+var earth = new GLBoost.Mesh(geometry, material);
+// add the earth mesh to the scene
+scene.add(earth);
+
+// make a directonal light
+var directionalLight = new GLBoost.DirectionalLight(new GLBoost.Vector3(1, 1, 1), new GLBoost.Vector3(-1, -1, -1), &apos;#world&apos;);
+// add the light to the scene
+scene.add( directionalLight );
+
+// setup camera
+var camera = new GLBoost.Camera({
+  eye: new GLBoost.Vector3(0.0, 0.0, 60.0),
+  center: new GLBoost.Vector3(0.0, 0.0, 0.0),
+  up: new GLBoost.Vector3(0.0, 1.0, 0.0)
+}, {
+  fovy: 45.0,
+  aspect: 1.0,
+  zNear: 0.1,
+  zFar: 1000.0
+});
+// add the camera to the scene
+scene.add(camera);
+
+// call this method before rendering
+scene.prepareForRender();
+
+// rendering loop
+var render = function() {
+  // render the scene
+  renderer.clearCanvas();
+  renderer.draw(scene);
+
+  // rotate camera
+  var rotateMatrixY = GLBoost.Matrix33.rotateY(-1.0);
+  rotatedVector = rotateMatrixY.multiplyVector(camera.eye);
+  camera.eye = rotatedVector;
+
+  requestAnimationFrame(render);
+};
+
+render();</code>
+</code></pre>
+<p>for other usage, check <a href="https://rawgit.com/emadurandal/GLBoost/master/examples/index.html">examples</a>!</p>
 <h2 id="how-to-install-npm-packages-to-build-library-examples-and-api-document">How to Install npm packages to build library, examples and API document</h2>
 <pre><code><code class="source-code prettyprint">$ npm install</code>
 </code></pre><h3 id="build-of-glboost-library">Build of GLBoost Library</h3>
@@ -145,6 +219,17 @@ The following command builds them all.</p>
 </code></pre><h3 id="build-of-api-document">Build of API Document</h3>
 <pre><code><code class="source-code prettyprint">$ npm run esdoc</code>
 </code></pre><p>(Note: The documentation coverage is still very low. We address the resolution of this problem.)</p>
+<h2 id="roadmap">Roadmap</h2>
+<h3 id="coming-soon">Coming Soon</h3>
+<ul>
+<li>Allow access to WebGL Context and Resources</li>
+</ul>
+<h3 id="near-future">Near Future</h3>
+<ul>
+<li>Physically Based Rendering</li>
+<li>Both Forward Rendering and Deferred Rendering Support</li>
+<li>High-level API for beginners</li>
+</ul>
 <h2 id="license">License</h2>
 <p>This library is released under the MIT License, see <code>LICENSE</code> file.</p>
 </div>
