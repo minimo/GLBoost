@@ -15,7 +15,7 @@
 
 <header>
   <a href="./">Home</a>
-  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  
   <a href="identifiers.html">Reference</a>
   <a href="source.html">Source</a>
   
@@ -96,7 +96,7 @@ import Vector3 from &apos;./../math/Vector3&apos;
 import Vector2 from &apos;./../math/Vector2&apos;
 
 export default class Cube extends Geometry {
-  constructor(widthVector, vertexColor, canvas) {
+  constructor(widthVector, vertexColor, canvas = GLBoost.CURRENT_CANVAS_ID) {
     super(canvas);
 
     this._setupVertexData(widthVector.divide(2.0), vertexColor);

@@ -15,7 +15,7 @@
 
 <header>
   <a href="./">Home</a>
-  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  
   <a href="identifiers.html">Reference</a>
   <a href="source.html">Source</a>
   
@@ -92,7 +92,7 @@ import Vector4 from &apos;./math/Vector4&apos;
 import SimpleShader from &apos;./shaders/SimpleShader&apos;
 
 export default class ClassicMaterial {
-  constructor(canvas) {
+  constructor(canvas = GLBoost.CURRENT_CANVAS_ID) {
     this._diffuseTexture = null;
     this._gl = GLContext.getInstance(canvas).gl;
     this._canvas = canvas;

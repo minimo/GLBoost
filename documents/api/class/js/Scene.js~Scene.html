@@ -15,7 +15,7 @@
 
 <header>
   <a href="./">Home</a>
-  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  
   <a href="identifiers.html">Reference</a>
   <a href="source.html">Source</a>
   
@@ -86,13 +86,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Scene from &apos;<span><a href="file/js/Scene.js.html#lineNumber8">glboost/js/Scene.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Scene from &apos;<span><a href="file/js/Scene.js.html#lineNumber14">glboost/js/Scene.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/js/Scene.js.html#lineNumber8">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/js/Scene.js.html#lineNumber14">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -112,7 +112,11 @@
 
   
   
-  
+  <div class="description" data-ice="description"><p>en: This Scene class is the top level element of scene graph hierarchy.
+      To render scene, pass this scene element to Renderer.draw method.<br>
+ja: &#x3053;&#x306E;Scene&#x30AF;&#x30E9;&#x30B9;&#x306F;&#x30B7;&#x30FC;&#x30F3;&#x30B0;&#x30E9;&#x30D5;&#x968E;&#x5C64;&#x306E;&#x30C8;&#x30C3;&#x30D7;&#x30EC;&#x30D9;&#x30EB;&#x306B;&#x4F4D;&#x7F6E;&#x3059;&#x308B;&#x8981;&#x7D20;&#x3067;&#x3059;&#x3002;
+      &#x30B7;&#x30FC;&#x30F3;&#x3092;&#x30EC;&#x30F3;&#x30C0;&#x30EA;&#x30F3;&#x30B0;&#x3059;&#x308B;&#x306B;&#x306F;&#x3001;&#x3053;&#x306E;scene&#x8981;&#x7D20;&#x3092;Renderer.draw&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x6E21;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+</div>
 
   
 
@@ -172,13 +176,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/Scene.js~Scene.html#instance-get-cameras">cameras</a></span></span><span data-ice="signature">: <span>*</span></span>
+           <span data-ice="name"><span><a href="class/js/Scene.js~Scene.html#instance-get-cameras">cameras</a></span></span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>: <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>en: Get child cameras which belong to this scene.</p>
+</div>
       </div>
     </td>
     <td>
@@ -197,13 +202,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/Scene.js~Scene.html#instance-get-elements">elements</a></span></span><span data-ice="signature">: <span>*</span></span>
+           <span data-ice="name"><span><a href="class/js/Scene.js~Scene.html#instance-get-elements">elements</a></span></span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>: <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>en: Get child elements which belong to this scene.</p>
+</div>
       </div>
     </td>
     <td>
@@ -222,13 +228,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/Scene.js~Scene.html#instance-get-lights">lights</a></span></span><span data-ice="signature">: <span>*</span></span>
+           <span data-ice="name"><span><a href="class/js/Scene.js~Scene.html#instance-get-lights">lights</a></span></span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>: <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>en: Get child lights which belong to this scene.</p>
+</div>
       </div>
     </td>
     <td>
@@ -247,13 +254,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/Scene.js~Scene.html#instance-get-meshes">meshes</a></span></span><span data-ice="signature">: <span>*</span></span>
+           <span data-ice="name"><span><a href="class/js/Scene.js~Scene.html#instance-get-meshes">meshes</a></span></span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>: <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>en: Get child meshes which belong to this scene.</p>
+</div>
       </div>
     </td>
     <td>
@@ -285,7 +293,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>en: Add the element to this scene as a child.</p>
+</div>
       </div>
     </td>
     <td>
@@ -310,7 +319,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>en: Add the element to this scene as a child.</p>
+</div>
       </div>
     </td>
     <td>
@@ -329,13 +339,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/Scene.js~Scene.html#instance-method-getChildren">getChildren</a></span></span><span data-ice="signature">(): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/js/Scene.js~Scene.html#instance-method-getChildren">getChildren</a></span></span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>en: Get child elements which belong to this scene.</p>
+</div>
       </div>
     </td>
     <td>
@@ -360,7 +371,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>en: Prepare for Rendering.</p>
+</div>
       </div>
     </td>
     <td>
@@ -379,13 +391,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/Scene.js~Scene.html#instance-method-setCurrentAnimationValue">setCurrentAnimationValue</a></span></span><span data-ice="signature">(inputName: <span>*</span>, inputValue: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/js/Scene.js~Scene.html#instance-method-setCurrentAnimationValue">setCurrentAnimationValue</a></span></span><span data-ice="signature">(inputName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, inputValue: <span>any</span>)</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>en: Set animation input value (for instance frame value).</p>
+</div>
       </div>
     </td>
     <td>
@@ -1320,7 +1333,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Scene.js.html#lineNumber9">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Scene.js.html#lineNumber15">source</a></span></span>
     </span>
   </h3>
 
@@ -1359,25 +1372,38 @@
     <span class="kind" data-ice="kind">get</span>
     
     
-    <span data-ice="name">cameras</span><span data-ice="signature">: <span>*</span></span>
+    <span data-ice="name">cameras</span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>: <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Scene.js.html#lineNumber157">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Scene.js.html#lineNumber207">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>en: Get child cameras which belong to this scene.<br>
+ja: &#x3053;&#x306E;&#x30B7;&#x30FC;&#x30F3;&#x306B;&#x5C5E;&#x3057;&#x3066;&#x3044;&#x305F;&#x5B50;&#x4F9B;&#x306E;Camera&#x8981;&#x7D20;&#x306E;&#x914D;&#x5217;&#x3092;&#x8FD4;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+</div>
 
   
 
   <div data-ice="properties">
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span></td>
+        <td class="return-desc" data-ice="returnDescription"><p>en: child cameras of this scene. ja: &#x3053;&#x306E;&#x30B7;&#x30FC;&#x30F3;&#x306E;&#x5B50;&#x4F9B;&#x306E;Camera&#x8981;&#x7D20;</p>
+</td>
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -1399,25 +1425,38 @@
     <span class="kind" data-ice="kind">get</span>
     
     
-    <span data-ice="name">elements</span><span data-ice="signature">: <span>*</span></span>
+    <span data-ice="name">elements</span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>: <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Scene.js.html#lineNumber145">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Scene.js.html#lineNumber180">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>en: Get child elements which belong to this scene.<br>
+ja: &#x3053;&#x306E;&#x30B7;&#x30FC;&#x30F3;&#x306B;&#x5C5E;&#x3057;&#x3066;&#x3044;&#x305F;&#x5B50;&#x4F9B;&#x306E;&#x8981;&#x7D20;&#x306E;&#x914D;&#x5217;&#x3092;&#x8FD4;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+</div>
 
   
 
   <div data-ice="properties">
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span></td>
+        <td class="return-desc" data-ice="returnDescription"><p>en: child elements of this scene. ja: &#x3053;&#x306E;&#x30B7;&#x30FC;&#x30F3;&#x306E;&#x5B50;&#x4F9B;&#x306E;&#x8981;&#x7D20;</p>
+</td>
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -1439,25 +1478,38 @@
     <span class="kind" data-ice="kind">get</span>
     
     
-    <span data-ice="name">lights</span><span data-ice="signature">: <span>*</span></span>
+    <span data-ice="name">lights</span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>: <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Scene.js.html#lineNumber153">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Scene.js.html#lineNumber198">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>en: Get child lights which belong to this scene.<br>
+ja: &#x3053;&#x306E;&#x30B7;&#x30FC;&#x30F3;&#x306B;&#x5C5E;&#x3057;&#x3066;&#x3044;&#x305F;&#x5B50;&#x4F9B;&#x306E;Light&#x8981;&#x7D20;&#x306E;&#x914D;&#x5217;&#x3092;&#x8FD4;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+</div>
 
   
 
   <div data-ice="properties">
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span></td>
+        <td class="return-desc" data-ice="returnDescription"><p>en: child lights of this scene. ja: &#x3053;&#x306E;&#x30B7;&#x30FC;&#x30F3;&#x306E;&#x5B50;&#x4F9B;&#x306E;Light&#x8981;&#x7D20;</p>
+</td>
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -1479,25 +1531,38 @@
     <span class="kind" data-ice="kind">get</span>
     
     
-    <span data-ice="name">meshes</span><span data-ice="signature">: <span>*</span></span>
+    <span data-ice="name">meshes</span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>: <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Scene.js.html#lineNumber149">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Scene.js.html#lineNumber189">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>en: Get child meshes which belong to this scene.<br>
+ja: &#x3053;&#x306E;&#x30B7;&#x30FC;&#x30F3;&#x306B;&#x5C5E;&#x3057;&#x3066;&#x3044;&#x305F;&#x5B50;&#x4F9B;&#x306E;Mesh&#x8981;&#x7D20;&#x306E;&#x914D;&#x5217;&#x3092;&#x8FD4;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+</div>
 
   
 
   <div data-ice="properties">
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span></td>
+        <td class="return-desc" data-ice="returnDescription"><p>en: child meshes of this scene. ja: &#x3053;&#x306E;&#x30B7;&#x30FC;&#x30F3;&#x306E;&#x5B50;&#x4F9B;&#x306E;Mesh&#x8981;&#x7D20;</p>
+</td>
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -1526,14 +1591,16 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Scene.js.html#lineNumber25">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Scene.js.html#lineNumber36">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>en: Add the element to this scene as a child.<br>
+ja: &#x3053;&#x306E;&#x30B7;&#x30FC;&#x30F3;&#x306B;element&#x3092;&#x5B50;&#x4F9B;&#x3068;&#x3057;&#x3066;&#x8FFD;&#x52A0;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+</div>
 
   
 
@@ -1549,7 +1616,8 @@
       <td data-ice="name" data-depth="0">element</td>
       <td data-ice="type"><span>*</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>a instance of Element class</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -1582,14 +1650,16 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Scene.js.html#lineNumber30">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Scene.js.html#lineNumber46">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>en: Add the element to this scene as a child.<br>
+ja: &#x3053;&#x306E;&#x30B7;&#x30FC;&#x30F3;&#x306B;element&#x3092;&#x5B50;&#x4F9B;&#x3068;&#x3057;&#x3066;&#x8FFD;&#x52A0;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+</div>
 
   
 
@@ -1605,7 +1675,8 @@
       <td data-ice="name" data-depth="0">element</td>
       <td data-ice="type"><span>*</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>a instance of Element class</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -1634,18 +1705,20 @@
     
     
     
-    <span data-ice="name">getChildren</span><span data-ice="signature">(): <span>*</span></span>
+    <span data-ice="name">getChildren</span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Scene.js.html#lineNumber35">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Scene.js.html#lineNumber56">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>en: Get child elements which belong to this scene.<br>
+ja: &#x3053;&#x306E;&#x30B7;&#x30FC;&#x30F3;&#x306B;&#x5C5E;&#x3057;&#x3066;&#x3044;&#x305F;&#x5B50;&#x4F9B;&#x306E;&#x8981;&#x7D20;&#x306E;&#x914D;&#x5217;&#x3092;&#x8FD4;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+</div>
 
   
 
@@ -1656,8 +1729,9 @@
     <h4>Return:</h4>
     <table>
       <tr>
-        <td class="return-type" data-ice="returnType"><span>*</span></td>
-        
+        <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span></td>
+        <td class="return-desc" data-ice="returnDescription"><p>en: child elements of this scene. ja: &#x3053;&#x306E;&#x30B7;&#x30FC;&#x30F3;&#x306E;&#x5B50;&#x4F9B;&#x306E;&#x8981;&#x7D20;</p>
+</td>
       </tr>
     </table>
     <div data-ice="returnProperties">
@@ -1688,14 +1762,16 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Scene.js.html#lineNumber63">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Scene.js.html#lineNumber93">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>en: Prepare for Rendering. You have to call this method before Renderer.draw method.
+ja: &#x30EC;&#x30F3;&#x30C0;&#x30EA;&#x30F3;&#x30B0;&#x306E;&#x305F;&#x3081;&#x306E;&#x524D;&#x51E6;&#x7406;&#x3092;&#x884C;&#x3044;&#x307E;&#x3059;&#x3002;Renderer.draw&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x524D;&#x306B;&#x3053;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x547C;&#x3076;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;</p>
+</div>
 
   
 
@@ -1724,18 +1800,20 @@
     
     
     
-    <span data-ice="name">setCurrentAnimationValue</span><span data-ice="signature">(inputName: <span>*</span>, inputValue: <span>*</span>)</span>
+    <span data-ice="name">setCurrentAnimationValue</span><span data-ice="signature">(inputName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, inputValue: <span>any</span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Scene.js.html#lineNumber57">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Scene.js.html#lineNumber84">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>en: Set animation input value (for instance frame value). This value affect all child elements in this scene graph (recursively).<br>
+ja: &#x30A2;&#x30CB;&#x30E1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x305F;&#x3081;&#x306E;&#x5165;&#x529B;&#x5024;&#xFF08;&#x4F8B;&#x3048;&#x3070;&#x30D5;&#x30EC;&#x30FC;&#x30E0;&#x5024;&#xFF09;&#x3092;&#x30BB;&#x30C3;&#x30C8;&#x3057;&#x307E;&#x3059;&#x3002;&#x3053;&#x306E;&#x5024;&#x306F;&#x30B7;&#x30FC;&#x30F3;&#x30B0;&#x30E9;&#x30D5;&#x306B;&#x5C5E;&#x3059;&#x308B;&#x5168;&#x3066;&#x306E;&#x5B50;&#x5B6B;&#x306B;&#x5F71;&#x97FF;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+</div>
 
   
 
@@ -1749,15 +1827,17 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">inputName</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>en: inputName name of input value. ja: &#x5165;&#x529B;&#x5024;&#x306E;&#x540D;&#x524D;</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">inputValue</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span>any</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>en: input value of animation. ja: &#x30A2;&#x30CB;&#x30E1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x5165;&#x529B;&#x5024;</p>
+</td>
     </tr>
 </tbody>
   </table>

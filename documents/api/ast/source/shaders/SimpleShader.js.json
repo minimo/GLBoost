@@ -6145,11 +6145,82 @@
                 "id": null,
                 "params": [
                   {
-                    "type": "Identifier",
-                    "name": "canvas",
+                    "type": "AssignmentPattern",
+                    "left": {
+                      "type": "Identifier",
+                      "name": "canvas",
+                      "range": [
+                        2600,
+                        2606
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 80,
+                          "column": 14
+                        },
+                        "end": {
+                          "line": 80,
+                          "column": 20
+                        }
+                      }
+                    },
+                    "right": {
+                      "type": "MemberExpression",
+                      "computed": false,
+                      "object": {
+                        "type": "Identifier",
+                        "name": "GLBoost",
+                        "range": [
+                          2609,
+                          2616
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 80,
+                            "column": 23
+                          },
+                          "end": {
+                            "line": 80,
+                            "column": 30
+                          }
+                        }
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "CURRENT_CANVAS_ID",
+                        "range": [
+                          2617,
+                          2634
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 80,
+                            "column": 31
+                          },
+                          "end": {
+                            "line": 80,
+                            "column": 48
+                          }
+                        }
+                      },
+                      "range": [
+                        2609,
+                        2634
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 80,
+                          "column": 23
+                        },
+                        "end": {
+                          "line": 80,
+                          "column": 48
+                        }
+                      }
+                    },
                     "range": [
                       2600,
-                      2606
+                      2634
                     ],
                     "loc": {
                       "start": {
@@ -6158,7 +6229,7 @@
                       },
                       "end": {
                         "line": 80,
-                        "column": 20
+                        "column": 48
                       }
                     }
                   }
@@ -6173,8 +6244,8 @@
                         "callee": {
                           "type": "Super",
                           "range": [
-                            2615,
-                            2620
+                            2643,
+                            2648
                           ],
                           "loc": {
                             "start": {
@@ -6192,8 +6263,8 @@
                             "type": "Identifier",
                             "name": "canvas",
                             "range": [
-                              2621,
-                              2627
+                              2649,
+                              2655
                             ],
                             "loc": {
                               "start": {
@@ -6208,8 +6279,8 @@
                           }
                         ],
                         "range": [
-                          2615,
-                          2628
+                          2643,
+                          2656
                         ],
                         "loc": {
                           "start": {
@@ -6223,8 +6294,8 @@
                         }
                       },
                       "range": [
-                        2615,
-                        2629
+                        2643,
+                        2657
                       ],
                       "loc": {
                         "start": {
@@ -6248,8 +6319,8 @@
                             "type": "Identifier",
                             "name": "SimpleShader",
                             "range": [
-                              2634,
-                              2646
+                              2662,
+                              2674
                             ],
                             "loc": {
                               "start": {
@@ -6266,8 +6337,8 @@
                             "type": "Identifier",
                             "name": "mixin",
                             "range": [
-                              2647,
-                              2652
+                              2675,
+                              2680
                             ],
                             "loc": {
                               "start": {
@@ -6281,8 +6352,8 @@
                             }
                           },
                           "range": [
-                            2634,
-                            2652
+                            2662,
+                            2680
                           ],
                           "loc": {
                             "start": {
@@ -6300,8 +6371,8 @@
                             "type": "Identifier",
                             "name": "SimpleShaderSource",
                             "range": [
-                              2653,
-                              2671
+                              2681,
+                              2699
                             ],
                             "loc": {
                               "start": {
@@ -6316,8 +6387,8 @@
                           }
                         ],
                         "range": [
-                          2634,
-                          2672
+                          2662,
+                          2700
                         ],
                         "loc": {
                           "start": {
@@ -6331,8 +6402,8 @@
                         }
                       },
                       "range": [
-                        2634,
-                        2673
+                        2662,
+                        2701
                       ],
                       "loc": {
                         "start": {
@@ -6347,13 +6418,13 @@
                     }
                   ],
                   "range": [
-                    2608,
-                    2677
+                    2636,
+                    2705
                   ],
                   "loc": {
                     "start": {
                       "line": 80,
-                      "column": 22
+                      "column": 50
                     },
                     "end": {
                       "line": 84,
@@ -6365,7 +6436,7 @@
                 "expression": false,
                 "range": [
                   2599,
-                  2677
+                  2705
                 ],
                 "loc": {
                   "start": {
@@ -6382,7 +6453,7 @@
               "computed": false,
               "range": [
                 2588,
-                2677
+                2705
               ],
               "loc": {
                 "start": {
@@ -6402,8 +6473,8 @@
                 "type": "Identifier",
                 "name": "setUniforms",
                 "range": [
-                  2681,
-                  2692
+                  2709,
+                  2720
                 ],
                 "loc": {
                   "start": {
@@ -6424,8 +6495,8 @@
                     "type": "Identifier",
                     "name": "gl",
                     "range": [
-                      2693,
-                      2695
+                      2721,
+                      2723
                     ],
                     "loc": {
                       "start": {
@@ -6442,8 +6513,8 @@
                     "type": "Identifier",
                     "name": "glslProgram",
                     "range": [
-                      2697,
-                      2708
+                      2725,
+                      2736
                     ],
                     "loc": {
                       "start": {
@@ -6460,8 +6531,8 @@
                     "type": "Identifier",
                     "name": "material",
                     "range": [
-                      2710,
-                      2718
+                      2738,
+                      2746
                     ],
                     "loc": {
                       "start": {
@@ -6487,8 +6558,8 @@
                             "type": "Identifier",
                             "name": "baseColor",
                             "range": [
-                              2731,
-                              2740
+                              2759,
+                              2768
                             ],
                             "loc": {
                               "start": {
@@ -6508,8 +6579,8 @@
                               "type": "Identifier",
                               "name": "material",
                               "range": [
-                                2743,
-                                2751
+                                2771,
+                                2779
                               ],
                               "loc": {
                                 "start": {
@@ -6526,8 +6597,8 @@
                               "type": "Identifier",
                               "name": "baseColor",
                               "range": [
-                                2752,
-                                2761
+                                2780,
+                                2789
                               ],
                               "loc": {
                                 "start": {
@@ -6541,8 +6612,8 @@
                               }
                             },
                             "range": [
-                              2743,
-                              2761
+                              2771,
+                              2789
                             ],
                             "loc": {
                               "start": {
@@ -6556,8 +6627,8 @@
                             }
                           },
                           "range": [
-                            2731,
-                            2761
+                            2759,
+                            2789
                           ],
                           "loc": {
                             "start": {
@@ -6573,8 +6644,8 @@
                       ],
                       "kind": "var",
                       "range": [
-                        2727,
-                        2762
+                        2755,
+                        2790
                       ],
                       "loc": {
                         "start": {
@@ -6598,8 +6669,8 @@
                             "type": "Identifier",
                             "name": "gl",
                             "range": [
-                              2767,
-                              2769
+                              2795,
+                              2797
                             ],
                             "loc": {
                               "start": {
@@ -6616,8 +6687,8 @@
                             "type": "Identifier",
                             "name": "uniform4f",
                             "range": [
-                              2770,
-                              2779
+                              2798,
+                              2807
                             ],
                             "loc": {
                               "start": {
@@ -6631,8 +6702,8 @@
                             }
                           },
                           "range": [
-                            2767,
-                            2779
+                            2795,
+                            2807
                           ],
                           "loc": {
                             "start": {
@@ -6653,8 +6724,8 @@
                               "type": "Identifier",
                               "name": "glslProgram",
                               "range": [
-                                2780,
-                                2791
+                                2808,
+                                2819
                               ],
                               "loc": {
                                 "start": {
@@ -6671,8 +6742,8 @@
                               "type": "Identifier",
                               "name": "materialBaseColor",
                               "range": [
-                                2792,
-                                2809
+                                2820,
+                                2837
                               ],
                               "loc": {
                                 "start": {
@@ -6686,8 +6757,8 @@
                               }
                             },
                             "range": [
-                              2780,
-                              2809
+                              2808,
+                              2837
                             ],
                             "loc": {
                               "start": {
@@ -6707,8 +6778,8 @@
                               "type": "Identifier",
                               "name": "baseColor",
                               "range": [
-                                2811,
-                                2820
+                                2839,
+                                2848
                               ],
                               "loc": {
                                 "start": {
@@ -6725,8 +6796,8 @@
                               "type": "Identifier",
                               "name": "x",
                               "range": [
-                                2821,
-                                2822
+                                2849,
+                                2850
                               ],
                               "loc": {
                                 "start": {
@@ -6740,8 +6811,8 @@
                               }
                             },
                             "range": [
-                              2811,
-                              2822
+                              2839,
+                              2850
                             ],
                             "loc": {
                               "start": {
@@ -6761,8 +6832,8 @@
                               "type": "Identifier",
                               "name": "baseColor",
                               "range": [
-                                2824,
-                                2833
+                                2852,
+                                2861
                               ],
                               "loc": {
                                 "start": {
@@ -6779,8 +6850,8 @@
                               "type": "Identifier",
                               "name": "y",
                               "range": [
-                                2834,
-                                2835
+                                2862,
+                                2863
                               ],
                               "loc": {
                                 "start": {
@@ -6794,8 +6865,8 @@
                               }
                             },
                             "range": [
-                              2824,
-                              2835
+                              2852,
+                              2863
                             ],
                             "loc": {
                               "start": {
@@ -6815,8 +6886,8 @@
                               "type": "Identifier",
                               "name": "baseColor",
                               "range": [
-                                2837,
-                                2846
+                                2865,
+                                2874
                               ],
                               "loc": {
                                 "start": {
@@ -6833,8 +6904,8 @@
                               "type": "Identifier",
                               "name": "z",
                               "range": [
-                                2847,
-                                2848
+                                2875,
+                                2876
                               ],
                               "loc": {
                                 "start": {
@@ -6848,8 +6919,8 @@
                               }
                             },
                             "range": [
-                              2837,
-                              2848
+                              2865,
+                              2876
                             ],
                             "loc": {
                               "start": {
@@ -6869,8 +6940,8 @@
                               "type": "Identifier",
                               "name": "baseColor",
                               "range": [
-                                2850,
-                                2859
+                                2878,
+                                2887
                               ],
                               "loc": {
                                 "start": {
@@ -6887,8 +6958,8 @@
                               "type": "Identifier",
                               "name": "w",
                               "range": [
-                                2860,
-                                2861
+                                2888,
+                                2889
                               ],
                               "loc": {
                                 "start": {
@@ -6902,8 +6973,8 @@
                               }
                             },
                             "range": [
-                              2850,
-                              2861
+                              2878,
+                              2889
                             ],
                             "loc": {
                               "start": {
@@ -6918,8 +6989,8 @@
                           }
                         ],
                         "range": [
-                          2767,
-                          2862
+                          2795,
+                          2890
                         ],
                         "loc": {
                           "start": {
@@ -6933,8 +7004,8 @@
                         }
                       },
                       "range": [
-                        2767,
-                        2863
+                        2795,
+                        2891
                       ],
                       "loc": {
                         "start": {
@@ -6949,8 +7020,8 @@
                     }
                   ],
                   "range": [
-                    2720,
-                    2867
+                    2748,
+                    2895
                   ],
                   "loc": {
                     "start": {
@@ -6966,8 +7037,8 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  2692,
-                  2867
+                  2720,
+                  2895
                 ],
                 "loc": {
                   "start": {
@@ -6983,8 +7054,8 @@
               "kind": "method",
               "computed": false,
               "range": [
-                2681,
-                2867
+                2709,
+                2895
               ],
               "loc": {
                 "start": {
@@ -7001,7 +7072,7 @@
           ],
           "range": [
             2584,
-            2869
+            2897
           ],
           "loc": {
             "start": {
@@ -7016,7 +7087,7 @@
         },
         "range": [
           2550,
-          2869
+          2897
         ],
         "loc": {
           "start": {
@@ -7033,7 +7104,7 @@
       },
       "range": [
         2535,
-        2869
+        2897
       ],
       "loc": {
         "start": {
@@ -7058,8 +7129,8 @@
             "type": "Identifier",
             "name": "GLBoost",
             "range": [
-              2871,
-              2878
+              2899,
+              2906
             ],
             "loc": {
               "start": {
@@ -7077,8 +7148,8 @@
             "value": "SimpleShader",
             "raw": "\"SimpleShader\"",
             "range": [
-              2879,
-              2893
+              2907,
+              2921
             ],
             "loc": {
               "start": {
@@ -7092,8 +7163,8 @@
             }
           },
           "range": [
-            2871,
-            2894
+            2899,
+            2922
           ],
           "loc": {
             "start": {
@@ -7110,8 +7181,8 @@
           "type": "Identifier",
           "name": "SimpleShader",
           "range": [
-            2897,
-            2909
+            2925,
+            2937
           ],
           "loc": {
             "start": {
@@ -7125,8 +7196,8 @@
           }
         },
         "range": [
-          2871,
-          2909
+          2899,
+          2937
         ],
         "loc": {
           "start": {
@@ -7140,8 +7211,8 @@
         }
       },
       "range": [
-        2871,
-        2910
+        2899,
+        2938
       ],
       "loc": {
         "start": {
@@ -7158,7 +7229,7 @@
   "sourceType": "module",
   "range": [
     0,
-    2910
+    2938
   ],
   "loc": {
     "start": {

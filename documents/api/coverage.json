@@ -1,7 +1,7 @@
 {
-  "coverage": "9.56%",
+  "coverage": "11.64%",
   "expectCount": 481,
-  "actualCount": 46,
+  "actualCount": 56,
   "files": {
     "js/lights/AbstractLight.js": {
       "expectCount": 2,
@@ -623,31 +623,21 @@
       "actualCount": 0,
       "undocumentLines": [
         13,
-        94,
+        96,
         14,
-        150,
-        108,
-        42,
-        165,
-        159,
-        169
+        152,
+        110,
+        44,
+        167,
+        161,
+        171
       ]
     },
     "js/Scene.js": {
       "expectCount": 11,
-      "actualCount": 0,
+      "actualCount": 10,
       "undocumentLines": [
-        8,
-        25,
-        30,
-        157,
-        9,
-        145,
-        35,
-        153,
-        149,
-        63,
-        57
+        15
       ]
     },
     "js/primitives/Sphere.js": {

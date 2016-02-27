@@ -15,7 +15,7 @@
 
 <header>
   <a href="./">Home</a>
-  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  
   <a href="identifiers.html">Reference</a>
   <a href="source.html">Source</a>
   
@@ -92,7 +92,7 @@ import AbstractTexture from &apos;./AbstractTexture&apos;
 import GLExtentionsManager from &apos;../GLExtentionsManager&apos;
 
 export default class Texture extends AbstractTexture {
-  constructor(src, canvas) {
+  constructor(src, canvas = GLBoost.CURRENT_CANVAS_ID) {
     super(canvas);
 
     this._isTextureReady = false;

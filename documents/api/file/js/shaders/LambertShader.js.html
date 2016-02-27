@@ -15,7 +15,7 @@
 
 <header>
   <a href="./">Home</a>
-  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  
   <a href="identifiers.html">Reference</a>
   <a href="source.html">Source</a>
   
@@ -168,7 +168,7 @@ export class LambertShaderSource {
 
 
 export default class LambertShader extends SimpleShader {
-  constructor(canvas) {
+  constructor(canvas = GLBoost.CURRENT_CANVAS_ID) {
 
     super(canvas);
     LambertShader.mixin(LambertShaderSource);

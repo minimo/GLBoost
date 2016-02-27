@@ -15,7 +15,7 @@
 
 <header>
   <a href="./">Home</a>
-  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  
   <a href="identifiers.html">Reference</a>
   <a href="source.html">Source</a>
   
@@ -102,6 +102,8 @@ export default class Renderer {
   constructor(parameters) {
     var _canvas = parameters.canvas;
     var _clearColor = parameters.clearColor;
+
+    GLBoost.CURRENT_CANVAS_ID = &apos;#&apos; + parameters.canvas.id;
 
     this._gl = GLContext.getInstance(_canvas).gl;
 
@@ -210,7 +212,7 @@ export default class Renderer {
     this._fbo.height = height ? height : gl._canvas.height;
 
     for(let i=0; i&lt;textureNum; i++) {
-      let texture = new MutableTexture(gl._canvas, this._fbo.width, this._fbo.height);
+      let texture = new MutableTexture(this._fbo.width, this._fbo.height, gl._canvas);
       this._currentRenderTargetTextures.push(texture);
     }
 

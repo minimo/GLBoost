@@ -15,7 +15,7 @@
 
 <header>
   <a href="./">Home</a>
-  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  
   <a href="identifiers.html">Reference</a>
   <a href="source.html">Source</a>
   
@@ -90,7 +90,7 @@
 import GLContext from &apos;./../GLContext&apos;
 
 export default class AbstractTexture {
-  constructor(canvas) {
+  constructor(canvas = GLBoost.CURRENT_CANVAS_ID) {
     if (this.constructor === AbstractTexture) {
       throw new TypeError(&quot;Cannot construct AbstractTexture instances directly.&quot;);
     }

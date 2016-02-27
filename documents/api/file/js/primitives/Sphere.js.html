@@ -15,7 +15,7 @@
 
 <header>
   <a href="./">Home</a>
-  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  
   <a href="identifiers.html">Reference</a>
   <a href="source.html">Source</a>
   
@@ -97,7 +97,7 @@ import Vector2 from &apos;./../math/Vector2&apos;
 import ArrayUtil from &apos;.././misc/ArrayUtil&apos;
 
 export default class Sphere extends Geometry {
-  constructor(radius, widthSegments, heightSegments, vertexColor, canvas) {
+  constructor(radius, widthSegments, heightSegments, vertexColor, canvas = GLBoost.CURRENT_CANVAS_ID) {
     super(canvas);
 
     this._setupVertexData(radius, widthSegments, heightSegments, vertexColor);

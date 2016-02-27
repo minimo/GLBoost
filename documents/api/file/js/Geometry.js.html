@@ -15,7 +15,7 @@
 
 <header>
   <a href="./">Home</a>
-  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  
   <a href="identifiers.html">Reference</a>
   <a href="source.html">Source</a>
   
@@ -99,7 +99,7 @@ import DirectionalLight from &apos;./lights/DirectionalLight&apos;
 import ArrayUtil from &apos;./misc/ArrayUtil&apos;
 
 export default class Geometry {
-  constructor(canvas) {
+  constructor(canvas = GLBoost.CURRENT_CANVAS_ID) {
     this._gl = GLContext.getInstance(canvas).gl;
     this._canvas = canvas;
     this._materials = [];

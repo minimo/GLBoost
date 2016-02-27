@@ -15,7 +15,7 @@
 
 <header>
   <a href="./">Home</a>
-  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  
   <a href="identifiers.html">Reference</a>
   <a href="source.html">Source</a>
   
@@ -124,21 +124,15 @@ WebGL&#x306E;&#x9762;&#x5012;&#x304F;&#x3055;&#x3044;&#x90E8;&#x5206;&#x3092;&#x
 <li>Internet Explorer 11 (note that <a href="https://cdnjs.com/libraries/babel-core/5.8.34">browser-polyfill.min.js</a> is required)</li>
 </ul>
 <h2 id="how-to-use">How to use</h2>
-<ol>
-<li>Include <code>build/glboost.js</code> in your html file.</li>
-</ol>
+<p><code>1.</code> Include <code>build/glboost.js</code> in your html file.</p>
 <pre><code class="lang-html"><code class="source-code prettyprint">&lt;script src=&quot;./glboost.js&quot;&gt;&lt;/script&gt;</code>
 </code></pre>
-<ol>
-<li>Put canvas tag in body element.</li>
-</ol>
+<p><code>2.</code> Put canvas tag in body element.</p>
 <pre><code class="lang-html"><code class="source-code prettyprint">&lt;body&gt;
   &lt;canvas id=&quot;world&quot; width=&quot;600&quot; height=&quot;600&quot;&gt;&lt;/canvas&gt;
 &lt;/body&gt;</code>
 </code></pre>
-<ol>
-<li>Write your codes.</li>
-</ol>
+<p><code>3.</code> Write your codes.</p>
 <pre><code class="lang-javascript"><code class="source-code prettyprint">// setup GLBoost renderer
 var canvas = document.getElementById(&quot;world&quot;);
 var renderer = new GLBoost.Renderer({
@@ -155,14 +149,14 @@ var renderer = new GLBoost.Renderer({
 var scene = new GLBoost.Scene();
 
 // setup material
-var material = new GLBoost.ClassicMaterial(&apos;#world&apos;);
-var texture = new GLBoost.Texture(&apos;resouces/texture.png&apos;, &apos;#world&apos;); // earth.jpg
+var material = new GLBoost.ClassicMaterial();
+var texture = new GLBoost.Texture(&apos;resources/texture.png&apos;); // earth.jpg
 material.diffuseTexture = texture;
-var shader = new GLBoost.PhongShader(&apos;#world&apos;);
+var shader = new GLBoost.PhongShader();
 material.shader = shader;
 
 // make a Sphere geometry
-var geometry = new GLBoost.Sphere(20, 24, 24, null, &quot;#world&quot;);
+var geometry = new GLBoost.Sphere(20, 24, 24, null);
 
 // set Sphere geometry and material to make a Mesh.
 var earth = new GLBoost.Mesh(geometry, material);
@@ -170,7 +164,7 @@ var earth = new GLBoost.Mesh(geometry, material);
 scene.add(earth);
 
 // make a directonal light
-var directionalLight = new GLBoost.DirectionalLight(new GLBoost.Vector3(1, 1, 1), new GLBoost.Vector3(-1, -1, -1), &apos;#world&apos;);
+var directionalLight = new GLBoost.DirectionalLight(new GLBoost.Vector3(1, 1, 1), new GLBoost.Vector3(-1, -1, -1));
 // add the light to the scene
 scene.add( directionalLight );
 
