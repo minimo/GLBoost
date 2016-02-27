@@ -4767,7 +4767,7 @@
               "trailingComments": [
                 {
                   "type": "Block",
-                  "value": "*\n   * en: Set animation input value (for instance frame value). This value affect all child elements in this scene graph (recursively).<br>\n   * ja: アニメーションのための入力値（例えばフレーム値）をセットします。この値はシーングラフに属する全ての子孫に影響します。\n   * @param {string} inputName en: inputName name of input value. ja: 入力値の名前\n   * @param {any} inputValue en: input value of animation. ja: アニメーションの入力値\n   ",
+                  "value": "*\n   * en: Set animation input value (for instance frame value), This value affect all child elements in this scene graph (recursively).<br>\n   * ja: アニメーションのための入力値（例えばフレーム値）をセットします。この値はシーングラフに属する全ての子孫に影響します。\n   * @param {string} inputName en: inputName name of input value. ja: 入力値の名前\n   * @param {any} inputValue en: input value of animation. ja: アニメーションの入力値\n   ",
                   "range": [
                     2302,
                     2670
@@ -5151,7 +5151,7 @@
               "leadingComments": [
                 {
                   "type": "Block",
-                  "value": "*\n   * en: Set animation input value (for instance frame value). This value affect all child elements in this scene graph (recursively).<br>\n   * ja: アニメーションのための入力値（例えばフレーム値）をセットします。この値はシーングラフに属する全ての子孫に影響します。\n   * @param {string} inputName en: inputName name of input value. ja: 入力値の名前\n   * @param {any} inputValue en: input value of animation. ja: アニメーションの入力値\n   ",
+                  "value": "*\n   * en: Set animation input value (for instance frame value), This value affect all child elements in this scene graph (recursively).<br>\n   * ja: アニメーションのための入力値（例えばフレーム値）をセットします。この値はシーングラフに属する全ての子孫に影響します。\n   * @param {string} inputName en: inputName name of input value. ja: 入力値の名前\n   * @param {any} inputValue en: input value of animation. ja: アニメーションの入力値\n   ",
                   "range": [
                     2302,
                     2670
@@ -12059,7 +12059,7 @@
     },
     {
       "type": "Block",
-      "value": "*\n   * en: Set animation input value (for instance frame value). This value affect all child elements in this scene graph (recursively).<br>\n   * ja: アニメーションのための入力値（例えばフレーム値）をセットします。この値はシーングラフに属する全ての子孫に影響します。\n   * @param {string} inputName en: inputName name of input value. ja: 入力値の名前\n   * @param {any} inputValue en: input value of animation. ja: アニメーションの入力値\n   ",
+      "value": "*\n   * en: Set animation input value (for instance frame value), This value affect all child elements in this scene graph (recursively).<br>\n   * ja: アニメーションのための入力値（例えばフレーム値）をセットします。この値はシーングラフに属する全ての子孫に影響します。\n   * @param {string} inputName en: inputName name of input value. ja: 入力値の名前\n   * @param {any} inputValue en: input value of animation. ja: アニメーションの入力値\n   ",
       "range": [
         2302,
         2670

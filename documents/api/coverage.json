@@ -1,7 +1,7 @@
 {
-  "coverage": "11.64%",
+  "coverage": "12.88%",
   "expectCount": 481,
-  "actualCount": 56,
+  "actualCount": 62,
   "files": {
     "js/lights/AbstractLight.js": {
       "expectCount": 2,
@@ -620,17 +620,11 @@
     },
     "js/Renderer.js": {
       "expectCount": 9,
-      "actualCount": 0,
+      "actualCount": 6,
       "undocumentLines": [
-        13,
-        96,
-        14,
-        152,
-        110,
-        44,
-        167,
-        161,
-        171
+        18,
+        176,
+        185
       ]
     },
     "js/Scene.js": {

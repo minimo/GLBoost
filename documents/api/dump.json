@@ -6474,7 +6474,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import GLBoost from './globals'\nimport Mesh from './Mesh'\nimport Camera from './Camera'\nimport Matrix44 from './math/Matrix44'\nimport GLContext from './GLContext'\nimport GLExtentionsManager from './GLExtentionsManager'\nimport MutableTexture from './textures/MutableTexture'\nimport RenderPass from './RenderPass'\nimport AbstractLight from './lights/AbstractLight'\nimport Geometry from './Geometry'\nimport Group from './Group'\n\nexport default class Renderer {\n  constructor(parameters) {\n    var _canvas = parameters.canvas;\n    var _clearColor = parameters.clearColor;\n\n    GLBoost.CURRENT_CANVAS_ID = '#' + parameters.canvas.id;\n\n    this._gl = GLContext.getInstance(_canvas).gl;\n\n    var gl = this._gl;\n\n    var setDefaultGLStates = function setDefaultGLStates() {\n\n      gl.enable( gl.DEPTH_TEST );\n      gl.depthFunc( gl.LEQUAL );\n\n      gl.enable( gl.BLEND );\n      gl.blendEquation( gl.FUNC_ADD );\n      gl.blendFunc( gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA );\n\n      gl.clearColor( _clearColor.red, _clearColor.green, _clearColor.blue, _clearColor.alpha );\n      gl.clearDepth( 1 );\n      gl.clearStencil( 0 );\n    };\n\n    setDefaultGLStates();\n\n    this._currentRenderTargetTextures = [];\n    this._renderPasses = null;\n  }\n\n  draw(scene) {\n    var camera = false;\n    var viewMatrix = null;\n    var projectionMatrix = null;\n    scene.cameras.forEach((elm)=> {\n      if (elm.isMainCamera) {\n        camera = elm;\n      }\n    });\n\n    var gl = this._gl;\n    var glem = GLExtentionsManager.getInstance(gl);\n\n    let lights = scene.lights;\n\n    // if you didn't setup RenderPasses, all meshes are drawn to the backbuffer of framebuffer (gl.BACK).\n    if (this._renderPasses === null) {\n      glem.drawBuffers(gl, [gl.BACK]);\n\n      scene.meshes.forEach((mesh)=> {\n        mesh.draw(lights, camera, scene);\n      });\n\n    } else { // if you did setup RenderPasses, drawing meshes are executed for each RenderPass.\n      this._renderPasses.forEach((renderPass)=>{\n\n        var meshes = renderPass.meshes;\n\n        if (renderPass.buffersToDraw[0] !== gl.BACK) {\n          gl.bindTexture(gl.TEXTURE_2D, null);\n          Geometry.clearMaterialCache();\n          gl.bindFramebuffer(gl.FRAMEBUFFER, this._fbo);\n        }\n        glem.drawBuffers(gl, renderPass.buffersToDraw); // set render target buffers for each RenderPass.\n\n        if (renderPass.clearColor) {\n          var color = renderPass.clearColor;\n          gl.clearColor(color[0], color[1], color[2], color[3]);\n          gl.clear( gl.COLOR_BUFFER_BIT );\n        }\n\n        meshes.forEach((mesh)=> {\n          mesh.draw(lights, camera, scene);\n        });\n\n        gl.bindFramebuffer(gl.FRAMEBUFFER, null);\n        glem.drawBuffers(gl, [gl.BACK]);\n\n      });\n    }\n  }\n\n  clearCanvas( color_flg, depth_flg, stencil_flg ) {\n\n    var gl = this._gl;\n\n    var bufferBits = 0;\n\n    if ( color_flg === void 0 || color_flg ) bufferBits |= gl.COLOR_BUFFER_BIT;\n    if ( depth_flg === void 0 || depth_flg ) bufferBits |= gl.DEPTH_BUFFER_BIT;\n    if ( stencil_flg === void 0 || stencil_flg ) bufferBits |= gl.STENCIL_BUFFER_BIT;\n\n    gl.clear( bufferBits );\n\n  };\n\n  createTexturesForRenderTarget(width, height, textureNum) {\n\n    var gl = this._gl;\n\n    var glem = GLExtentionsManager.getInstance(gl);\n\n\n    if (this._fbo) {\n      gl.deleteFramebuffers(1, this._fbo);\n    }\n    // Create FBO\n    this._fbo = gl.createFramebuffer();\n    gl.bindFramebuffer(gl.FRAMEBUFFER, this._fbo);\n    this._fbo.width = width ? width : gl._canvas.width;\n    this._fbo.height = height ? height : gl._canvas.height;\n\n    for(let i=0; i<textureNum; i++) {\n      let texture = new MutableTexture(this._fbo.width, this._fbo.height, gl._canvas);\n      this._currentRenderTargetTextures.push(texture);\n    }\n\n    // Create RenderBuffer\n    var renderbuffer = gl.createRenderbuffer();\n    gl.bindRenderbuffer(gl.RENDERBUFFER, renderbuffer);\n    gl.renderbufferStorage(gl.RENDERBUFFER, gl.DEPTH_COMPONENT16, this._fbo.width, this._fbo.height);\n\n    // Attach Buffers\n    this._currentRenderTargetTextures.forEach((texture, i)=>{\n      var glTexture = texture.glTextureResource;\n      var attachimentId = glem.colorAttachiment(gl, i);\n      texture.colorAttachiment = attachimentId;\n      gl.framebufferTexture2D(gl.FRAMEBUFFER, attachimentId, gl.TEXTURE_2D, glTexture, 0);\n    });\n    gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, gl.RENDERBUFFER, renderbuffer);\n\n    gl.bindTexture(gl.TEXTURE_2D, null);\n    gl.bindRenderbuffer(gl.RENDERBUFFER, null);\n    gl.bindFramebuffer(gl.FRAMEBUFFER, null);\n\n    return this._currentRenderTargetTextures;\n  }\n\n  createRenderPasses(number) {\n    this._renderPasses = [];\n    for (let i=0; i<number; i++) {\n      this._renderPasses.push(new RenderPass(this._gl));\n    }\n\n    return this._renderPasses;\n  }\n\n  prepareRenderPassesForRender() {\n    this._renderPasses.forEach((renderPass)=> {\n      renderPass.prepareForRender();\n    });\n  }\n\n  get glContext() {\n    return this._gl;\n  }\n\n  resize(width, height) {\n    this._gl._canvas.width = width;\n    this._gl._canvas.height = height;\n\n    this._gl.viewport(0, 0, width, height);\n  }\n\n}\n\nGLBoost[\"Renderer\"] = Renderer;\n"
+    "content": "import GLBoost from './globals'\nimport Mesh from './Mesh'\nimport Camera from './Camera'\nimport Matrix44 from './math/Matrix44'\nimport GLContext from './GLContext'\nimport GLExtentionsManager from './GLExtentionsManager'\nimport MutableTexture from './textures/MutableTexture'\nimport RenderPass from './RenderPass'\nimport AbstractLight from './lights/AbstractLight'\nimport Geometry from './Geometry'\nimport Group from './Group'\n\n/**\n * en: This class take a role as operator of rendering process. In order to render images to canvas, this Renderer class gathers other elements' data, decides a plan of drawing process, and then just execute it.<br>\n * ja: このクラスはレンダリングプロセスの制御を司ります。Canvasにイメージをレンダリングするために、このRendererクラスは他の要素のデータを集め、描画プロセスの計画を決定し、実行します。\n */\nexport default class Renderer {\n  constructor(parameters) {\n    var _canvas = parameters.canvas;\n    var _clearColor = parameters.clearColor;\n\n    GLBoost.CURRENT_CANVAS_ID = '#' + parameters.canvas.id;\n\n    this._gl = GLContext.getInstance(_canvas).gl;\n\n    var gl = this._gl;\n\n    var setDefaultGLStates = function setDefaultGLStates() {\n\n      gl.enable( gl.DEPTH_TEST );\n      gl.depthFunc( gl.LEQUAL );\n\n      gl.enable( gl.BLEND );\n      gl.blendEquation( gl.FUNC_ADD );\n      gl.blendFunc( gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA );\n\n      gl.clearColor( _clearColor.red, _clearColor.green, _clearColor.blue, _clearColor.alpha );\n      gl.clearDepth( 1 );\n      gl.clearStencil( 0 );\n    };\n\n    setDefaultGLStates();\n\n    this._currentRenderTargetTextures = [];\n    this._renderPasses = null;\n  }\n\n  /**\n   * en: draw elements of the scene.<br>\n   * ja: sceneが持つオブジェクトを描画します\n   * @param {Scene} scene a instance of Scene class\n   */\n  draw(scene) {\n    var camera = false;\n    var viewMatrix = null;\n    var projectionMatrix = null;\n    scene.cameras.forEach((elm)=> {\n      if (elm.isMainCamera) {\n        camera = elm;\n      }\n    });\n\n    var gl = this._gl;\n    var glem = GLExtentionsManager.getInstance(gl);\n\n    let lights = scene.lights;\n\n    // if you didn't setup RenderPasses, all meshes are drawn to the backbuffer of framebuffer (gl.BACK).\n    if (this._renderPasses === null) {\n      glem.drawBuffers(gl, [gl.BACK]);\n\n      scene.meshes.forEach((mesh)=> {\n        mesh.draw(lights, camera, scene);\n      });\n\n    } else { // if you did setup RenderPasses, drawing meshes are executed for each RenderPass.\n      this._renderPasses.forEach((renderPass)=>{\n\n        var meshes = renderPass.meshes;\n\n        if (renderPass.buffersToDraw[0] !== gl.BACK) {\n          gl.bindTexture(gl.TEXTURE_2D, null);\n          Geometry.clearMaterialCache();\n          gl.bindFramebuffer(gl.FRAMEBUFFER, this._fbo);\n        }\n        glem.drawBuffers(gl, renderPass.buffersToDraw); // set render target buffers for each RenderPass.\n\n        if (renderPass.clearColor) {\n          var color = renderPass.clearColor;\n          gl.clearColor(color[0], color[1], color[2], color[3]);\n          gl.clear( gl.COLOR_BUFFER_BIT );\n        }\n\n        meshes.forEach((mesh)=> {\n          mesh.draw(lights, camera, scene);\n        });\n\n        gl.bindFramebuffer(gl.FRAMEBUFFER, null);\n        glem.drawBuffers(gl, [gl.BACK]);\n\n      });\n    }\n  }\n\n  /**\n   * en: clear color/depth/stencil of canvas.<br>\n   * ja: canvasのカラー、デプス、ステンシルのいずれか又は全てをクリアします。\n   * @param {boolean} color_flg true: clear color, false: don't clear color\n   * @param {boolean} depth_flg true: clear depth, false: don't clear depth\n   * @param {boolean} stencil_flg  true: clear stencil, false: don't clear stencil\n   */\n  clearCanvas( color_flg, depth_flg, stencil_flg ) {\n\n    var gl = this._gl;\n\n    var bufferBits = 0;\n\n    if ( color_flg === void 0 || color_flg ) bufferBits |= gl.COLOR_BUFFER_BIT;\n    if ( depth_flg === void 0 || depth_flg ) bufferBits |= gl.DEPTH_BUFFER_BIT;\n    if ( stencil_flg === void 0 || stencil_flg ) bufferBits |= gl.STENCIL_BUFFER_BIT;\n\n    gl.clear( bufferBits );\n\n  };\n\n  /**\n   * en: create textures as render target. (and attach it to framebuffer object internally.)<br>\n   * ja:レンダーターゲットとしてテクスチャを作成します（内部的にframebuffer objectにアタッチされます）。\n   * @param {number} width en: width of texture. ja: テクスチャの幅\n   * @param {number} height en: height of texture. ja: テクスチャの高さ\n   * @param {number} textureNum en: the number of creation. ja:テクスチャを作る個数\n   * @returns {Array} en: an array of created textures. ja:作成されたテクスチャの配列\n   */\n  createTexturesForRenderTarget(width, height, textureNum) {\n\n    var gl = this._gl;\n\n    var glem = GLExtentionsManager.getInstance(gl);\n\n\n    if (this._fbo) {\n      gl.deleteFramebuffers(1, this._fbo);\n    }\n    // Create FBO\n    this._fbo = gl.createFramebuffer();\n    gl.bindFramebuffer(gl.FRAMEBUFFER, this._fbo);\n    this._fbo.width = width ? width : gl._canvas.width;\n    this._fbo.height = height ? height : gl._canvas.height;\n\n    for(let i=0; i<textureNum; i++) {\n      let texture = new MutableTexture(this._fbo.width, this._fbo.height, gl._canvas);\n      this._currentRenderTargetTextures.push(texture);\n    }\n\n    // Create RenderBuffer\n    var renderbuffer = gl.createRenderbuffer();\n    gl.bindRenderbuffer(gl.RENDERBUFFER, renderbuffer);\n    gl.renderbufferStorage(gl.RENDERBUFFER, gl.DEPTH_COMPONENT16, this._fbo.width, this._fbo.height);\n\n    // Attach Buffers\n    this._currentRenderTargetTextures.forEach((texture, i)=>{\n      var glTexture = texture.glTextureResource;\n      var attachimentId = glem.colorAttachiment(gl, i);\n      texture.colorAttachiment = attachimentId;\n      gl.framebufferTexture2D(gl.FRAMEBUFFER, attachimentId, gl.TEXTURE_2D, glTexture, 0);\n    });\n    gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, gl.RENDERBUFFER, renderbuffer);\n\n    gl.bindTexture(gl.TEXTURE_2D, null);\n    gl.bindRenderbuffer(gl.RENDERBUFFER, null);\n    gl.bindFramebuffer(gl.FRAMEBUFFER, null);\n\n    return this._currentRenderTargetTextures;\n  }\n\n  createRenderPasses(number) {\n    this._renderPasses = [];\n    for (let i=0; i<number; i++) {\n      this._renderPasses.push(new RenderPass(this._gl));\n    }\n\n    return this._renderPasses;\n  }\n\n  prepareRenderPassesForRender() {\n    this._renderPasses.forEach((renderPass)=> {\n      renderPass.prepareForRender();\n    });\n  }\n\n  /**\n   * en: Get WebGL context.<br>\n   * ja: WebGLコンテキストを取得します。\n   * @returns {webglcontext} a context of WebGL\n   */\n  get glContext() {\n    return this._gl;\n  }\n\n\n  /**\n   * en: resize canvas and viewport.<br>\n   * ja: canvasとビューポートをリサイズします。\n   * @param {number} width en: width to resize, ja: リサイズする幅\n   * @param {number} height en: height to resize, ja:リサイズする高さ\n   */\n  resize(width, height) {\n    this._gl._canvas.width = width;\n    this._gl._canvas.height = height;\n\n    this._gl.viewport(0, 0, width, height);\n  }\n\n}\n\nGLBoost[\"Renderer\"] = Renderer;\n"
   },
   {
     "__docId__": 323,
@@ -6488,9 +6488,8 @@
     "export": true,
     "importPath": "glboost/js/Renderer.js",
     "importStyle": "Renderer",
-    "description": null,
-    "lineNumber": 13,
-    "undocument": true,
+    "description": "en: This class take a role as operator of rendering process. In order to render images to canvas, this Renderer class gathers other elements' data, decides a plan of drawing process, and then just execute it.<br>\nja: このクラスはレンダリングプロセスの制御を司ります。Canvasにイメージをレンダリングするために、このRendererクラスは他の要素のデータを集め、描画プロセスの計画を決定し、実行します。",
+    "lineNumber": 17,
     "interface": false
   },
   {
@@ -6503,7 +6502,7 @@
     "longname": "js/Renderer.js~Renderer#constructor",
     "access": null,
     "description": null,
-    "lineNumber": 14,
+    "lineNumber": 18,
     "undocument": true,
     "params": [
       {
@@ -6525,7 +6524,7 @@
     "longname": "js/Renderer.js~Renderer#_gl",
     "access": null,
     "description": null,
-    "lineNumber": 20,
+    "lineNumber": 24,
     "undocument": true,
     "type": {
       "types": [
@@ -6543,7 +6542,7 @@
     "longname": "js/Renderer.js~Renderer#_currentRenderTargetTextures",
     "access": null,
     "description": null,
-    "lineNumber": 40,
+    "lineNumber": 44,
     "undocument": true,
     "type": {
       "types": [
@@ -6561,7 +6560,7 @@
     "longname": "js/Renderer.js~Renderer#_renderPasses",
     "access": null,
     "description": null,
-    "lineNumber": 41,
+    "lineNumber": 45,
     "undocument": true,
     "type": {
       "types": [
@@ -6578,15 +6577,18 @@
     "memberof": "js/Renderer.js~Renderer",
     "longname": "js/Renderer.js~Renderer#draw",
     "access": null,
-    "description": null,
-    "lineNumber": 44,
-    "undocument": true,
+    "description": "en: draw elements of the scene.<br>\nja: sceneが持つオブジェクトを描画します",
+    "lineNumber": 53,
     "params": [
       {
-        "name": "scene",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "Scene"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "scene",
+        "description": "a instance of Scene class"
       }
     ],
     "generator": false
@@ -6600,27 +6602,38 @@
     "memberof": "js/Renderer.js~Renderer",
     "longname": "js/Renderer.js~Renderer#clearCanvas",
     "access": null,
-    "description": null,
-    "lineNumber": 96,
-    "undocument": true,
+    "description": "en: clear color/depth/stencil of canvas.<br>\nja: canvasのカラー、デプス、ステンシルのいずれか又は全てをクリアします。",
+    "lineNumber": 112,
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "color_flg",
-        "types": [
-          "*"
-        ]
+        "description": "true: clear color, false: don't clear color"
       },
       {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "depth_flg",
-        "types": [
-          "*"
-        ]
+        "description": "true: clear depth, false: don't clear depth"
       },
       {
-        "name": "stencil_flg",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "boolean"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "stencil_flg",
+        "description": "true: clear stencil, false: don't clear stencil"
       }
     ],
     "generator": false
@@ -6634,33 +6647,53 @@
     "memberof": "js/Renderer.js~Renderer",
     "longname": "js/Renderer.js~Renderer#createTexturesForRenderTarget",
     "access": null,
-    "description": null,
-    "lineNumber": 110,
-    "undocument": true,
+    "description": "en: create textures as render target. (and attach it to framebuffer object internally.)<br>\nja:レンダーターゲットとしてテクスチャを作成します（内部的にframebuffer objectにアタッチされます）。",
+    "lineNumber": 134,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Array} en: an array of created textures. ja:作成されたテクスチャの配列"
+      }
+    ],
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "width",
-        "types": [
-          "*"
-        ]
+        "description": "en: width of texture. ja: テクスチャの幅"
       },
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "height",
-        "types": [
-          "*"
-        ]
+        "description": "en: height of texture. ja: テクスチャの高さ"
       },
       {
-        "name": "textureNum",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "textureNum",
+        "description": "en: the number of creation. ja:テクスチャを作る個数"
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "Array"
+      ],
+      "spread": false,
+      "description": "en: an array of created textures. ja:作成されたテクスチャの配列"
     },
     "generator": false
   },
@@ -6674,7 +6707,7 @@
     "longname": "js/Renderer.js~Renderer#_fbo",
     "access": null,
     "description": null,
-    "lineNumber": 121,
+    "lineNumber": 145,
     "undocument": true,
     "type": {
       "types": [
@@ -6692,7 +6725,7 @@
     "longname": "js/Renderer.js~Renderer#createRenderPasses",
     "access": null,
     "description": null,
-    "lineNumber": 152,
+    "lineNumber": 176,
     "undocument": true,
     "params": [
       {
@@ -6719,7 +6752,7 @@
     "longname": "js/Renderer.js~Renderer#_renderPasses",
     "access": null,
     "description": null,
-    "lineNumber": 153,
+    "lineNumber": 177,
     "undocument": true,
     "type": {
       "types": [
@@ -6737,7 +6770,7 @@
     "longname": "js/Renderer.js~Renderer#prepareRenderPassesForRender",
     "access": null,
     "description": null,
-    "lineNumber": 161,
+    "lineNumber": 185,
     "undocument": true,
     "params": [],
     "generator": false
@@ -6751,9 +6784,22 @@
     "memberof": "js/Renderer.js~Renderer",
     "longname": "js/Renderer.js~Renderer#glContext",
     "access": null,
-    "description": null,
-    "lineNumber": 167,
-    "undocument": true,
+    "description": "en: Get WebGL context.<br>\nja: WebGLコンテキストを取得します。",
+    "lineNumber": 196,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{webglcontext} a context of WebGL"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "webglcontext"
+      ],
+      "spread": false,
+      "description": "a context of WebGL"
+    },
     "type": {
       "types": [
         "*"
@@ -6770,21 +6816,28 @@
     "memberof": "js/Renderer.js~Renderer",
     "longname": "js/Renderer.js~Renderer#resize",
     "access": null,
-    "description": null,
-    "lineNumber": 171,
-    "undocument": true,
+    "description": "en: resize canvas and viewport.<br>\nja: canvasとビューポートをリサイズします。",
+    "lineNumber": 207,
     "params": [
       {
-        "name": "width",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "width",
+        "description": "en: width to resize, ja: リサイズする幅"
       },
       {
-        "name": "height",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "height",
+        "description": "en: height to resize, ja:リサイズする高さ"
       }
     ],
     "generator": false
@@ -6800,7 +6853,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import GLBoost from './globals'\nimport Element from './Element'\nimport Camera from './Camera'\nimport AbstractLight from './lights/AbstractLight'\nimport Mesh from './Mesh'\nimport Group from './Group'\n\n/**\n * en: This Scene class is the top level element of scene graph hierarchy.\n *       To render scene, pass this scene element to Renderer.draw method.<br>\n * ja: このSceneクラスはシーングラフ階層のトップレベルに位置する要素です。\n *       シーンをレンダリングするには、このscene要素をRenderer.drawメソッドに渡します。\n */\nexport default class Scene extends Element {\n  constructor() {\n    super();\n    this._elements = [];\n    this._meshes = [];\n    this._lights = [];\n    this._cameras = [];\n    this._currentAnimationInputValues = {};\n\n    // this code for tmlib\n    if (this.__proto__.__proto__ && this.__proto__.__proto__.constructor == Scene ||\n      this.__proto__.__proto__ && this.__proto__.__proto__.__proto__ && this.__proto__.__proto__.__proto__.constructor == Scene) {\n      Scene._instanceCount = (typeof Scene._instanceCount === \"undefined\") ? 0 : (Scene._instanceCount + 1);\n      this._instanceName = Scene.name + '_' + Scene._instanceCount;\n    }\n  }\n\n  /**\n   * en: Add the element to this scene as a child.<br>\n   * ja: このシーンにelementを子供として追加します。\n   * @param element a instance of Element class\n   */\n  add(element) {\n    this._elements.push(element);\n    element._parent = this;\n  }\n\n  /**\n   * en: Add the element to this scene as a child.<br>\n   * ja: このシーンにelementを子供として追加します。\n   * @param element a instance of Element class\n   */\n  addChild(element) {\n    this._elements.push(element);\n    element._parent = this;\n  }\n\n  /**\n   * en: Get child elements which belong to this scene.<br>\n   * ja: このシーンに属していた子供の要素の配列を返します。\n   * @return {Array} en: child elements of this scene. ja: このシーンの子供の要素\n   */\n  getChildren() {\n    return this._elements;\n  }\n\n\n  _setDirtyToAnimatedElement(inputName, element = this) {\n    if (element.hasAnimation(inputName)) {\n      element._needUpdate();\n    }\n\n    if (element instanceof Group || element instanceof Scene) {\n      let children = element.getChildren();\n      for (let i = 0; i < children.length; i++) {\n        this._setDirtyToAnimatedElement(inputName, children[i]);\n      }\n    }\n  }\n\n  _getCurrentAnimationInputValue(inputName) {\n    return this._currentAnimationInputValues[inputName];\n  }\n\n  /**\n   * en: Set animation input value (for instance frame value). This value affect all child elements in this scene graph (recursively).<br>\n   * ja: アニメーションのための入力値（例えばフレーム値）をセットします。この値はシーングラフに属する全ての子孫に影響します。\n   * @param {string} inputName en: inputName name of input value. ja: 入力値の名前\n   * @param {any} inputValue en: input value of animation. ja: アニメーションの入力値\n   */\n  setCurrentAnimationValue(inputName, inputValue) {\n    this._setDirtyToAnimatedElement(inputName);\n    this._currentAnimationInputValues[inputName] = inputValue;\n  }\n\n  /**\n   * en: Prepare for Rendering. You have to call this method before Renderer.draw method.\n   * ja: レンダリングのための前処理を行います。Renderer.drawメソッドの前にこのメソッドを呼ぶ必要があります。\n   */\n  prepareForRender() {\n    // カメラが最低１つでも存在しているか確認\n    var existCamera_f = false;\n    this._elements.forEach((elm)=> {\n      if (elm instanceof Camera) {\n        existCamera_f = true;\n      }\n    });\n\n    let collectMeshes = function(elem) {\n      if (elem instanceof Group) {\n        var children = elem.getChildren();\n        var meshes = [];\n        children.forEach(function(child) {\n          var childMeshes = collectMeshes(child);\n          meshes = meshes.concat(childMeshes)\n        });\n        return meshes;\n      } else if (elem instanceof Mesh) {\n        return [elem];\n      } else {\n        return [];\n      }\n    };\n\n    this._meshes = [];\n    this._elements.forEach((elm)=> {\n      this._meshes = this._meshes.concat(collectMeshes(elm));\n    });\n\n    let collectLights = function(elem) {\n      if (elem instanceof Group) {\n        var children = elem.getChildren();\n        var lights = [];\n        children.forEach(function(child) {\n          var childLights = collectLights(child);\n          lights = lights.concat(childLights)\n        });\n        return lights;\n      } else if (elem instanceof AbstractLight) {\n        return [elem];\n      } else {\n        return [];\n      }\n    };\n\n    this._lights = [];\n    this._elements.forEach((elm)=> {\n      this._lights = this._lights.concat(collectLights(elm));\n    });\n\n    var existCamera_f = false;\n    let collectCameras = function(elem) {\n      if (elem instanceof Group) {\n        var children = elem.getChildren();\n        var cameras = [];\n        children.forEach(function(child) {\n          var childCameras = collectCameras(child);\n          cameras = cameras.concat(childCameras)\n        });\n        return cameras;\n      } else if (elem instanceof Camera) {\n        existCamera_f = true;\n        return [elem];\n      } else {\n        return [];\n      }\n    };\n\n    this._cameras = [];\n    this._elements.forEach((elm)=> {\n      this._cameras = this._cameras.concat(collectCameras(elm));\n    });\n\n\n    // レンダリングの準備をさせる。\n    this._meshes.forEach((elm)=> {\n      elm.prepareForRender(existCamera_f, this._lights);\n    });\n\n  }\n\n  /**\n   * en: Get child elements which belong to this scene.<br>\n   * ja: このシーンに属していた子供の要素の配列を返します。\n   * @return {Array} en: child elements of this scene. ja: このシーンの子供の要素\n   */\n  get elements() {\n    return this._elements;\n  }\n\n  /**\n   * en: Get child meshes which belong to this scene.<br>\n   * ja: このシーンに属していた子供のMesh要素の配列を返します。\n   * @return {Array} en: child meshes of this scene. ja: このシーンの子供のMesh要素\n   */\n  get meshes() {\n    return this._meshes;\n  }\n\n  /**\n   * en: Get child lights which belong to this scene.<br>\n   * ja: このシーンに属していた子供のLight要素の配列を返します。\n   * @return {Array} en: child lights of this scene. ja: このシーンの子供のLight要素\n   */\n  get lights() {\n    return this._lights;\n  }\n\n  /**\n   * en: Get child cameras which belong to this scene.<br>\n   * ja: このシーンに属していた子供のCamera要素の配列を返します。\n   * @return {Array} en: child cameras of this scene. ja: このシーンの子供のCamera要素\n   */\n  get cameras() {\n    return this._cameras;\n  }\n}\n\nGLBoost[\"Scene\"] = Scene;\n"
+    "content": "import GLBoost from './globals'\nimport Element from './Element'\nimport Camera from './Camera'\nimport AbstractLight from './lights/AbstractLight'\nimport Mesh from './Mesh'\nimport Group from './Group'\n\n/**\n * en: This Scene class is the top level element of scene graph hierarchy.\n *       To render scene, pass this scene element to Renderer.draw method.<br>\n * ja: このSceneクラスはシーングラフ階層のトップレベルに位置する要素です。\n *       シーンをレンダリングするには、このscene要素をRenderer.drawメソッドに渡します。\n */\nexport default class Scene extends Element {\n  constructor() {\n    super();\n    this._elements = [];\n    this._meshes = [];\n    this._lights = [];\n    this._cameras = [];\n    this._currentAnimationInputValues = {};\n\n    // this code for tmlib\n    if (this.__proto__.__proto__ && this.__proto__.__proto__.constructor == Scene ||\n      this.__proto__.__proto__ && this.__proto__.__proto__.__proto__ && this.__proto__.__proto__.__proto__.constructor == Scene) {\n      Scene._instanceCount = (typeof Scene._instanceCount === \"undefined\") ? 0 : (Scene._instanceCount + 1);\n      this._instanceName = Scene.name + '_' + Scene._instanceCount;\n    }\n  }\n\n  /**\n   * en: Add the element to this scene as a child.<br>\n   * ja: このシーンにelementを子供として追加します。\n   * @param element a instance of Element class\n   */\n  add(element) {\n    this._elements.push(element);\n    element._parent = this;\n  }\n\n  /**\n   * en: Add the element to this scene as a child.<br>\n   * ja: このシーンにelementを子供として追加します。\n   * @param element a instance of Element class\n   */\n  addChild(element) {\n    this._elements.push(element);\n    element._parent = this;\n  }\n\n  /**\n   * en: Get child elements which belong to this scene.<br>\n   * ja: このシーンに属していた子供の要素の配列を返します。\n   * @return {Array} en: child elements of this scene. ja: このシーンの子供の要素\n   */\n  getChildren() {\n    return this._elements;\n  }\n\n\n  _setDirtyToAnimatedElement(inputName, element = this) {\n    if (element.hasAnimation(inputName)) {\n      element._needUpdate();\n    }\n\n    if (element instanceof Group || element instanceof Scene) {\n      let children = element.getChildren();\n      for (let i = 0; i < children.length; i++) {\n        this._setDirtyToAnimatedElement(inputName, children[i]);\n      }\n    }\n  }\n\n  _getCurrentAnimationInputValue(inputName) {\n    return this._currentAnimationInputValues[inputName];\n  }\n\n  /**\n   * en: Set animation input value (for instance frame value), This value affect all child elements in this scene graph (recursively).<br>\n   * ja: アニメーションのための入力値（例えばフレーム値）をセットします。この値はシーングラフに属する全ての子孫に影響します。\n   * @param {string} inputName en: inputName name of input value. ja: 入力値の名前\n   * @param {any} inputValue en: input value of animation. ja: アニメーションの入力値\n   */\n  setCurrentAnimationValue(inputName, inputValue) {\n    this._setDirtyToAnimatedElement(inputName);\n    this._currentAnimationInputValues[inputName] = inputValue;\n  }\n\n  /**\n   * en: Prepare for Rendering. You have to call this method before Renderer.draw method.\n   * ja: レンダリングのための前処理を行います。Renderer.drawメソッドの前にこのメソッドを呼ぶ必要があります。\n   */\n  prepareForRender() {\n    // カメラが最低１つでも存在しているか確認\n    var existCamera_f = false;\n    this._elements.forEach((elm)=> {\n      if (elm instanceof Camera) {\n        existCamera_f = true;\n      }\n    });\n\n    let collectMeshes = function(elem) {\n      if (elem instanceof Group) {\n        var children = elem.getChildren();\n        var meshes = [];\n        children.forEach(function(child) {\n          var childMeshes = collectMeshes(child);\n          meshes = meshes.concat(childMeshes)\n        });\n        return meshes;\n      } else if (elem instanceof Mesh) {\n        return [elem];\n      } else {\n        return [];\n      }\n    };\n\n    this._meshes = [];\n    this._elements.forEach((elm)=> {\n      this._meshes = this._meshes.concat(collectMeshes(elm));\n    });\n\n    let collectLights = function(elem) {\n      if (elem instanceof Group) {\n        var children = elem.getChildren();\n        var lights = [];\n        children.forEach(function(child) {\n          var childLights = collectLights(child);\n          lights = lights.concat(childLights)\n        });\n        return lights;\n      } else if (elem instanceof AbstractLight) {\n        return [elem];\n      } else {\n        return [];\n      }\n    };\n\n    this._lights = [];\n    this._elements.forEach((elm)=> {\n      this._lights = this._lights.concat(collectLights(elm));\n    });\n\n    var existCamera_f = false;\n    let collectCameras = function(elem) {\n      if (elem instanceof Group) {\n        var children = elem.getChildren();\n        var cameras = [];\n        children.forEach(function(child) {\n          var childCameras = collectCameras(child);\n          cameras = cameras.concat(childCameras)\n        });\n        return cameras;\n      } else if (elem instanceof Camera) {\n        existCamera_f = true;\n        return [elem];\n      } else {\n        return [];\n      }\n    };\n\n    this._cameras = [];\n    this._elements.forEach((elm)=> {\n      this._cameras = this._cameras.concat(collectCameras(elm));\n    });\n\n\n    // レンダリングの準備をさせる。\n    this._meshes.forEach((elm)=> {\n      elm.prepareForRender(existCamera_f, this._lights);\n    });\n\n  }\n\n  /**\n   * en: Get child elements which belong to this scene.<br>\n   * ja: このシーンに属していた子供の要素の配列を返します。\n   * @return {Array} en: child elements of this scene. ja: このシーンの子供の要素\n   */\n  get elements() {\n    return this._elements;\n  }\n\n  /**\n   * en: Get child meshes which belong to this scene.<br>\n   * ja: このシーンに属していた子供のMesh要素の配列を返します。\n   * @return {Array} en: child meshes of this scene. ja: このシーンの子供のMesh要素\n   */\n  get meshes() {\n    return this._meshes;\n  }\n\n  /**\n   * en: Get child lights which belong to this scene.<br>\n   * ja: このシーンに属していた子供のLight要素の配列を返します。\n   * @return {Array} en: child lights of this scene. ja: このシーンの子供のLight要素\n   */\n  get lights() {\n    return this._lights;\n  }\n\n  /**\n   * en: Get child cameras which belong to this scene.<br>\n   * ja: このシーンに属していた子供のCamera要素の配列を返します。\n   * @return {Array} en: child cameras of this scene. ja: このシーンの子供のCamera要素\n   */\n  get cameras() {\n    return this._cameras;\n  }\n}\n\nGLBoost[\"Scene\"] = Scene;\n"
   },
   {
     "__docId__": 338,
@@ -7081,7 +7134,7 @@
     "memberof": "js/Scene.js~Scene",
     "longname": "js/Scene.js~Scene#setCurrentAnimationValue",
     "access": null,
-    "description": "en: Set animation input value (for instance frame value). This value affect all child elements in this scene graph (recursively).<br>\nja: アニメーションのための入力値（例えばフレーム値）をセットします。この値はシーングラフに属する全ての子孫に影響します。",
+    "description": "en: Set animation input value (for instance frame value), This value affect all child elements in this scene graph (recursively).<br>\nja: アニメーションのための入力値（例えばフレーム値）をセットします。この値はシーングラフに属する全ての子孫に影響します。",
     "lineNumber": 84,
     "params": [
       {
