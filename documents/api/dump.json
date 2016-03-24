@@ -7662,7 +7662,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import GLBoost from './globals';\nimport Element from './Element';\nimport Camera from './Camera';\nimport GLContext from './GLContext';\nimport AbstractLight from './lights/AbstractLight';\nimport Mesh from './Mesh';\nimport Group from './Group';\nimport RenderPass from './RenderPass';\n\n\n/**\n * en: This Scene class is the top level element of scene graph hierarchy.\n *       To render scene, pass this scene element to Renderer.draw method.<br>\n * ja: このSceneクラスはシーングラフ階層のトップレベルに位置する要素です。\n *       シーンをレンダリングするには、このscene要素をRenderer.drawメソッドに渡します。\n */\nexport default class Scene extends Element {\n  constructor(canvas = GLBoost.CURRENT_CANVAS_ID) {\n    super();\n    this._gl = GLContext.getInstance(canvas).gl;\n    this._elements = [];\n    this._meshes = [];\n    this._lights = [];\n    this._cameras = [];\n    this._renderPasses = [new RenderPass(this._gl)];\n    this._currentAnimationInputValues = {};\n\n    Scene._instanceCount = (typeof Scene._instanceCount === 'undefined') ? 0 : (Scene._instanceCount + 1);\n    this._instanceName = Scene.name + '_' + Scene._instanceCount;\n  }\n\n  /**\n   * en: Add the element to this scene as a child.<br>\n   * ja: このシーンにelementを子供として追加します。\n   * @param element a instance of Element class\n   */\n  add(element) {\n    this._elements.push(element);\n    element._parent = this;\n  }\n\n  /**\n   * en: Add the element to this scene as a child.<br>\n   * ja: このシーンにelementを子供として追加します。\n   * @param element a instance of Element class\n   */\n  addChild(element) {\n    this._elements.push(element);\n    element._parent = this;\n  }\n\n  removeChild(element) {\n    this._elements = this._elements.filter(function(elem) {\n      if (elem === element) {\n        element._parent = null;\n      }\n      return elem !== element;\n    });\n  }\n\n  removeAll() {\n    this._elements.length = 0;\n  }\n\n  /**\n   * en: Get child elements which belong to this scene.<br>\n   * ja: このシーンに属していた子供の要素の配列を返します。\n   * @return {Array} en: child elements of this scene. ja: このシーンの子供の要素\n   */\n  getChildren() {\n    return this._elements;\n  }\n\n\n  _setDirtyToAnimatedElement(inputName, element = this) {\n    if (element.hasAnimation(inputName)) {\n      element._needUpdate();\n    }\n\n    if (element instanceof Group || element instanceof Scene) {\n      let children = element.getChildren();\n      for (let i = 0; i < children.length; i++) {\n        this._setDirtyToAnimatedElement(inputName, children[i]);\n      }\n    }\n  }\n\n  _getCurrentAnimationInputValue(inputName) {\n    return this._currentAnimationInputValues[inputName];\n  }\n\n  /**\n   * en: Set animation input value (for instance frame value), This value affect all child elements in this scene graph (recursively).<br>\n   * ja: アニメーションのための入力値（例えばフレーム値）をセットします。この値はシーングラフに属する全ての子孫に影響します。\n   * @param {string} inputName en: inputName name of input value. ja: 入力値の名前\n   * @param {any} inputValue en: input value of animation. ja: アニメーションの入力値\n   */\n  setCurrentAnimationValue(inputName, inputValue) {\n    this._setDirtyToAnimatedElement(inputName);\n    this._currentAnimationInputValues[inputName] = inputValue;\n  }\n\n  /**\n   * en: Prepare for Rendering. You have to call this method before Renderer.draw method.\n   * ja: レンダリングのための前処理を行います。Renderer.drawメソッドの前にこのメソッドを呼ぶ必要があります。\n   */\n  prepareForRender() {\n\n    let collectMeshes = function(elem) {\n      if (elem instanceof Group) {\n        var children = elem.getChildren();\n        var meshes = [];\n        children.forEach(function(child) {\n          var childMeshes = collectMeshes(child);\n          meshes = meshes.concat(childMeshes);\n        });\n        return meshes;\n      } else if (elem instanceof Mesh) {\n        return [elem];\n      } else {\n        return [];\n      }\n    };\n\n    this._meshes = [];\n    this._elements.forEach((elm)=> {\n      this._meshes = this._meshes.concat(collectMeshes(elm));\n    });\n\n    let collectLights = function(elem) {\n      if (elem instanceof Group) {\n        var children = elem.getChildren();\n        var lights = [];\n        children.forEach(function(child) {\n          var childLights = collectLights(child);\n          lights = lights.concat(childLights);\n        });\n        return lights;\n      } else if (elem instanceof AbstractLight) {\n        return [elem];\n      } else {\n        return [];\n      }\n    };\n\n    this._lights = [];\n    this._elements.forEach((elm)=> {\n      this._lights = this._lights.concat(collectLights(elm));\n    });\n\n    let existCamera_f = false;\n    let collectCameras = function(elem) {\n      if (elem instanceof Group) {\n        var children = elem.getChildren();\n        var cameras = [];\n        children.forEach(function(child) {\n          var childCameras = collectCameras(child);\n          cameras = cameras.concat(childCameras);\n        });\n        return cameras;\n      } else if (elem instanceof Camera) {\n        existCamera_f = true;\n        return [elem];\n      } else {\n        return [];\n      }\n    };\n\n    this._cameras = [];\n    this._elements.forEach((elm)=> {\n      this._cameras = this._cameras.concat(collectCameras(elm));\n    });\n    if (this._cameras.length !== 0) {\n      this._cameras[0].setAsMainCamera(this);\n    }\n\n    // If there is only one renderPass, register meshes to the renderPass automatically.\n    if (this._renderPasses.length === 1) {\n      this._renderPasses[0].clearElements();\n      this._renderPasses[0].addElements(this._meshes);\n    }\n\n    this._renderPasses.forEach((renderPass)=> {\n      renderPass.prepareForRender();\n    });\n\n    this._meshes.forEach((mesh)=> {\n      mesh.prepareForRender(existCamera_f, this._lights, this._renderPasses);\n    });\n\n\n  }\n\n  set renderPasses(renderPasses) {\n    this._renderPasses = renderPasses;\n  }\n\n  get renderPasses() {\n    return this._renderPasses;\n  }\n\n  /**\n   * en: Get child elements which belong to this scene.<br>\n   * ja: このシーンに属していた子供の要素の配列を返します。\n   * @return {Array} en: child elements of this scene. ja: このシーンの子供の要素\n   */\n  get elements() {\n    return this._elements;\n  }\n\n  /**\n   * en: Get child meshes which belong to this scene.<br>\n   * ja: このシーンに属していた子供のMesh要素の配列を返します。\n   * @return {Array} en: child meshes of this scene. ja: このシーンの子供のMesh要素\n   */\n  get meshes() {\n    return this._meshes;\n  }\n\n  /**\n   * en: Get child lights which belong to this scene.<br>\n   * ja: このシーンに属していた子供のLight要素の配列を返します。\n   * @return {Array} en: child lights of this scene. ja: このシーンの子供のLight要素\n   */\n  get lights() {\n    return this._lights;\n  }\n\n  /**\n   * en: Get child cameras which belong to this scene.<br>\n   * ja: このシーンに属していた子供のCamera要素の配列を返します。\n   * @return {Array} en: child cameras of this scene. ja: このシーンの子供のCamera要素\n   */\n  get cameras() {\n    return this._cameras;\n  }\n\n  toString() {\n    return this._instanceName;\n  }\n}\n\nGLBoost['Scene'] = Scene;\n"
+    "content": "import GLBoost from './globals';\nimport Element from './Element';\nimport Camera from './Camera';\nimport GLContext from './GLContext';\nimport AbstractLight from './lights/AbstractLight';\nimport Mesh from './Mesh';\nimport Group from './Group';\nimport RenderPass from './RenderPass';\n\n\n/**\n * [en] This Scene class is the top level element of scene graph hierarchy.\n *       To render scene, pass this scene element to Renderer.draw method.<br>\n * [ja] このSceneクラスはシーングラフ階層のトップレベルに位置する要素です。\n *       シーンをレンダリングするには、このscene要素をRenderer.drawメソッドに渡します。\n */\nexport default class Scene extends Element {\n\n  /**\n   * [en] constructor\n   * [ja] コンストラクタ\n   * @param {HTMLCanvas|string} canvas [en] canvas or canvas' id string. [ja] canvasまたはcanvasのid文字列\n   */\n  constructor(canvas = GLBoost.CURRENT_CANVAS_ID) {\n    super();\n    this._gl = GLContext.getInstance(canvas).gl;\n    this._elements = [];\n    this._meshes = [];\n    this._lights = [];\n    this._cameras = [];\n    this._renderPasses = [new RenderPass(this._gl)];\n    this._currentAnimationInputValues = {};\n\n    Scene._instanceCount = (typeof Scene._instanceCount === 'undefined') ? 0 : (Scene._instanceCount + 1);\n    this._instanceName = Scene.name + '_' + Scene._instanceCount;\n  }\n\n  /**\n   * [en] Add the element to this scene as a child.<br>\n   * [ja] このシーンにelementを子供として追加します。\n   * @param {Element} element [en] a instance of Element class [ja] Elementクラスのインスタンス\n   */\n  add(element) {\n    this._elements.push(element);\n    element._parent = this;\n  }\n\n  /**\n   * [en] Add the element to this scene as a child.<br>\n   * [ja] このシーンにelementを子供として追加します。\n   * @param {Element} element  [en] a instance of Element class [ja] Elementクラスのインスタンス\n   */\n  addChild(element) {\n    this._elements.push(element);\n    element._parent = this;\n  }\n\n  /**\n   * [en] remove the element from this scene.\n   * [ja] このシーンから指定した要素を削除します。\n   * @param {Element} element [en] the element to remove [ja] 削除したい要素\n   */\n  removeChild(element) {\n    this._elements = this._elements.filter(function(elem) {\n      if (elem === element) {\n        element._parent = null;\n      }\n      return elem !== element;\n    });\n  }\n\n  /**\n   * [en] remove all elements from this scene.\n   * [ja] このシーンから全ての要素を削除します。\n   */\n  removeAll() {\n    this._elements.length = 0;\n  }\n\n\n  _setDirtyToAnimatedElement(inputName, element = this) {\n    if (element.hasAnimation(inputName)) {\n      element._needUpdate();\n    }\n\n    if (element instanceof Group || element instanceof Scene) {\n      let children = element.getChildren();\n      for (let i = 0; i < children.length; i++) {\n        this._setDirtyToAnimatedElement(inputName, children[i]);\n      }\n    }\n  }\n\n  _getCurrentAnimationInputValue(inputName) {\n    return this._currentAnimationInputValues[inputName];\n  }\n\n  /**\n   * [en] Set animation input value (for instance frame value), This value affect all child elements in this scene graph (recursively).<br>\n   * [ja] アニメーションのための入力値（例えばフレーム値）をセットします。この値はシーングラフに属する全ての子孫に影響します。\n   * @param {string} inputName [en] inputName name of input value. [ja] 入力値の名前\n   * @param {number|Vector2|Vector3|Vector4|*} inputValue [en] input value of animation. [ja] アニメーションの入力値\n   */\n  setCurrentAnimationValue(inputName, inputValue) {\n    this._setDirtyToAnimatedElement(inputName);\n    this._currentAnimationInputValues[inputName] = inputValue;\n  }\n\n  /**\n   * [en] Prepare for Rendering. You have to call this method before Renderer.draw method.\n   * [ja] レンダリングのための前処理を行います。Renderer.drawメソッドの前にこのメソッドを呼ぶ必要があります。\n   */\n  prepareForRender() {\n\n    let collectMeshes = function(elem) {\n      if (elem instanceof Group) {\n        var children = elem.getChildren();\n        var meshes = [];\n        children.forEach(function(child) {\n          var childMeshes = collectMeshes(child);\n          meshes = meshes.concat(childMeshes);\n        });\n        return meshes;\n      } else if (elem instanceof Mesh) {\n        return [elem];\n      } else {\n        return [];\n      }\n    };\n\n    this._meshes = [];\n    this._elements.forEach((elm)=> {\n      this._meshes = this._meshes.concat(collectMeshes(elm));\n    });\n\n    let collectLights = function(elem) {\n      if (elem instanceof Group) {\n        var children = elem.getChildren();\n        var lights = [];\n        children.forEach(function(child) {\n          var childLights = collectLights(child);\n          lights = lights.concat(childLights);\n        });\n        return lights;\n      } else if (elem instanceof AbstractLight) {\n        return [elem];\n      } else {\n        return [];\n      }\n    };\n\n    this._lights = [];\n    this._elements.forEach((elm)=> {\n      this._lights = this._lights.concat(collectLights(elm));\n    });\n\n    let existCamera_f = false;\n    let collectCameras = function(elem) {\n      if (elem instanceof Group) {\n        var children = elem.getChildren();\n        var cameras = [];\n        children.forEach(function(child) {\n          var childCameras = collectCameras(child);\n          cameras = cameras.concat(childCameras);\n        });\n        return cameras;\n      } else if (elem instanceof Camera) {\n        existCamera_f = true;\n        return [elem];\n      } else {\n        return [];\n      }\n    };\n\n    this._cameras = [];\n    this._elements.forEach((elm)=> {\n      this._cameras = this._cameras.concat(collectCameras(elm));\n    });\n    if (this._cameras.length !== 0) {\n      this._cameras[0].setAsMainCamera(this);\n    }\n\n    // If there is only one renderPass, register meshes to the renderPass automatically.\n    if (this._renderPasses.length === 1) {\n      this._renderPasses[0].clearElements();\n      this._renderPasses[0].addElements(this._meshes);\n    }\n\n    this._renderPasses.forEach((renderPass)=> {\n      renderPass.prepareForRender();\n    });\n\n    this._meshes.forEach((mesh)=> {\n      mesh.prepareForRender(existCamera_f, this._lights, this._renderPasses);\n    });\n\n\n  }\n\n  /**\n   * [en] Set render passes for rendering. if you don't set render passes, this scene has a default render pass.\n   * [ja] レンダリングに使うレンダーパスの配列をセットします。もしレンダーパスをセットしない場合は、このシーンはデフォルトの単一レンダーパスを持っています。\n   * @param {Array<RenderPass>} renderPasses [en] render passes. [ja] レンダーパスの配列\n   */\n  set renderPasses(renderPasses) {\n    this._renderPasses = renderPasses;\n  }\n\n  /**\n   * [en] Get render passes for rendering.\n   * [ja] レンダリングに使うレンダーパスの配列を取得します。\n   * @returns {Array<RenderPass>}\n   */\n  get renderPasses() {\n    return this._renderPasses;\n  }\n\n  /**\n   * [en] Get child elements which belong to this scene.<br>\n   * [ja] このシーンに属していた子供の要素の配列を返します。\n   * @return {Array<Element>} [en] child elements of this scene. [ja] このシーンの子供の要素\n   */\n  getChildren() {\n    return this._elements;\n  }\n\n  /**\n   * [en] Get child elements which belong to this scene.<br>\n   * [ja] このシーンに属していた子供の要素の配列を返します。\n   * @return {Array<Element>} [en] child elements of this scene. [ja] このシーンの子供の要素\n   */\n  get elements() {\n    return this._elements;\n  }\n\n  /**\n   * [en] Get child meshes which belong to this scene.<br>\n   * [ja] このシーンに属していた子供のMesh要素の配列を返します。\n   * @return {Array<Mesh>} [en] child meshes of this scene. [ja] このシーンの子供のMesh要素\n   */\n  get meshes() {\n    return this._meshes;\n  }\n\n  /**\n   * [en] Get child lights which belong to this scene.<br>\n   * [ja] このシーンに属していた子供のLight要素の配列を返します。\n   * @return {Array<AbstractLight>} [en] child lights of this scene. [ja] このシーンの子供のLight要素\n   */\n  get lights() {\n    return this._lights;\n  }\n\n  /**\n   * [en] Get child cameras which belong to this scene.<br>\n   * [ja] このシーンに属していた子供のCamera要素の配列を返します。\n   * @return {Array<Camera>} [en] child cameras of this scene. [ja] このシーンの子供のCamera要素\n   */\n  get cameras() {\n    return this._cameras;\n  }\n\n  /**\n   * [en] Return instance name.\n   * [ja] インスタンス名を返します。\n   * @returns {string} [en] the instance name. [ja] インスタンス名\n   */\n  toString() {\n    return this._instanceName;\n  }\n}\n\nGLBoost['Scene'] = Scene;\n"
   },
   {
     "__docId__": 376,
@@ -7676,7 +7676,7 @@
     "export": true,
     "importPath": "glboost/js/Scene.js",
     "importStyle": "Scene",
-    "description": "en: This Scene class is the top level element of scene graph hierarchy.\n      To render scene, pass this scene element to Renderer.draw method.<br>\nja: このSceneクラスはシーングラフ階層のトップレベルに位置する要素です。\n      シーンをレンダリングするには、このscene要素をRenderer.drawメソッドに渡します。",
+    "description": "[en] This Scene class is the top level element of scene graph hierarchy.\n      To render scene, pass this scene element to Renderer.draw method.<br>\n[ja] このSceneクラスはシーングラフ階層のトップレベルに位置する要素です。\n      シーンをレンダリングするには、このscene要素をRenderer.drawメソッドに渡します。",
     "lineNumber": 17,
     "interface": false,
     "extends": [
@@ -7692,16 +7692,19 @@
     "memberof": "js/Scene.js~Scene",
     "longname": "js/Scene.js~Scene#constructor",
     "access": null,
-    "description": null,
-    "lineNumber": 18,
-    "undocument": true,
+    "description": "[en] constructor\n[ja] コンストラクタ",
+    "lineNumber": 24,
     "params": [
       {
-        "name": "canvas",
-        "optional": true,
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "HTMLCanvas",
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "canvas",
+        "description": "[en] canvas or canvas' id string. [ja] canvasまたはcanvasのid文字列"
       }
     ],
     "generator": false
@@ -7716,7 +7719,7 @@
     "longname": "js/Scene.js~Scene#_gl",
     "access": null,
     "description": null,
-    "lineNumber": 20,
+    "lineNumber": 26,
     "undocument": true,
     "type": {
       "types": [
@@ -7734,7 +7737,7 @@
     "longname": "js/Scene.js~Scene#_elements",
     "access": null,
     "description": null,
-    "lineNumber": 21,
+    "lineNumber": 27,
     "undocument": true,
     "type": {
       "types": [
@@ -7752,7 +7755,7 @@
     "longname": "js/Scene.js~Scene#_meshes",
     "access": null,
     "description": null,
-    "lineNumber": 22,
+    "lineNumber": 28,
     "undocument": true,
     "type": {
       "types": [
@@ -7770,7 +7773,7 @@
     "longname": "js/Scene.js~Scene#_lights",
     "access": null,
     "description": null,
-    "lineNumber": 23,
+    "lineNumber": 29,
     "undocument": true,
     "type": {
       "types": [
@@ -7788,7 +7791,7 @@
     "longname": "js/Scene.js~Scene#_cameras",
     "access": null,
     "description": null,
-    "lineNumber": 24,
+    "lineNumber": 30,
     "undocument": true,
     "type": {
       "types": [
@@ -7806,7 +7809,7 @@
     "longname": "js/Scene.js~Scene#_renderPasses",
     "access": null,
     "description": null,
-    "lineNumber": 25,
+    "lineNumber": 31,
     "undocument": true,
     "type": {
       "types": [
@@ -7824,7 +7827,7 @@
     "longname": "js/Scene.js~Scene#_currentAnimationInputValues",
     "access": null,
     "description": null,
-    "lineNumber": 26,
+    "lineNumber": 32,
     "undocument": true,
     "type": {
       "types": [
@@ -7842,7 +7845,7 @@
     "longname": "js/Scene.js~Scene#_instanceName",
     "access": null,
     "description": null,
-    "lineNumber": 29,
+    "lineNumber": 35,
     "undocument": true,
     "type": {
       "types": [
@@ -7859,18 +7862,18 @@
     "memberof": "js/Scene.js~Scene",
     "longname": "js/Scene.js~Scene#add",
     "access": null,
-    "description": "en: Add the element to this scene as a child.<br>\nja: このシーンにelementを子供として追加します。",
-    "lineNumber": 37,
+    "description": "[en] Add the element to this scene as a child.<br>\n[ja] このシーンにelementを子供として追加します。",
+    "lineNumber": 43,
     "params": [
       {
         "nullable": null,
         "types": [
-          "*"
+          "Element"
         ],
         "spread": false,
         "optional": false,
         "name": "element",
-        "description": "a instance of Element class"
+        "description": "[en] a instance of Element class [ja] Elementクラスのインスタンス"
       }
     ],
     "generator": false
@@ -7884,18 +7887,18 @@
     "memberof": "js/Scene.js~Scene",
     "longname": "js/Scene.js~Scene#addChild",
     "access": null,
-    "description": "en: Add the element to this scene as a child.<br>\nja: このシーンにelementを子供として追加します。",
-    "lineNumber": 47,
+    "description": "[en] Add the element to this scene as a child.<br>\n[ja] このシーンにelementを子供として追加します。",
+    "lineNumber": 53,
     "params": [
       {
         "nullable": null,
         "types": [
-          "*"
+          "Element"
         ],
         "spread": false,
         "optional": false,
         "name": "element",
-        "description": "a instance of Element class"
+        "description": "[en] a instance of Element class [ja] Elementクラスのインスタンス"
       }
     ],
     "generator": false
@@ -7909,15 +7912,18 @@
     "memberof": "js/Scene.js~Scene",
     "longname": "js/Scene.js~Scene#removeChild",
     "access": null,
-    "description": null,
-    "lineNumber": 52,
-    "undocument": true,
+    "description": "[en] remove the element from this scene.\n[ja] このシーンから指定した要素を削除します。",
+    "lineNumber": 63,
     "params": [
       {
-        "name": "element",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "Element"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "element",
+        "description": "[en] the element to remove [ja] 削除したい要素"
       }
     ],
     "generator": false
@@ -7932,7 +7938,7 @@
     "longname": "js/Scene.js~Scene#_elements",
     "access": null,
     "description": null,
-    "lineNumber": 53,
+    "lineNumber": 64,
     "undocument": true,
     "type": {
       "types": [
@@ -7949,9 +7955,8 @@
     "memberof": "js/Scene.js~Scene",
     "longname": "js/Scene.js~Scene#removeAll",
     "access": null,
-    "description": null,
-    "lineNumber": 61,
-    "undocument": true,
+    "description": "[en] remove all elements from this scene.\n[ja] このシーンから全ての要素を削除します。",
+    "lineNumber": 76,
     "params": [],
     "generator": false
   },
@@ -7960,34 +7965,12 @@
     "kind": "method",
     "static": false,
     "variation": null,
-    "name": "getChildren",
-    "memberof": "js/Scene.js~Scene",
-    "longname": "js/Scene.js~Scene#getChildren",
-    "access": null,
-    "description": "en: Get child elements which belong to this scene.<br>\nja: このシーンに属していた子供の要素の配列を返します。",
-    "lineNumber": 70,
-    "params": [],
-    "return": {
-      "nullable": null,
-      "types": [
-        "Array"
-      ],
-      "spread": false,
-      "description": "en: child elements of this scene. ja: このシーンの子供の要素"
-    },
-    "generator": false
-  },
-  {
-    "__docId__": 392,
-    "kind": "method",
-    "static": false,
-    "variation": null,
     "name": "_setDirtyToAnimatedElement",
     "memberof": "js/Scene.js~Scene",
     "longname": "js/Scene.js~Scene#_setDirtyToAnimatedElement",
     "access": null,
     "description": null,
-    "lineNumber": 75,
+    "lineNumber": 81,
     "undocument": true,
     "params": [
       {
@@ -8007,7 +7990,7 @@
     "generator": false
   },
   {
-    "__docId__": 393,
+    "__docId__": 392,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -8016,7 +7999,7 @@
     "longname": "js/Scene.js~Scene#_getCurrentAnimationInputValue",
     "access": null,
     "description": null,
-    "lineNumber": 88,
+    "lineNumber": 94,
     "undocument": true,
     "params": [
       {
@@ -8034,7 +8017,7 @@
     "generator": false
   },
   {
-    "__docId__": 394,
+    "__docId__": 393,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -8042,8 +8025,8 @@
     "memberof": "js/Scene.js~Scene",
     "longname": "js/Scene.js~Scene#setCurrentAnimationValue",
     "access": null,
-    "description": "en: Set animation input value (for instance frame value), This value affect all child elements in this scene graph (recursively).<br>\nja: アニメーションのための入力値（例えばフレーム値）をセットします。この値はシーングラフに属する全ての子孫に影響します。",
-    "lineNumber": 98,
+    "description": "[en] Set animation input value (for instance frame value), This value affect all child elements in this scene graph (recursively).<br>\n[ja] アニメーションのための入力値（例えばフレーム値）をセットします。この値はシーングラフに属する全ての子孫に影響します。",
+    "lineNumber": 104,
     "params": [
       {
         "nullable": null,
@@ -8053,23 +8036,27 @@
         "spread": false,
         "optional": false,
         "name": "inputName",
-        "description": "en: inputName name of input value. ja: 入力値の名前"
+        "description": "[en] inputName name of input value. [ja] 入力値の名前"
       },
       {
         "nullable": null,
         "types": [
-          "any"
+          "number",
+          "Vector2",
+          "Vector3",
+          "Vector4",
+          "*"
         ],
         "spread": false,
         "optional": false,
         "name": "inputValue",
-        "description": "en: input value of animation. ja: アニメーションの入力値"
+        "description": "[en] input value of animation. [ja] アニメーションの入力値"
       }
     ],
     "generator": false
   },
   {
-    "__docId__": 395,
+    "__docId__": 394,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -8077,10 +8064,28 @@
     "memberof": "js/Scene.js~Scene",
     "longname": "js/Scene.js~Scene#prepareForRender",
     "access": null,
-    "description": "en: Prepare for Rendering. You have to call this method before Renderer.draw method.\nja: レンダリングのための前処理を行います。Renderer.drawメソッドの前にこのメソッドを呼ぶ必要があります。",
-    "lineNumber": 107,
+    "description": "[en] Prepare for Rendering. You have to call this method before Renderer.draw method.\n[ja] レンダリングのための前処理を行います。Renderer.drawメソッドの前にこのメソッドを呼ぶ必要があります。",
+    "lineNumber": 113,
     "params": [],
     "generator": false
+  },
+  {
+    "__docId__": 395,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "_meshes",
+    "memberof": "js/Scene.js~Scene",
+    "longname": "js/Scene.js~Scene#_meshes",
+    "access": null,
+    "description": null,
+    "lineNumber": 131,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
   },
   {
     "__docId__": 396,
@@ -8092,7 +8097,7 @@
     "longname": "js/Scene.js~Scene#_meshes",
     "access": null,
     "description": null,
-    "lineNumber": 125,
+    "lineNumber": 133,
     "undocument": true,
     "type": {
       "types": [
@@ -8105,12 +8110,12 @@
     "kind": "member",
     "static": false,
     "variation": null,
-    "name": "_meshes",
+    "name": "_lights",
     "memberof": "js/Scene.js~Scene",
-    "longname": "js/Scene.js~Scene#_meshes",
+    "longname": "js/Scene.js~Scene#_lights",
     "access": null,
     "description": null,
-    "lineNumber": 127,
+    "lineNumber": 152,
     "undocument": true,
     "type": {
       "types": [
@@ -8128,7 +8133,7 @@
     "longname": "js/Scene.js~Scene#_lights",
     "access": null,
     "description": null,
-    "lineNumber": 146,
+    "lineNumber": 154,
     "undocument": true,
     "type": {
       "types": [
@@ -8141,12 +8146,12 @@
     "kind": "member",
     "static": false,
     "variation": null,
-    "name": "_lights",
+    "name": "_cameras",
     "memberof": "js/Scene.js~Scene",
-    "longname": "js/Scene.js~Scene#_lights",
+    "longname": "js/Scene.js~Scene#_cameras",
     "access": null,
     "description": null,
-    "lineNumber": 148,
+    "lineNumber": 175,
     "undocument": true,
     "type": {
       "types": [
@@ -8164,7 +8169,7 @@
     "longname": "js/Scene.js~Scene#_cameras",
     "access": null,
     "description": null,
-    "lineNumber": 169,
+    "lineNumber": 177,
     "undocument": true,
     "type": {
       "types": [
@@ -8174,24 +8179,6 @@
   },
   {
     "__docId__": 401,
-    "kind": "member",
-    "static": false,
-    "variation": null,
-    "name": "_cameras",
-    "memberof": "js/Scene.js~Scene",
-    "longname": "js/Scene.js~Scene#_cameras",
-    "access": null,
-    "description": null,
-    "lineNumber": 171,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 402,
     "kind": "set",
     "static": false,
     "variation": null,
@@ -8199,9 +8186,20 @@
     "memberof": "js/Scene.js~Scene",
     "longname": "js/Scene.js~Scene#renderPasses",
     "access": null,
-    "description": null,
-    "lineNumber": 194,
-    "undocument": true,
+    "description": "[en] Set render passes for rendering. if you don't set render passes, this scene has a default render pass.\n[ja] レンダリングに使うレンダーパスの配列をセットします。もしレンダーパスをセットしない場合は、このシーンはデフォルトの単一レンダーパスを持っています。",
+    "lineNumber": 205,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Array<RenderPass>"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "renderPasses",
+        "description": "[en] render passes. [ja] レンダーパスの配列"
+      }
+    ],
     "type": {
       "types": [
         "*"
@@ -8210,7 +8208,7 @@
     "generator": false
   },
   {
-    "__docId__": 403,
+    "__docId__": 402,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -8219,7 +8217,7 @@
     "longname": "js/Scene.js~Scene#_renderPasses",
     "access": null,
     "description": null,
-    "lineNumber": 195,
+    "lineNumber": 206,
     "undocument": true,
     "type": {
       "types": [
@@ -8228,7 +8226,7 @@
     }
   },
   {
-    "__docId__": 404,
+    "__docId__": 403,
     "kind": "get",
     "static": false,
     "variation": null,
@@ -8236,13 +8234,48 @@
     "memberof": "js/Scene.js~Scene",
     "longname": "js/Scene.js~Scene#renderPasses",
     "access": null,
-    "description": null,
-    "lineNumber": 198,
-    "undocument": true,
+    "description": "[en] Get render passes for rendering.\n[ja] レンダリングに使うレンダーパスの配列を取得します。",
+    "lineNumber": 214,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Array<RenderPass>}"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Array<RenderPass>"
+      ],
+      "spread": false,
+      "description": ""
+    },
     "type": {
       "types": [
         "*"
       ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 404,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "getChildren",
+    "memberof": "js/Scene.js~Scene",
+    "longname": "js/Scene.js~Scene#getChildren",
+    "access": null,
+    "description": "[en] Get child elements which belong to this scene.<br>\n[ja] このシーンに属していた子供の要素の配列を返します。",
+    "lineNumber": 223,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Array<Element>"
+      ],
+      "spread": false,
+      "description": "[en] child elements of this scene. [ja] このシーンの子供の要素"
     },
     "generator": false
   },
@@ -8255,15 +8288,15 @@
     "memberof": "js/Scene.js~Scene",
     "longname": "js/Scene.js~Scene#elements",
     "access": null,
-    "description": "en: Get child elements which belong to this scene.<br>\nja: このシーンに属していた子供の要素の配列を返します。",
-    "lineNumber": 207,
+    "description": "[en] Get child elements which belong to this scene.<br>\n[ja] このシーンに属していた子供の要素の配列を返します。",
+    "lineNumber": 232,
     "return": {
       "nullable": null,
       "types": [
-        "Array"
+        "Array<Element>"
       ],
       "spread": false,
-      "description": "en: child elements of this scene. ja: このシーンの子供の要素"
+      "description": "[en] child elements of this scene. [ja] このシーンの子供の要素"
     },
     "type": {
       "types": [
@@ -8281,15 +8314,15 @@
     "memberof": "js/Scene.js~Scene",
     "longname": "js/Scene.js~Scene#meshes",
     "access": null,
-    "description": "en: Get child meshes which belong to this scene.<br>\nja: このシーンに属していた子供のMesh要素の配列を返します。",
-    "lineNumber": 216,
+    "description": "[en] Get child meshes which belong to this scene.<br>\n[ja] このシーンに属していた子供のMesh要素の配列を返します。",
+    "lineNumber": 241,
     "return": {
       "nullable": null,
       "types": [
-        "Array"
+        "Array<Mesh>"
       ],
       "spread": false,
-      "description": "en: child meshes of this scene. ja: このシーンの子供のMesh要素"
+      "description": "[en] child meshes of this scene. [ja] このシーンの子供のMesh要素"
     },
     "type": {
       "types": [
@@ -8307,15 +8340,15 @@
     "memberof": "js/Scene.js~Scene",
     "longname": "js/Scene.js~Scene#lights",
     "access": null,
-    "description": "en: Get child lights which belong to this scene.<br>\nja: このシーンに属していた子供のLight要素の配列を返します。",
-    "lineNumber": 225,
+    "description": "[en] Get child lights which belong to this scene.<br>\n[ja] このシーンに属していた子供のLight要素の配列を返します。",
+    "lineNumber": 250,
     "return": {
       "nullable": null,
       "types": [
-        "Array"
+        "Array<AbstractLight>"
       ],
       "spread": false,
-      "description": "en: child lights of this scene. ja: このシーンの子供のLight要素"
+      "description": "[en] child lights of this scene. [ja] このシーンの子供のLight要素"
     },
     "type": {
       "types": [
@@ -8333,15 +8366,15 @@
     "memberof": "js/Scene.js~Scene",
     "longname": "js/Scene.js~Scene#cameras",
     "access": null,
-    "description": "en: Get child cameras which belong to this scene.<br>\nja: このシーンに属していた子供のCamera要素の配列を返します。",
-    "lineNumber": 234,
+    "description": "[en] Get child cameras which belong to this scene.<br>\n[ja] このシーンに属していた子供のCamera要素の配列を返します。",
+    "lineNumber": 259,
     "return": {
       "nullable": null,
       "types": [
-        "Array"
+        "Array<Camera>"
       ],
       "spread": false,
-      "description": "en: child cameras of this scene. ja: このシーンの子供のCamera要素"
+      "description": "[en] child cameras of this scene. [ja] このシーンの子供のCamera要素"
     },
     "type": {
       "types": [
@@ -8359,14 +8392,22 @@
     "memberof": "js/Scene.js~Scene",
     "longname": "js/Scene.js~Scene#toString",
     "access": null,
-    "description": null,
-    "lineNumber": 238,
-    "undocument": true,
+    "description": "[en] Return instance name.\n[ja] インスタンス名を返します。",
+    "lineNumber": 268,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{string} [en] the instance name. [ja] インスタンス名"
+      }
+    ],
     "params": [],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "string"
+      ],
+      "spread": false,
+      "description": "[en] the instance name. [ja] インスタンス名"
     },
     "generator": false
   },

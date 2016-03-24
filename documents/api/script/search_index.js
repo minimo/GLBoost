@@ -811,13 +811,13 @@ window.esdocSearchIndex = [
   ],
   [
     "js/camera.js~camera#eye",
-    "class/js/Camera.js~Camera.html#instance-get-eye",
+    "class/js/Camera.js~Camera.html#instance-set-eye",
     "js/Camera.js~Camera#eye",
     "member"
   ],
   [
     "js/camera.js~camera#eye",
-    "class/js/Camera.js~Camera.html#instance-set-eye",
+    "class/js/Camera.js~Camera.html#instance-get-eye",
     "js/Camera.js~Camera#eye",
     "member"
   ],
@@ -907,13 +907,13 @@ window.esdocSearchIndex = [
   ],
   [
     "js/camera.js~camera#znear",
-    "class/js/Camera.js~Camera.html#instance-get-zNear",
+    "class/js/Camera.js~Camera.html#instance-set-zNear",
     "js/Camera.js~Camera#zNear",
     "member"
   ],
   [
     "js/camera.js~camera#znear",
-    "class/js/Camera.js~Camera.html#instance-set-zNear",
+    "class/js/Camera.js~Camera.html#instance-get-zNear",
     "js/Camera.js~Camera#zNear",
     "member"
   ],
@@ -1585,13 +1585,13 @@ window.esdocSearchIndex = [
   ],
   [
     "js/mesh.js~mesh#geometry",
-    "class/js/Mesh.js~Mesh.html#instance-set-geometry",
+    "class/js/Mesh.js~Mesh.html#instance-get-geometry",
     "js/Mesh.js~Mesh#geometry",
     "member"
   ],
   [
     "js/mesh.js~mesh#geometry",
-    "class/js/Mesh.js~Mesh.html#instance-get-geometry",
+    "class/js/Mesh.js~Mesh.html#instance-set-geometry",
     "js/Mesh.js~Mesh#geometry",
     "member"
   ],
