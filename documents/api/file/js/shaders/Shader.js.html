@@ -86,18 +86,17 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">js/shaders/Shader.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import GLContext from &apos;./../GLContext&apos;
-import PointLight from &apos;./../lights/PointLight&apos;
-import Vector3 from &apos;./../math/Vector3&apos;
-import Hash from &apos;./../misc/Hash&apos;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import GLContext from &apos;./../GLContext&apos;;
+import PointLight from &apos;./../lights/PointLight&apos;;
+import Hash from &apos;./../misc/Hash&apos;;
 
 export default class Shader {
   constructor(canvas) {
     if (typeof canvas === &apos;string&apos;) {
-      var canvas = window.document.querySelector(canvas);
+      canvas = window.document.querySelector(canvas);
     }
 
-    this._gl = GLContext.getInstance(canvas).gl;
+    this._glContext = GLContext.getInstance(canvas);
 
     this._dirty = true;
   }
@@ -141,7 +140,7 @@ export default class Shader {
     // mixin
     var target = this.prototype; source = source.prototype;
     Object.getOwnPropertyNames(source).forEach(function (name) {
-      if (name !== &quot;constructor&quot;) Object.defineProperty(target, name, Object.getOwnPropertyDescriptor(source, name));
+      if (name !== &apos;constructor&apos;) Object.defineProperty(target, name, Object.getOwnPropertyDescriptor(source, name));
     });
   }
 
@@ -175,7 +174,7 @@ export default class Shader {
     // mixin
     var target = this.prototype; newone = newone.prototype;
     Object.getOwnPropertyNames(newone).forEach(function (name) {
-      if (name !== &quot;constructor&quot;) Object.defineProperty(target, name, Object.getOwnPropertyDescriptor(newone, name));
+      if (name !== &apos;constructor&apos;) Object.defineProperty(target, name, Object.getOwnPropertyDescriptor(newone, name));
     });
   }
 
@@ -215,9 +214,6 @@ export default class Shader {
 
     shaderText +=   Shader._glslVer(gl);
     shaderText +=   &apos;precision highp float;\n&apos;;
-
-
-    var foundExclusive = false;
 
     /// define variables
     // start defining variables. first, BasicShader, then, sub class Shader, ...
@@ -266,18 +262,25 @@ export default class Shader {
   }
 
 
-  _getFragmentShaderString(gl, functions, lights) {
+  _getFragmentShaderString(gl, functions, lights, renderPass) {
     var f = functions;
     var shaderText = &apos;&apos;;
 
     var in_ = Shader._in_onFrag(gl);
 
     shaderText +=   Shader._glslVer(gl);
+    if (renderPass.renderTargetTextures &amp;&amp; renderPass.renderTargetTextures.length &gt; 1) {
+      shaderText += Shader._glsl1DrawBufferExt(gl);
+    }
     shaderText +=   &apos;precision mediump float;\n&apos;;
-    shaderText +=   Shader._set_outColor_onFrag(gl);
 
-
-    var foundExclusive = false;
+    if (renderPass.renderTargetTextures) {
+      renderPass.renderTargetTextures.forEach((texture, index)=&gt;{
+        shaderText +=   Shader._set_outColor_onFrag(gl, index);
+      });
+    } else {
+      shaderText +=   Shader._set_outColor_onFrag(gl, 0);
+    }
 
     /// define variables
     // start defining variables. first, BasicShader, then, sub class Shader, ...
@@ -307,7 +310,13 @@ export default class Shader {
     });
 
     // end of main function
-    shaderText +=   Shader._set_glFragColor_inGLVer1(gl);
+    if (renderPass.renderTargetTextures &amp;&amp; renderPass.renderTargetTextures.length &gt; 1) {
+      renderPass.renderTargetTextures.forEach((texture, index)=&gt; {
+        shaderText += Shader._set_glFragData_inGLVer1(gl, index);
+      });
+    } else {
+      shaderText += Shader._set_glFragColor_inGLVer1(gl);
+    }
     shaderText +=   &apos;}\n&apos;;
 
     return shaderText;
@@ -338,20 +347,20 @@ export default class Shader {
   }
 
   FSShading(f, gl) {
-    var shaderText =   `rt1 = vec4(1.0, 1.0, 1.0, opacity);\n`;
+    var shaderText =   `rt0 = vec4(1.0, 1.0, 1.0, opacity);\n`;
     return shaderText;
   }
 
 
-  _prepareAssetsForShaders(gl, shaderProgram, vertexAttribs, existCamera_f, lights) {
+  _prepareAssetsForShaders(gl, shaderProgram, vertexAttribs, existCamera_f, lights, canvas) {
     var vertexAttribsAsResult = [];
-    var position = this.prepare(gl, shaderProgram, vertexAttribs, existCamera_f, lights);
+    var position = this.prepare(gl, shaderProgram, vertexAttribs, existCamera_f, lights, canvas);
     vertexAttribsAsResult.push(position);
     // and shade as mixin Prepare Functions
     this._classNamesOfPrepare.forEach((className)=&gt; {
       var method = this[&apos;prepare_&apos; + className];
       if (method) {
-        var verAttirbs = method.bind(this, gl, shaderProgram, vertexAttribs, existCamera_f, lights)();
+        var verAttirbs = method.bind(this, gl, shaderProgram, vertexAttribs, existCamera_f, lights, canvas)();
         vertexAttribsAsResult = vertexAttribsAsResult.concat(verAttirbs);
       }
     });
@@ -386,9 +395,9 @@ export default class Shader {
   _getShader(gl, theSource, type) {
     var shader;
 
-    if (type == &quot;x-shader/x-fragment&quot;) {
+    if (type == &apos;x-shader/x-fragment&apos;) {
       shader = gl.createShader(gl.FRAGMENT_SHADER);
-    } else if (type == &quot;x-shader/x-vertex&quot;) {
+    } else if (type == &apos;x-shader/x-vertex&apos;) {
       shader = gl.createShader(gl.VERTEX_SHADER);
     } else {
       // Unknown shader type
@@ -402,7 +411,7 @@ export default class Shader {
 
     // See if it compiled successfully
     if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-      alert(&quot;An error occurred compiling the shaders: &quot; + gl.getShaderInfoLog(shader));
+      alert(&apos;An error occurred compiling the shaders: &apos; + gl.getShaderInfoLog(shader));
       return null;
     }
 
@@ -410,9 +419,9 @@ export default class Shader {
   }
 
   _initShaders(gl, vertexShaderStr, fragmentShaderStr) {
-    console.log(&quot;Vertex Shader:&quot;);
+    console.log(&apos;Vertex Shader:&apos;);
     console.log(vertexShaderStr);
-    console.log(&quot;Fragment Shader:&quot;);
+    console.log(&apos;Fragment Shader:&apos;);
     console.log(fragmentShaderStr);
 
     var vertexShader = this._getShader(gl, vertexShaderStr, &apos;x-shader/x-vertex&apos;);
@@ -426,7 +435,7 @@ export default class Shader {
 
     // If creating the shader program failed, alert
     if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {
-      alert(&quot;Unable to initialize the shader program.&quot;);
+      alert(&apos;Unable to initialize the shader program.&apos;);
     }
 
     gl.useProgram(shaderProgram);
@@ -434,22 +443,23 @@ export default class Shader {
     return shaderProgram;
   }
 
-  getShaderProgram(vertexAttribs, existCamera_f, lights) {
-    var gl = this._gl;
+  getShaderProgram(vertexAttribs, existCamera_f, lights, renderPass) {
+    var gl = this._glContext.gl;
+    var canvas = this._glContext.canvas;
 
-    lights = Shader.getDefaultPointLightIfNotExsist(gl, lights);
+    lights = Shader.getDefaultPointLightIfNotExsist(gl, lights, canvas);
 
     var vertexShaderText = this._getVertexShaderString(gl, vertexAttribs, existCamera_f, lights);
-    var fragmentShaderText = this._getFragmentShaderString(gl, vertexAttribs, lights);
+    var fragmentShaderText = this._getFragmentShaderString(gl, vertexAttribs, lights, renderPass);
 
     // lookup shaderHashTable
     var baseText = vertexShaderText + &apos;\n###SPLIT###\n&apos; + fragmentShaderText;
     var hash = Hash.toCRC32(baseText);
-    if (!Shader._shaderHashTable[gl._canvas.id]) {
-      Shader._shaderHashTable[gl._canvas.id] = {};
+    if (!Shader._shaderHashTable[canvas.id]) {
+      Shader._shaderHashTable[canvas.id] = {};
     }
     let programToReturn = null;
-    var hashTable = Shader._shaderHashTable[gl._canvas.id];
+    var hashTable = Shader._shaderHashTable[canvas.id];
     if (hash in hashTable) {
       if (hashTable[hash].code === baseText) {
         programToReturn = hashTable[hash].program;
@@ -470,24 +480,25 @@ export default class Shader {
 
       // register it to shaderHashTable.
       var indexStr = null;
-      if (typeof hashTable[hash] !== &quot;undefined&quot; &amp;&amp; hashTable[hash].collisionN &gt; 0) {
+      if (typeof hashTable[hash] !== &apos;undefined&apos; &amp;&amp; hashTable[hash].collisionN &gt; 0) {
         indexStr = hash + &apos;_&apos; + hashTable[hash].collisionN;
       } else {
         indexStr = hash;
       }
       hashTable[indexStr] = {code:baseText, program:programToReturn, collisionN:0};
-      Shader._shaderHashTable[gl._canvas.id] = hashTable;
+      Shader._shaderHashTable[canvas.id] = hashTable;
     } else {
       //gl.useProgram(programToReturn);
     }
-    programToReturn.optimizedVertexAttribs = this._prepareAssetsForShaders(gl, programToReturn, vertexAttribs, existCamera_f, lights);
+    programToReturn.optimizedVertexAttribs = this._prepareAssetsForShaders(gl, programToReturn, vertexAttribs, existCamera_f, lights, canvas);
 
     return programToReturn;
   }
 
-  static getDefaultPointLightIfNotExsist(gl, lights) {
+  static getDefaultPointLightIfNotExsist(gl, lights, canvas) {
+
     if (lights.length === 0) {
-      return [new PointLight(GLBoost.DEFAULT_POINTLIGHT_INTENSITY, gl._canvas)]
+      return [new PointLight(GLBoost.DEFAULT_POINTLIGHT_INTENSITY, canvas)]
     } else {
       return lights;
     }
@@ -498,7 +509,7 @@ export default class Shader {
   }
 
   static isThisGLVersion_2(gl) {
-    if (typeof WebGL2RenderingContext === &quot;undefined&quot;) {
+    if (typeof WebGL2RenderingContext === &apos;undefined&apos;) {
       return false;
     }
     return gl instanceof WebGL2RenderingContext;
@@ -506,6 +517,10 @@ export default class Shader {
 
   static _glslVer(gl) {
     return GLBoost.isThisGLVersion_2(gl) ? &apos;#version 300 es\n&apos; : &apos;&apos;;
+  }
+
+  static _glsl1DrawBufferExt(gl) {
+    return !GLBoost.isThisGLVersion_2(gl) ? &apos;#extension GL_EXT_draw_buffers : require\n&apos; : &apos;&apos;;
   }
 
   static _in_onVert(gl) {
@@ -522,12 +537,15 @@ export default class Shader {
     return GLBoost.isThisGLVersion_2(gl) ? &apos;texture&apos; : &apos;texture2D&apos;;
   }
 
-  static _set_outColor_onFrag(gl) {
-    return GLBoost.isThisGLVersion_2(gl) ? &apos;layout(location = 0) out vec4 rt1;&apos; : &apos;vec4 rt1;&apos;;
+  static _set_outColor_onFrag(gl, i) {
+    return GLBoost.isThisGLVersion_2(gl) ? `layout(location = ${i}) out vec4 rt${i};\n` : `vec4 rt${i};\n`;
   }
 
   static _set_glFragColor_inGLVer1(gl) {
-    return !GLBoost.isThisGLVersion_2(gl) ? &apos;  gl_FragColor = rt1;\n&apos; : &apos;&apos;;
+    return !GLBoost.isThisGLVersion_2(gl) ? &apos;  gl_FragColor = rt0;\n&apos; : &apos;&apos;;
+  }
+  static _set_glFragData_inGLVer1(gl, i) {
+    return !GLBoost.isThisGLVersion_2(gl) ? `  gl_FragData[${i}] = rt${i};\n` : &apos;&apos;;
   }
 }
 

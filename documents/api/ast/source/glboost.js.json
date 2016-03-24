@@ -69,8 +69,8 @@
           "column": 0
         },
         "end": {
-          "line": 2,
-          "column": 0
+          "line": 1,
+          "column": 34
         }
       }
     },
@@ -83,8 +83,8 @@
             "type": "Identifier",
             "name": "Scene",
             "range": [
-              41,
-              46
+              42,
+              47
             ],
             "loc": {
               "start": {
@@ -98,8 +98,8 @@
             }
           },
           "range": [
-            41,
-            46
+            42,
+            47
           ],
           "loc": {
             "start": {
@@ -118,8 +118,8 @@
         "value": "./Scene",
         "raw": "'./Scene'",
         "range": [
-          52,
-          61
+          53,
+          62
         ],
         "loc": {
           "start": {
@@ -133,8 +133,8 @@
         }
       },
       "range": [
-        34,
-        62
+        35,
+        63
       ],
       "loc": {
         "start": {
@@ -142,8 +142,8 @@
           "column": 0
         },
         "end": {
-          "line": 3,
-          "column": 0
+          "line": 2,
+          "column": 28
         }
       }
     },
@@ -156,8 +156,8 @@
             "type": "Identifier",
             "name": "Vector2",
             "range": [
-              69,
-              76
+              71,
+              78
             ],
             "loc": {
               "start": {
@@ -171,8 +171,8 @@
             }
           },
           "range": [
-            69,
-            76
+            71,
+            78
           ],
           "loc": {
             "start": {
@@ -191,8 +191,8 @@
         "value": "./math/Vector2",
         "raw": "'./math/Vector2'",
         "range": [
-          82,
-          98
+          84,
+          100
         ],
         "loc": {
           "start": {
@@ -206,8 +206,8 @@
         }
       },
       "range": [
-        62,
-        99
+        64,
+        101
       ],
       "loc": {
         "start": {
@@ -215,8 +215,8 @@
           "column": 0
         },
         "end": {
-          "line": 4,
-          "column": 0
+          "line": 3,
+          "column": 37
         }
       }
     },
@@ -229,8 +229,8 @@
             "type": "Identifier",
             "name": "Vector3",
             "range": [
-              106,
-              113
+              109,
+              116
             ],
             "loc": {
               "start": {
@@ -244,8 +244,8 @@
             }
           },
           "range": [
-            106,
-            113
+            109,
+            116
           ],
           "loc": {
             "start": {
@@ -264,8 +264,8 @@
         "value": "./math/Vector3",
         "raw": "'./math/Vector3'",
         "range": [
-          119,
-          135
+          122,
+          138
         ],
         "loc": {
           "start": {
@@ -279,8 +279,8 @@
         }
       },
       "range": [
-        99,
-        136
+        102,
+        139
       ],
       "loc": {
         "start": {
@@ -288,8 +288,8 @@
           "column": 0
         },
         "end": {
-          "line": 5,
-          "column": 0
+          "line": 4,
+          "column": 37
         }
       }
     },
@@ -302,8 +302,8 @@
             "type": "Identifier",
             "name": "Vector4",
             "range": [
-              143,
-              150
+              147,
+              154
             ],
             "loc": {
               "start": {
@@ -317,8 +317,8 @@
             }
           },
           "range": [
-            143,
-            150
+            147,
+            154
           ],
           "loc": {
             "start": {
@@ -337,8 +337,8 @@
         "value": "./math/Vector4",
         "raw": "'./math/Vector4'",
         "range": [
-          156,
-          172
+          160,
+          176
         ],
         "loc": {
           "start": {
@@ -352,8 +352,8 @@
         }
       },
       "range": [
-        136,
-        173
+        140,
+        177
       ],
       "loc": {
         "start": {
@@ -361,8 +361,8 @@
           "column": 0
         },
         "end": {
-          "line": 6,
-          "column": 0
+          "line": 5,
+          "column": 37
         }
       }
     },
@@ -375,8 +375,8 @@
             "type": "Identifier",
             "name": "ClassicMaterial",
             "range": [
-              180,
-              195
+              185,
+              200
             ],
             "loc": {
               "start": {
@@ -390,8 +390,8 @@
             }
           },
           "range": [
-            180,
-            195
+            185,
+            200
           ],
           "loc": {
             "start": {
@@ -410,8 +410,8 @@
         "value": "./ClassicMaterial",
         "raw": "'./ClassicMaterial'",
         "range": [
-          201,
-          220
+          206,
+          225
         ],
         "loc": {
           "start": {
@@ -425,8 +425,8 @@
         }
       },
       "range": [
-        173,
-        221
+        178,
+        226
       ],
       "loc": {
         "start": {
@@ -434,8 +434,8 @@
           "column": 0
         },
         "end": {
-          "line": 7,
-          "column": 0
+          "line": 6,
+          "column": 48
         }
       }
     },
@@ -448,8 +448,8 @@
             "type": "Identifier",
             "name": "Texture",
             "range": [
-              228,
-              235
+              234,
+              241
             ],
             "loc": {
               "start": {
@@ -463,8 +463,8 @@
             }
           },
           "range": [
-            228,
-            235
+            234,
+            241
           ],
           "loc": {
             "start": {
@@ -483,8 +483,8 @@
         "value": "./textures/Texture",
         "raw": "'./textures/Texture'",
         "range": [
-          241,
-          261
+          247,
+          267
         ],
         "loc": {
           "start": {
@@ -498,8 +498,8 @@
         }
       },
       "range": [
-        221,
-        262
+        227,
+        268
       ],
       "loc": {
         "start": {
@@ -507,8 +507,8 @@
           "column": 0
         },
         "end": {
-          "line": 8,
-          "column": 0
+          "line": 7,
+          "column": 41
         }
       }
     },
@@ -521,8 +521,8 @@
             "type": "Identifier",
             "name": "Camera",
             "range": [
-              269,
-              275
+              276,
+              282
             ],
             "loc": {
               "start": {
@@ -536,8 +536,8 @@
             }
           },
           "range": [
-            269,
-            275
+            276,
+            282
           ],
           "loc": {
             "start": {
@@ -556,8 +556,8 @@
         "value": "./Camera",
         "raw": "'./Camera'",
         "range": [
-          281,
-          291
+          288,
+          298
         ],
         "loc": {
           "start": {
@@ -571,8 +571,8 @@
         }
       },
       "range": [
-        262,
-        292
+        269,
+        299
       ],
       "loc": {
         "start": {
@@ -580,8 +580,8 @@
           "column": 0
         },
         "end": {
-          "line": 9,
-          "column": 0
+          "line": 8,
+          "column": 30
         }
       }
     },
@@ -594,8 +594,8 @@
             "type": "Identifier",
             "name": "BlendShapeGeometry",
             "range": [
-              299,
-              317
+              307,
+              325
             ],
             "loc": {
               "start": {
@@ -609,8 +609,8 @@
             }
           },
           "range": [
-            299,
-            317
+            307,
+            325
           ],
           "loc": {
             "start": {
@@ -629,8 +629,8 @@
         "value": "./BlendShapeGeometry",
         "raw": "'./BlendShapeGeometry'",
         "range": [
-          323,
-          345
+          331,
+          353
         ],
         "loc": {
           "start": {
@@ -644,8 +644,8 @@
         }
       },
       "range": [
-        292,
-        346
+        300,
+        354
       ],
       "loc": {
         "start": {
@@ -653,8 +653,8 @@
           "column": 0
         },
         "end": {
-          "line": 10,
-          "column": 0
+          "line": 9,
+          "column": 54
         }
       }
     },
@@ -667,8 +667,8 @@
             "type": "Identifier",
             "name": "ObjLoader",
             "range": [
-              353,
-              362
+              362,
+              371
             ],
             "loc": {
               "start": {
@@ -682,8 +682,8 @@
             }
           },
           "range": [
-            353,
-            362
+            362,
+            371
           ],
           "loc": {
             "start": {
@@ -702,8 +702,8 @@
         "value": "./loader/ObjLoader",
         "raw": "'./loader/ObjLoader'",
         "range": [
-          368,
-          388
+          377,
+          397
         ],
         "loc": {
           "start": {
@@ -717,8 +717,8 @@
         }
       },
       "range": [
-        346,
-        389
+        355,
+        398
       ],
       "loc": {
         "start": {
@@ -726,8 +726,8 @@
           "column": 0
         },
         "end": {
-          "line": 11,
-          "column": 0
+          "line": 10,
+          "column": 43
         }
       }
     },
@@ -740,8 +740,8 @@
             "type": "Identifier",
             "name": "InitialSettings",
             "range": [
-              396,
-              411
+              406,
+              421
             ],
             "loc": {
               "start": {
@@ -755,8 +755,8 @@
             }
           },
           "range": [
-            396,
-            411
+            406,
+            421
           ],
           "loc": {
             "start": {
@@ -775,8 +775,8 @@
         "value": "./InitialSettings",
         "raw": "'./InitialSettings'",
         "range": [
-          417,
-          436
+          427,
+          446
         ],
         "loc": {
           "start": {
@@ -790,8 +790,8 @@
         }
       },
       "range": [
-        389,
-        437
+        399,
+        447
       ],
       "loc": {
         "start": {
@@ -799,8 +799,8 @@
           "column": 0
         },
         "end": {
-          "line": 12,
-          "column": 0
+          "line": 11,
+          "column": 48
         }
       }
     },
@@ -813,8 +813,8 @@
             "type": "Identifier",
             "name": "Plane",
             "range": [
-              444,
-              449
+              455,
+              460
             ],
             "loc": {
               "start": {
@@ -828,8 +828,8 @@
             }
           },
           "range": [
-            444,
-            449
+            455,
+            460
           ],
           "loc": {
             "start": {
@@ -848,8 +848,8 @@
         "value": "./primitives/Plane",
         "raw": "'./primitives/Plane'",
         "range": [
-          455,
-          475
+          466,
+          486
         ],
         "loc": {
           "start": {
@@ -863,8 +863,8 @@
         }
       },
       "range": [
-        437,
-        476
+        448,
+        487
       ],
       "loc": {
         "start": {
@@ -872,8 +872,8 @@
           "column": 0
         },
         "end": {
-          "line": 13,
-          "column": 0
+          "line": 12,
+          "column": 39
         }
       }
     },
@@ -886,8 +886,8 @@
             "type": "Identifier",
             "name": "Cube",
             "range": [
-              483,
-              487
+              495,
+              499
             ],
             "loc": {
               "start": {
@@ -901,8 +901,8 @@
             }
           },
           "range": [
-            483,
-            487
+            495,
+            499
           ],
           "loc": {
             "start": {
@@ -921,8 +921,8 @@
         "value": "./primitives/Cube",
         "raw": "'./primitives/Cube'",
         "range": [
-          493,
-          512
+          505,
+          524
         ],
         "loc": {
           "start": {
@@ -936,8 +936,8 @@
         }
       },
       "range": [
-        476,
-        513
+        488,
+        525
       ],
       "loc": {
         "start": {
@@ -945,8 +945,8 @@
           "column": 0
         },
         "end": {
-          "line": 14,
-          "column": 0
+          "line": 13,
+          "column": 37
         }
       }
     },
@@ -959,8 +959,8 @@
             "type": "Identifier",
             "name": "Sphere",
             "range": [
-              520,
-              526
+              533,
+              539
             ],
             "loc": {
               "start": {
@@ -974,8 +974,8 @@
             }
           },
           "range": [
-            520,
-            526
+            533,
+            539
           ],
           "loc": {
             "start": {
@@ -994,8 +994,8 @@
         "value": "./primitives/Sphere",
         "raw": "'./primitives/Sphere'",
         "range": [
-          532,
-          553
+          545,
+          566
         ],
         "loc": {
           "start": {
@@ -1009,8 +1009,8 @@
         }
       },
       "range": [
-        513,
-        554
+        526,
+        567
       ],
       "loc": {
         "start": {
@@ -1018,8 +1018,8 @@
           "column": 0
         },
         "end": {
-          "line": 15,
-          "column": 0
+          "line": 14,
+          "column": 41
         }
       }
     },
@@ -1032,8 +1032,8 @@
             "type": "Identifier",
             "name": "Particle",
             "range": [
-              561,
-              569
+              575,
+              583
             ],
             "loc": {
               "start": {
@@ -1047,8 +1047,8 @@
             }
           },
           "range": [
-            561,
-            569
+            575,
+            583
           ],
           "loc": {
             "start": {
@@ -1067,8 +1067,8 @@
         "value": "./primitives/Particle",
         "raw": "'./primitives/Particle'",
         "range": [
-          575,
-          598
+          589,
+          612
         ],
         "loc": {
           "start": {
@@ -1082,8 +1082,8 @@
         }
       },
       "range": [
-        554,
-        599
+        568,
+        613
       ],
       "loc": {
         "start": {
@@ -1091,8 +1091,8 @@
           "column": 0
         },
         "end": {
-          "line": 16,
-          "column": 0
+          "line": 15,
+          "column": 45
         }
       }
     },
@@ -1105,8 +1105,8 @@
             "type": "Identifier",
             "name": "Group",
             "range": [
-              606,
-              611
+              621,
+              626
             ],
             "loc": {
               "start": {
@@ -1120,8 +1120,8 @@
             }
           },
           "range": [
-            606,
-            611
+            621,
+            626
           ],
           "loc": {
             "start": {
@@ -1140,8 +1140,8 @@
         "value": "./Group",
         "raw": "'./Group'",
         "range": [
-          617,
-          626
+          632,
+          641
         ],
         "loc": {
           "start": {
@@ -1155,8 +1155,8 @@
         }
       },
       "range": [
-        599,
-        627
+        614,
+        642
       ],
       "loc": {
         "start": {
@@ -1164,8 +1164,8 @@
           "column": 0
         },
         "end": {
-          "line": 17,
-          "column": 0
+          "line": 16,
+          "column": 28
         }
       }
     },
@@ -1178,8 +1178,8 @@
             "type": "Identifier",
             "name": "GLTFLoader",
             "range": [
-              634,
-              644
+              650,
+              660
             ],
             "loc": {
               "start": {
@@ -1193,8 +1193,8 @@
             }
           },
           "range": [
-            634,
-            644
+            650,
+            660
           ],
           "loc": {
             "start": {
@@ -1213,8 +1213,8 @@
         "value": "./loader/GLTFLoader",
         "raw": "'./loader/GLTFLoader'",
         "range": [
-          650,
-          671
+          666,
+          687
         ],
         "loc": {
           "start": {
@@ -1228,8 +1228,8 @@
         }
       },
       "range": [
-        627,
-        672
+        643,
+        688
       ],
       "loc": {
         "start": {
@@ -1237,8 +1237,8 @@
           "column": 0
         },
         "end": {
-          "line": 18,
-          "column": 0
+          "line": 17,
+          "column": 45
         }
       }
     },
@@ -1251,8 +1251,8 @@
             "type": "Identifier",
             "name": "GLBoost",
             "range": [
-              679,
-              686
+              696,
+              703
             ],
             "loc": {
               "start": {
@@ -1266,8 +1266,8 @@
             }
           },
           "range": [
-            679,
-            686
+            696,
+            703
           ],
           "loc": {
             "start": {
@@ -1286,8 +1286,8 @@
         "value": "./plugins/phina.glboost",
         "raw": "'./plugins/phina.glboost'",
         "range": [
-          692,
-          717
+          709,
+          734
         ],
         "loc": {
           "start": {
@@ -1301,8 +1301,8 @@
         }
       },
       "range": [
-        672,
-        717
+        689,
+        735
       ],
       "loc": {
         "start": {
@@ -1311,7 +1311,7 @@
         },
         "end": {
           "line": 18,
-          "column": 45
+          "column": 46
         }
       }
     }
@@ -1319,7 +1319,7 @@
   "sourceType": "module",
   "range": [
     0,
-    717
+    735
   ],
   "loc": {
     "start": {
@@ -1328,7 +1328,7 @@
     },
     "end": {
       "line": 18,
-      "column": 45
+      "column": 46
     }
   },
   "comments": []

@@ -86,10 +86,10 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">js/RenderPass.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import GLBoost from &apos;./globals&apos;
-import GLContext from &apos;./GLContext&apos;
-import Mesh from &apos;./Mesh&apos;
-import Group from &apos;./Group&apos;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import GLBoost from &apos;./globals&apos;;
+import GLContext from &apos;./GLContext&apos;;
+import Mesh from &apos;./Mesh&apos;;
+import Group from &apos;./Group&apos;;
 
 
 export default class RenderPass {
@@ -99,15 +99,20 @@ export default class RenderPass {
     this._meshes = [];
     this._drawBuffers = [gl.BACK];
     this._clearColor = null;
+    this._renderTargetTextures = null;
   }
 
   addElements(elements) {
     elements.forEach((elem)=&gt;{
       if(!(elem instanceof Mesh || elem instanceof Group)) {
-        throw new TypeError(&quot;RenderPass accepts Mesh or Group element only.&quot;);
+        throw new TypeError(&apos;RenderPass accepts Mesh or Group element only.&apos;);
       }
       this._elements.push(elem);
     });
+  }
+
+  clearElements() {
+    this._elements.length = 0;
   }
 
   get elements() {
@@ -126,13 +131,27 @@ export default class RenderPass {
       renderTargetTextures.forEach((texture)=&gt;{
         this._drawBuffers.push(texture.colorAttachiment);
       });
+      this._renderTargetTextures = renderTargetTextures;
     } else {
       this._drawBuffers = [gl.BACK];
     }
+
   }
 
   get buffersToDraw() {
     return this._drawBuffers;
+  }
+
+  get fboOfRenderTargetTextures() {
+    if (this._renderTargetTextures) {
+      return this._renderTargetTextures[0].fbo;
+    } else {
+      return null;
+    }
+  }
+
+  get renderTargetTextures() {
+    return this._renderTargetTextures;
   }
 
   setClearColor(color) {
@@ -150,7 +169,7 @@ export default class RenderPass {
         var meshes = [];
         children.forEach(function(child) {
           var childMeshes = collectMeshes(child);
-          meshes = meshes.concat(childMeshes)
+          meshes = meshes.concat(childMeshes);
         });
         return meshes;
       } else if (elem instanceof Mesh) {
@@ -165,9 +184,18 @@ export default class RenderPass {
       this._meshes = this._meshes.concat(collectMeshes(elm));
     });
   }
+
+  containsMeshAfterPrepareForRender(mesh) {
+    for(let i=0; i&lt;this._meshes.length; i++) {
+      if (this._meshes[i] === mesh) {
+        return true;
+      }
+    }
+    return false;
+  }
 }
 
-GLBoost[&quot;RenderPass&quot;] = RenderPass;
+GLBoost[&apos;RenderPass&apos;] = RenderPass;
 </code></pre>
 
 </div>

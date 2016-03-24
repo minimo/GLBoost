@@ -86,8 +86,8 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">js/GLContext.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import GLContextWebGL1Impl from &apos;./impl/GLContextWebGL1Impl&apos;
-import GLContextWebGL2Impl from &apos;./impl/GLContextWebGL2Impl&apos;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import GLContextWebGL1Impl from &apos;./impl/GLContextWebGL1Impl&apos;;
+import GLContextWebGL2Impl from &apos;./impl/GLContextWebGL2Impl&apos;;
 
 export default class GLContext {
 
@@ -107,13 +107,17 @@ export default class GLContext {
 
   static getInstance(canvas) {
     if (typeof canvas === &apos;string&apos;) {
-      var canvas = window.document.querySelector(canvas);
+      canvas = window.document.querySelector(canvas);
     }
     return new GLContext(canvas);
   }
 
   get gl() {
     return this.impl.gl;
+  }
+
+  get canvas() {
+    return this.impl.canvas;
   }
 
 }

@@ -105,11 +105,6 @@ export default class GLContextImpl {
     }
 
     this._canvas = canvas;
-    this._canvas._gl = null; // &#x3053;&#x3053;&#x3067;null&#x3092;&#x5165;&#x308C;&#x3066;&#x304A;&#x304B;&#x306A;&#x3044;&#x3068;&#x3001;&#x5F8C;&#x6BB5;&#x306E;this.gl === undefined&#x306E;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x304C;&#x3046;&#x307E;&#x304F;&#x3044;&#x304B;&#x306A;&#x3044;
-
-    if (this.gl === undefined) {
-      throw new TypeError(&quot;Must override gl getter.&quot;);
-    }
 
   }
 
@@ -128,9 +123,15 @@ export default class GLContextImpl {
       throw new Error(&quot;Unexpected rendering context.&quot;);
     }
 
-    gl._canvas = this._canvas;
-    this._canvas._gl = gl;
+    this._gl = gl;
+  }
 
+  get gl() {
+    return this._gl;
+  }
+
+  get canvas() {
+    return this._canvas;
   }
 
 }

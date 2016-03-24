@@ -86,15 +86,15 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">js/shaders/HalfLambertShader.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Shader from &apos;./Shader&apos;
-import SimpleShader from &apos;./SimpleShader&apos;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Shader from &apos;./Shader&apos;;
+import SimpleShader from &apos;./SimpleShader&apos;;
 
 export class HalfLambertShaderSource {
   VSDefine_HalfLambertShaderSource(in_, out_, f, lights) {
     var shaderText = &apos;&apos;;
     if (Shader._exist(f, GLBoost.NORMAL)) {
       shaderText += `${in_} vec3 aVertex_normal;\n`;
-      shaderText += `${out_} vec3 normal;\n`;
+      shaderText += `${out_} vec3 v_normal;\n`;
     }
     shaderText += `${out_} vec4 position;\n`;
 
@@ -105,7 +105,7 @@ export class HalfLambertShaderSource {
     var shaderText = &apos;&apos;;
 
     shaderText += &apos;  position = vec4(aVertex_position, 1.0);\n&apos;;
-    shaderText += &apos;  normal = aVertex_normal;\n&apos;;
+    shaderText += &apos;  v_normal = aVertex_normal;\n&apos;;
 
     return shaderText;
   }
@@ -113,7 +113,7 @@ export class HalfLambertShaderSource {
   FSDefine_HalfLambertShaderSource(in_, f, lights) {
     var shaderText = &apos;&apos;;
     if (Shader._exist(f, GLBoost.NORMAL)) {
-      shaderText += `${in_} vec3 normal;\n`;
+      shaderText += `${in_} vec3 v_normal;\n`;
     }
     shaderText += `${in_} vec4 position;\n`;
     shaderText += `uniform vec4 lightPosition[${lights.length}];\n`;
@@ -126,24 +126,25 @@ export class HalfLambertShaderSource {
   FSShade_HalfLambertShaderSource(f, gl, lights) {
     var shaderText = &apos;&apos;;
 
-    shaderText += &apos;  vec4 surfaceColor = rt1;\n&apos;;
-    shaderText += &apos;  rt1 = vec4(0.0, 0.0, 0.0, 0.0);\n&apos;;
+    shaderText += &apos;  vec4 surfaceColor = rt0;\n&apos;;
+    shaderText += &apos;  rt0 = vec4(0.0, 0.0, 0.0, 0.0);\n&apos;;
+    shaderText += &apos;  vec3 normal = normalize(v_normal);\n&apos;;
 
     shaderText += `  for (int i=0; i&lt;${lights.length}; i++) {\n`;
     // if PointLight: lightPosition[i].w === 1.0      if DirectionalLight: lightPosition[i].w === 0.0
     shaderText += &apos;    vec3 light = normalize(lightPosition[i].xyz - position.xyz * lightPosition[i].w);\n&apos;;
     shaderText += &apos;    float halfLambert = dot(light, normal)*0.5+0.5;\n&apos;;
     shaderText += &apos;    float diffuse = halfLambert*halfLambert;\n&apos;;
-    shaderText += &apos;    rt1 += Kd * lightDiffuse[i] * vec4(diffuse, diffuse, diffuse, 1.0) * surfaceColor;\n&apos;;
+    shaderText += &apos;    rt0 += Kd * lightDiffuse[i] * vec4(diffuse, diffuse, diffuse, 1.0) * surfaceColor;\n&apos;;
     shaderText += &apos;  }\n&apos;;
-    //shaderText += &apos;  rt1.a = 1.0;\n&apos;;
-    //shaderText += &apos;  rt1 = vec4(position.xyz, 1.0);\n&apos;;
+    //shaderText += &apos;  rt0.a = 1.0;\n&apos;;
+    //shaderText += &apos;  rt0 = vec4(position.xyz, 1.0);\n&apos;;
 
 
     return shaderText;
   }
 
-  prepare_HalfLambertShaderSource(gl, shaderProgram, vertexAttribs, existCamera_f, lights) {
+  prepare_HalfLambertShaderSource(gl, shaderProgram, vertexAttribs, existCamera_f, lights, canvas) {
 
     var vertexAttribsAsResult = [];
     vertexAttribs.forEach((attribName)=&gt;{
@@ -156,7 +157,7 @@ export class HalfLambertShaderSource {
 
     shaderProgram.Kd = gl.getUniformLocation(shaderProgram, &apos;Kd&apos;);
 
-    lights = Shader.getDefaultPointLightIfNotExsist(gl, lights);
+    lights = Shader.getDefaultPointLightIfNotExsist(gl, lights, canvas);
 
     for(let i=0; i&lt;lights.length; i++) {
       shaderProgram[&apos;lightPosition_&apos;+i] = gl.getUniformLocation(shaderProgram, `lightPosition[${i}]`);
@@ -184,7 +185,7 @@ export default class HalfLambertShader extends SimpleShader {
   }
 }
 
-GLBoost[&quot;HalfLambertShader&quot;] = HalfLambertShader;
+GLBoost[&apos;HalfLambertShader&apos;] = HalfLambertShader;
 </code></pre>
 
 </div>

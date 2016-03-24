@@ -86,41 +86,41 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">js/globals.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">window.GLBoost = window.GLBoost || { REVISION: &apos;1&apos; };
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">var global = (&apos;global&apos;,eval)(&apos;this&apos;);
 
-var global = window;
+global.GLBoost = global.GLBoost || { REVISION: &apos;1&apos; };
 
-global.GLBoost[&quot;POSITION&quot;] = &apos;position&apos;;
-global.GLBoost[&quot;COLOR&quot;] = &apos;color&apos;;
-global.GLBoost[&quot;NORMAL&quot;] = &apos;normal&apos;;
-global.GLBoost[&quot;TEXCOORD&quot;] = &apos;texcoord&apos;;
-global.GLBoost[&quot;POINTS&quot;] = &apos;POINTS&apos;;
-global.GLBoost[&quot;LINES&quot;] = &apos;LINES&apos;;
-global.GLBoost[&quot;LINE_STRIP&quot;] = &apos;LINE_STRIP&apos;;
-global.GLBoost[&quot;LINE_LOOP&quot;] = &apos;LINE_LOOP&apos;;
-global.GLBoost[&quot;TRIANGLES&quot;] = &apos;TRIANGLES&apos;;
-global.GLBoost[&quot;TRIANGLE_STRIP&quot;] = &apos;TRIANGLE_STRIP&apos;;
-global.GLBoost[&quot;STATIC_DRAW&quot;] = &apos;STATIC_DRAW&apos;;
-global.GLBoost[&quot;STREAM_DRAW&quot;] = &apos;STREAM_DRAW&apos;;
-global.GLBoost[&quot;DYNAMIC_DRAW&quot;] = &apos;DYNAMIC_DRAW&apos;;
-global.GLBoost[&quot;BLENDTARGET1&quot;] = &apos;shapetarget_1&apos;;
-global.GLBoost[&quot;BLENDTARGET2&quot;] = &apos;shapetarget_2&apos;;
-global.GLBoost[&quot;BLENDTARGET3&quot;] = &apos;shapetarget_3&apos;;
-global.GLBoost[&quot;BLENDTARGET4&quot;] = &apos;shapetarget_4&apos;;
-global.GLBoost[&quot;BLENDTARGET5&quot;] = &apos;shapetarget_5&apos;;
-global.GLBoost[&quot;BLENDTARGET6&quot;] = &apos;shapetarget_6&apos;;
-global.GLBoost[&quot;BLENDTARGET7&quot;] = &apos;shapetarget_7&apos;;
-global.GLBoost[&quot;BLENDTARGET8&quot;] = &apos;shapetarget_8&apos;;
-global.GLBoost[&quot;BLENDTARGET9&quot;] = &apos;shapetarget_9&apos;;
-global.GLBoost[&quot;BLENDTARGET10&quot;] = &apos;shapetarget_10&apos;;
-global.GLBoost[&quot;RADIAN&quot;] = &apos;radian&apos;;
-global.GLBoost[&quot;DEGREE&quot;] = &apos;degree&apos;;
+global.GLBoost[&apos;POSITION&apos;] = &apos;position&apos;;
+global.GLBoost[&apos;COLOR&apos;] = &apos;color&apos;;
+global.GLBoost[&apos;NORMAL&apos;] = &apos;normal&apos;;
+global.GLBoost[&apos;TEXCOORD&apos;] = &apos;texcoord&apos;;
+global.GLBoost[&apos;POINTS&apos;] = &apos;POINTS&apos;;
+global.GLBoost[&apos;LINES&apos;] = &apos;LINES&apos;;
+global.GLBoost[&apos;LINE_STRIP&apos;] = &apos;LINE_STRIP&apos;;
+global.GLBoost[&apos;LINE_LOOP&apos;] = &apos;LINE_LOOP&apos;;
+global.GLBoost[&apos;TRIANGLES&apos;] = &apos;TRIANGLES&apos;;
+global.GLBoost[&apos;TRIANGLE_STRIP&apos;] = &apos;TRIANGLE_STRIP&apos;;
+global.GLBoost[&apos;STATIC_DRAW&apos;] = &apos;STATIC_DRAW&apos;;
+global.GLBoost[&apos;STREAM_DRAW&apos;] = &apos;STREAM_DRAW&apos;;
+global.GLBoost[&apos;DYNAMIC_DRAW&apos;] = &apos;DYNAMIC_DRAW&apos;;
+global.GLBoost[&apos;BLENDTARGET1&apos;] = &apos;shapetarget_1&apos;;
+global.GLBoost[&apos;BLENDTARGET2&apos;] = &apos;shapetarget_2&apos;;
+global.GLBoost[&apos;BLENDTARGET3&apos;] = &apos;shapetarget_3&apos;;
+global.GLBoost[&apos;BLENDTARGET4&apos;] = &apos;shapetarget_4&apos;;
+global.GLBoost[&apos;BLENDTARGET5&apos;] = &apos;shapetarget_5&apos;;
+global.GLBoost[&apos;BLENDTARGET6&apos;] = &apos;shapetarget_6&apos;;
+global.GLBoost[&apos;BLENDTARGET7&apos;] = &apos;shapetarget_7&apos;;
+global.GLBoost[&apos;BLENDTARGET8&apos;] = &apos;shapetarget_8&apos;;
+global.GLBoost[&apos;BLENDTARGET9&apos;] = &apos;shapetarget_9&apos;;
+global.GLBoost[&apos;BLENDTARGET10&apos;] = &apos;shapetarget_10&apos;;
+global.GLBoost[&apos;RADIAN&apos;] = &apos;radian&apos;;
+global.GLBoost[&apos;DEGREE&apos;] = &apos;degree&apos;;
 
 
 export default global.GLBoost;
 
 global.GLBoost.isThisGLVersion_2 = function(gl) {
-  if (typeof WebGL2RenderingContext === &quot;undefined&quot;) {
+  if (typeof WebGL2RenderingContext === &apos;undefined&apos;) {
     return false;
   }
   return gl instanceof WebGL2RenderingContext;

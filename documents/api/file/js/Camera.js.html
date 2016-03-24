@@ -86,10 +86,10 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">js/Camera.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import GLBoost from &apos;./globals&apos;
-import Vector3 from &apos;./math/Vector3&apos;
-import Element from &apos;./Element&apos;
-import Matrix44 from &apos;./math/Matrix44&apos;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import GLBoost from &apos;./globals&apos;;
+import Vector3 from &apos;./math/Vector3&apos;;
+import Element from &apos;./Element&apos;;
+import Matrix44 from &apos;./math/Matrix44&apos;;
 
 export default class Camera extends Element {
   constructor(lookat, perspective) {
@@ -104,13 +104,12 @@ export default class Camera extends Element {
     this._zNear = perspective.zNear;
     this._zFar = perspective.zFar;
 
-    this.setAsMainCamera();
-
     this._dirtyView = true;
     this._dirtyAsElement = true;
     this._updateCountAsCameraView = 0;
     this._dirtyProjection = true;
     this._updateCountAsCameraProjection = 0;
+    this._mainCamera = {};
   }
 
   _needUpdateView() {
@@ -177,12 +176,12 @@ export default class Camera extends Element {
 
   }
 
-  setAsMainCamera() {
-    Camera._mainCamera = this;
+  setAsMainCamera(scene) {
+    this._mainCamera[scene.toString()] = this;
   }
 
-  get isMainCamera() {
-    return Camera._mainCamera === this;
+  isMainCamera(scene) {
+    return this._mainCamera[scene.toString()] === this;
   }
 
   set translate(vec) {
@@ -278,7 +277,7 @@ export default class Camera extends Element {
 }
 Camera._mainCamera = null;
 
-GLBoost[&quot;Camera&quot;] = Camera;
+GLBoost[&apos;Camera&apos;] = Camera;
 </code></pre>
 
 </div>

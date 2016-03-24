@@ -69,8 +69,8 @@
           "column": 0
         },
         "end": {
-          "line": 2,
-          "column": 0
+          "line": 1,
+          "column": 61
         }
       }
     },
@@ -83,8 +83,8 @@
             "type": "Identifier",
             "name": "GLContextWebGL2Impl",
             "range": [
-              68,
-              87
+              69,
+              88
             ],
             "loc": {
               "start": {
@@ -98,8 +98,8 @@
             }
           },
           "range": [
-            68,
-            87
+            69,
+            88
           ],
           "loc": {
             "start": {
@@ -118,8 +118,8 @@
         "value": "./impl/GLContextWebGL2Impl",
         "raw": "'./impl/GLContextWebGL2Impl'",
         "range": [
-          93,
-          121
+          94,
+          122
         ],
         "loc": {
           "start": {
@@ -133,7 +133,7 @@
         }
       },
       "range": [
-        61,
+        62,
         123
       ],
       "loc": {
@@ -142,8 +142,8 @@
           "column": 0
         },
         "end": {
-          "line": 4,
-          "column": 0
+          "line": 2,
+          "column": 61
         }
       }
     },
@@ -155,8 +155,8 @@
           "type": "Identifier",
           "name": "GLContext",
           "range": [
-            144,
-            153
+            146,
+            155
           ],
           "loc": {
             "start": {
@@ -179,8 +179,8 @@
                 "type": "Identifier",
                 "name": "constructor",
                 "range": [
-                  159,
-                  170
+                  161,
+                  172
                 ],
                 "loc": {
                   "start": {
@@ -201,8 +201,8 @@
                     "type": "Identifier",
                     "name": "canvas",
                     "range": [
-                      171,
-                      177
+                      173,
+                      179
                     ],
                     "loc": {
                       "start": {
@@ -234,8 +234,8 @@
                               "type": "Identifier",
                               "name": "GLContext",
                               "range": [
-                                189,
-                                198
+                                191,
+                                200
                               ],
                               "loc": {
                                 "start": {
@@ -252,8 +252,8 @@
                               "type": "Identifier",
                               "name": "_instances",
                               "range": [
-                                199,
-                                209
+                                201,
+                                211
                               ],
                               "loc": {
                                 "start": {
@@ -267,8 +267,8 @@
                               }
                             },
                             "range": [
-                              189,
-                              209
+                              191,
+                              211
                             ],
                             "loc": {
                               "start": {
@@ -288,8 +288,8 @@
                               "type": "Identifier",
                               "name": "canvas",
                               "range": [
-                                210,
-                                216
+                                212,
+                                218
                               ],
                               "loc": {
                                 "start": {
@@ -306,8 +306,8 @@
                               "type": "Identifier",
                               "name": "id",
                               "range": [
-                                217,
-                                219
+                                219,
+                                221
                               ],
                               "loc": {
                                 "start": {
@@ -321,8 +321,8 @@
                               }
                             },
                             "range": [
-                              210,
-                              219
+                              212,
+                              221
                             ],
                             "loc": {
                               "start": {
@@ -336,8 +336,8 @@
                             }
                           },
                           "range": [
-                            189,
-                            220
+                            191,
+                            222
                           ],
                           "loc": {
                             "start": {
@@ -354,8 +354,8 @@
                           "type": "Identifier",
                           "name": "GLContext",
                           "range": [
-                            232,
-                            241
+                            234,
+                            243
                           ],
                           "loc": {
                             "start": {
@@ -369,8 +369,8 @@
                           }
                         },
                         "range": [
-                          189,
-                          241
+                          191,
+                          243
                         ],
                         "loc": {
                           "start": {
@@ -398,8 +398,8 @@
                                   "type": "Identifier",
                                   "name": "GLContext",
                                   "range": [
-                                    258,
-                                    267
+                                    260,
+                                    269
                                   ],
                                   "loc": {
                                     "start": {
@@ -416,8 +416,8 @@
                                   "type": "Identifier",
                                   "name": "_instances",
                                   "range": [
-                                    268,
-                                    278
+                                    270,
+                                    280
                                   ],
                                   "loc": {
                                     "start": {
@@ -431,8 +431,8 @@
                                   }
                                 },
                                 "range": [
-                                  258,
-                                  278
+                                  260,
+                                  280
                                 ],
                                 "loc": {
                                   "start": {
@@ -452,8 +452,8 @@
                                   "type": "Identifier",
                                   "name": "canvas",
                                   "range": [
-                                    279,
-                                    285
+                                    281,
+                                    287
                                   ],
                                   "loc": {
                                     "start": {
@@ -470,8 +470,8 @@
                                   "type": "Identifier",
                                   "name": "id",
                                   "range": [
-                                    286,
-                                    288
+                                    288,
+                                    290
                                   ],
                                   "loc": {
                                     "start": {
@@ -485,8 +485,8 @@
                                   }
                                 },
                                 "range": [
-                                  279,
-                                  288
+                                  281,
+                                  290
                                 ],
                                 "loc": {
                                   "start": {
@@ -500,8 +500,8 @@
                                 }
                               },
                               "range": [
-                                258,
-                                289
+                                260,
+                                291
                               ],
                               "loc": {
                                 "start": {
@@ -515,8 +515,8 @@
                               }
                             },
                             "range": [
-                              251,
-                              290
+                              253,
+                              292
                             ],
                             "loc": {
                               "start": {
@@ -531,8 +531,8 @@
                           }
                         ],
                         "range": [
-                          243,
-                          296
+                          245,
+                          298
                         ],
                         "loc": {
                           "start": {
@@ -547,8 +547,8 @@
                       },
                       "alternate": null,
                       "range": [
-                        185,
-                        296
+                        187,
+                        298
                       ],
                       "loc": {
                         "start": {
@@ -573,8 +573,8 @@
                             "type": "Identifier",
                             "name": "GLBoost",
                             "range": [
-                              306,
-                              313
+                              308,
+                              315
                             ],
                             "loc": {
                               "start": {
@@ -591,8 +591,8 @@
                             "type": "Identifier",
                             "name": "TARGET_WEBGL_VERSION",
                             "range": [
-                              314,
-                              334
+                              316,
+                              336
                             ],
                             "loc": {
                               "start": {
@@ -606,8 +606,8 @@
                             }
                           },
                           "range": [
-                            306,
-                            334
+                            308,
+                            336
                           ],
                           "loc": {
                             "start": {
@@ -625,8 +625,8 @@
                           "value": 1,
                           "raw": "1",
                           "range": [
-                            339,
-                            340
+                            341,
+                            342
                           ],
                           "loc": {
                             "start": {
@@ -640,8 +640,8 @@
                           }
                         },
                         "range": [
-                          306,
-                          340
+                          308,
+                          342
                         ],
                         "loc": {
                           "start": {
@@ -668,8 +668,8 @@
                                 "object": {
                                   "type": "ThisExpression",
                                   "range": [
-                                    350,
-                                    354
+                                    352,
+                                    356
                                   ],
                                   "loc": {
                                     "start": {
@@ -686,8 +686,8 @@
                                   "type": "Identifier",
                                   "name": "impl",
                                   "range": [
-                                    355,
-                                    359
+                                    357,
+                                    361
                                   ],
                                   "loc": {
                                     "start": {
@@ -701,8 +701,8 @@
                                   }
                                 },
                                 "range": [
-                                  350,
-                                  359
+                                  352,
+                                  361
                                 ],
                                 "loc": {
                                   "start": {
@@ -721,8 +721,8 @@
                                   "type": "Identifier",
                                   "name": "GLContextWebGL1Impl",
                                   "range": [
-                                    366,
-                                    385
+                                    368,
+                                    387
                                   ],
                                   "loc": {
                                     "start": {
@@ -740,8 +740,8 @@
                                     "type": "Identifier",
                                     "name": "canvas",
                                     "range": [
-                                      386,
-                                      392
+                                      388,
+                                      394
                                     ],
                                     "loc": {
                                       "start": {
@@ -757,8 +757,8 @@
                                   {
                                     "type": "ThisExpression",
                                     "range": [
-                                      394,
-                                      398
+                                      396,
+                                      400
                                     ],
                                     "loc": {
                                       "start": {
@@ -773,8 +773,8 @@
                                   }
                                 ],
                                 "range": [
-                                  362,
-                                  399
+                                  364,
+                                  401
                                 ],
                                 "loc": {
                                   "start": {
@@ -788,8 +788,8 @@
                                 }
                               },
                               "range": [
-                                350,
-                                399
+                                352,
+                                401
                               ],
                               "loc": {
                                 "start": {
@@ -803,8 +803,8 @@
                               }
                             },
                             "range": [
-                              350,
-                              400
+                              352,
+                              402
                             ],
                             "loc": {
                               "start": {
@@ -819,8 +819,8 @@
                           }
                         ],
                         "range": [
-                          342,
-                          406
+                          344,
+                          408
                         ],
                         "loc": {
                           "start": {
@@ -845,8 +845,8 @@
                               "type": "Identifier",
                               "name": "GLBoost",
                               "range": [
-                                416,
-                                423
+                                418,
+                                425
                               ],
                               "loc": {
                                 "start": {
@@ -863,8 +863,8 @@
                               "type": "Identifier",
                               "name": "TARGET_WEBGL_VERSION",
                               "range": [
-                                424,
-                                444
+                                426,
+                                446
                               ],
                               "loc": {
                                 "start": {
@@ -878,8 +878,8 @@
                               }
                             },
                             "range": [
-                              416,
-                              444
+                              418,
+                              446
                             ],
                             "loc": {
                               "start": {
@@ -897,8 +897,8 @@
                             "value": 2,
                             "raw": "2",
                             "range": [
-                              449,
-                              450
+                              451,
+                              452
                             ],
                             "loc": {
                               "start": {
@@ -912,8 +912,8 @@
                             }
                           },
                           "range": [
-                            416,
-                            450
+                            418,
+                            452
                           ],
                           "loc": {
                             "start": {
@@ -940,8 +940,8 @@
                                   "object": {
                                     "type": "ThisExpression",
                                     "range": [
-                                      460,
-                                      464
+                                      462,
+                                      466
                                     ],
                                     "loc": {
                                       "start": {
@@ -958,8 +958,8 @@
                                     "type": "Identifier",
                                     "name": "impl",
                                     "range": [
-                                      465,
-                                      469
+                                      467,
+                                      471
                                     ],
                                     "loc": {
                                       "start": {
@@ -973,8 +973,8 @@
                                     }
                                   },
                                   "range": [
-                                    460,
-                                    469
+                                    462,
+                                    471
                                   ],
                                   "loc": {
                                     "start": {
@@ -993,8 +993,8 @@
                                     "type": "Identifier",
                                     "name": "GLContextWebGL2Impl",
                                     "range": [
-                                      476,
-                                      495
+                                      478,
+                                      497
                                     ],
                                     "loc": {
                                       "start": {
@@ -1012,8 +1012,8 @@
                                       "type": "Identifier",
                                       "name": "canvas",
                                       "range": [
-                                        496,
-                                        502
+                                        498,
+                                        504
                                       ],
                                       "loc": {
                                         "start": {
@@ -1029,8 +1029,8 @@
                                     {
                                       "type": "ThisExpression",
                                       "range": [
-                                        504,
-                                        508
+                                        506,
+                                        510
                                       ],
                                       "loc": {
                                         "start": {
@@ -1045,8 +1045,8 @@
                                     }
                                   ],
                                   "range": [
-                                    472,
-                                    509
+                                    474,
+                                    511
                                   ],
                                   "loc": {
                                     "start": {
@@ -1060,8 +1060,8 @@
                                   }
                                 },
                                 "range": [
-                                  460,
-                                  509
+                                  462,
+                                  511
                                 ],
                                 "loc": {
                                   "start": {
@@ -1075,8 +1075,8 @@
                                 }
                               },
                               "range": [
-                                460,
-                                510
+                                462,
+                                512
                               ],
                               "loc": {
                                 "start": {
@@ -1091,8 +1091,8 @@
                             }
                           ],
                           "range": [
-                            452,
-                            516
+                            454,
+                            518
                           ],
                           "loc": {
                             "start": {
@@ -1107,8 +1107,8 @@
                         },
                         "alternate": null,
                         "range": [
-                          412,
-                          516
+                          414,
+                          518
                         ],
                         "loc": {
                           "start": {
@@ -1122,8 +1122,8 @@
                         }
                       },
                       "range": [
-                        302,
-                        516
+                        304,
+                        518
                       ],
                       "loc": {
                         "start": {
@@ -1151,8 +1151,8 @@
                               "type": "Identifier",
                               "name": "GLContext",
                               "range": [
-                                522,
-                                531
+                                524,
+                                533
                               ],
                               "loc": {
                                 "start": {
@@ -1169,8 +1169,8 @@
                               "type": "Identifier",
                               "name": "_instances",
                               "range": [
-                                532,
-                                542
+                                534,
+                                544
                               ],
                               "loc": {
                                 "start": {
@@ -1184,8 +1184,8 @@
                               }
                             },
                             "range": [
-                              522,
-                              542
+                              524,
+                              544
                             ],
                             "loc": {
                               "start": {
@@ -1205,8 +1205,8 @@
                               "type": "Identifier",
                               "name": "canvas",
                               "range": [
-                                543,
-                                549
+                                545,
+                                551
                               ],
                               "loc": {
                                 "start": {
@@ -1223,8 +1223,8 @@
                               "type": "Identifier",
                               "name": "id",
                               "range": [
-                                550,
-                                552
+                                552,
+                                554
                               ],
                               "loc": {
                                 "start": {
@@ -1238,8 +1238,8 @@
                               }
                             },
                             "range": [
-                              543,
-                              552
+                              545,
+                              554
                             ],
                             "loc": {
                               "start": {
@@ -1253,8 +1253,8 @@
                             }
                           },
                           "range": [
-                            522,
-                            553
+                            524,
+                            555
                           ],
                           "loc": {
                             "start": {
@@ -1270,8 +1270,8 @@
                         "right": {
                           "type": "ThisExpression",
                           "range": [
-                            556,
-                            560
+                            558,
+                            562
                           ],
                           "loc": {
                             "start": {
@@ -1285,8 +1285,8 @@
                           }
                         },
                         "range": [
-                          522,
-                          560
+                          524,
+                          562
                         ],
                         "loc": {
                           "start": {
@@ -1300,8 +1300,8 @@
                         }
                       },
                       "range": [
-                        522,
-                        561
+                        524,
+                        563
                       ],
                       "loc": {
                         "start": {
@@ -1316,8 +1316,8 @@
                     }
                   ],
                   "range": [
-                    179,
-                    565
+                    181,
+                    567
                   ],
                   "loc": {
                     "start": {
@@ -1333,8 +1333,8 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  170,
-                  565
+                  172,
+                  567
                 ],
                 "loc": {
                   "start": {
@@ -1350,8 +1350,8 @@
               "kind": "constructor",
               "computed": false,
               "range": [
-                159,
-                565
+                161,
+                567
               ],
               "loc": {
                 "start": {
@@ -1371,8 +1371,8 @@
                 "type": "Identifier",
                 "name": "getInstance",
                 "range": [
-                  576,
-                  587
+                  578,
+                  589
                 ],
                 "loc": {
                   "start": {
@@ -1393,8 +1393,8 @@
                     "type": "Identifier",
                     "name": "canvas",
                     "range": [
-                      588,
-                      594
+                      590,
+                      596
                     ],
                     "loc": {
                       "start": {
@@ -1423,8 +1423,8 @@
                             "type": "Identifier",
                             "name": "canvas",
                             "range": [
-                              613,
-                              619
+                              615,
+                              621
                             ],
                             "loc": {
                               "start": {
@@ -1439,8 +1439,8 @@
                           },
                           "prefix": true,
                           "range": [
-                            606,
-                            619
+                            608,
+                            621
                           ],
                           "loc": {
                             "start": {
@@ -1458,8 +1458,8 @@
                           "value": "string",
                           "raw": "'string'",
                           "range": [
-                            624,
-                            632
+                            626,
+                            634
                           ],
                           "loc": {
                             "start": {
@@ -1473,8 +1473,8 @@
                           }
                         },
                         "range": [
-                          606,
-                          632
+                          608,
+                          634
                         ],
                         "loc": {
                           "start": {
@@ -1491,175 +1491,173 @@
                         "type": "BlockStatement",
                         "body": [
                           {
-                            "type": "VariableDeclaration",
-                            "declarations": [
-                              {
-                                "type": "VariableDeclarator",
-                                "id": {
-                                  "type": "Identifier",
-                                  "name": "canvas",
-                                  "range": [
-                                    646,
-                                    652
-                                  ],
-                                  "loc": {
-                                    "start": {
-                                      "line": 22,
-                                      "column": 10
-                                    },
-                                    "end": {
-                                      "line": 22,
-                                      "column": 16
-                                    }
+                            "type": "ExpressionStatement",
+                            "expression": {
+                              "type": "AssignmentExpression",
+                              "operator": "=",
+                              "left": {
+                                "type": "Identifier",
+                                "name": "canvas",
+                                "range": [
+                                  644,
+                                  650
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 22,
+                                    "column": 6
+                                  },
+                                  "end": {
+                                    "line": 22,
+                                    "column": 12
                                   }
-                                },
-                                "init": {
-                                  "type": "CallExpression",
-                                  "callee": {
+                                }
+                              },
+                              "right": {
+                                "type": "CallExpression",
+                                "callee": {
+                                  "type": "MemberExpression",
+                                  "computed": false,
+                                  "object": {
                                     "type": "MemberExpression",
                                     "computed": false,
                                     "object": {
-                                      "type": "MemberExpression",
-                                      "computed": false,
-                                      "object": {
-                                        "type": "Identifier",
-                                        "name": "window",
-                                        "range": [
-                                          655,
-                                          661
-                                        ],
-                                        "loc": {
-                                          "start": {
-                                            "line": 22,
-                                            "column": 19
-                                          },
-                                          "end": {
-                                            "line": 22,
-                                            "column": 25
-                                          }
-                                        }
-                                      },
-                                      "property": {
-                                        "type": "Identifier",
-                                        "name": "document",
-                                        "range": [
-                                          662,
-                                          670
-                                        ],
-                                        "loc": {
-                                          "start": {
-                                            "line": 22,
-                                            "column": 26
-                                          },
-                                          "end": {
-                                            "line": 22,
-                                            "column": 34
-                                          }
-                                        }
-                                      },
+                                      "type": "Identifier",
+                                      "name": "window",
                                       "range": [
-                                        655,
-                                        670
+                                        653,
+                                        659
                                       ],
                                       "loc": {
                                         "start": {
                                           "line": 22,
-                                          "column": 19
+                                          "column": 15
                                         },
                                         "end": {
                                           "line": 22,
-                                          "column": 34
+                                          "column": 21
                                         }
                                       }
                                     },
                                     "property": {
                                       "type": "Identifier",
-                                      "name": "querySelector",
+                                      "name": "document",
                                       "range": [
-                                        671,
-                                        684
+                                        660,
+                                        668
                                       ],
                                       "loc": {
                                         "start": {
                                           "line": 22,
-                                          "column": 35
+                                          "column": 22
                                         },
                                         "end": {
                                           "line": 22,
-                                          "column": 48
+                                          "column": 30
                                         }
                                       }
                                     },
                                     "range": [
-                                      655,
-                                      684
+                                      653,
+                                      668
                                     ],
                                     "loc": {
                                       "start": {
                                         "line": 22,
-                                        "column": 19
+                                        "column": 15
                                       },
                                       "end": {
                                         "line": 22,
-                                        "column": 48
+                                        "column": 30
                                       }
                                     }
                                   },
-                                  "arguments": [
-                                    {
-                                      "type": "Identifier",
-                                      "name": "canvas",
-                                      "range": [
-                                        685,
-                                        691
-                                      ],
-                                      "loc": {
-                                        "start": {
-                                          "line": 22,
-                                          "column": 49
-                                        },
-                                        "end": {
-                                          "line": 22,
-                                          "column": 55
-                                        }
+                                  "property": {
+                                    "type": "Identifier",
+                                    "name": "querySelector",
+                                    "range": [
+                                      669,
+                                      682
+                                    ],
+                                    "loc": {
+                                      "start": {
+                                        "line": 22,
+                                        "column": 31
+                                      },
+                                      "end": {
+                                        "line": 22,
+                                        "column": 44
                                       }
                                     }
-                                  ],
+                                  },
                                   "range": [
-                                    655,
-                                    692
+                                    653,
+                                    682
                                   ],
                                   "loc": {
                                     "start": {
                                       "line": 22,
-                                      "column": 19
+                                      "column": 15
                                     },
                                     "end": {
                                       "line": 22,
-                                      "column": 56
+                                      "column": 44
                                     }
                                   }
                                 },
+                                "arguments": [
+                                  {
+                                    "type": "Identifier",
+                                    "name": "canvas",
+                                    "range": [
+                                      683,
+                                      689
+                                    ],
+                                    "loc": {
+                                      "start": {
+                                        "line": 22,
+                                        "column": 45
+                                      },
+                                      "end": {
+                                        "line": 22,
+                                        "column": 51
+                                      }
+                                    }
+                                  }
+                                ],
                                 "range": [
-                                  646,
-                                  692
+                                  653,
+                                  690
                                 ],
                                 "loc": {
                                   "start": {
                                     "line": 22,
-                                    "column": 10
+                                    "column": 15
                                   },
                                   "end": {
                                     "line": 22,
-                                    "column": 56
+                                    "column": 52
                                   }
                                 }
+                              },
+                              "range": [
+                                644,
+                                690
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 22,
+                                  "column": 6
+                                },
+                                "end": {
+                                  "line": 22,
+                                  "column": 52
+                                }
                               }
-                            ],
-                            "kind": "var",
+                            },
                             "range": [
-                              642,
-                              693
+                              644,
+                              691
                             ],
                             "loc": {
                               "start": {
@@ -1668,14 +1666,14 @@
                               },
                               "end": {
                                 "line": 22,
-                                "column": 57
+                                "column": 53
                               }
                             }
                           }
                         ],
                         "range": [
-                          634,
-                          699
+                          636,
+                          697
                         ],
                         "loc": {
                           "start": {
@@ -1690,8 +1688,8 @@
                       },
                       "alternate": null,
                       "range": [
-                        602,
-                        699
+                        604,
+                        697
                       ],
                       "loc": {
                         "start": {
@@ -1712,8 +1710,8 @@
                           "type": "Identifier",
                           "name": "GLContext",
                           "range": [
-                            715,
-                            724
+                            713,
+                            722
                           ],
                           "loc": {
                             "start": {
@@ -1731,8 +1729,8 @@
                             "type": "Identifier",
                             "name": "canvas",
                             "range": [
-                              725,
-                              731
+                              723,
+                              729
                             ],
                             "loc": {
                               "start": {
@@ -1747,8 +1745,8 @@
                           }
                         ],
                         "range": [
-                          711,
-                          732
+                          709,
+                          730
                         ],
                         "loc": {
                           "start": {
@@ -1762,8 +1760,8 @@
                         }
                       },
                       "range": [
-                        704,
-                        733
+                        702,
+                        731
                       ],
                       "loc": {
                         "start": {
@@ -1778,8 +1776,8 @@
                     }
                   ],
                   "range": [
-                    596,
-                    737
+                    598,
+                    735
                   ],
                   "loc": {
                     "start": {
@@ -1795,8 +1793,8 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  587,
-                  737
+                  589,
+                  735
                 ],
                 "loc": {
                   "start": {
@@ -1812,8 +1810,8 @@
               "kind": "method",
               "computed": false,
               "range": [
-                569,
-                737
+                571,
+                735
               ],
               "loc": {
                 "start": {
@@ -1833,8 +1831,8 @@
                 "type": "Identifier",
                 "name": "gl",
                 "range": [
-                  745,
-                  747
+                  743,
+                  745
                 ],
                 "loc": {
                   "start": {
@@ -1865,8 +1863,8 @@
                           "object": {
                             "type": "ThisExpression",
                             "range": [
-                              763,
-                              767
+                              761,
+                              765
                             ],
                             "loc": {
                               "start": {
@@ -1883,8 +1881,8 @@
                             "type": "Identifier",
                             "name": "impl",
                             "range": [
-                              768,
-                              772
+                              766,
+                              770
                             ],
                             "loc": {
                               "start": {
@@ -1898,8 +1896,8 @@
                             }
                           },
                           "range": [
-                            763,
-                            772
+                            761,
+                            770
                           ],
                           "loc": {
                             "start": {
@@ -1916,8 +1914,8 @@
                           "type": "Identifier",
                           "name": "gl",
                           "range": [
-                            773,
-                            775
+                            771,
+                            773
                           ],
                           "loc": {
                             "start": {
@@ -1931,8 +1929,8 @@
                           }
                         },
                         "range": [
-                          763,
-                          775
+                          761,
+                          773
                         ],
                         "loc": {
                           "start": {
@@ -1946,8 +1944,8 @@
                         }
                       },
                       "range": [
-                        756,
-                        776
+                        754,
+                        774
                       ],
                       "loc": {
                         "start": {
@@ -1962,8 +1960,8 @@
                     }
                   ],
                   "range": [
-                    750,
-                    780
+                    748,
+                    778
                   ],
                   "loc": {
                     "start": {
@@ -1979,8 +1977,8 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  747,
-                  780
+                  745,
+                  778
                 ],
                 "loc": {
                   "start": {
@@ -1996,8 +1994,8 @@
               "kind": "get",
               "computed": false,
               "range": [
-                741,
-                780
+                739,
+                778
               ],
               "loc": {
                 "start": {
@@ -2010,11 +2008,195 @@
                 }
               },
               "static": false
+            },
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "canvas",
+                "range": [
+                  786,
+                  792
+                ],
+                "loc": {
+                  "start": {
+                    "line": 31,
+                    "column": 6
+                  },
+                  "end": {
+                    "line": 31,
+                    "column": 12
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "MemberExpression",
+                        "computed": false,
+                        "object": {
+                          "type": "MemberExpression",
+                          "computed": false,
+                          "object": {
+                            "type": "ThisExpression",
+                            "range": [
+                              808,
+                              812
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 32,
+                                "column": 11
+                              },
+                              "end": {
+                                "line": 32,
+                                "column": 15
+                              }
+                            }
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "impl",
+                            "range": [
+                              813,
+                              817
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 32,
+                                "column": 16
+                              },
+                              "end": {
+                                "line": 32,
+                                "column": 20
+                              }
+                            }
+                          },
+                          "range": [
+                            808,
+                            817
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 32,
+                              "column": 11
+                            },
+                            "end": {
+                              "line": 32,
+                              "column": 20
+                            }
+                          }
+                        },
+                        "property": {
+                          "type": "Identifier",
+                          "name": "canvas",
+                          "range": [
+                            818,
+                            824
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 32,
+                              "column": 21
+                            },
+                            "end": {
+                              "line": 32,
+                              "column": 27
+                            }
+                          }
+                        },
+                        "range": [
+                          808,
+                          824
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 32,
+                            "column": 11
+                          },
+                          "end": {
+                            "line": 32,
+                            "column": 27
+                          }
+                        }
+                      },
+                      "range": [
+                        801,
+                        825
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 32,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 32,
+                          "column": 28
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    795,
+                    829
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 31,
+                      "column": 15
+                    },
+                    "end": {
+                      "line": 33,
+                      "column": 3
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  792,
+                  829
+                ],
+                "loc": {
+                  "start": {
+                    "line": 31,
+                    "column": 12
+                  },
+                  "end": {
+                    "line": 33,
+                    "column": 3
+                  }
+                }
+              },
+              "kind": "get",
+              "computed": false,
+              "range": [
+                782,
+                829
+              ],
+              "loc": {
+                "start": {
+                  "line": 31,
+                  "column": 2
+                },
+                "end": {
+                  "line": 33,
+                  "column": 3
+                }
+              },
+              "static": false
             }
           ],
           "range": [
-            154,
-            783
+            156,
+            832
           ],
           "loc": {
             "start": {
@@ -2022,14 +2204,14 @@
               "column": 31
             },
             "end": {
-              "line": 31,
+              "line": 35,
               "column": 1
             }
           }
         },
         "range": [
-          138,
-          783
+          140,
+          832
         ],
         "loc": {
           "start": {
@@ -2037,7 +2219,7 @@
             "column": 15
           },
           "end": {
-            "line": 31,
+            "line": 35,
             "column": 1
           }
         },
@@ -2045,8 +2227,8 @@
         "trailingComments": []
       },
       "range": [
-        123,
-        783
+        125,
+        832
       ],
       "loc": {
         "start": {
@@ -2054,7 +2236,7 @@
           "column": 0
         },
         "end": {
-          "line": 31,
+          "line": 35,
           "column": 1
         }
       }
@@ -2071,16 +2253,16 @@
             "type": "Identifier",
             "name": "GLContext",
             "range": [
-              784,
-              793
+              833,
+              842
             ],
             "loc": {
               "start": {
-                "line": 32,
+                "line": 36,
                 "column": 0
               },
               "end": {
-                "line": 32,
+                "line": 36,
                 "column": 9
               }
             }
@@ -2089,31 +2271,31 @@
             "type": "Identifier",
             "name": "_instances",
             "range": [
-              794,
-              804
+              843,
+              853
             ],
             "loc": {
               "start": {
-                "line": 32,
+                "line": 36,
                 "column": 10
               },
               "end": {
-                "line": 32,
+                "line": 36,
                 "column": 20
               }
             }
           },
           "range": [
-            784,
-            804
+            833,
+            853
           ],
           "loc": {
             "start": {
-              "line": 32,
+              "line": 36,
               "column": 0
             },
             "end": {
-              "line": 32,
+              "line": 36,
               "column": 20
             }
           }
@@ -2124,62 +2306,62 @@
             "type": "Identifier",
             "name": "Object",
             "range": [
-              811,
-              817
+              860,
+              866
             ],
             "loc": {
               "start": {
-                "line": 32,
+                "line": 36,
                 "column": 27
               },
               "end": {
-                "line": 32,
+                "line": 36,
                 "column": 33
               }
             }
           },
           "arguments": [],
           "range": [
-            807,
-            819
+            856,
+            868
           ],
           "loc": {
             "start": {
-              "line": 32,
+              "line": 36,
               "column": 23
             },
             "end": {
-              "line": 32,
+              "line": 36,
               "column": 35
             }
           }
         },
         "range": [
-          784,
-          819
+          833,
+          868
         ],
         "loc": {
           "start": {
-            "line": 32,
+            "line": 36,
             "column": 0
           },
           "end": {
-            "line": 32,
+            "line": 36,
             "column": 35
           }
         }
       },
       "range": [
-        784,
-        820
+        833,
+        869
       ],
       "loc": {
         "start": {
-          "line": 32,
+          "line": 36,
           "column": 0
         },
         "end": {
-          "line": 32,
+          "line": 36,
           "column": 36
         }
       }
@@ -2188,7 +2370,7 @@
   "sourceType": "module",
   "range": [
     0,
-    820
+    869
   ],
   "loc": {
     "start": {
@@ -2196,7 +2378,7 @@
       "column": 0
     },
     "end": {
-      "line": 32,
+      "line": 36,
       "column": 36
     }
   },

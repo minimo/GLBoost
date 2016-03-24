@@ -86,24 +86,40 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">js/BlendShapeGeometry.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import GLBoost from &apos;./globals&apos;
-import Element from &apos;./Element&apos;
-import GLContext from &apos;./GLContext&apos;
-import GLExtentionsManager from &apos;./GLExtentionsManager&apos;
-import BlendShapeShaderSource from &apos;./shaders/BlendShapeShader&apos;
-import Geometry from &apos;./Geometry&apos;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import GLBoost from &apos;./globals&apos;;
+import BlendShapeShaderSource from &apos;./shaders/BlendShapeShader&apos;;
+import Geometry from &apos;./Geometry&apos;;
 
 export default class BlendShapeGeometry extends Geometry {
   constructor(canvas = GLBoost.CURRENT_CANVAS_ID) {
     super(canvas);
 
+    this._blendWeight_1  = 0.0;
+    this._blendWeight_2  = 0.0;
+    this._blendWeight_3  = 0.0;
+    this._blendWeight_4  = 0.0;
+    this._blendWeight_5  = 0.0;
+    this._blendWeight_6  = 0.0;
+    this._blendWeight_7  = 0.0;
+    this._blendWeight_8  = 0.0;
+    this._blendWeight_9  = 0.0;
+    this._blendWeight_10 = 0.0;
+
+    this._currentRenderPassIndex = 0;
+
     if (this.constructor === BlendShapeGeometry) {
-      BlendShapeGeometry._instanceCount = (typeof BlendShapeGeometry._instanceCount === &quot;undefined&quot;) ? 0 : (BlendShapeGeometry._instanceCount + 1);
+      BlendShapeGeometry._instanceCount = (typeof BlendShapeGeometry._instanceCount === &apos;undefined&apos;) ? 0 : (BlendShapeGeometry._instanceCount + 1);
       this._instanceName = BlendShapeGeometry.name + &apos;_&apos; + BlendShapeGeometry._instanceCount;
     }
   }
 
-  prepareForRender(existCamera_f, pointLight, meshMaterial) {
+
+  draw(lights, camera, mesh, scene, renderPass_index) {
+    this._currentRenderPassIndex = renderPass_index;
+    super.draw(lights, camera, mesh, scene, renderPass_index);
+  }
+
+  prepareForRender(existCamera_f, pointLight, meshMaterial, renderPasses, mesh) {
     // before prepareForRender of &apos;Geometry&apos; class, a new &apos;BlendShapeShader&apos;(which extends default shader) is assigned.
     var canvas = this._canvas;
 
@@ -122,7 +138,7 @@ export default class BlendShapeGeometry extends Geometry {
 
     if (meshMaterial) {
       meshMaterial.shader = new BlendShapeShader(canvas);
-      } else {
+    } else {
       this._defaultMaterial.shader = new BlendShapeShader(canvas);
     }
 
@@ -135,91 +151,141 @@ export default class BlendShapeGeometry extends Geometry {
     }
     */
 
-    super.prepareForRender(existCamera_f, pointLight, meshMaterial);
+    super.prepareForRender(existCamera_f, pointLight, meshMaterial, renderPasses, mesh);
   }
 
   _setBlendWeightToGlslProgram(blendTarget, weight) {
+    var gl = this._glContext.gl;
     var materials = [this._materialForBlend];
     if (materials) {
       for (let i=0; i&lt;materials.length;i++) {
-        this._gl.useProgram(materials[i].glslProgram);
-        this._gl.uniform1f(materials[i].glslProgram[&apos;uniformFloatSampler_blendWeight_&apos; + blendTarget], weight);
+        gl.useProgram(materials[i].glslProgramOfPasses[this._currentRenderPassIndex]);
+        gl.uniform1f(materials[i].glslProgramOfPasses[this._currentRenderPassIndex][&apos;uniformFloatSampler_blendWeight_&apos; + blendTarget], weight);
       }
     } else {
-      this._gl.useProgram(this._glslProgram);
-      this._gl.uniform1f(this._glslProgram[&apos;uniformFloatSampler_blendWeight_&apos; + blendTarget], weight);
+      gl.useProgram(this.glslProgramOfPasses[this._currentRenderPassIndex]);
+      gl.uniform1f(this.glslProgramOfPasses[this._currentRenderPassIndex][&apos;uniformFloatSampler_blendWeight_&apos; + blendTarget], weight);
     }
   }
 
   set blendWeight_1(weight) {
-    var gl = this._gl;
+    var gl = this._glContext.gl;
     var currentProgram = gl.getParameter(gl.CURRENT_PROGRAM);
 
     this._setBlendWeightToGlslProgram(GLBoost.BLENDTARGET1, weight);
     gl.useProgram(currentProgram);
+    this._blendWeight_1 = weight;
   }
+  get blendWeight_1() {
+    return this._blendWeight_1;
+  }
+
   set blendWeight_2(weight) {
-    var gl = this._gl;
+    var gl = this._glContext.gl;
     var currentProgram = gl.getParameter(gl.CURRENT_PROGRAM);
 
     this._setBlendWeightToGlslProgram(GLBoost.BLENDTARGET2, weight);
     gl.useProgram(currentProgram);
+    this._blendWeight_2 = weight;
   }
+  get blendWeight_2() {
+    return this._blendWeight_2;
+  }
+
   set blendWeight_3(weight) {
-    var gl = this._gl;
+    var gl = this._glContext.gl;
     var currentProgram = gl.getParameter(gl.CURRENT_PROGRAM);
 
     this._setBlendWeightToGlslProgram(GLBoost.BLENDTARGET3, weight);
     gl.useProgram(currentProgram);
+    this._blendWeight_3 = weight;
   }
+  get blendWeight_3() {
+    return this._blendWeight_3;
+  }
+
   set blendWeight_4(weight) {
-    var gl = this._gl;
+    var gl = this._glContext.gl;
     var currentProgram = gl.getParameter(gl.CURRENT_PROGRAM);
 
     this._setBlendWeightToGlslProgram(GLBoost.BLENDTARGET4, weight);
     gl.useProgram(currentProgram);
+    this._blendWeight_4 = weight;
   }
+  get blendWeight_4() {
+    return this._blendWeight_4;
+  }
+
   set blendWeight_5(weight) {
-    var gl = this._gl;
+    var gl = this._glContext.gl;
     var currentProgram = gl.getParameter(gl.CURRENT_PROGRAM);
 
     this._setBlendWeightToGlslProgram(GLBoost.BLENDTARGET5, weight);
     gl.useProgram(currentProgram);
+    this._blendWeight_5 = weight;
   }
+  get blendWeight_5() {
+    return this._blendWeight_5;
+  }
+
   set blendWeight_6(weight) {
-    var gl = this._gl;
+    var gl = this._glContext.gl;
     var currentProgram = gl.getParameter(gl.CURRENT_PROGRAM);
 
     this._setBlendWeightToGlslProgram(GLBoost.BLENDTARGET6, weight);
     gl.useProgram(currentProgram);
+    this._blendWeight_6 = weight;
   }
+  get blendWeight_6() {
+    return this._blendWeight_6;
+  }
+
   set blendWeight_7(weight) {
-    var gl = this._gl;
+    var gl = this._glContext.gl;
     var currentProgram = gl.getParameter(gl.CURRENT_PROGRAM);
 
     this._setBlendWeightToGlslProgram(GLBoost.BLENDTARGET7, weight);
     gl.useProgram(currentProgram);
+    this._blendWeight_7 = weight;
   }
+  get blendWeight_7() {
+    return this._blendWeight_7;
+  }
+
   set blendWeight_8(weight) {
-    var gl = this._gl;
+    var gl = this._glContext.gl;
     var currentProgram = gl.getParameter(gl.CURRENT_PROGRAM);
 
     this._setBlendWeightToGlslProgram(GLBoost.BLENDTARGET8, weight);
     gl.useProgram(currentProgram);
+    this._blendWeight_8 = weight;
   }
+  get blendWeight_8() {
+    return this._blendWeight_8;
+  }
+
   set blendWeight_9(weight) {
-    var gl = this._gl;
+    var gl = this._glContext.gl;
     var currentProgram = gl.getParameter(gl.CURRENT_PROGRAM);
 
     this._setBlendWeightToGlslProgram(GLBoost.BLENDTARGET9, weight);
     gl.useProgram(currentProgram);
+    this._blendWeight_9 = weight;
   }
+  get blendWeight_9() {
+    return this._blendWeight_9;
+  }
+
   set blendWeight_10(weight) {
-    var gl = this._gl;
+    var gl = this._glContext.gl;
     var currentProgram = gl.getParameter(gl.CURRENT_PROGRAM);
 
     this._setBlendWeightToGlslProgram(GLBoost.BLENDTARGET10, weight);
     gl.useProgram(currentProgram);
+    this._blendWeight_10 = weight;
+  }
+  get blendWeight_10() {
+    return this._blendWeight_10;
   }
 
   toString() {
@@ -227,7 +293,7 @@ export default class BlendShapeGeometry extends Geometry {
   }
 }
 
-GLBoost[&quot;BlendShapeGeometry&quot;] = BlendShapeGeometry;
+GLBoost[&apos;BlendShapeGeometry&apos;] = BlendShapeGeometry;
 </code></pre>
 
 </div>

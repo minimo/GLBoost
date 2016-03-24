@@ -86,7 +86,7 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">js/shaders/SimpleShader.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Shader from &apos;./Shader&apos;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Shader from &apos;./Shader&apos;;
 
 export class SimpleShaderSource {
   VSDefine_SimpleShaderSource(in_, out_, f) {
@@ -131,13 +131,13 @@ export class SimpleShaderSource {
     var shaderText = &apos;&apos;;
     var textureFunc = Shader._texture_func(gl);
     if (Shader._exist(f, GLBoost.COLOR)) {
-      shaderText += &apos;  rt1 *= color;\n&apos;;
+      shaderText += &apos;  rt0 *= color;\n&apos;;
     }
-    shaderText += &apos;    rt1 *= materialBaseColor;\n&apos;;
+    shaderText += &apos;    rt0 *= materialBaseColor;\n&apos;;
     if (Shader._exist(f, GLBoost.TEXCOORD)) {
-      shaderText += `  rt1 *= ${textureFunc}(uTexture, texcoord);\n`;
+      shaderText += `  rt0 *= ${textureFunc}(uTexture, texcoord);\n`;
     }
-    //shaderText += &apos;    rt1 = vec4(1.0, 0.0, 0.0, 1.0);\n&apos;;
+    //shaderText += &apos;    rt0 = vec4(1.0, 0.0, 0.0, 1.0);\n&apos;;
     return shaderText;
   }
 
@@ -178,7 +178,7 @@ export default class SimpleShader extends Shader {
   }
 }
 
-GLBoost[&quot;SimpleShader&quot;] = SimpleShader;
+GLBoost[&apos;SimpleShader&apos;] = SimpleShader;
 </code></pre>
 
 </div>

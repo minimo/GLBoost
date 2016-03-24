@@ -1,6 +1,6 @@
 {
-  "coverage": "12.88%",
-  "expectCount": 481,
+  "coverage": "12.06%",
+  "expectCount": 514,
   "actualCount": 62,
   "files": {
     "js/lights/AbstractLight.js": {
@@ -18,13 +18,13 @@
         4,
         5,
         14,
-        43,
-        47,
-        35,
-        31,
+        44,
+        48,
+        36,
+        32,
         18,
-        27,
-        39
+        28,
+        40
       ]
     },
     "js/misc/AnimationUtil.js": {
@@ -47,35 +47,46 @@
       ]
     },
     "js/BlendShapeGeometry.js": {
-      "expectCount": 14,
+      "expectCount": 25,
       "actualCount": 0,
       "undocumentLines": [
-        8,
-        66,
-        129,
-        73,
-        80,
-        87,
-        94,
-        101,
-        108,
+        5,
+        83,
+        91,
+        199,
+        191,
+        95,
+        103,
+        107,
         115,
-        122,
-        9,
-        18,
-        137
+        127,
+        119,
+        139,
+        131,
+        143,
+        151,
+        155,
+        163,
+        167,
+        175,
+        187,
+        179,
+        6,
+        29,
+        34,
+        203
       ]
     },
     "js/shaders/BlendShapeShader.js": {
       "expectCount": 6,
       "actualCount": 0,
       "undocumentLines": [
-        4,
-        61,
-        65,
-        6,
-        17,
-        40
+        3,
+        60,
+        64,
+        5,
+        16,
+        39
       ]
     },
     "js/Camera.js": {
@@ -83,31 +94,31 @@
       "actualCount": 0,
       "undocumentLines": [
         6,
-        162,
-        154,
-        118,
-        126,
+        161,
+        153,
+        117,
+        125,
         7,
-        114,
-        109,
-        150,
-        142,
-        96,
-        56,
-        46,
-        78,
-        68,
-        92,
-        100,
-        105,
-        130,
-        138,
-        42,
-        33,
-        186,
-        178,
-        174,
-        166
+        108,
+        113,
+        141,
+        149,
+        95,
+        45,
+        55,
+        67,
+        77,
+        91,
+        104,
+        99,
+        129,
+        137,
+        41,
+        32,
+        177,
+        185,
+        173,
+        165
       ]
     },
     "js/ClassicMaterial.js": {
@@ -115,16 +126,16 @@
       "actualCount": 0,
       "undocumentLines": [
         6,
-        84,
         80,
+        84,
         56,
         60,
         25,
         7,
         64,
         68,
-        48,
         52,
+        48,
         109,
         92,
         88,
@@ -142,8 +153,8 @@
       "expectCount": 2,
       "actualCount": 0,
       "undocumentLines": [
-        10,
-        11
+        7,
+        8
       ]
     },
     "js/lights/DirectionalLight.js": {
@@ -152,8 +163,8 @@
       "undocumentLines": [
         5,
         6,
-        27,
         23,
+        27,
         19,
         15
       ]
@@ -165,65 +176,65 @@
         10,
         12,
         11,
-        367,
-        371,
-        298,
+        372,
+        368,
+        299,
         128,
         104,
         148,
         80,
-        359,
-        321,
-        186,
-        274,
-        245,
+        360,
+        322,
+        187,
+        275,
+        246,
         152,
-        290,
-        294,
-        286,
-        305,
-        108,
+        291,
+        295,
+        287,
+        306,
         120,
-        84,
+        108,
         96,
-        260,
+        84,
+        261,
         132,
         140,
-        355,
-        331,
-        309,
-        326,
+        356,
+        332,
+        310,
+        327,
         158,
-        234,
+        235,
         60,
         72,
         47,
-        313,
-        317
+        318,
+        314
       ]
     },
     "js/shaders/Shader.js": {
       "expectCount": 18,
       "actualCount": 0,
       "undocumentLines": [
-        246,
-        252,
-        6,
-        228,
+        255,
+        261,
+        5,
+        237,
+        251,
         242,
-        233,
-        7,
-        290,
-        286,
-        400,
-        349,
-        17,
-        412,
-        28,
-        274,
-        94,
-        294,
-        60
+        6,
+        295,
+        299,
+        410,
+        358,
+        16,
+        423,
+        27,
+        283,
+        93,
+        303,
+        59
       ]
     },
     "js/shaders/HalfLambertShader.js": {
@@ -232,13 +243,13 @@
       "undocumentLines": [
         25,
         38,
-        84,
+        85,
         4,
         5,
         16,
-        85,
-        58,
-        91
+        86,
+        59,
+        92
       ]
     },
     "js/shaders/LambertShader.js": {
@@ -247,13 +258,13 @@
       "undocumentLines": [
         24,
         37,
-        82,
+        83,
         4,
         5,
         16,
-        83,
-        56,
-        89
+        84,
+        57,
+        90
       ]
     },
     "js/shaders/PhongShader.js": {
@@ -262,19 +273,19 @@
       "undocumentLines": [
         23,
         39,
-        112,
-        116,
-        120,
-        124,
-        92,
+        117,
+        113,
+        121,
+        125,
+        93,
         4,
         5,
         15,
-        93,
-        132,
-        128,
-        62,
-        102
+        94,
+        133,
+        129,
+        63,
+        103
       ]
     },
     "js/shaders/SimpleShader.js": {
@@ -292,11 +303,33 @@
         86
       ]
     },
+    "js/Geometry.js": {
+      "expectCount": 17,
+      "actualCount": 2,
+      "undocumentLines": [
+        141,
+        11,
+        523,
+        12,
+        299,
+        253,
+        515,
+        216,
+        173,
+        153,
+        72,
+        519,
+        527,
+        93,
+        23
+      ]
+    },
     "js/GLContext.js": {
-      "expectCount": 5,
+      "expectCount": 6,
       "actualCount": 0,
       "undocumentLines": [
         4,
+        31,
         6,
         20,
         27,
@@ -304,30 +337,30 @@
       ]
     },
     "js/impl/GLContextImpl.js": {
-      "expectCount": 3,
+      "expectCount": 5,
       "actualCount": 0,
       "undocumentLines": [
         3,
+        45,
         5,
-        28
+        41,
+        23
       ]
     },
     "js/impl/GLContextWebGL1Impl.js": {
-      "expectCount": 3,
+      "expectCount": 2,
       "actualCount": 0,
       "undocumentLines": [
         3,
-        5,
-        12
+        5
       ]
     },
     "js/impl/GLContextWebGL2Impl.js": {
-      "expectCount": 3,
+      "expectCount": 2,
       "actualCount": 0,
       "undocumentLines": [
         3,
-        5,
-        12
+        5
       ]
     },
     "js/GLExtentionsManager.js": {
@@ -335,17 +368,17 @@
       "actualCount": 0,
       "undocumentLines": [
         3,
-        50,
-        68,
+        51,
+        75,
         5,
-        80,
-        40,
-        62,
-        74,
-        32,
-        36,
-        28,
-        24
+        89,
+        41,
+        63,
+        81,
+        33,
+        37,
+        29,
+        25
       ]
     },
     "js/loader/GLTFLoader.js": {
@@ -358,35 +391,17 @@
         34
       ]
     },
-    "js/Geometry.js": {
-      "expectCount": 14,
-      "actualCount": 2,
-      "undocumentLines": [
-        13,
-        484,
-        14,
-        263,
-        476,
-        179,
-        143,
-        123,
-        74,
-        488,
-        480,
-        95
-      ]
-    },
     "js/Group.js": {
       "expectCount": 7,
       "actualCount": 0,
       "undocumentLines": [
-        6,
-        12,
-        7,
-        27,
-        18,
-        31,
-        48
+        4,
+        10,
+        5,
+        25,
+        16,
+        29,
+        46
       ]
     },
     "js/misc/Hash.js": {
@@ -425,25 +440,25 @@
         272,
         267,
         179,
-        277,
         296,
+        277,
         8,
-        315,
         319,
+        315,
         344,
         340,
         364,
         368,
-        323,
         327,
-        352,
+        323,
         348,
+        352,
         376,
         372,
         331,
         335,
-        356,
         360,
+        356,
         380,
         384,
         212,
@@ -466,44 +481,44 @@
         10,
         437,
         433,
-        469,
         465,
-        497,
+        469,
         501,
-        533,
+        497,
         529,
+        533,
         441,
         445,
-        477,
         473,
-        509,
+        477,
         505,
-        537,
+        509,
         541,
+        537,
         449,
         453,
-        485,
         481,
-        513,
+        485,
         517,
-        549,
+        513,
         545,
+        549,
         457,
         461,
         489,
         493,
-        525,
         521,
+        525,
         557,
         553,
         266,
         85,
         76,
         20,
-        339,
         347,
-        67,
+        339,
         58,
+        67,
         225
       ]
     },
@@ -512,27 +527,29 @@
       "actualCount": 0,
       "undocumentLines": [
         7,
-        85,
+        84,
         61,
         8,
         27,
-        37,
         31,
+        37,
         57,
         41,
-        118,
-        145,
+        116,
+        143,
         19
       ]
     },
     "js/textures/MutableTexture.js": {
-      "expectCount": 4,
+      "expectCount": 6,
       "actualCount": 0,
       "undocumentLines": [
-        5,
+        4,
+        33,
         29,
-        25,
-        6
+        5,
+        37,
+        41
       ]
     },
     "js/loader/ObjLoader.js": {
@@ -546,11 +563,17 @@
       ]
     },
     "js/primitives/Particle.js": {
-      "expectCount": 4,
+      "expectCount": 10,
       "actualCount": 2,
       "undocumentLines": [
-        135,
-        129
+        58,
+        106,
+        76,
+        84,
+        49,
+        210,
+        67,
+        204
       ]
     },
     "js/shaders/ParticleShader.js": {
@@ -567,8 +590,8 @@
       "expectCount": 2,
       "actualCount": 0,
       "undocumentLines": [
-        11,
-        12
+        8,
+        9
       ]
     },
     "js/lights/PointLight.js": {
@@ -603,55 +626,65 @@
       ]
     },
     "js/RenderPass.js": {
-      "expectCount": 10,
+      "expectCount": 14,
       "actualCount": 0,
       "undocumentLines": [
         7,
-        16,
-        46,
-        54,
+        17,
+        53,
+        73,
+        26,
         9,
-        25,
-        29,
-        58,
-        50,
-        33
+        100,
+        30,
+        57,
+        34,
+        77,
+        65,
+        69,
+        38
       ]
     },
     "js/Renderer.js": {
-      "expectCount": 9,
+      "expectCount": 8,
       "actualCount": 6,
       "undocumentLines": [
-        18,
-        176,
-        185
+        13,
+        156
       ]
     },
     "js/Scene.js": {
-      "expectCount": 11,
+      "expectCount": 16,
       "actualCount": 10,
       "undocumentLines": [
-        15
+        18,
+        61,
+        52,
+        194,
+        198,
+        238
       ]
     },
     "js/primitives/Sphere.js": {
       "expectCount": 2,
       "actualCount": 0,
       "undocumentLines": [
-        11,
-        12
+        8,
+        9
       ]
     },
     "js/textures/Texture.js": {
-      "expectCount": 6,
+      "expectCount": 8,
       "actualCount": 0,
       "undocumentLines": [
+        5,
         6,
-        7,
-        59,
-        22,
-        95,
-        91
+        76,
+        38,
+        120,
+        112,
+        108,
+        116
       ]
     },
     "js/math/Vector2.js": {

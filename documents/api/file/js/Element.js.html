@@ -86,13 +86,13 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">js/Element.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import GLBoost from &apos;./globals&apos;
-import Vector2 from &apos;./math/Vector2&apos;
-import Vector3 from &apos;./math/Vector3&apos;
-import Vector4 from &apos;./math/Vector4&apos;
-import Quaternion from &apos;./math/Quaternion&apos;
-import Matrix44 from &apos;./math/Matrix44&apos;
-import AnimationUtil from &apos;./misc/AnimationUtil&apos;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import GLBoost from &apos;./globals&apos;;
+import Vector2 from &apos;./math/Vector2&apos;;
+import Vector3 from &apos;./math/Vector3&apos;;
+import Vector4 from &apos;./math/Vector4&apos;;
+import Quaternion from &apos;./math/Quaternion&apos;;
+import Matrix44 from &apos;./math/Matrix44&apos;;
+import AnimationUtil from &apos;./misc/AnimationUtil&apos;;
 
 
 export default class Element {
@@ -122,8 +122,8 @@ export default class Element {
   }
 
   _setName() {
-      this.constructor._instanceCount = (typeof this.constructor._instanceCount === &quot;undefined&quot;) ? 0 : (this.constructor._instanceCount + 1);
-      this._instanceName = this.constructor.name + &apos;_&apos; + this.constructor._instanceCount;
+    this.constructor._instanceCount = (typeof this.constructor._instanceCount === &apos;undefined&apos;) ? 0 : (this.constructor._instanceCount + 1);
+    this._instanceName = this.constructor.name + &apos;_&apos; + this.constructor._instanceCount;
   }
 
   _needUpdate() {
@@ -140,7 +140,7 @@ export default class Element {
     if (animation[type]) {
       return AnimationUtil.interpolate(animation[type].input, animation[type].output, value, animation[type].outputComponentN);
     } else {
-    //  console.warn(this._instanceName + &quot;doesn&apos;t have &quot; + type + &quot; animation data. GLBoost returned default &quot; + type + &quot; value.&quot;);
+    //  console.warn(this._instanceName + &apos;doesn&apos;t have &apos; + type + &apos; animation data. GLBoost returned default &apos; + type + &apos; value.&apos;);
       return this[&apos;_&apos; + type];
     }
   }
@@ -252,10 +252,11 @@ export default class Element {
         return this._matrix.clone();
       }
 
+      var rotationMatrix = null
       if (this._currentCalcMode === &apos;quaternion&apos;) {
-        var rotationMatrix = this.quaternion.rotationMatrix;
+        rotationMatrix = this.quaternion.rotationMatrix;
       } else {
-        var rotationMatrix = Matrix44.rotateX(this.rotate.x).
+        rotationMatrix = Matrix44.rotateX(this.rotate.x).
         multiply(Matrix44.rotateY(this.rotate.y)).
         multiply(Matrix44.rotateZ(this.rotate.z));
       }
@@ -322,7 +323,7 @@ export default class Element {
   get transformMatrixAccumulatedAncestry() {
     var tempString = this._accumulateMyAndParentNameWithUpdateInfo(this);
     //console.log(tempString);
-    if (this._accumulatedAncestryNameWithUpdateInfoString !== tempString || typeof this._matrixAccumulatedAncestry === &quot;undefined&quot;) {
+    if (this._accumulatedAncestryNameWithUpdateInfoString !== tempString || typeof this._matrixAccumulatedAncestry === &apos;undefined&apos;) {
       this._matrixAccumulatedAncestry = this._multiplyMyAndParentTransformMatrices(this, true);
       this._accumulatedAncestryNameWithUpdateInfoString = tempString;
     }
@@ -337,12 +338,12 @@ export default class Element {
 
     var tempString = this._accumulateMyAndParentNameWithUpdateInfo(this);
     //console.log(tempString);
-    if (this._accumulatedAncestryNameWithUpdateInfoStringInv !== tempString || typeof this._invMatrixAccumulatedAncestry === &quot;undefined&quot;) {
+    if (this._accumulatedAncestryNameWithUpdateInfoStringInv !== tempString || typeof this._invMatrixAccumulatedAncestry === &apos;undefined&apos;) {
       this._invMatrixAccumulatedAncestry = this._multiplyMyAndParentTransformMatricesInInverseOrder(this, false).invert();
       this._accumulatedAncestryNameWithUpdateInfoStringInv = tempString;
     }
 
-    return this._invMatrixAccumulatedAncestry
+    return this._invMatrixAccumulatedAncestry;
   }
 
   get rotateMatrixAccumulatedAncestry() {
@@ -461,7 +462,7 @@ export default class Element {
   }
 }
 
-GLBoost[&quot;Element&quot;] = Element;
+GLBoost[&apos;Element&apos;] = Element;
 </code></pre>
 
 </div>

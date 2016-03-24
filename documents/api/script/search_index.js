@@ -631,6 +631,12 @@ window.esdocSearchIndex = [
   ],
   [
     "js/blendshapegeometry.js~blendshapegeometry#blendweight_1",
+    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-get-blendWeight_1",
+    "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_1",
+    "member"
+  ],
+  [
+    "js/blendshapegeometry.js~blendshapegeometry#blendweight_1",
     "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-set-blendWeight_1",
     "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_1",
     "member"
@@ -639,6 +645,18 @@ window.esdocSearchIndex = [
     "js/blendshapegeometry.js~blendshapegeometry#blendweight_10",
     "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-set-blendWeight_10",
     "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_10",
+    "member"
+  ],
+  [
+    "js/blendshapegeometry.js~blendshapegeometry#blendweight_10",
+    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-get-blendWeight_10",
+    "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_10",
+    "member"
+  ],
+  [
+    "js/blendshapegeometry.js~blendshapegeometry#blendweight_2",
+    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-get-blendWeight_2",
+    "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_2",
     "member"
   ],
   [
@@ -654,6 +672,18 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "js/blendshapegeometry.js~blendshapegeometry#blendweight_3",
+    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-get-blendWeight_3",
+    "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_3",
+    "member"
+  ],
+  [
+    "js/blendshapegeometry.js~blendshapegeometry#blendweight_4",
+    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-get-blendWeight_4",
+    "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_4",
+    "member"
+  ],
+  [
     "js/blendshapegeometry.js~blendshapegeometry#blendweight_4",
     "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-set-blendWeight_4",
     "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_4",
@@ -666,9 +696,27 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "js/blendshapegeometry.js~blendshapegeometry#blendweight_5",
+    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-get-blendWeight_5",
+    "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_5",
+    "member"
+  ],
+  [
+    "js/blendshapegeometry.js~blendshapegeometry#blendweight_6",
+    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-get-blendWeight_6",
+    "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_6",
+    "member"
+  ],
+  [
     "js/blendshapegeometry.js~blendshapegeometry#blendweight_6",
     "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-set-blendWeight_6",
     "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_6",
+    "member"
+  ],
+  [
+    "js/blendshapegeometry.js~blendshapegeometry#blendweight_7",
+    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-get-blendWeight_7",
+    "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_7",
     "member"
   ],
   [
@@ -679,8 +727,20 @@ window.esdocSearchIndex = [
   ],
   [
     "js/blendshapegeometry.js~blendshapegeometry#blendweight_8",
+    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-get-blendWeight_8",
+    "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_8",
+    "member"
+  ],
+  [
+    "js/blendshapegeometry.js~blendshapegeometry#blendweight_8",
     "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-set-blendWeight_8",
     "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_8",
+    "member"
+  ],
+  [
+    "js/blendshapegeometry.js~blendshapegeometry#blendweight_9",
+    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-get-blendWeight_9",
+    "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_9",
     "member"
   ],
   [
@@ -693,6 +753,12 @@ window.esdocSearchIndex = [
     "js/blendshapegeometry.js~blendshapegeometry#constructor",
     "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-constructor-constructor",
     "js/BlendShapeGeometry.js~BlendShapeGeometry#constructor",
+    "method"
+  ],
+  [
+    "js/blendshapegeometry.js~blendshapegeometry#draw",
+    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-method-draw",
+    "js/BlendShapeGeometry.js~BlendShapeGeometry#draw",
     "method"
   ],
   [
@@ -715,13 +781,13 @@ window.esdocSearchIndex = [
   ],
   [
     "js/camera.js~camera#aspect",
-    "class/js/Camera.js~Camera.html#instance-get-aspect",
+    "class/js/Camera.js~Camera.html#instance-set-aspect",
     "js/Camera.js~Camera#aspect",
     "member"
   ],
   [
     "js/camera.js~camera#aspect",
-    "class/js/Camera.js~Camera.html#instance-set-aspect",
+    "class/js/Camera.js~Camera.html#instance-get-aspect",
     "js/Camera.js~Camera#aspect",
     "member"
   ],
@@ -745,13 +811,13 @@ window.esdocSearchIndex = [
   ],
   [
     "js/camera.js~camera#eye",
-    "class/js/Camera.js~Camera.html#instance-set-eye",
+    "class/js/Camera.js~Camera.html#instance-get-eye",
     "js/Camera.js~Camera#eye",
     "member"
   ],
   [
     "js/camera.js~camera#eye",
-    "class/js/Camera.js~Camera.html#instance-get-eye",
+    "class/js/Camera.js~Camera.html#instance-set-eye",
     "js/Camera.js~Camera#eye",
     "member"
   ],
@@ -769,9 +835,9 @@ window.esdocSearchIndex = [
   ],
   [
     "js/camera.js~camera#ismaincamera",
-    "class/js/Camera.js~Camera.html#instance-get-isMainCamera",
+    "class/js/Camera.js~Camera.html#instance-method-isMainCamera",
     "js/Camera.js~Camera#isMainCamera",
-    "member"
+    "method"
   ],
   [
     "js/camera.js~camera#lookatrhmatrix",
@@ -793,25 +859,25 @@ window.esdocSearchIndex = [
   ],
   [
     "js/camera.js~camera#translate",
-    "class/js/Camera.js~Camera.html#instance-set-translate",
-    "js/Camera.js~Camera#translate",
-    "member"
-  ],
-  [
-    "js/camera.js~camera#translate",
     "class/js/Camera.js~Camera.html#instance-get-translate",
     "js/Camera.js~Camera#translate",
     "member"
   ],
   [
-    "js/camera.js~camera#up",
-    "class/js/Camera.js~Camera.html#instance-set-up",
-    "js/Camera.js~Camera#up",
+    "js/camera.js~camera#translate",
+    "class/js/Camera.js~Camera.html#instance-set-translate",
+    "js/Camera.js~Camera#translate",
     "member"
   ],
   [
     "js/camera.js~camera#up",
     "class/js/Camera.js~Camera.html#instance-get-up",
+    "js/Camera.js~Camera#up",
+    "member"
+  ],
+  [
+    "js/camera.js~camera#up",
+    "class/js/Camera.js~Camera.html#instance-set-up",
     "js/Camera.js~Camera#up",
     "member"
   ],
@@ -829,25 +895,25 @@ window.esdocSearchIndex = [
   ],
   [
     "js/camera.js~camera#zfar",
-    "class/js/Camera.js~Camera.html#instance-set-zFar",
-    "js/Camera.js~Camera#zFar",
-    "member"
-  ],
-  [
-    "js/camera.js~camera#zfar",
     "class/js/Camera.js~Camera.html#instance-get-zFar",
     "js/Camera.js~Camera#zFar",
     "member"
   ],
   [
-    "js/camera.js~camera#znear",
-    "class/js/Camera.js~Camera.html#instance-set-zNear",
-    "js/Camera.js~Camera#zNear",
+    "js/camera.js~camera#zfar",
+    "class/js/Camera.js~Camera.html#instance-set-zFar",
+    "js/Camera.js~Camera#zFar",
     "member"
   ],
   [
     "js/camera.js~camera#znear",
     "class/js/Camera.js~Camera.html#instance-get-zNear",
+    "js/Camera.js~Camera#zNear",
+    "member"
+  ],
+  [
+    "js/camera.js~camera#znear",
+    "class/js/Camera.js~Camera.html#instance-set-zNear",
     "js/Camera.js~Camera#zNear",
     "member"
   ],
@@ -919,13 +985,13 @@ window.esdocSearchIndex = [
   ],
   [
     "js/classicmaterial.js~classicmaterial#diffusetexture",
-    "class/js/ClassicMaterial.js~ClassicMaterial.html#instance-get-diffuseTexture",
+    "class/js/ClassicMaterial.js~ClassicMaterial.html#instance-set-diffuseTexture",
     "js/ClassicMaterial.js~ClassicMaterial#diffuseTexture",
     "member"
   ],
   [
     "js/classicmaterial.js~classicmaterial#diffusetexture",
-    "class/js/ClassicMaterial.js~ClassicMaterial.html#instance-set-diffuseTexture",
+    "class/js/ClassicMaterial.js~ClassicMaterial.html#instance-get-diffuseTexture",
     "js/ClassicMaterial.js~ClassicMaterial#diffuseTexture",
     "member"
   ],
@@ -937,13 +1003,13 @@ window.esdocSearchIndex = [
   ],
   [
     "js/classicmaterial.js~classicmaterial#name",
-    "class/js/ClassicMaterial.js~ClassicMaterial.html#instance-set-name",
+    "class/js/ClassicMaterial.js~ClassicMaterial.html#instance-get-name",
     "js/ClassicMaterial.js~ClassicMaterial#name",
     "member"
   ],
   [
     "js/classicmaterial.js~classicmaterial#name",
-    "class/js/ClassicMaterial.js~ClassicMaterial.html#instance-get-name",
+    "class/js/ClassicMaterial.js~ClassicMaterial.html#instance-set-name",
     "js/ClassicMaterial.js~ClassicMaterial#name",
     "member"
   ],
@@ -1117,25 +1183,25 @@ window.esdocSearchIndex = [
   ],
   [
     "js/element.js~element#quaternion",
-    "class/js/Element.js~Element.html#instance-get-quaternion",
-    "js/Element.js~Element#quaternion",
-    "member"
-  ],
-  [
-    "js/element.js~element#quaternion",
     "class/js/Element.js~Element.html#instance-set-quaternion",
     "js/Element.js~Element#quaternion",
     "member"
   ],
   [
-    "js/element.js~element#rotate",
-    "class/js/Element.js~Element.html#instance-get-rotate",
-    "js/Element.js~Element#rotate",
+    "js/element.js~element#quaternion",
+    "class/js/Element.js~Element.html#instance-get-quaternion",
+    "js/Element.js~Element#quaternion",
     "member"
   ],
   [
     "js/element.js~element#rotate",
     "class/js/Element.js~Element.html#instance-set-rotate",
+    "js/Element.js~Element#rotate",
+    "member"
+  ],
+  [
+    "js/element.js~element#rotate",
+    "class/js/Element.js~Element.html#instance-get-rotate",
     "js/Element.js~Element#rotate",
     "member"
   ],
@@ -1147,13 +1213,13 @@ window.esdocSearchIndex = [
   ],
   [
     "js/element.js~element#scale",
-    "class/js/Element.js~Element.html#instance-get-scale",
+    "class/js/Element.js~Element.html#instance-set-scale",
     "js/Element.js~Element#scale",
     "member"
   ],
   [
     "js/element.js~element#scale",
-    "class/js/Element.js~Element.html#instance-set-scale",
+    "class/js/Element.js~Element.html#instance-get-scale",
     "js/Element.js~Element#scale",
     "member"
   ],
@@ -1228,6 +1294,12 @@ window.esdocSearchIndex = [
     "file/js/GLContext.js.html",
     "js/GLContext.js",
     "file"
+  ],
+  [
+    "js/glcontext.js~glcontext#canvas",
+    "class/js/GLContext.js~GLContext.html#instance-get-canvas",
+    "js/GLContext.js~GLContext#canvas",
+    "member"
   ],
   [
     "js/glcontext.js~glcontext#constructor",
@@ -1332,6 +1404,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "js/geometry.js~geometry#float32aryvertexdata",
+    "class/js/Geometry.js~Geometry.html#instance-member-Float32AryVertexData",
+    "js/Geometry.js~Geometry#Float32AryVertexData",
+    "member"
+  ],
+  [
     "js/geometry.js~geometry#constructor",
     "class/js/Geometry.js~Geometry.html#instance-constructor-constructor",
     "js/Geometry.js~Geometry#constructor",
@@ -1342,6 +1420,12 @@ window.esdocSearchIndex = [
     "class/js/Geometry.js~Geometry.html#instance-method-draw",
     "js/Geometry.js~Geometry#draw",
     "method"
+  ],
+  [
+    "js/geometry.js~geometry#glslprogramofpasses",
+    "class/js/Geometry.js~Geometry.html#instance-member-glslProgramOfPasses",
+    "js/Geometry.js~Geometry#glslProgramOfPasses",
+    "member"
   ],
   [
     "js/geometry.js~geometry#materials",
@@ -1402,6 +1486,12 @@ window.esdocSearchIndex = [
     "class/js/Geometry.js~Geometry.html#instance-method-updateVerticesData",
     "js/Geometry.js~Geometry#updateVerticesData",
     "method"
+  ],
+  [
+    "js/geometry.js~geometry#vertexdata",
+    "class/js/Geometry.js~Geometry.html#instance-member-vertexData",
+    "js/Geometry.js~Geometry#vertexData",
+    "member"
   ],
   [
     "js/geometry.js~geometry.clearmaterialcache",
@@ -1495,13 +1585,13 @@ window.esdocSearchIndex = [
   ],
   [
     "js/mesh.js~mesh#geometry",
-    "class/js/Mesh.js~Mesh.html#instance-get-geometry",
+    "class/js/Mesh.js~Mesh.html#instance-set-geometry",
     "js/Mesh.js~Mesh#geometry",
     "member"
   ],
   [
     "js/mesh.js~mesh#geometry",
-    "class/js/Mesh.js~Mesh.html#instance-set-geometry",
+    "class/js/Mesh.js~Mesh.html#instance-get-geometry",
     "js/Mesh.js~Mesh#geometry",
     "member"
   ],
@@ -1560,15 +1650,33 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "js/renderpass.js~renderpass#clearelements",
+    "class/js/RenderPass.js~RenderPass.html#instance-method-clearElements",
+    "js/RenderPass.js~RenderPass#clearElements",
+    "method"
+  ],
+  [
     "js/renderpass.js~renderpass#constructor",
     "class/js/RenderPass.js~RenderPass.html#instance-constructor-constructor",
     "js/RenderPass.js~RenderPass#constructor",
     "method"
   ],
   [
+    "js/renderpass.js~renderpass#containsmeshafterprepareforrender",
+    "class/js/RenderPass.js~RenderPass.html#instance-method-containsMeshAfterPrepareForRender",
+    "js/RenderPass.js~RenderPass#containsMeshAfterPrepareForRender",
+    "method"
+  ],
+  [
     "js/renderpass.js~renderpass#elements",
     "class/js/RenderPass.js~RenderPass.html#instance-get-elements",
     "js/RenderPass.js~RenderPass#elements",
+    "member"
+  ],
+  [
+    "js/renderpass.js~renderpass#fboofrendertargettextures",
+    "class/js/RenderPass.js~RenderPass.html#instance-get-fboOfRenderTargetTextures",
+    "js/RenderPass.js~RenderPass#fboOfRenderTargetTextures",
     "member"
   ],
   [
@@ -1582,6 +1690,12 @@ window.esdocSearchIndex = [
     "class/js/RenderPass.js~RenderPass.html#instance-method-prepareForRender",
     "js/RenderPass.js~RenderPass#prepareForRender",
     "method"
+  ],
+  [
+    "js/renderpass.js~renderpass#rendertargettextures",
+    "class/js/RenderPass.js~RenderPass.html#instance-get-renderTargetTextures",
+    "js/RenderPass.js~RenderPass#renderTargetTextures",
+    "member"
   ],
   [
     "js/renderpass.js~renderpass#setclearcolor",
@@ -1636,12 +1750,6 @@ window.esdocSearchIndex = [
     "class/js/Renderer.js~Renderer.html#instance-get-glContext",
     "js/Renderer.js~Renderer#glContext",
     "member"
-  ],
-  [
-    "js/renderer.js~renderer#preparerenderpassesforrender",
-    "class/js/Renderer.js~Renderer.html#instance-method-prepareRenderPassesForRender",
-    "js/Renderer.js~Renderer#prepareRenderPassesForRender",
-    "method"
   ],
   [
     "js/renderer.js~renderer#resize",
@@ -1710,9 +1818,39 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "js/scene.js~scene#removeall",
+    "class/js/Scene.js~Scene.html#instance-method-removeAll",
+    "js/Scene.js~Scene#removeAll",
+    "method"
+  ],
+  [
+    "js/scene.js~scene#removechild",
+    "class/js/Scene.js~Scene.html#instance-method-removeChild",
+    "js/Scene.js~Scene#removeChild",
+    "method"
+  ],
+  [
+    "js/scene.js~scene#renderpasses",
+    "class/js/Scene.js~Scene.html#instance-get-renderPasses",
+    "js/Scene.js~Scene#renderPasses",
+    "member"
+  ],
+  [
+    "js/scene.js~scene#renderpasses",
+    "class/js/Scene.js~Scene.html#instance-set-renderPasses",
+    "js/Scene.js~Scene#renderPasses",
+    "member"
+  ],
+  [
     "js/scene.js~scene#setcurrentanimationvalue",
     "class/js/Scene.js~Scene.html#instance-method-setCurrentAnimationValue",
     "js/Scene.js~Scene#setCurrentAnimationValue",
+    "method"
+  ],
+  [
+    "js/scene.js~scene#tostring",
+    "class/js/Scene.js~Scene.html#instance-method-toString",
+    "js/Scene.js~Scene#toString",
     "method"
   ],
   [
@@ -1734,10 +1872,22 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "js/impl/glcontextimpl.js~glcontextimpl#canvas",
+    "class/js/impl/GLContextImpl.js~GLContextImpl.html#instance-get-canvas",
+    "js/impl/GLContextImpl.js~GLContextImpl#canvas",
+    "member"
+  ],
+  [
     "js/impl/glcontextimpl.js~glcontextimpl#constructor",
     "class/js/impl/GLContextImpl.js~GLContextImpl.html#instance-constructor-constructor",
     "js/impl/GLContextImpl.js~GLContextImpl#constructor",
     "method"
+  ],
+  [
+    "js/impl/glcontextimpl.js~glcontextimpl#gl",
+    "class/js/impl/GLContextImpl.js~GLContextImpl.html#instance-get-gl",
+    "js/impl/GLContextImpl.js~GLContextImpl#gl",
+    "member"
   ],
   [
     "js/impl/glcontextimpl.js~glcontextimpl#init",
@@ -1758,12 +1908,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "js/impl/glcontextwebgl1impl.js~glcontextwebgl1impl#gl",
-    "class/js/impl/GLContextWebGL1Impl.js~GLContextWebGL1Impl.html#instance-get-gl",
-    "js/impl/GLContextWebGL1Impl.js~GLContextWebGL1Impl#gl",
-    "member"
-  ],
-  [
     "js/impl/glcontextwebgl2impl.js",
     "file/js/impl/GLContextWebGL2Impl.js.html",
     "js/impl/GLContextWebGL2Impl.js",
@@ -1774,12 +1918,6 @@ window.esdocSearchIndex = [
     "class/js/impl/GLContextWebGL2Impl.js~GLContextWebGL2Impl.html#instance-constructor-constructor",
     "js/impl/GLContextWebGL2Impl.js~GLContextWebGL2Impl#constructor",
     "method"
-  ],
-  [
-    "js/impl/glcontextwebgl2impl.js~glcontextwebgl2impl#gl",
-    "class/js/impl/GLContextWebGL2Impl.js~GLContextWebGL2Impl.html#instance-get-gl",
-    "js/impl/GLContextWebGL2Impl.js~GLContextWebGL2Impl#gl",
-    "member"
   ],
   [
     "js/lights/abstractlight.js",
@@ -1819,13 +1957,13 @@ window.esdocSearchIndex = [
   ],
   [
     "js/lights/directionallight.js~directionallight#intensity",
-    "class/js/lights/DirectionalLight.js~DirectionalLight.html#instance-set-intensity",
+    "class/js/lights/DirectionalLight.js~DirectionalLight.html#instance-get-intensity",
     "js/lights/DirectionalLight.js~DirectionalLight#intensity",
     "member"
   ],
   [
     "js/lights/directionallight.js~directionallight#intensity",
-    "class/js/lights/DirectionalLight.js~DirectionalLight.html#instance-get-intensity",
+    "class/js/lights/DirectionalLight.js~DirectionalLight.html#instance-set-intensity",
     "js/lights/DirectionalLight.js~DirectionalLight#intensity",
     "member"
   ],
@@ -1843,13 +1981,13 @@ window.esdocSearchIndex = [
   ],
   [
     "js/lights/pointlight.js~pointlight#intensity",
-    "class/js/lights/PointLight.js~PointLight.html#instance-get-intensity",
+    "class/js/lights/PointLight.js~PointLight.html#instance-set-intensity",
     "js/lights/PointLight.js~PointLight#intensity",
     "member"
   ],
   [
     "js/lights/pointlight.js~pointlight#intensity",
-    "class/js/lights/PointLight.js~PointLight.html#instance-set-intensity",
+    "class/js/lights/PointLight.js~PointLight.html#instance-get-intensity",
     "js/lights/PointLight.js~PointLight#intensity",
     "member"
   ],
@@ -1981,25 +2119,25 @@ window.esdocSearchIndex = [
   ],
   [
     "js/math/matrix33.js~matrix33#m01",
-    "class/js/math/Matrix33.js~Matrix33.html#instance-get-m01",
-    "js/math/Matrix33.js~Matrix33#m01",
-    "member"
-  ],
-  [
-    "js/math/matrix33.js~matrix33#m01",
     "class/js/math/Matrix33.js~Matrix33.html#instance-set-m01",
     "js/math/Matrix33.js~Matrix33#m01",
     "member"
   ],
   [
-    "js/math/matrix33.js~matrix33#m02",
-    "class/js/math/Matrix33.js~Matrix33.html#instance-set-m02",
-    "js/math/Matrix33.js~Matrix33#m02",
+    "js/math/matrix33.js~matrix33#m01",
+    "class/js/math/Matrix33.js~Matrix33.html#instance-get-m01",
+    "js/math/Matrix33.js~Matrix33#m01",
     "member"
   ],
   [
     "js/math/matrix33.js~matrix33#m02",
     "class/js/math/Matrix33.js~Matrix33.html#instance-get-m02",
+    "js/math/Matrix33.js~Matrix33#m02",
+    "member"
+  ],
+  [
+    "js/math/matrix33.js~matrix33#m02",
+    "class/js/math/Matrix33.js~Matrix33.html#instance-set-m02",
     "js/math/Matrix33.js~Matrix33#m02",
     "member"
   ],
@@ -2017,25 +2155,25 @@ window.esdocSearchIndex = [
   ],
   [
     "js/math/matrix33.js~matrix33#m11",
-    "class/js/math/Matrix33.js~Matrix33.html#instance-set-m11",
-    "js/math/Matrix33.js~Matrix33#m11",
-    "member"
-  ],
-  [
-    "js/math/matrix33.js~matrix33#m11",
     "class/js/math/Matrix33.js~Matrix33.html#instance-get-m11",
     "js/math/Matrix33.js~Matrix33#m11",
     "member"
   ],
   [
-    "js/math/matrix33.js~matrix33#m12",
-    "class/js/math/Matrix33.js~Matrix33.html#instance-set-m12",
-    "js/math/Matrix33.js~Matrix33#m12",
+    "js/math/matrix33.js~matrix33#m11",
+    "class/js/math/Matrix33.js~Matrix33.html#instance-set-m11",
+    "js/math/Matrix33.js~Matrix33#m11",
     "member"
   ],
   [
     "js/math/matrix33.js~matrix33#m12",
     "class/js/math/Matrix33.js~Matrix33.html#instance-get-m12",
+    "js/math/Matrix33.js~Matrix33#m12",
+    "member"
+  ],
+  [
+    "js/math/matrix33.js~matrix33#m12",
+    "class/js/math/Matrix33.js~Matrix33.html#instance-set-m12",
     "js/math/Matrix33.js~Matrix33#m12",
     "member"
   ],
@@ -2065,13 +2203,13 @@ window.esdocSearchIndex = [
   ],
   [
     "js/math/matrix33.js~matrix33#m22",
-    "class/js/math/Matrix33.js~Matrix33.html#instance-set-m22",
+    "class/js/math/Matrix33.js~Matrix33.html#instance-get-m22",
     "js/math/Matrix33.js~Matrix33#m22",
     "member"
   ],
   [
     "js/math/matrix33.js~matrix33#m22",
-    "class/js/math/Matrix33.js~Matrix33.html#instance-get-m22",
+    "class/js/math/Matrix33.js~Matrix33.html#instance-set-m22",
     "js/math/Matrix33.js~Matrix33#m22",
     "member"
   ],
@@ -2227,25 +2365,25 @@ window.esdocSearchIndex = [
   ],
   [
     "js/math/matrix44.js~matrix44#m00",
-    "class/js/math/Matrix44.js~Matrix44.html#instance-get-m00",
-    "js/math/Matrix44.js~Matrix44#m00",
-    "member"
-  ],
-  [
-    "js/math/matrix44.js~matrix44#m00",
     "class/js/math/Matrix44.js~Matrix44.html#instance-set-m00",
     "js/math/Matrix44.js~Matrix44#m00",
     "member"
   ],
   [
-    "js/math/matrix44.js~matrix44#m01",
-    "class/js/math/Matrix44.js~Matrix44.html#instance-get-m01",
-    "js/math/Matrix44.js~Matrix44#m01",
+    "js/math/matrix44.js~matrix44#m00",
+    "class/js/math/Matrix44.js~Matrix44.html#instance-get-m00",
+    "js/math/Matrix44.js~Matrix44#m00",
     "member"
   ],
   [
     "js/math/matrix44.js~matrix44#m01",
     "class/js/math/Matrix44.js~Matrix44.html#instance-set-m01",
+    "js/math/Matrix44.js~Matrix44#m01",
+    "member"
+  ],
+  [
+    "js/math/matrix44.js~matrix44#m01",
+    "class/js/math/Matrix44.js~Matrix44.html#instance-get-m01",
     "js/math/Matrix44.js~Matrix44#m01",
     "member"
   ],
@@ -2287,25 +2425,25 @@ window.esdocSearchIndex = [
   ],
   [
     "js/math/matrix44.js~matrix44#m11",
-    "class/js/math/Matrix44.js~Matrix44.html#instance-set-m11",
-    "js/math/Matrix44.js~Matrix44#m11",
-    "member"
-  ],
-  [
-    "js/math/matrix44.js~matrix44#m11",
     "class/js/math/Matrix44.js~Matrix44.html#instance-get-m11",
     "js/math/Matrix44.js~Matrix44#m11",
     "member"
   ],
   [
-    "js/math/matrix44.js~matrix44#m12",
-    "class/js/math/Matrix44.js~Matrix44.html#instance-get-m12",
-    "js/math/Matrix44.js~Matrix44#m12",
+    "js/math/matrix44.js~matrix44#m11",
+    "class/js/math/Matrix44.js~Matrix44.html#instance-set-m11",
+    "js/math/Matrix44.js~Matrix44#m11",
     "member"
   ],
   [
     "js/math/matrix44.js~matrix44#m12",
     "class/js/math/Matrix44.js~Matrix44.html#instance-set-m12",
+    "js/math/Matrix44.js~Matrix44#m12",
+    "member"
+  ],
+  [
+    "js/math/matrix44.js~matrix44#m12",
+    "class/js/math/Matrix44.js~Matrix44.html#instance-get-m12",
     "js/math/Matrix44.js~Matrix44#m12",
     "member"
   ],
@@ -2371,25 +2509,25 @@ window.esdocSearchIndex = [
   ],
   [
     "js/math/matrix44.js~matrix44#m30",
-    "class/js/math/Matrix44.js~Matrix44.html#instance-get-m30",
-    "js/math/Matrix44.js~Matrix44#m30",
-    "member"
-  ],
-  [
-    "js/math/matrix44.js~matrix44#m30",
     "class/js/math/Matrix44.js~Matrix44.html#instance-set-m30",
     "js/math/Matrix44.js~Matrix44#m30",
     "member"
   ],
   [
-    "js/math/matrix44.js~matrix44#m31",
-    "class/js/math/Matrix44.js~Matrix44.html#instance-get-m31",
-    "js/math/Matrix44.js~Matrix44#m31",
+    "js/math/matrix44.js~matrix44#m30",
+    "class/js/math/Matrix44.js~Matrix44.html#instance-get-m30",
+    "js/math/Matrix44.js~Matrix44#m30",
     "member"
   ],
   [
     "js/math/matrix44.js~matrix44#m31",
     "class/js/math/Matrix44.js~Matrix44.html#instance-set-m31",
+    "js/math/Matrix44.js~Matrix44#m31",
+    "member"
+  ],
+  [
+    "js/math/matrix44.js~matrix44#m31",
+    "class/js/math/Matrix44.js~Matrix44.html#instance-get-m31",
     "js/math/Matrix44.js~Matrix44#m31",
     "member"
   ],
@@ -2407,13 +2545,13 @@ window.esdocSearchIndex = [
   ],
   [
     "js/math/matrix44.js~matrix44#m33",
-    "class/js/math/Matrix44.js~Matrix44.html#instance-set-m33",
+    "class/js/math/Matrix44.js~Matrix44.html#instance-get-m33",
     "js/math/Matrix44.js~Matrix44#m33",
     "member"
   ],
   [
     "js/math/matrix44.js~matrix44#m33",
-    "class/js/math/Matrix44.js~Matrix44.html#instance-get-m33",
+    "class/js/math/Matrix44.js~Matrix44.html#instance-set-m33",
     "js/math/Matrix44.js~Matrix44#m33",
     "member"
   ],
@@ -2946,16 +3084,52 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "js/primitives/particle.js~particle#centerpositions",
+    "class/js/primitives/Particle.js~Particle.html#instance-member-centerPositions",
+    "js/primitives/Particle.js~Particle#centerPositions",
+    "member"
+  ],
+  [
+    "js/primitives/particle.js~particle#colors",
+    "class/js/primitives/Particle.js~Particle.html#instance-member-colors",
+    "js/primitives/Particle.js~Particle#colors",
+    "member"
+  ],
+  [
     "js/primitives/particle.js~particle#constructor",
     "class/js/primitives/Particle.js~Particle.html#instance-constructor-constructor",
     "js/primitives/Particle.js~Particle#constructor",
     "method"
   ],
   [
+    "js/primitives/particle.js~particle#normals",
+    "class/js/primitives/Particle.js~Particle.html#instance-member-normals",
+    "js/primitives/Particle.js~Particle#normals",
+    "member"
+  ],
+  [
+    "js/primitives/particle.js~particle#pointdata",
+    "class/js/primitives/Particle.js~Particle.html#instance-member-pointData",
+    "js/primitives/Particle.js~Particle#pointData",
+    "member"
+  ],
+  [
+    "js/primitives/particle.js~particle#positions",
+    "class/js/primitives/Particle.js~Particle.html#instance-member-positions",
+    "js/primitives/Particle.js~Particle#positions",
+    "member"
+  ],
+  [
     "js/primitives/particle.js~particle#prepareforrender",
     "class/js/primitives/Particle.js~Particle.html#instance-method-prepareForRender",
     "js/primitives/Particle.js~Particle#prepareForRender",
     "method"
+  ],
+  [
+    "js/primitives/particle.js~particle#texcoords",
+    "class/js/primitives/Particle.js~Particle.html#instance-member-texcoords",
+    "js/primitives/Particle.js~Particle#texcoords",
+    "member"
   ],
   [
     "js/primitives/particle.js~particle#updateverticesdata",
@@ -3451,13 +3625,13 @@ window.esdocSearchIndex = [
   ],
   [
     "js/textures/mutabletexture.js~mutabletexture#colorattachiment",
-    "class/js/textures/MutableTexture.js~MutableTexture.html#instance-get-colorAttachiment",
+    "class/js/textures/MutableTexture.js~MutableTexture.html#instance-set-colorAttachiment",
     "js/textures/MutableTexture.js~MutableTexture#colorAttachiment",
     "member"
   ],
   [
     "js/textures/mutabletexture.js~mutabletexture#colorattachiment",
-    "class/js/textures/MutableTexture.js~MutableTexture.html#instance-set-colorAttachiment",
+    "class/js/textures/MutableTexture.js~MutableTexture.html#instance-get-colorAttachiment",
     "js/textures/MutableTexture.js~MutableTexture#colorAttachiment",
     "member"
   ],
@@ -3466,6 +3640,18 @@ window.esdocSearchIndex = [
     "class/js/textures/MutableTexture.js~MutableTexture.html#instance-constructor-constructor",
     "js/textures/MutableTexture.js~MutableTexture#constructor",
     "method"
+  ],
+  [
+    "js/textures/mutabletexture.js~mutabletexture#framebufferobject",
+    "class/js/textures/MutableTexture.js~MutableTexture.html#instance-set-frameBufferObject",
+    "js/textures/MutableTexture.js~MutableTexture#frameBufferObject",
+    "member"
+  ],
+  [
+    "js/textures/mutabletexture.js~mutabletexture#framebufferobject",
+    "class/js/textures/MutableTexture.js~MutableTexture.html#instance-get-frameBufferObject",
+    "js/textures/MutableTexture.js~MutableTexture#frameBufferObject",
+    "member"
   ],
   [
     "js/textures/texture.js",
@@ -3492,6 +3678,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "js/textures/texture.js~texture#height",
+    "class/js/textures/Texture.js~Texture.html#instance-get-height",
+    "js/textures/Texture.js~Texture#height",
+    "member"
+  ],
+  [
     "js/textures/texture.js~texture#isimageassignedfortexture",
     "class/js/textures/Texture.js~Texture.html#instance-get-isImageAssignedForTexture",
     "js/textures/Texture.js~Texture#isImageAssignedForTexture",
@@ -3501,6 +3693,12 @@ window.esdocSearchIndex = [
     "js/textures/texture.js~texture#istextureready",
     "class/js/textures/Texture.js~Texture.html#instance-get-isTextureReady",
     "js/textures/Texture.js~Texture#isTextureReady",
+    "member"
+  ],
+  [
+    "js/textures/texture.js~texture#width",
+    "class/js/textures/Texture.js~Texture.html#instance-get-width",
+    "js/textures/Texture.js~Texture#width",
     "member"
   ]
 ]

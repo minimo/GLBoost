@@ -86,10 +86,8 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">js/Group.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import GLBoost from &apos;./globals&apos;
-import Element from &apos;./Element&apos;
-import Vector3 from &apos;./math/Vector3&apos;
-import Matrix44 from &apos;./math/Matrix44&apos;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import GLBoost from &apos;./globals&apos;;
+import Element from &apos;./Element&apos;;
 
 export default class Group extends Element {
   constructor() {
@@ -108,7 +106,7 @@ export default class Group extends Element {
       if (elem === element) {
         element._parent = null;
       }
-      return elem !== element
+      return elem !== element;
     });
   }
 
@@ -155,7 +153,7 @@ export default class Group extends Element {
   }
 }
 
-GLBoost[&quot;Group&quot;] = Group;
+GLBoost[&apos;Group&apos;] = Group;
 </code></pre>
 
 </div>

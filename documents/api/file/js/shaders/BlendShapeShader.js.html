@@ -86,8 +86,7 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">js/shaders/BlendShapeShader.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Shader from &apos;./Shader&apos;
-import SimpleShader from &apos;./SimpleShader&apos;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Shader from &apos;./Shader&apos;;
 
 export default class BlendShapeShaderSource {
 
@@ -125,7 +124,7 @@ export default class BlendShapeShaderSource {
     return shaderText;
   }
 
-  prepare_BlendShapeShaderSource(gl, shaderProgram, vertexAttribs, existCamera_f) {
+  prepare_BlendShapeShaderSource(gl, shaderProgram, vertexAttribs) {
     var vertexAttribsAsResult = [];
     vertexAttribs.forEach((attribName)=&gt;{
       if (this.BlendShapeShaderSource_isShapeTarget(attribName)) { // if POSITION and ShapeTargets...

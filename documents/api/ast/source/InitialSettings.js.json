@@ -69,8 +69,8 @@
           "column": 0
         },
         "end": {
-          "line": 2,
-          "column": 0
+          "line": 1,
+          "column": 32
         }
       }
     },
@@ -83,8 +83,8 @@
             "type": "Identifier",
             "name": "Vector3",
             "range": [
-              39,
-              46
+              40,
+              47
             ],
             "loc": {
               "start": {
@@ -98,8 +98,8 @@
             }
           },
           "range": [
-            39,
-            46
+            40,
+            47
           ],
           "loc": {
             "start": {
@@ -118,8 +118,8 @@
         "value": "./math/Vector3",
         "raw": "'./math/Vector3'",
         "range": [
-          52,
-          68
+          53,
+          69
         ],
         "loc": {
           "start": {
@@ -133,7 +133,7 @@
         }
       },
       "range": [
-        32,
+        33,
         70
       ],
       "loc": {
@@ -142,8 +142,8 @@
           "column": 0
         },
         "end": {
-          "line": 4,
-          "column": 0
+          "line": 2,
+          "column": 37
         }
       }
     },
@@ -155,8 +155,8 @@
           "type": "Identifier",
           "name": "InitialSettings",
           "range": [
-            91,
-            106
+            93,
+            108
           ],
           "loc": {
             "start": {
@@ -179,8 +179,8 @@
                 "type": "Identifier",
                 "name": "constructor",
                 "range": [
-                  111,
-                  122
+                  113,
+                  124
                 ],
                 "loc": {
                   "start": {
@@ -201,8 +201,8 @@
                   "type": "BlockStatement",
                   "body": [],
                   "range": [
-                    125,
-                    131
+                    127,
+                    133
                   ],
                   "loc": {
                     "start": {
@@ -218,8 +218,8 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  122,
-                  131
+                  124,
+                  133
                 ],
                 "loc": {
                   "start": {
@@ -235,8 +235,8 @@
               "kind": "constructor",
               "computed": false,
               "range": [
-                111,
-                131
+                113,
+                133
               ],
               "loc": {
                 "start": {
@@ -252,8 +252,8 @@
             }
           ],
           "range": [
-            107,
-            133
+            109,
+            135
           ],
           "loc": {
             "start": {
@@ -267,8 +267,8 @@
           }
         },
         "range": [
-          85,
-          133
+          87,
+          135
         ],
         "loc": {
           "start": {
@@ -284,8 +284,8 @@
         "trailingComments": []
       },
       "range": [
-        70,
-        133
+        72,
+        135
       ],
       "loc": {
         "start": {
@@ -310,8 +310,8 @@
             "type": "Identifier",
             "name": "GLBoost",
             "range": [
-              135,
-              142
+              137,
+              144
             ],
             "loc": {
               "start": {
@@ -327,10 +327,10 @@
           "property": {
             "type": "Literal",
             "value": "TARGET_WEBGL_VERSION",
-            "raw": "\"TARGET_WEBGL_VERSION\"",
+            "raw": "'TARGET_WEBGL_VERSION'",
             "range": [
-              143,
-              165
+              145,
+              167
             ],
             "loc": {
               "start": {
@@ -344,8 +344,8 @@
             }
           },
           "range": [
-            135,
-            166
+            137,
+            168
           ],
           "loc": {
             "start": {
@@ -363,8 +363,8 @@
           "value": 1,
           "raw": "1",
           "range": [
-            169,
-            170
+            171,
+            172
           ],
           "loc": {
             "start": {
@@ -378,8 +378,8 @@
           }
         },
         "range": [
-          135,
-          170
+          137,
+          172
         ],
         "loc": {
           "start": {
@@ -393,8 +393,8 @@
         }
       },
       "range": [
-        135,
-        171
+        137,
+        173
       ],
       "loc": {
         "start": {
@@ -419,8 +419,8 @@
             "type": "Identifier",
             "name": "GLBoost",
             "range": [
-              172,
-              179
+              174,
+              181
             ],
             "loc": {
               "start": {
@@ -436,10 +436,10 @@
           "property": {
             "type": "Literal",
             "value": "DEFAULT_POINTLIGHT_INTENSITY",
-            "raw": "\"DEFAULT_POINTLIGHT_INTENSITY\"",
+            "raw": "'DEFAULT_POINTLIGHT_INTENSITY'",
             "range": [
-              180,
-              210
+              182,
+              212
             ],
             "loc": {
               "start": {
@@ -453,8 +453,8 @@
             }
           },
           "range": [
-            172,
-            211
+            174,
+            213
           ],
           "loc": {
             "start": {
@@ -473,8 +473,8 @@
             "type": "Identifier",
             "name": "Vector3",
             "range": [
-              218,
-              225
+              220,
+              227
             ],
             "loc": {
               "start": {
@@ -493,8 +493,8 @@
               "value": 1,
               "raw": "1",
               "range": [
-                226,
-                227
+                228,
+                229
               ],
               "loc": {
                 "start": {
@@ -512,8 +512,8 @@
               "value": 1,
               "raw": "1",
               "range": [
-                229,
-                230
+                231,
+                232
               ],
               "loc": {
                 "start": {
@@ -531,8 +531,8 @@
               "value": 1,
               "raw": "1",
               "range": [
-                232,
-                233
+                234,
+                235
               ],
               "loc": {
                 "start": {
@@ -547,8 +547,8 @@
             }
           ],
           "range": [
-            214,
-            234
+            216,
+            236
           ],
           "loc": {
             "start": {
@@ -562,8 +562,8 @@
           }
         },
         "range": [
-          172,
-          234
+          174,
+          236
         ],
         "loc": {
           "start": {
@@ -577,8 +577,8 @@
         }
       },
       "range": [
-        172,
-        235
+        174,
+        237
       ],
       "loc": {
         "start": {
@@ -603,8 +603,8 @@
             "type": "Identifier",
             "name": "GLBoost",
             "range": [
-              236,
-              243
+              238,
+              245
             ],
             "loc": {
               "start": {
@@ -620,10 +620,10 @@
           "property": {
             "type": "Literal",
             "value": "ANGLE_UNIT",
-            "raw": "\"ANGLE_UNIT\"",
+            "raw": "'ANGLE_UNIT'",
             "range": [
-              244,
-              256
+              246,
+              258
             ],
             "loc": {
               "start": {
@@ -637,8 +637,8 @@
             }
           },
           "range": [
-            236,
-            257
+            238,
+            259
           ],
           "loc": {
             "start": {
@@ -658,8 +658,8 @@
             "type": "Identifier",
             "name": "GLBoost",
             "range": [
-              260,
-              267
+              262,
+              269
             ],
             "loc": {
               "start": {
@@ -676,8 +676,8 @@
             "type": "Identifier",
             "name": "DEGREE",
             "range": [
-              268,
-              274
+              270,
+              276
             ],
             "loc": {
               "start": {
@@ -691,8 +691,8 @@
             }
           },
           "range": [
-            260,
-            274
+            262,
+            276
           ],
           "loc": {
             "start": {
@@ -706,8 +706,8 @@
           }
         },
         "range": [
-          236,
-          274
+          238,
+          276
         ],
         "loc": {
           "start": {
@@ -721,8 +721,8 @@
         }
       },
       "range": [
-        236,
-        275
+        238,
+        277
       ],
       "loc": {
         "start": {
@@ -747,8 +747,8 @@
             "type": "Identifier",
             "name": "GLBoost",
             "range": [
-              276,
-              283
+              278,
+              285
             ],
             "loc": {
               "start": {
@@ -764,10 +764,10 @@
           "property": {
             "type": "Literal",
             "value": "WEBGL_ONE_USE_EXTENSIONS",
-            "raw": "\"WEBGL_ONE_USE_EXTENSIONS\"",
+            "raw": "'WEBGL_ONE_USE_EXTENSIONS'",
             "range": [
-              284,
-              310
+              286,
+              312
             ],
             "loc": {
               "start": {
@@ -781,8 +781,8 @@
             }
           },
           "range": [
-            276,
-            311
+            278,
+            313
           ],
           "loc": {
             "start": {
@@ -800,8 +800,8 @@
           "value": true,
           "raw": "true",
           "range": [
-            314,
-            318
+            316,
+            320
           ],
           "loc": {
             "start": {
@@ -815,8 +815,8 @@
           }
         },
         "range": [
-          276,
-          318
+          278,
+          320
         ],
         "loc": {
           "start": {
@@ -830,8 +830,8 @@
         }
       },
       "range": [
-        276,
-        319
+        278,
+        321
       ],
       "loc": {
         "start": {
@@ -848,7 +848,7 @@
   "sourceType": "module",
   "range": [
     0,
-    319
+    321
   ],
   "loc": {
     "start": {

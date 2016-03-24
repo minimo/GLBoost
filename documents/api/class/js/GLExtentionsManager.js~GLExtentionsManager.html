@@ -171,7 +171,7 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/GLExtentionsManager.js~GLExtentionsManager.html#instance-constructor-constructor">constructor</a></span></span><span data-ice="signature">(gl: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/js/GLExtentionsManager.js~GLExtentionsManager.html#instance-constructor-constructor">constructor</a></span></span><span data-ice="signature">(glContext: <span>*</span>)</span>
         </p>
       </div>
       <div>
@@ -335,7 +335,7 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/GLExtentionsManager.js~GLExtentionsManager.html#instance-method-createUintArrayForElementIndex">createUintArrayForElementIndex</a></span></span><span data-ice="signature">(array: <span>*</span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/js/GLExtentionsManager.js~GLExtentionsManager.html#instance-method-createUintArrayForElementIndex">createUintArrayForElementIndex</a></span></span><span data-ice="signature">(gl: <span>*</span>, array: <span>*</span>): <span>*</span></span>
         </p>
       </div>
       <div>
@@ -385,7 +385,7 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/GLExtentionsManager.js~GLExtentionsManager.html#instance-method-drawBuffers">drawBuffers</a></span></span><span data-ice="signature">(gl: <span>*</span>, buffers: <span>*</span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/js/GLExtentionsManager.js~GLExtentionsManager.html#instance-method-drawBuffers">drawBuffers</a></span></span><span data-ice="signature">(gl: <span>*</span>, buffers: <span>*</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
         </p>
       </div>
       <div>
@@ -444,7 +444,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/GLExtentionsManager.js.html#lineNumber24">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/GLExtentionsManager.js.html#lineNumber25">source</a></span></span>
     </span>
   </h3>
 
@@ -509,7 +509,7 @@
     
     
     
-    <span data-ice="name">constructor</span><span data-ice="signature">(gl: <span>*</span>)</span>
+    <span data-ice="name">constructor</span><span data-ice="signature">(glContext: <span>*</span>)</span>
     <span class="right-info">
       
       
@@ -533,7 +533,7 @@
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">gl</td>
+      <td data-ice="name" data-depth="0">glContext</td>
       <td data-ice="type"><span>*</span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
@@ -572,7 +572,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/GLExtentionsManager.js.html#lineNumber32">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/GLExtentionsManager.js.html#lineNumber33">source</a></span></span>
     </span>
   </h3>
 
@@ -612,7 +612,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/GLExtentionsManager.js.html#lineNumber36">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/GLExtentionsManager.js.html#lineNumber37">source</a></span></span>
     </span>
   </h3>
 
@@ -652,7 +652,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/GLExtentionsManager.js.html#lineNumber28">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/GLExtentionsManager.js.html#lineNumber29">source</a></span></span>
     </span>
   </h3>
 
@@ -695,7 +695,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/GLExtentionsManager.js.html#lineNumber50">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/GLExtentionsManager.js.html#lineNumber51">source</a></span></span>
     </span>
   </h3>
 
@@ -767,7 +767,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/GLExtentionsManager.js.html#lineNumber68">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/GLExtentionsManager.js.html#lineNumber75">source</a></span></span>
     </span>
   </h3>
 
@@ -835,11 +835,11 @@
     
     
     
-    <span data-ice="name">createUintArrayForElementIndex</span><span data-ice="signature">(array: <span>*</span>): <span>*</span></span>
+    <span data-ice="name">createUintArrayForElementIndex</span><span data-ice="signature">(gl: <span>*</span>, array: <span>*</span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/GLExtentionsManager.js.html#lineNumber80">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/GLExtentionsManager.js.html#lineNumber89">source</a></span></span>
     </span>
   </h3>
 
@@ -859,6 +859,12 @@
     <tbody>
     
     <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">gl</td>
+      <td data-ice="type"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">array</td>
       <td data-ice="type"><span>*</span></td>
       <td data-ice="appendix"></td>
@@ -905,7 +911,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/GLExtentionsManager.js.html#lineNumber40">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/GLExtentionsManager.js.html#lineNumber41">source</a></span></span>
     </span>
   </h3>
 
@@ -967,11 +973,11 @@
     
     
     
-    <span data-ice="name">drawBuffers</span><span data-ice="signature">(gl: <span>*</span>, buffers: <span>*</span>): <span>*</span></span>
+    <span data-ice="name">drawBuffers</span><span data-ice="signature">(gl: <span>*</span>, buffers: <span>*</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/GLExtentionsManager.js.html#lineNumber62">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/GLExtentionsManager.js.html#lineNumber63">source</a></span></span>
     </span>
   </h3>
 
@@ -1011,7 +1017,7 @@
     <h4>Return:</h4>
     <table>
       <tr>
-        <td class="return-type" data-ice="returnType"><span>*</span></td>
+        <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
         
       </tr>
     </table>
@@ -1043,7 +1049,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/GLExtentionsManager.js.html#lineNumber74">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/GLExtentionsManager.js.html#lineNumber81">source</a></span></span>
     </span>
   </h3>
 

@@ -169,7 +169,7 @@ export default class ObjLoader {
         iMCount++;
         materials[iMCount] = new ClassicMaterial(canvas);
         if (defaultShader) {
-          materials[iMCount].shader = new defaultShader(canvas);
+          materials[iMCount].shader = defaultShader;
         } else {
           materials[iMCount].shader = new PhongShader(canvas);
         }
@@ -203,7 +203,7 @@ export default class ObjLoader {
       if (matchArray[1].toLowerCase() === &quot;map_kd&quot;)
       {
         matchArray = mtlTextRows[i].match(/(\w+) ([\w:\/\-\.]+)/);
-        var texture = new Texture(basePath + matchArray[2], canvas);
+        var texture = new Texture(basePath + matchArray[2], {flipY: true}, canvas);
         texture.name = matchArray[2];
         materials[iMCount].diffuseTexture = texture;
       }

@@ -86,17 +86,17 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">js/textures/AbstractTexture.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import GLBoost from &apos;./../globals&apos;
-import GLContext from &apos;./../GLContext&apos;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import GLBoost from &apos;./../globals&apos;;
+import GLContext from &apos;./../GLContext&apos;;
 
 export default class AbstractTexture {
   constructor(canvas = GLBoost.CURRENT_CANVAS_ID) {
     if (this.constructor === AbstractTexture) {
-      throw new TypeError(&quot;Cannot construct AbstractTexture instances directly.&quot;);
+      throw new TypeError(&apos;Cannot construct AbstractTexture instances directly.&apos;);
     }
 
-    this._gl = GLContext.getInstance(canvas).gl;
-    this._name = &quot;&quot;;
+    this._glContext = GLContext.getInstance(canvas);
+    this._name = &apos;&apos;;
   }
 
   get glTextureResource() {
@@ -104,16 +104,17 @@ export default class AbstractTexture {
   }
 
   setUp() {
+    var gl = this._glContext.gl;
     if (this._texture === null) {
       return false;
     }
-    this._gl.bindTexture(this._gl.TEXTURE_2D, this._texture);
+    gl.bindTexture(gl.TEXTURE_2D, this._texture);
 
     return true;
   }
 
   tearDown() {
-    this._gl.bindTexture(this._gl.TEXTURE_2D, null);
+    gl.bindTexture(gl.TEXTURE_2D, null);
   }
 
   set name(name) {
@@ -138,7 +139,7 @@ export default class AbstractTexture {
 
 }
 
-GLBoost[&quot;AbstractTexture&quot;] = AbstractTexture;
+GLBoost[&apos;AbstractTexture&apos;] = AbstractTexture;
 </code></pre>
 
 </div>

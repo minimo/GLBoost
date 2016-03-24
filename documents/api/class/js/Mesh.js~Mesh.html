@@ -329,7 +329,7 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/Mesh.js~Mesh.html#instance-method-draw">draw</a></span></span><span data-ice="signature">(lights: <span>*</span>, camera: <span>*</span>, scene: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/js/Mesh.js~Mesh.html#instance-method-draw">draw</a></span></span><span data-ice="signature">(lights: <span>*</span>, camera: <span>*</span>, scene: <span>*</span>, renderPass_index: <span>*</span>)</span>
         </p>
       </div>
       <div>
@@ -404,7 +404,7 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/Mesh.js~Mesh.html#instance-method-prepareForRender">prepareForRender</a></span></span><span data-ice="signature">(existCamera_f: <span>*</span>, lights: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/js/Mesh.js~Mesh.html#instance-method-prepareForRender">prepareForRender</a></span></span><span data-ice="signature">(existCamera_f: <span>*</span>, lights: <span>*</span>, renderPasses: <span>*</span>)</span>
         </p>
       </div>
       <div>
@@ -1573,7 +1573,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Mesh.js.html#lineNumber85">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Mesh.js.html#lineNumber84">source</a></span></span>
     </span>
   </h3>
 
@@ -1649,7 +1649,7 @@
     
     
     
-    <span data-ice="name">draw</span><span data-ice="signature">(lights: <span>*</span>, camera: <span>*</span>, scene: <span>*</span>)</span>
+    <span data-ice="name">draw</span><span data-ice="signature">(lights: <span>*</span>, camera: <span>*</span>, scene: <span>*</span>, renderPass_index: <span>*</span>)</span>
     <span class="right-info">
       
       
@@ -1690,6 +1690,12 @@
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">renderPass_index</td>
+      <td data-ice="type"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
 </tbody>
   </table>
 </div>
@@ -1721,7 +1727,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Mesh.js.html#lineNumber118">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Mesh.js.html#lineNumber116">source</a></span></span>
     </span>
   </h3>
 
@@ -1777,7 +1783,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Mesh.js.html#lineNumber145">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Mesh.js.html#lineNumber143">source</a></span></span>
     </span>
   </h3>
 
@@ -1829,7 +1835,7 @@
     
     
     
-    <span data-ice="name">prepareForRender</span><span data-ice="signature">(existCamera_f: <span>*</span>, lights: <span>*</span>)</span>
+    <span data-ice="name">prepareForRender</span><span data-ice="signature">(existCamera_f: <span>*</span>, lights: <span>*</span>, renderPasses: <span>*</span>)</span>
     <span class="right-info">
       
       
@@ -1860,6 +1866,12 @@
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">lights</td>
+      <td data-ice="type"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">renderPasses</td>
       <td data-ice="type"><span>*</span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>

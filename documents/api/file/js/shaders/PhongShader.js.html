@@ -86,15 +86,15 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">js/shaders/PhongShader.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Shader from &apos;./Shader&apos;
-import SimpleShader from &apos;./SimpleShader&apos;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Shader from &apos;./Shader&apos;;
+import SimpleShader from &apos;./SimpleShader&apos;;
 
 export class PhongShaderSource {
   VSDefine_PhongShaderSource(in_, out_, f, lights) {
     var shaderText = &apos;&apos;;
     if (Shader._exist(f, GLBoost.NORMAL)) {
       shaderText += `${in_} vec3 aVertex_normal;\n`;
-      shaderText += `${out_} vec3 normal;\n`;
+      shaderText += `${out_} vec3 v_normal;\n`;
     }
     shaderText += `${out_} vec4 position;\n`;
     return shaderText;
@@ -103,7 +103,7 @@ export class PhongShaderSource {
   VSTransform_PhongShaderSource(existCamera_f, f, lights) {
     var shaderText = &apos;&apos;;
     shaderText += &apos;  position = vec4(aVertex_position, 1.0);\n&apos;;
-    shaderText += &apos;  normal = aVertex_normal;\n&apos;;
+    shaderText += &apos;  v_normal = aVertex_normal;\n&apos;;
 
     return shaderText;
   }
@@ -111,7 +111,7 @@ export class PhongShaderSource {
   FSDefine_PhongShaderSource(in_, f, lights) {
     var shaderText = &apos;&apos;;
     if (Shader._exist(f, GLBoost.NORMAL)) {
-      shaderText += `${in_} vec3 normal;\n`;
+      shaderText += `${in_} vec3 v_normal;\n`;
     }
     shaderText += `${in_} vec4 position;\n`;
     shaderText += `uniform vec3 viewPosition;\n`;
@@ -127,27 +127,28 @@ export class PhongShaderSource {
   FSShade_PhongShaderSource(f, gl, lights) {
     var shaderText = &apos;&apos;;
 
-    shaderText += &apos;  vec4 surfaceColor = rt1;\n&apos;;
-    shaderText += &apos;  rt1 = vec4(0.0, 0.0, 0.0, 0.0);\n&apos;;
+    shaderText += &apos;  vec4 surfaceColor = rt0;\n&apos;;
+    shaderText += &apos;  rt0 = vec4(0.0, 0.0, 0.0, 0.0);\n&apos;;
+    shaderText += &apos;  vec3 normal = normalize(v_normal);\n&apos;;
 
     shaderText += `  for (int i=0; i&lt;${lights.length}; i++) {\n`;
     // if PointLight: lightPosition[i].w === 1.0      if DirectionalLight: lightPosition[i].w === 0.0
     shaderText += &apos;    vec3 light = normalize(lightPosition[i].xyz - position.xyz * lightPosition[i].w);\n&apos;;
     shaderText += &apos;    float diffuse = max(dot(light, normal), 0.0);\n&apos;;
-    shaderText += &apos;    rt1 += Kd * lightDiffuse[i] * vec4(diffuse, diffuse, diffuse, 1.0) * surfaceColor;\n&apos;;
+    shaderText += &apos;    rt0 += Kd * lightDiffuse[i] * vec4(diffuse, diffuse, diffuse, 1.0) * surfaceColor;\n&apos;;
     shaderText += &apos;    vec3 view = normalize(viewPosition - position.xyz);\n&apos;;
     shaderText += &apos;    vec3 reflect = -view + 2.0 * dot(normal, view) * normal;\n&apos;;
     shaderText += &apos;    float specular = pow(max(dot(light, reflect), 0.0), power);\n&apos;;
-    shaderText += &apos;    rt1 += Ks * lightDiffuse[i] * vec4(specular, specular, specular, 0.0);\n&apos;;
+    shaderText += &apos;    rt0 += Ks * lightDiffuse[i] * vec4(specular, specular, specular, 0.0);\n&apos;;
     shaderText += &apos;  }\n&apos;;
-    //shaderText += &apos;  rt1.a = 1.0;\n&apos;;
-    //shaderText += &apos;  rt1 = vec4(position.xyz, 1.0);\n&apos;;
+    //shaderText += &apos;  rt0.a = 1.0;\n&apos;;
+    //shaderText += &apos;  rt0 = vec4(position.xyz, 1.0);\n&apos;;
 
 
     return shaderText;
   }
 
-  prepare_PhongShaderSource(gl, shaderProgram, vertexAttribs, existCamera_f, lights) {
+  prepare_PhongShaderSource(gl, shaderProgram, vertexAttribs, existCamera_f, lights, canvas) {
 
     var vertexAttribsAsResult = [];
     vertexAttribs.forEach((attribName)=&gt;{
@@ -162,7 +163,7 @@ export class PhongShaderSource {
     shaderProgram.Ks = gl.getUniformLocation(shaderProgram, &apos;Ks&apos;);
     shaderProgram.power = gl.getUniformLocation(shaderProgram, &apos;power&apos;);
 
-    lights = Shader.getDefaultPointLightIfNotExsist(gl, lights);
+    lights = Shader.getDefaultPointLightIfNotExsist(gl, lights, canvas);
 
     shaderProgram[&apos;viewPosition&apos;] = gl.getUniformLocation(shaderProgram, &apos;viewPosition&apos;);
 
@@ -222,7 +223,7 @@ export default class PhongShader extends SimpleShader {
   }
 }
 
-GLBoost[&quot;PhongShader&quot;] = PhongShader;
+GLBoost[&apos;PhongShader&apos;] = PhongShader;
 </code></pre>
 
 </div>

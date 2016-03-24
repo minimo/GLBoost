@@ -86,17 +86,12 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">js/Renderer.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import GLBoost from &apos;./globals&apos;
-import Mesh from &apos;./Mesh&apos;
-import Camera from &apos;./Camera&apos;
-import Matrix44 from &apos;./math/Matrix44&apos;
-import GLContext from &apos;./GLContext&apos;
-import GLExtentionsManager from &apos;./GLExtentionsManager&apos;
-import MutableTexture from &apos;./textures/MutableTexture&apos;
-import RenderPass from &apos;./RenderPass&apos;
-import AbstractLight from &apos;./lights/AbstractLight&apos;
-import Geometry from &apos;./Geometry&apos;
-import Group from &apos;./Group&apos;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import GLBoost from &apos;./globals&apos;;
+import GLContext from &apos;./GLContext&apos;;
+import GLExtentionsManager from &apos;./GLExtentionsManager&apos;;
+import MutableTexture from &apos;./textures/MutableTexture&apos;;
+import RenderPass from &apos;./RenderPass&apos;;
+import Geometry from &apos;./Geometry&apos;;
 
 /**
  * en: This class take a role as operator of rendering process. In order to render images to canvas, this Renderer class gathers other elements&apos; data, decides a plan of drawing process, and then just execute it.&lt;br&gt;
@@ -109,9 +104,9 @@ export default class Renderer {
 
     GLBoost.CURRENT_CANVAS_ID = &apos;#&apos; + parameters.canvas.id;
 
-    this._gl = GLContext.getInstance(_canvas).gl;
+    this._glContext = GLContext.getInstance(_canvas);
 
-    var gl = this._gl;
+    var gl = this._glContext.gl;
 
     var setDefaultGLStates = function setDefaultGLStates() {
 
@@ -129,8 +124,6 @@ export default class Renderer {
 
     setDefaultGLStates();
 
-    this._currentRenderTargetTextures = [];
-    this._renderPasses = null;
   }
 
   /**
@@ -140,54 +133,42 @@ export default class Renderer {
    */
   draw(scene) {
     var camera = false;
-    var viewMatrix = null;
-    var projectionMatrix = null;
     scene.cameras.forEach((elm)=&gt; {
-      if (elm.isMainCamera) {
+      if (elm.isMainCamera(scene)) {
         camera = elm;
       }
     });
 
-    var gl = this._gl;
-    var glem = GLExtentionsManager.getInstance(gl);
+    var gl = this._glContext.gl;
+    var glem = GLExtentionsManager.getInstance(this._glContext);
 
     let lights = scene.lights;
 
-    // if you didn&apos;t setup RenderPasses, all meshes are drawn to the backbuffer of framebuffer (gl.BACK).
-    if (this._renderPasses === null) {
+    scene.renderPasses.forEach((renderPass, index)=&gt;{
+
+      var meshes = renderPass.meshes;
+
+      if (renderPass.fboOfRenderTargetTextures) {
+        gl.bindTexture(gl.TEXTURE_2D, null);
+        Geometry.clearMaterialCache();
+        gl.bindFramebuffer(gl.FRAMEBUFFER, renderPass.fboOfRenderTargetTextures);
+      }
+      glem.drawBuffers(gl, renderPass.buffersToDraw); // set render target buffers for each RenderPass.
+
+      if (renderPass.clearColor) {
+        var color = renderPass.clearColor;
+        gl.clearColor(color[0], color[1], color[2], color[3]);
+        gl.clear( gl.COLOR_BUFFER_BIT );
+      }
+
+      meshes.forEach((mesh)=&gt; {
+        mesh.draw(lights, camera, scene, index);
+      });
+
+      gl.bindFramebuffer(gl.FRAMEBUFFER, null);
       glem.drawBuffers(gl, [gl.BACK]);
 
-      scene.meshes.forEach((mesh)=&gt; {
-        mesh.draw(lights, camera, scene);
-      });
-
-    } else { // if you did setup RenderPasses, drawing meshes are executed for each RenderPass.
-      this._renderPasses.forEach((renderPass)=&gt;{
-
-        var meshes = renderPass.meshes;
-
-        if (renderPass.buffersToDraw[0] !== gl.BACK) {
-          gl.bindTexture(gl.TEXTURE_2D, null);
-          Geometry.clearMaterialCache();
-          gl.bindFramebuffer(gl.FRAMEBUFFER, this._fbo);
-        }
-        glem.drawBuffers(gl, renderPass.buffersToDraw); // set render target buffers for each RenderPass.
-
-        if (renderPass.clearColor) {
-          var color = renderPass.clearColor;
-          gl.clearColor(color[0], color[1], color[2], color[3]);
-          gl.clear( gl.COLOR_BUFFER_BIT );
-        }
-
-        meshes.forEach((mesh)=&gt; {
-          mesh.draw(lights, camera, scene);
-        });
-
-        gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-        glem.drawBuffers(gl, [gl.BACK]);
-
-      });
-    }
+    });
   }
 
   /**
@@ -199,7 +180,7 @@ export default class Renderer {
    */
   clearCanvas( color_flg, depth_flg, stencil_flg ) {
 
-    var gl = this._gl;
+    var gl = this._glContext.gl;
 
     var bufferBits = 0;
 
@@ -209,7 +190,7 @@ export default class Renderer {
 
     gl.clear( bufferBits );
 
-  };
+  }
 
   /**
    * en: create textures as render target. (and attach it to framebuffer object internally.)&lt;br&gt;
@@ -221,32 +202,31 @@ export default class Renderer {
    */
   createTexturesForRenderTarget(width, height, textureNum) {
 
-    var gl = this._gl;
+    var gl = this._glContext.gl;
+    var canvas = this._glContext.canvas;
 
-    var glem = GLExtentionsManager.getInstance(gl);
+    var glem = GLExtentionsManager.getInstance(this._glContext);
 
-
-    if (this._fbo) {
-      gl.deleteFramebuffers(1, this._fbo);
-    }
     // Create FBO
-    this._fbo = gl.createFramebuffer();
-    gl.bindFramebuffer(gl.FRAMEBUFFER, this._fbo);
-    this._fbo.width = width ? width : gl._canvas.width;
-    this._fbo.height = height ? height : gl._canvas.height;
+    var fbo = gl.createFramebuffer();
+    gl.bindFramebuffer(gl.FRAMEBUFFER, fbo);
+    fbo.width = width ? width : canvas.width;
+    fbo.height = height ? height : canvas.height;
 
+    var renderTargetTextures = [];
     for(let i=0; i&lt;textureNum; i++) {
-      let texture = new MutableTexture(this._fbo.width, this._fbo.height, gl._canvas);
-      this._currentRenderTargetTextures.push(texture);
+      let texture = new MutableTexture(fbo.width, fbo.height, canvas);
+      texture.fbo = fbo;
+      renderTargetTextures.push(texture);
     }
 
     // Create RenderBuffer
     var renderbuffer = gl.createRenderbuffer();
     gl.bindRenderbuffer(gl.RENDERBUFFER, renderbuffer);
-    gl.renderbufferStorage(gl.RENDERBUFFER, gl.DEPTH_COMPONENT16, this._fbo.width, this._fbo.height);
+    gl.renderbufferStorage(gl.RENDERBUFFER, gl.DEPTH_COMPONENT16, fbo.width, fbo.height);
 
     // Attach Buffers
-    this._currentRenderTargetTextures.forEach((texture, i)=&gt;{
+    renderTargetTextures.forEach((texture, i)=&gt;{
       var glTexture = texture.glTextureResource;
       var attachimentId = glem.colorAttachiment(gl, i);
       texture.colorAttachiment = attachimentId;
@@ -258,22 +238,16 @@ export default class Renderer {
     gl.bindRenderbuffer(gl.RENDERBUFFER, null);
     gl.bindFramebuffer(gl.FRAMEBUFFER, null);
 
-    return this._currentRenderTargetTextures;
+    return renderTargetTextures;
   }
 
   createRenderPasses(number) {
-    this._renderPasses = [];
+    var renderPasses = [];
     for (let i=0; i&lt;number; i++) {
-      this._renderPasses.push(new RenderPass(this._gl));
+      renderPasses.push(new RenderPass(this._glContext.gl));
     }
 
-    return this._renderPasses;
-  }
-
-  prepareRenderPassesForRender() {
-    this._renderPasses.forEach((renderPass)=&gt; {
-      renderPass.prepareForRender();
-    });
+    return renderPasses;
   }
 
   /**
@@ -282,7 +256,7 @@ export default class Renderer {
    * @returns {webglcontext} a context of WebGL
    */
   get glContext() {
-    return this._gl;
+    return this._glContext.gl;
   }
 
 
@@ -293,15 +267,15 @@ export default class Renderer {
    * @param {number} height en: height to resize, ja:&#x30EA;&#x30B5;&#x30A4;&#x30BA;&#x3059;&#x308B;&#x9AD8;&#x3055;
    */
   resize(width, height) {
-    this._gl._canvas.width = width;
-    this._gl._canvas.height = height;
+    this._glContext.canvas.width = width;
+    this._glContext.canvas.height = height;
 
-    this._gl.viewport(0, 0, width, height);
+    this._glContext.gl.viewport(0, 0, width, height);
   }
 
 }
 
-GLBoost[&quot;Renderer&quot;] = Renderer;
+GLBoost[&apos;Renderer&apos;] = Renderer;
 </code></pre>
 
 </div>
