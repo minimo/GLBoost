@@ -626,11 +626,11 @@
       ],
       "source": {
         "type": "Literal",
-        "value": "./BlendShapeGeometry",
-        "raw": "'./BlendShapeGeometry'",
+        "value": "./geometries/BlendShapeGeometry",
+        "raw": "'./geometries/BlendShapeGeometry'",
         "range": [
           331,
-          353
+          364
         ],
         "loc": {
           "start": {
@@ -639,13 +639,13 @@
           },
           "end": {
             "line": 9,
-            "column": 53
+            "column": 64
           }
         }
       },
       "range": [
         300,
-        354
+        365
       ],
       "loc": {
         "start": {
@@ -654,7 +654,7 @@
         },
         "end": {
           "line": 9,
-          "column": 54
+          "column": 65
         }
       }
     },
@@ -667,8 +667,8 @@
             "type": "Identifier",
             "name": "ObjLoader",
             "range": [
-              362,
-              371
+              373,
+              382
             ],
             "loc": {
               "start": {
@@ -682,8 +682,8 @@
             }
           },
           "range": [
-            362,
-            371
+            373,
+            382
           ],
           "loc": {
             "start": {
@@ -702,8 +702,8 @@
         "value": "./loader/ObjLoader",
         "raw": "'./loader/ObjLoader'",
         "range": [
-          377,
-          397
+          388,
+          408
         ],
         "loc": {
           "start": {
@@ -717,8 +717,8 @@
         }
       },
       "range": [
-        355,
-        398
+        366,
+        409
       ],
       "loc": {
         "start": {
@@ -740,8 +740,8 @@
             "type": "Identifier",
             "name": "InitialSettings",
             "range": [
-              406,
-              421
+              417,
+              432
             ],
             "loc": {
               "start": {
@@ -755,8 +755,8 @@
             }
           },
           "range": [
-            406,
-            421
+            417,
+            432
           ],
           "loc": {
             "start": {
@@ -775,8 +775,8 @@
         "value": "./InitialSettings",
         "raw": "'./InitialSettings'",
         "range": [
-          427,
-          446
+          438,
+          457
         ],
         "loc": {
           "start": {
@@ -790,8 +790,8 @@
         }
       },
       "range": [
-        399,
-        447
+        410,
+        458
       ],
       "loc": {
         "start": {
@@ -813,8 +813,8 @@
             "type": "Identifier",
             "name": "Plane",
             "range": [
-              455,
-              460
+              466,
+              471
             ],
             "loc": {
               "start": {
@@ -828,8 +828,8 @@
             }
           },
           "range": [
-            455,
-            460
+            466,
+            471
           ],
           "loc": {
             "start": {
@@ -848,8 +848,8 @@
         "value": "./primitives/Plane",
         "raw": "'./primitives/Plane'",
         "range": [
-          466,
-          486
+          477,
+          497
         ],
         "loc": {
           "start": {
@@ -863,8 +863,8 @@
         }
       },
       "range": [
-        448,
-        487
+        459,
+        498
       ],
       "loc": {
         "start": {
@@ -886,8 +886,8 @@
             "type": "Identifier",
             "name": "Cube",
             "range": [
-              495,
-              499
+              506,
+              510
             ],
             "loc": {
               "start": {
@@ -901,8 +901,8 @@
             }
           },
           "range": [
-            495,
-            499
+            506,
+            510
           ],
           "loc": {
             "start": {
@@ -921,8 +921,8 @@
         "value": "./primitives/Cube",
         "raw": "'./primitives/Cube'",
         "range": [
-          505,
-          524
+          516,
+          535
         ],
         "loc": {
           "start": {
@@ -936,8 +936,8 @@
         }
       },
       "range": [
-        488,
-        525
+        499,
+        536
       ],
       "loc": {
         "start": {
@@ -959,8 +959,8 @@
             "type": "Identifier",
             "name": "Sphere",
             "range": [
-              533,
-              539
+              544,
+              550
             ],
             "loc": {
               "start": {
@@ -974,8 +974,8 @@
             }
           },
           "range": [
-            533,
-            539
+            544,
+            550
           ],
           "loc": {
             "start": {
@@ -994,8 +994,8 @@
         "value": "./primitives/Sphere",
         "raw": "'./primitives/Sphere'",
         "range": [
-          545,
-          566
+          556,
+          577
         ],
         "loc": {
           "start": {
@@ -1009,8 +1009,8 @@
         }
       },
       "range": [
-        526,
-        567
+        537,
+        578
       ],
       "loc": {
         "start": {
@@ -1032,8 +1032,8 @@
             "type": "Identifier",
             "name": "Particle",
             "range": [
-              575,
-              583
+              586,
+              594
             ],
             "loc": {
               "start": {
@@ -1047,8 +1047,8 @@
             }
           },
           "range": [
-            575,
-            583
+            586,
+            594
           ],
           "loc": {
             "start": {
@@ -1067,8 +1067,8 @@
         "value": "./primitives/Particle",
         "raw": "'./primitives/Particle'",
         "range": [
-          589,
-          612
+          600,
+          623
         ],
         "loc": {
           "start": {
@@ -1082,8 +1082,8 @@
         }
       },
       "range": [
-        568,
-        613
+        579,
+        624
       ],
       "loc": {
         "start": {
@@ -1105,8 +1105,8 @@
             "type": "Identifier",
             "name": "Group",
             "range": [
-              621,
-              626
+              632,
+              637
             ],
             "loc": {
               "start": {
@@ -1120,8 +1120,8 @@
             }
           },
           "range": [
-            621,
-            626
+            632,
+            637
           ],
           "loc": {
             "start": {
@@ -1140,8 +1140,8 @@
         "value": "./Group",
         "raw": "'./Group'",
         "range": [
-          632,
-          641
+          643,
+          652
         ],
         "loc": {
           "start": {
@@ -1155,8 +1155,8 @@
         }
       },
       "range": [
-        614,
-        642
+        625,
+        653
       ],
       "loc": {
         "start": {
@@ -1178,8 +1178,8 @@
             "type": "Identifier",
             "name": "GLTFLoader",
             "range": [
-              650,
-              660
+              661,
+              671
             ],
             "loc": {
               "start": {
@@ -1193,8 +1193,8 @@
             }
           },
           "range": [
-            650,
-            660
+            661,
+            671
           ],
           "loc": {
             "start": {
@@ -1213,8 +1213,8 @@
         "value": "./loader/GLTFLoader",
         "raw": "'./loader/GLTFLoader'",
         "range": [
-          666,
-          687
+          677,
+          698
         ],
         "loc": {
           "start": {
@@ -1228,8 +1228,8 @@
         }
       },
       "range": [
-        643,
-        688
+        654,
+        699
       ],
       "loc": {
         "start": {
@@ -1251,8 +1251,8 @@
             "type": "Identifier",
             "name": "GLBoost",
             "range": [
-              696,
-              703
+              707,
+              714
             ],
             "loc": {
               "start": {
@@ -1266,8 +1266,8 @@
             }
           },
           "range": [
-            696,
-            703
+            707,
+            714
           ],
           "loc": {
             "start": {
@@ -1286,8 +1286,8 @@
         "value": "./plugins/phina.glboost",
         "raw": "'./plugins/phina.glboost'",
         "range": [
-          709,
-          734
+          720,
+          745
         ],
         "loc": {
           "start": {
@@ -1301,8 +1301,8 @@
         }
       },
       "range": [
-        689,
-        735
+        700,
+        746
       ],
       "loc": {
         "start": {
@@ -1319,7 +1319,7 @@
   "sourceType": "module",
   "range": [
     0,
-    735
+    746
   ],
   "loc": {
     "start": {

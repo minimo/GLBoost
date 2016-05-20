@@ -24,9 +24,9 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "glboost/js/blendshapegeometry.js~blendshapegeometry",
-    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html",
-    "<span>BlendShapeGeometry</span> <span class=\"search-result-import-path\">glboost/js/BlendShapeGeometry.js</span>",
+    "glboost/js/geometries/blendshapegeometry.js~blendshapegeometry",
+    "class/js/geometries/BlendShapeGeometry.js~BlendShapeGeometry.html",
+    "<span>BlendShapeGeometry</span> <span class=\"search-result-import-path\">glboost/js/geometries/BlendShapeGeometry.js</span>",
     "class"
   ],
   [
@@ -102,9 +102,9 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "glboost/js/geometry.js~geometry",
-    "class/js/Geometry.js~Geometry.html",
-    "<span>Geometry</span> <span class=\"search-result-import-path\">glboost/js/Geometry.js</span>",
+    "glboost/js/geometries/geometry.js~geometry",
+    "class/js/geometries/Geometry.js~Geometry.html",
+    "<span>Geometry</span> <span class=\"search-result-import-path\">glboost/js/geometries/Geometry.js</span>",
     "class"
   ],
   [
@@ -138,6 +138,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "glboost/js/skeletons/joint.js~joint",
+    "class/js/skeletons/Joint.js~Joint.html",
+    "<span>Joint</span> <span class=\"search-result-import-path\">glboost/js/skeletons/Joint.js</span>",
+    "class"
+  ],
+  [
     "glboost/js/shaders/lambertshader.js~lambertshader",
     "class/js/shaders/LambertShader.js~LambertShader.html",
     "<span>LambertShader</span> <span class=\"search-result-import-path\">glboost/js/shaders/LambertShader.js</span>",
@@ -168,9 +174,9 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "glboost/js/mesh.js~mesh",
-    "class/js/Mesh.js~Mesh.html",
-    "<span>Mesh</span> <span class=\"search-result-import-path\">glboost/js/Mesh.js</span>",
+    "glboost/js/meshes/mesh.js~mesh",
+    "class/js/meshes/Mesh.js~Mesh.html",
+    "<span>Mesh</span> <span class=\"search-result-import-path\">glboost/js/meshes/Mesh.js</span>",
     "class"
   ],
   [
@@ -261,6 +267,24 @@ window.esdocSearchIndex = [
     "glboost/js/shaders/simpleshader.js~simpleshadersource",
     "class/js/shaders/SimpleShader.js~SimpleShaderSource.html",
     "<span>SimpleShaderSource</span> <span class=\"search-result-import-path\">glboost/js/shaders/SimpleShader.js</span>",
+    "class"
+  ],
+  [
+    "glboost/js/geometries/skeletalgeometry.js~skeletalgeometry",
+    "class/js/geometries/SkeletalGeometry.js~SkeletalGeometry.html",
+    "<span>SkeletalGeometry</span> <span class=\"search-result-import-path\">glboost/js/geometries/SkeletalGeometry.js</span>",
+    "class"
+  ],
+  [
+    "glboost/js/meshes/skeletalmesh.js~skeletalmesh",
+    "class/js/meshes/SkeletalMesh.js~SkeletalMesh.html",
+    "<span>SkeletalMesh</span> <span class=\"search-result-import-path\">glboost/js/meshes/SkeletalMesh.js</span>",
+    "class"
+  ],
+  [
+    "glboost/js/shaders/skeletalshader.js~skeletalshadersource",
+    "class/js/shaders/SkeletalShader.js~SkeletalShaderSource.html",
+    "<span>SkeletalShaderSource</span> <span class=\"search-result-import-path\">glboost/js/shaders/SkeletalShader.js</span>",
     "class"
   ],
   [
@@ -624,156 +648,6 @@ window.esdocSearchIndex = [
     "external"
   ],
   [
-    "js/blendshapegeometry.js",
-    "file/js/BlendShapeGeometry.js.html",
-    "js/BlendShapeGeometry.js",
-    "file"
-  ],
-  [
-    "js/blendshapegeometry.js~blendshapegeometry#blendweight_1",
-    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-get-blendWeight_1",
-    "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_1",
-    "member"
-  ],
-  [
-    "js/blendshapegeometry.js~blendshapegeometry#blendweight_1",
-    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-set-blendWeight_1",
-    "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_1",
-    "member"
-  ],
-  [
-    "js/blendshapegeometry.js~blendshapegeometry#blendweight_10",
-    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-set-blendWeight_10",
-    "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_10",
-    "member"
-  ],
-  [
-    "js/blendshapegeometry.js~blendshapegeometry#blendweight_10",
-    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-get-blendWeight_10",
-    "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_10",
-    "member"
-  ],
-  [
-    "js/blendshapegeometry.js~blendshapegeometry#blendweight_2",
-    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-get-blendWeight_2",
-    "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_2",
-    "member"
-  ],
-  [
-    "js/blendshapegeometry.js~blendshapegeometry#blendweight_2",
-    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-set-blendWeight_2",
-    "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_2",
-    "member"
-  ],
-  [
-    "js/blendshapegeometry.js~blendshapegeometry#blendweight_3",
-    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-set-blendWeight_3",
-    "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_3",
-    "member"
-  ],
-  [
-    "js/blendshapegeometry.js~blendshapegeometry#blendweight_3",
-    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-get-blendWeight_3",
-    "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_3",
-    "member"
-  ],
-  [
-    "js/blendshapegeometry.js~blendshapegeometry#blendweight_4",
-    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-get-blendWeight_4",
-    "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_4",
-    "member"
-  ],
-  [
-    "js/blendshapegeometry.js~blendshapegeometry#blendweight_4",
-    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-set-blendWeight_4",
-    "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_4",
-    "member"
-  ],
-  [
-    "js/blendshapegeometry.js~blendshapegeometry#blendweight_5",
-    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-set-blendWeight_5",
-    "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_5",
-    "member"
-  ],
-  [
-    "js/blendshapegeometry.js~blendshapegeometry#blendweight_5",
-    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-get-blendWeight_5",
-    "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_5",
-    "member"
-  ],
-  [
-    "js/blendshapegeometry.js~blendshapegeometry#blendweight_6",
-    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-get-blendWeight_6",
-    "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_6",
-    "member"
-  ],
-  [
-    "js/blendshapegeometry.js~blendshapegeometry#blendweight_6",
-    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-set-blendWeight_6",
-    "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_6",
-    "member"
-  ],
-  [
-    "js/blendshapegeometry.js~blendshapegeometry#blendweight_7",
-    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-get-blendWeight_7",
-    "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_7",
-    "member"
-  ],
-  [
-    "js/blendshapegeometry.js~blendshapegeometry#blendweight_7",
-    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-set-blendWeight_7",
-    "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_7",
-    "member"
-  ],
-  [
-    "js/blendshapegeometry.js~blendshapegeometry#blendweight_8",
-    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-get-blendWeight_8",
-    "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_8",
-    "member"
-  ],
-  [
-    "js/blendshapegeometry.js~blendshapegeometry#blendweight_8",
-    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-set-blendWeight_8",
-    "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_8",
-    "member"
-  ],
-  [
-    "js/blendshapegeometry.js~blendshapegeometry#blendweight_9",
-    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-get-blendWeight_9",
-    "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_9",
-    "member"
-  ],
-  [
-    "js/blendshapegeometry.js~blendshapegeometry#blendweight_9",
-    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-set-blendWeight_9",
-    "js/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_9",
-    "member"
-  ],
-  [
-    "js/blendshapegeometry.js~blendshapegeometry#constructor",
-    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-constructor-constructor",
-    "js/BlendShapeGeometry.js~BlendShapeGeometry#constructor",
-    "method"
-  ],
-  [
-    "js/blendshapegeometry.js~blendshapegeometry#draw",
-    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-method-draw",
-    "js/BlendShapeGeometry.js~BlendShapeGeometry#draw",
-    "method"
-  ],
-  [
-    "js/blendshapegeometry.js~blendshapegeometry#prepareforrender",
-    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-method-prepareForRender",
-    "js/BlendShapeGeometry.js~BlendShapeGeometry#prepareForRender",
-    "method"
-  ],
-  [
-    "js/blendshapegeometry.js~blendshapegeometry#tostring",
-    "class/js/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-method-toString",
-    "js/BlendShapeGeometry.js~BlendShapeGeometry#toString",
-    "method"
-  ],
-  [
     "js/camera.js",
     "file/js/Camera.js.html",
     "js/Camera.js",
@@ -811,25 +685,25 @@ window.esdocSearchIndex = [
   ],
   [
     "js/camera.js~camera#eye",
-    "class/js/Camera.js~Camera.html#instance-set-eye",
-    "js/Camera.js~Camera#eye",
-    "member"
-  ],
-  [
-    "js/camera.js~camera#eye",
     "class/js/Camera.js~Camera.html#instance-get-eye",
     "js/Camera.js~Camera#eye",
     "member"
   ],
   [
-    "js/camera.js~camera#fovy",
-    "class/js/Camera.js~Camera.html#instance-get-fovy",
-    "js/Camera.js~Camera#fovy",
+    "js/camera.js~camera#eye",
+    "class/js/Camera.js~Camera.html#instance-set-eye",
+    "js/Camera.js~Camera#eye",
     "member"
   ],
   [
     "js/camera.js~camera#fovy",
     "class/js/Camera.js~Camera.html#instance-set-fovy",
+    "js/Camera.js~Camera#fovy",
+    "member"
+  ],
+  [
+    "js/camera.js~camera#fovy",
+    "class/js/Camera.js~Camera.html#instance-get-fovy",
     "js/Camera.js~Camera#fovy",
     "member"
   ],
@@ -859,13 +733,13 @@ window.esdocSearchIndex = [
   ],
   [
     "js/camera.js~camera#translate",
-    "class/js/Camera.js~Camera.html#instance-get-translate",
+    "class/js/Camera.js~Camera.html#instance-set-translate",
     "js/Camera.js~Camera#translate",
     "member"
   ],
   [
     "js/camera.js~camera#translate",
-    "class/js/Camera.js~Camera.html#instance-set-translate",
+    "class/js/Camera.js~Camera.html#instance-get-translate",
     "js/Camera.js~Camera#translate",
     "member"
   ],
@@ -895,25 +769,25 @@ window.esdocSearchIndex = [
   ],
   [
     "js/camera.js~camera#zfar",
-    "class/js/Camera.js~Camera.html#instance-get-zFar",
-    "js/Camera.js~Camera#zFar",
-    "member"
-  ],
-  [
-    "js/camera.js~camera#zfar",
     "class/js/Camera.js~Camera.html#instance-set-zFar",
     "js/Camera.js~Camera#zFar",
     "member"
   ],
   [
-    "js/camera.js~camera#znear",
-    "class/js/Camera.js~Camera.html#instance-set-zNear",
-    "js/Camera.js~Camera#zNear",
+    "js/camera.js~camera#zfar",
+    "class/js/Camera.js~Camera.html#instance-get-zFar",
+    "js/Camera.js~Camera#zFar",
     "member"
   ],
   [
     "js/camera.js~camera#znear",
     "class/js/Camera.js~Camera.html#instance-get-zNear",
+    "js/Camera.js~Camera#zNear",
+    "member"
+  ],
+  [
+    "js/camera.js~camera#znear",
+    "class/js/Camera.js~Camera.html#instance-set-zNear",
     "js/Camera.js~Camera#zNear",
     "member"
   ],
@@ -949,13 +823,13 @@ window.esdocSearchIndex = [
   ],
   [
     "js/classicmaterial.js~classicmaterial#basecolor",
-    "class/js/ClassicMaterial.js~ClassicMaterial.html#instance-set-baseColor",
+    "class/js/ClassicMaterial.js~ClassicMaterial.html#instance-get-baseColor",
     "js/ClassicMaterial.js~ClassicMaterial#baseColor",
     "member"
   ],
   [
     "js/classicmaterial.js~classicmaterial#basecolor",
-    "class/js/ClassicMaterial.js~ClassicMaterial.html#instance-get-baseColor",
+    "class/js/ClassicMaterial.js~ClassicMaterial.html#instance-set-baseColor",
     "js/ClassicMaterial.js~ClassicMaterial#baseColor",
     "member"
   ],
@@ -1003,13 +877,13 @@ window.esdocSearchIndex = [
   ],
   [
     "js/classicmaterial.js~classicmaterial#name",
-    "class/js/ClassicMaterial.js~ClassicMaterial.html#instance-get-name",
+    "class/js/ClassicMaterial.js~ClassicMaterial.html#instance-set-name",
     "js/ClassicMaterial.js~ClassicMaterial#name",
     "member"
   ],
   [
     "js/classicmaterial.js~classicmaterial#name",
-    "class/js/ClassicMaterial.js~ClassicMaterial.html#instance-set-name",
+    "class/js/ClassicMaterial.js~ClassicMaterial.html#instance-get-name",
     "js/ClassicMaterial.js~ClassicMaterial#name",
     "member"
   ],
@@ -1027,25 +901,25 @@ window.esdocSearchIndex = [
   ],
   [
     "js/classicmaterial.js~classicmaterial#shader",
-    "class/js/ClassicMaterial.js~ClassicMaterial.html#instance-get-shader",
-    "js/ClassicMaterial.js~ClassicMaterial#shader",
-    "member"
-  ],
-  [
-    "js/classicmaterial.js~classicmaterial#shader",
     "class/js/ClassicMaterial.js~ClassicMaterial.html#instance-set-shader",
     "js/ClassicMaterial.js~ClassicMaterial#shader",
     "member"
   ],
   [
-    "js/classicmaterial.js~classicmaterial#specularcolor",
-    "class/js/ClassicMaterial.js~ClassicMaterial.html#instance-set-specularColor",
-    "js/ClassicMaterial.js~ClassicMaterial#specularColor",
+    "js/classicmaterial.js~classicmaterial#shader",
+    "class/js/ClassicMaterial.js~ClassicMaterial.html#instance-get-shader",
+    "js/ClassicMaterial.js~ClassicMaterial#shader",
     "member"
   ],
   [
     "js/classicmaterial.js~classicmaterial#specularcolor",
     "class/js/ClassicMaterial.js~ClassicMaterial.html#instance-get-specularColor",
+    "js/ClassicMaterial.js~ClassicMaterial#specularColor",
+    "member"
+  ],
+  [
+    "js/classicmaterial.js~classicmaterial#specularcolor",
+    "class/js/ClassicMaterial.js~ClassicMaterial.html#instance-set-specularColor",
     "js/ClassicMaterial.js~ClassicMaterial#specularColor",
     "member"
   ],
@@ -1068,22 +942,10 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "js/element.js~element#children",
-    "class/js/Element.js~Element.html#instance-member-children",
-    "js/Element.js~Element#children",
-    "member"
-  ],
-  [
     "js/element.js~element#constructor",
     "class/js/Element.js~Element.html#instance-constructor-constructor",
     "js/Element.js~Element#constructor",
     "method"
-  ],
-  [
-    "js/element.js~element#currentcalcmode",
-    "class/js/Element.js~Element.html#instance-get-currentCalcMode",
-    "js/Element.js~Element#currentCalcMode",
-    "member"
   ],
   [
     "js/element.js~element#currentcalcmode",
@@ -1092,10 +954,22 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "js/element.js~element#currentcalcmode",
+    "class/js/Element.js~Element.html#instance-get-currentCalcMode",
+    "js/Element.js~Element#currentCalcMode",
+    "member"
+  ],
+  [
     "js/element.js~element#dirty",
     "class/js/Element.js~Element.html#instance-set-dirty",
     "js/Element.js~Element#dirty",
     "member"
+  ],
+  [
+    "js/element.js~element#getmatrixat",
+    "class/js/Element.js~Element.html#instance-method-getMatrixAt",
+    "js/Element.js~Element#getMatrixAt",
+    "method"
   ],
   [
     "js/element.js~element#getquaternionat",
@@ -1152,6 +1026,12 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "js/element.js~element#matrix",
+    "class/js/Element.js~Element.html#instance-get-matrix",
+    "js/Element.js~Element#matrix",
+    "member"
+  ],
+  [
     "js/element.js~element#multiplymatrix",
     "class/js/Element.js~Element.html#instance-method-multiplyMatrix",
     "js/Element.js~Element#multiplyMatrix",
@@ -1159,13 +1039,13 @@ window.esdocSearchIndex = [
   ],
   [
     "js/element.js~element#opacity",
-    "class/js/Element.js~Element.html#instance-get-opacity",
+    "class/js/Element.js~Element.html#instance-set-opacity",
     "js/Element.js~Element#opacity",
     "member"
   ],
   [
     "js/element.js~element#opacity",
-    "class/js/Element.js~Element.html#instance-set-opacity",
+    "class/js/Element.js~Element.html#instance-get-opacity",
     "js/Element.js~Element#opacity",
     "member"
   ],
@@ -1195,13 +1075,13 @@ window.esdocSearchIndex = [
   ],
   [
     "js/element.js~element#rotate",
-    "class/js/Element.js~Element.html#instance-set-rotate",
+    "class/js/Element.js~Element.html#instance-get-rotate",
     "js/Element.js~Element#rotate",
     "member"
   ],
   [
     "js/element.js~element#rotate",
-    "class/js/Element.js~Element.html#instance-get-rotate",
+    "class/js/Element.js~Element.html#instance-set-rotate",
     "js/Element.js~Element#rotate",
     "member"
   ],
@@ -1260,14 +1140,26 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "js/element.js~element#translate",
-    "class/js/Element.js~Element.html#instance-set-translate",
-    "js/Element.js~Element#translate",
+    "js/element.js~element#transformmatrixonlyrotate",
+    "class/js/Element.js~Element.html#instance-get-transformMatrixOnlyRotate",
+    "js/Element.js~Element#transformMatrixOnlyRotate",
+    "member"
+  ],
+  [
+    "js/element.js~element#transformmatrixonlyrotateoninit",
+    "class/js/Element.js~Element.html#instance-get-transformMatrixOnlyRotateOnInit",
+    "js/Element.js~Element#transformMatrixOnlyRotateOnInit",
     "member"
   ],
   [
     "js/element.js~element#translate",
     "class/js/Element.js~Element.html#instance-get-translate",
+    "js/Element.js~Element#translate",
+    "member"
+  ],
+  [
+    "js/element.js~element#translate",
+    "class/js/Element.js~Element.html#instance-set-translate",
     "js/Element.js~Element#translate",
     "member"
   ],
@@ -1398,108 +1290,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "js/geometry.js",
-    "file/js/Geometry.js.html",
-    "js/Geometry.js",
-    "file"
-  ],
-  [
-    "js/geometry.js~geometry#float32aryvertexdata",
-    "class/js/Geometry.js~Geometry.html#instance-member-Float32AryVertexData",
-    "js/Geometry.js~Geometry#Float32AryVertexData",
-    "member"
-  ],
-  [
-    "js/geometry.js~geometry#constructor",
-    "class/js/Geometry.js~Geometry.html#instance-constructor-constructor",
-    "js/Geometry.js~Geometry#constructor",
-    "method"
-  ],
-  [
-    "js/geometry.js~geometry#draw",
-    "class/js/Geometry.js~Geometry.html#instance-method-draw",
-    "js/Geometry.js~Geometry#draw",
-    "method"
-  ],
-  [
-    "js/geometry.js~geometry#glslprogramofpasses",
-    "class/js/Geometry.js~Geometry.html#instance-member-glslProgramOfPasses",
-    "js/Geometry.js~Geometry#glslProgramOfPasses",
-    "member"
-  ],
-  [
-    "js/geometry.js~geometry#materials",
-    "class/js/Geometry.js~Geometry.html#instance-set-materials",
-    "js/Geometry.js~Geometry#materials",
-    "member"
-  ],
-  [
-    "js/geometry.js~geometry#merge",
-    "class/js/Geometry.js~Geometry.html#instance-method-merge",
-    "js/Geometry.js~Geometry#merge",
-    "method"
-  ],
-  [
-    "js/geometry.js~geometry#mergeharder",
-    "class/js/Geometry.js~Geometry.html#instance-method-mergeHarder",
-    "js/Geometry.js~Geometry#mergeHarder",
-    "method"
-  ],
-  [
-    "js/geometry.js~geometry#prepareforrender",
-    "class/js/Geometry.js~Geometry.html#instance-method-prepareForRender",
-    "js/Geometry.js~Geometry#prepareForRender",
-    "method"
-  ],
-  [
-    "js/geometry.js~geometry#prepareglslprogramandsetvertexntomaterial",
-    "class/js/Geometry.js~Geometry.html#instance-method-prepareGLSLProgramAndSetVertexNtoMaterial",
-    "js/Geometry.js~Geometry#prepareGLSLProgramAndSetVertexNtoMaterial",
-    "method"
-  ],
-  [
-    "js/geometry.js~geometry#setupvertexattribs",
-    "class/js/Geometry.js~Geometry.html#instance-method-setUpVertexAttribs",
-    "js/Geometry.js~Geometry#setUpVertexAttribs",
-    "method"
-  ],
-  [
-    "js/geometry.js~geometry#setverticesdata",
-    "class/js/Geometry.js~Geometry.html#instance-method-setVerticesData",
-    "js/Geometry.js~Geometry#setVerticesData",
-    "method"
-  ],
-  [
-    "js/geometry.js~geometry#tostring",
-    "class/js/Geometry.js~Geometry.html#instance-method-toString",
-    "js/Geometry.js~Geometry#toString",
-    "method"
-  ],
-  [
-    "js/geometry.js~geometry#tostring",
-    "class/js/Geometry.js~Geometry.html#instance-method-toString",
-    "js/Geometry.js~Geometry#toString",
-    "method"
-  ],
-  [
-    "js/geometry.js~geometry#updateverticesdata",
-    "class/js/Geometry.js~Geometry.html#instance-method-updateVerticesData",
-    "js/Geometry.js~Geometry#updateVerticesData",
-    "method"
-  ],
-  [
-    "js/geometry.js~geometry#vertexdata",
-    "class/js/Geometry.js~Geometry.html#instance-member-vertexData",
-    "js/Geometry.js~Geometry#vertexData",
-    "member"
-  ],
-  [
-    "js/geometry.js~geometry.clearmaterialcache",
-    "class/js/Geometry.js~Geometry.html#static-method-clearMaterialCache",
-    "js/Geometry.js~Geometry.clearMaterialCache",
-    "method"
-  ],
-  [
     "js/group.js",
     "file/js/Group.js.html",
     "js/Group.js",
@@ -1551,78 +1341,6 @@ window.esdocSearchIndex = [
     "js/initialsettings.js~initialsettings#constructor",
     "class/js/InitialSettings.js~InitialSettings.html#instance-constructor-constructor",
     "js/InitialSettings.js~InitialSettings#constructor",
-    "method"
-  ],
-  [
-    "js/mesh.js",
-    "file/js/Mesh.js.html",
-    "js/Mesh.js",
-    "file"
-  ],
-  [
-    "js/mesh.js~mesh#bakeinversetransformtogeometry",
-    "class/js/Mesh.js~Mesh.html#instance-method-bakeInverseTransformToGeometry",
-    "js/Mesh.js~Mesh#bakeInverseTransformToGeometry",
-    "method"
-  ],
-  [
-    "js/mesh.js~mesh#baketransformtogeometry",
-    "class/js/Mesh.js~Mesh.html#instance-method-bakeTransformToGeometry",
-    "js/Mesh.js~Mesh#bakeTransformToGeometry",
-    "method"
-  ],
-  [
-    "js/mesh.js~mesh#constructor",
-    "class/js/Mesh.js~Mesh.html#instance-constructor-constructor",
-    "js/Mesh.js~Mesh#constructor",
-    "method"
-  ],
-  [
-    "js/mesh.js~mesh#draw",
-    "class/js/Mesh.js~Mesh.html#instance-method-draw",
-    "js/Mesh.js~Mesh#draw",
-    "method"
-  ],
-  [
-    "js/mesh.js~mesh#geometry",
-    "class/js/Mesh.js~Mesh.html#instance-get-geometry",
-    "js/Mesh.js~Mesh#geometry",
-    "member"
-  ],
-  [
-    "js/mesh.js~mesh#geometry",
-    "class/js/Mesh.js~Mesh.html#instance-set-geometry",
-    "js/Mesh.js~Mesh#geometry",
-    "member"
-  ],
-  [
-    "js/mesh.js~mesh#material",
-    "class/js/Mesh.js~Mesh.html#instance-set-material",
-    "js/Mesh.js~Mesh#material",
-    "member"
-  ],
-  [
-    "js/mesh.js~mesh#material",
-    "class/js/Mesh.js~Mesh.html#instance-get-material",
-    "js/Mesh.js~Mesh#material",
-    "member"
-  ],
-  [
-    "js/mesh.js~mesh#merge",
-    "class/js/Mesh.js~Mesh.html#instance-method-merge",
-    "js/Mesh.js~Mesh#merge",
-    "method"
-  ],
-  [
-    "js/mesh.js~mesh#mergeharder",
-    "class/js/Mesh.js~Mesh.html#instance-method-mergeHarder",
-    "js/Mesh.js~Mesh#mergeHarder",
-    "method"
-  ],
-  [
-    "js/mesh.js~mesh#prepareforrender",
-    "class/js/Mesh.js~Mesh.html#instance-method-prepareForRender",
-    "js/Mesh.js~Mesh#prepareForRender",
     "method"
   ],
   [
@@ -1854,6 +1572,276 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "js/geometries/blendshapegeometry.js",
+    "file/js/geometries/BlendShapeGeometry.js.html",
+    "js/geometries/BlendShapeGeometry.js",
+    "file"
+  ],
+  [
+    "js/geometries/blendshapegeometry.js~blendshapegeometry#blendweight_1",
+    "class/js/geometries/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-set-blendWeight_1",
+    "js/geometries/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_1",
+    "member"
+  ],
+  [
+    "js/geometries/blendshapegeometry.js~blendshapegeometry#blendweight_1",
+    "class/js/geometries/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-get-blendWeight_1",
+    "js/geometries/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_1",
+    "member"
+  ],
+  [
+    "js/geometries/blendshapegeometry.js~blendshapegeometry#blendweight_10",
+    "class/js/geometries/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-set-blendWeight_10",
+    "js/geometries/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_10",
+    "member"
+  ],
+  [
+    "js/geometries/blendshapegeometry.js~blendshapegeometry#blendweight_10",
+    "class/js/geometries/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-get-blendWeight_10",
+    "js/geometries/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_10",
+    "member"
+  ],
+  [
+    "js/geometries/blendshapegeometry.js~blendshapegeometry#blendweight_2",
+    "class/js/geometries/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-get-blendWeight_2",
+    "js/geometries/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_2",
+    "member"
+  ],
+  [
+    "js/geometries/blendshapegeometry.js~blendshapegeometry#blendweight_2",
+    "class/js/geometries/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-set-blendWeight_2",
+    "js/geometries/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_2",
+    "member"
+  ],
+  [
+    "js/geometries/blendshapegeometry.js~blendshapegeometry#blendweight_3",
+    "class/js/geometries/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-get-blendWeight_3",
+    "js/geometries/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_3",
+    "member"
+  ],
+  [
+    "js/geometries/blendshapegeometry.js~blendshapegeometry#blendweight_3",
+    "class/js/geometries/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-set-blendWeight_3",
+    "js/geometries/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_3",
+    "member"
+  ],
+  [
+    "js/geometries/blendshapegeometry.js~blendshapegeometry#blendweight_4",
+    "class/js/geometries/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-set-blendWeight_4",
+    "js/geometries/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_4",
+    "member"
+  ],
+  [
+    "js/geometries/blendshapegeometry.js~blendshapegeometry#blendweight_4",
+    "class/js/geometries/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-get-blendWeight_4",
+    "js/geometries/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_4",
+    "member"
+  ],
+  [
+    "js/geometries/blendshapegeometry.js~blendshapegeometry#blendweight_5",
+    "class/js/geometries/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-set-blendWeight_5",
+    "js/geometries/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_5",
+    "member"
+  ],
+  [
+    "js/geometries/blendshapegeometry.js~blendshapegeometry#blendweight_5",
+    "class/js/geometries/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-get-blendWeight_5",
+    "js/geometries/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_5",
+    "member"
+  ],
+  [
+    "js/geometries/blendshapegeometry.js~blendshapegeometry#blendweight_6",
+    "class/js/geometries/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-set-blendWeight_6",
+    "js/geometries/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_6",
+    "member"
+  ],
+  [
+    "js/geometries/blendshapegeometry.js~blendshapegeometry#blendweight_6",
+    "class/js/geometries/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-get-blendWeight_6",
+    "js/geometries/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_6",
+    "member"
+  ],
+  [
+    "js/geometries/blendshapegeometry.js~blendshapegeometry#blendweight_7",
+    "class/js/geometries/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-set-blendWeight_7",
+    "js/geometries/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_7",
+    "member"
+  ],
+  [
+    "js/geometries/blendshapegeometry.js~blendshapegeometry#blendweight_7",
+    "class/js/geometries/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-get-blendWeight_7",
+    "js/geometries/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_7",
+    "member"
+  ],
+  [
+    "js/geometries/blendshapegeometry.js~blendshapegeometry#blendweight_8",
+    "class/js/geometries/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-get-blendWeight_8",
+    "js/geometries/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_8",
+    "member"
+  ],
+  [
+    "js/geometries/blendshapegeometry.js~blendshapegeometry#blendweight_8",
+    "class/js/geometries/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-set-blendWeight_8",
+    "js/geometries/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_8",
+    "member"
+  ],
+  [
+    "js/geometries/blendshapegeometry.js~blendshapegeometry#blendweight_9",
+    "class/js/geometries/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-set-blendWeight_9",
+    "js/geometries/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_9",
+    "member"
+  ],
+  [
+    "js/geometries/blendshapegeometry.js~blendshapegeometry#blendweight_9",
+    "class/js/geometries/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-get-blendWeight_9",
+    "js/geometries/BlendShapeGeometry.js~BlendShapeGeometry#blendWeight_9",
+    "member"
+  ],
+  [
+    "js/geometries/blendshapegeometry.js~blendshapegeometry#constructor",
+    "class/js/geometries/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-constructor-constructor",
+    "js/geometries/BlendShapeGeometry.js~BlendShapeGeometry#constructor",
+    "method"
+  ],
+  [
+    "js/geometries/blendshapegeometry.js~blendshapegeometry#draw",
+    "class/js/geometries/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-method-draw",
+    "js/geometries/BlendShapeGeometry.js~BlendShapeGeometry#draw",
+    "method"
+  ],
+  [
+    "js/geometries/blendshapegeometry.js~blendshapegeometry#prepareforrender",
+    "class/js/geometries/BlendShapeGeometry.js~BlendShapeGeometry.html#instance-method-prepareForRender",
+    "js/geometries/BlendShapeGeometry.js~BlendShapeGeometry#prepareForRender",
+    "method"
+  ],
+  [
+    "js/geometries/geometry.js",
+    "file/js/geometries/Geometry.js.html",
+    "js/geometries/Geometry.js",
+    "file"
+  ],
+  [
+    "js/geometries/geometry.js~geometry#float32aryvertexdata",
+    "class/js/geometries/Geometry.js~Geometry.html#instance-member-Float32AryVertexData",
+    "js/geometries/Geometry.js~Geometry#Float32AryVertexData",
+    "member"
+  ],
+  [
+    "js/geometries/geometry.js~geometry#constructor",
+    "class/js/geometries/Geometry.js~Geometry.html#instance-constructor-constructor",
+    "js/geometries/Geometry.js~Geometry#constructor",
+    "method"
+  ],
+  [
+    "js/geometries/geometry.js~geometry#draw",
+    "class/js/geometries/Geometry.js~Geometry.html#instance-method-draw",
+    "js/geometries/Geometry.js~Geometry#draw",
+    "method"
+  ],
+  [
+    "js/geometries/geometry.js~geometry#glslprogramofpasses",
+    "class/js/geometries/Geometry.js~Geometry.html#instance-member-glslProgramOfPasses",
+    "js/geometries/Geometry.js~Geometry#glslProgramOfPasses",
+    "member"
+  ],
+  [
+    "js/geometries/geometry.js~geometry#materials",
+    "class/js/geometries/Geometry.js~Geometry.html#instance-set-materials",
+    "js/geometries/Geometry.js~Geometry#materials",
+    "member"
+  ],
+  [
+    "js/geometries/geometry.js~geometry#merge",
+    "class/js/geometries/Geometry.js~Geometry.html#instance-method-merge",
+    "js/geometries/Geometry.js~Geometry#merge",
+    "method"
+  ],
+  [
+    "js/geometries/geometry.js~geometry#mergeharder",
+    "class/js/geometries/Geometry.js~Geometry.html#instance-method-mergeHarder",
+    "js/geometries/Geometry.js~Geometry#mergeHarder",
+    "method"
+  ],
+  [
+    "js/geometries/geometry.js~geometry#prepareforrender",
+    "class/js/geometries/Geometry.js~Geometry.html#instance-method-prepareForRender",
+    "js/geometries/Geometry.js~Geometry#prepareForRender",
+    "method"
+  ],
+  [
+    "js/geometries/geometry.js~geometry#prepareglslprogramandsetvertexntomaterial",
+    "class/js/geometries/Geometry.js~Geometry.html#instance-method-prepareGLSLProgramAndSetVertexNtoMaterial",
+    "js/geometries/Geometry.js~Geometry#prepareGLSLProgramAndSetVertexNtoMaterial",
+    "method"
+  ],
+  [
+    "js/geometries/geometry.js~geometry#setextradataforshader",
+    "class/js/geometries/Geometry.js~Geometry.html#instance-method-setExtraDataForShader",
+    "js/geometries/Geometry.js~Geometry#setExtraDataForShader",
+    "method"
+  ],
+  [
+    "js/geometries/geometry.js~geometry#setupvertexattribs",
+    "class/js/geometries/Geometry.js~Geometry.html#instance-method-setUpVertexAttribs",
+    "js/geometries/Geometry.js~Geometry#setUpVertexAttribs",
+    "method"
+  ],
+  [
+    "js/geometries/geometry.js~geometry#setverticesdata",
+    "class/js/geometries/Geometry.js~Geometry.html#instance-method-setVerticesData",
+    "js/geometries/Geometry.js~Geometry#setVerticesData",
+    "method"
+  ],
+  [
+    "js/geometries/geometry.js~geometry#tostring",
+    "class/js/geometries/Geometry.js~Geometry.html#instance-method-toString",
+    "js/geometries/Geometry.js~Geometry#toString",
+    "method"
+  ],
+  [
+    "js/geometries/geometry.js~geometry#updateverticesdata",
+    "class/js/geometries/Geometry.js~Geometry.html#instance-method-updateVerticesData",
+    "js/geometries/Geometry.js~Geometry#updateVerticesData",
+    "method"
+  ],
+  [
+    "js/geometries/geometry.js~geometry#vertexdata",
+    "class/js/geometries/Geometry.js~Geometry.html#instance-member-vertexData",
+    "js/geometries/Geometry.js~Geometry#vertexData",
+    "member"
+  ],
+  [
+    "js/geometries/geometry.js~geometry.clearmaterialcache",
+    "class/js/geometries/Geometry.js~Geometry.html#static-method-clearMaterialCache",
+    "js/geometries/Geometry.js~Geometry.clearMaterialCache",
+    "method"
+  ],
+  [
+    "js/geometries/skeletalgeometry.js",
+    "file/js/geometries/SkeletalGeometry.js.html",
+    "js/geometries/SkeletalGeometry.js",
+    "file"
+  ],
+  [
+    "js/geometries/skeletalgeometry.js~skeletalgeometry#constructor",
+    "class/js/geometries/SkeletalGeometry.js~SkeletalGeometry.html#instance-constructor-constructor",
+    "js/geometries/SkeletalGeometry.js~SkeletalGeometry#constructor",
+    "method"
+  ],
+  [
+    "js/geometries/skeletalgeometry.js~skeletalgeometry#draw",
+    "class/js/geometries/SkeletalGeometry.js~SkeletalGeometry.html#instance-method-draw",
+    "js/geometries/SkeletalGeometry.js~SkeletalGeometry#draw",
+    "method"
+  ],
+  [
+    "js/geometries/skeletalgeometry.js~skeletalgeometry#prepareforrender",
+    "class/js/geometries/SkeletalGeometry.js~SkeletalGeometry.html#instance-method-prepareForRender",
+    "js/geometries/SkeletalGeometry.js~SkeletalGeometry#prepareForRender",
+    "method"
+  ],
+  [
     "js/glboost.js",
     "file/js/glboost.js.html",
     "js/glboost.js",
@@ -1981,13 +1969,13 @@ window.esdocSearchIndex = [
   ],
   [
     "js/lights/pointlight.js~pointlight#intensity",
-    "class/js/lights/PointLight.js~PointLight.html#instance-set-intensity",
+    "class/js/lights/PointLight.js~PointLight.html#instance-get-intensity",
     "js/lights/PointLight.js~PointLight#intensity",
     "member"
   ],
   [
     "js/lights/pointlight.js~pointlight#intensity",
-    "class/js/lights/PointLight.js~PointLight.html#instance-get-intensity",
+    "class/js/lights/PointLight.js~PointLight.html#instance-set-intensity",
     "js/lights/PointLight.js~PointLight#intensity",
     "member"
   ],
@@ -2107,25 +2095,25 @@ window.esdocSearchIndex = [
   ],
   [
     "js/math/matrix33.js~matrix33#m00",
-    "class/js/math/Matrix33.js~Matrix33.html#instance-set-m00",
-    "js/math/Matrix33.js~Matrix33#m00",
-    "member"
-  ],
-  [
-    "js/math/matrix33.js~matrix33#m00",
     "class/js/math/Matrix33.js~Matrix33.html#instance-get-m00",
     "js/math/Matrix33.js~Matrix33#m00",
     "member"
   ],
   [
-    "js/math/matrix33.js~matrix33#m01",
-    "class/js/math/Matrix33.js~Matrix33.html#instance-set-m01",
-    "js/math/Matrix33.js~Matrix33#m01",
+    "js/math/matrix33.js~matrix33#m00",
+    "class/js/math/Matrix33.js~Matrix33.html#instance-set-m00",
+    "js/math/Matrix33.js~Matrix33#m00",
     "member"
   ],
   [
     "js/math/matrix33.js~matrix33#m01",
     "class/js/math/Matrix33.js~Matrix33.html#instance-get-m01",
+    "js/math/Matrix33.js~Matrix33#m01",
+    "member"
+  ],
+  [
+    "js/math/matrix33.js~matrix33#m01",
+    "class/js/math/Matrix33.js~Matrix33.html#instance-set-m01",
     "js/math/Matrix33.js~Matrix33#m01",
     "member"
   ],
@@ -2143,13 +2131,13 @@ window.esdocSearchIndex = [
   ],
   [
     "js/math/matrix33.js~matrix33#m10",
-    "class/js/math/Matrix33.js~Matrix33.html#instance-get-m10",
+    "class/js/math/Matrix33.js~Matrix33.html#instance-set-m10",
     "js/math/Matrix33.js~Matrix33#m10",
     "member"
   ],
   [
     "js/math/matrix33.js~matrix33#m10",
-    "class/js/math/Matrix33.js~Matrix33.html#instance-set-m10",
+    "class/js/math/Matrix33.js~Matrix33.html#instance-get-m10",
     "js/math/Matrix33.js~Matrix33#m10",
     "member"
   ],
@@ -2179,13 +2167,13 @@ window.esdocSearchIndex = [
   ],
   [
     "js/math/matrix33.js~matrix33#m20",
-    "class/js/math/Matrix33.js~Matrix33.html#instance-set-m20",
+    "class/js/math/Matrix33.js~Matrix33.html#instance-get-m20",
     "js/math/Matrix33.js~Matrix33#m20",
     "member"
   ],
   [
     "js/math/matrix33.js~matrix33#m20",
-    "class/js/math/Matrix33.js~Matrix33.html#instance-get-m20",
+    "class/js/math/Matrix33.js~Matrix33.html#instance-set-m20",
     "js/math/Matrix33.js~Matrix33#m20",
     "member"
   ],
@@ -2203,13 +2191,13 @@ window.esdocSearchIndex = [
   ],
   [
     "js/math/matrix33.js~matrix33#m22",
-    "class/js/math/Matrix33.js~Matrix33.html#instance-get-m22",
+    "class/js/math/Matrix33.js~Matrix33.html#instance-set-m22",
     "js/math/Matrix33.js~Matrix33#m22",
     "member"
   ],
   [
     "js/math/matrix33.js~matrix33#m22",
-    "class/js/math/Matrix33.js~Matrix33.html#instance-set-m22",
+    "class/js/math/Matrix33.js~Matrix33.html#instance-get-m22",
     "js/math/Matrix33.js~Matrix33#m22",
     "member"
   ],
@@ -2365,20 +2353,14 @@ window.esdocSearchIndex = [
   ],
   [
     "js/math/matrix44.js~matrix44#m00",
-    "class/js/math/Matrix44.js~Matrix44.html#instance-set-m00",
-    "js/math/Matrix44.js~Matrix44#m00",
-    "member"
-  ],
-  [
-    "js/math/matrix44.js~matrix44#m00",
     "class/js/math/Matrix44.js~Matrix44.html#instance-get-m00",
     "js/math/Matrix44.js~Matrix44#m00",
     "member"
   ],
   [
-    "js/math/matrix44.js~matrix44#m01",
-    "class/js/math/Matrix44.js~Matrix44.html#instance-set-m01",
-    "js/math/Matrix44.js~Matrix44#m01",
+    "js/math/matrix44.js~matrix44#m00",
+    "class/js/math/Matrix44.js~Matrix44.html#instance-set-m00",
+    "js/math/Matrix44.js~Matrix44#m00",
     "member"
   ],
   [
@@ -2388,9 +2370,9 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "js/math/matrix44.js~matrix44#m02",
-    "class/js/math/Matrix44.js~Matrix44.html#instance-set-m02",
-    "js/math/Matrix44.js~Matrix44#m02",
+    "js/math/matrix44.js~matrix44#m01",
+    "class/js/math/Matrix44.js~Matrix44.html#instance-set-m01",
+    "js/math/Matrix44.js~Matrix44#m01",
     "member"
   ],
   [
@@ -2400,9 +2382,9 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "js/math/matrix44.js~matrix44#m03",
-    "class/js/math/Matrix44.js~Matrix44.html#instance-get-m03",
-    "js/math/Matrix44.js~Matrix44#m03",
+    "js/math/matrix44.js~matrix44#m02",
+    "class/js/math/Matrix44.js~Matrix44.html#instance-set-m02",
+    "js/math/Matrix44.js~Matrix44#m02",
     "member"
   ],
   [
@@ -2412,14 +2394,20 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "js/math/matrix44.js~matrix44#m10",
-    "class/js/math/Matrix44.js~Matrix44.html#instance-set-m10",
-    "js/math/Matrix44.js~Matrix44#m10",
+    "js/math/matrix44.js~matrix44#m03",
+    "class/js/math/Matrix44.js~Matrix44.html#instance-get-m03",
+    "js/math/Matrix44.js~Matrix44#m03",
     "member"
   ],
   [
     "js/math/matrix44.js~matrix44#m10",
     "class/js/math/Matrix44.js~Matrix44.html#instance-get-m10",
+    "js/math/Matrix44.js~Matrix44#m10",
+    "member"
+  ],
+  [
+    "js/math/matrix44.js~matrix44#m10",
+    "class/js/math/Matrix44.js~Matrix44.html#instance-set-m10",
     "js/math/Matrix44.js~Matrix44#m10",
     "member"
   ],
@@ -2437,13 +2425,13 @@ window.esdocSearchIndex = [
   ],
   [
     "js/math/matrix44.js~matrix44#m12",
-    "class/js/math/Matrix44.js~Matrix44.html#instance-set-m12",
+    "class/js/math/Matrix44.js~Matrix44.html#instance-get-m12",
     "js/math/Matrix44.js~Matrix44#m12",
     "member"
   ],
   [
     "js/math/matrix44.js~matrix44#m12",
-    "class/js/math/Matrix44.js~Matrix44.html#instance-get-m12",
+    "class/js/math/Matrix44.js~Matrix44.html#instance-set-m12",
     "js/math/Matrix44.js~Matrix44#m12",
     "member"
   ],
@@ -2473,25 +2461,25 @@ window.esdocSearchIndex = [
   ],
   [
     "js/math/matrix44.js~matrix44#m21",
-    "class/js/math/Matrix44.js~Matrix44.html#instance-set-m21",
-    "js/math/Matrix44.js~Matrix44#m21",
-    "member"
-  ],
-  [
-    "js/math/matrix44.js~matrix44#m21",
     "class/js/math/Matrix44.js~Matrix44.html#instance-get-m21",
     "js/math/Matrix44.js~Matrix44#m21",
     "member"
   ],
   [
-    "js/math/matrix44.js~matrix44#m22",
-    "class/js/math/Matrix44.js~Matrix44.html#instance-set-m22",
-    "js/math/Matrix44.js~Matrix44#m22",
+    "js/math/matrix44.js~matrix44#m21",
+    "class/js/math/Matrix44.js~Matrix44.html#instance-set-m21",
+    "js/math/Matrix44.js~Matrix44#m21",
     "member"
   ],
   [
     "js/math/matrix44.js~matrix44#m22",
     "class/js/math/Matrix44.js~Matrix44.html#instance-get-m22",
+    "js/math/Matrix44.js~Matrix44#m22",
+    "member"
+  ],
+  [
+    "js/math/matrix44.js~matrix44#m22",
+    "class/js/math/Matrix44.js~Matrix44.html#instance-set-m22",
     "js/math/Matrix44.js~Matrix44#m22",
     "member"
   ],
@@ -2521,13 +2509,13 @@ window.esdocSearchIndex = [
   ],
   [
     "js/math/matrix44.js~matrix44#m31",
-    "class/js/math/Matrix44.js~Matrix44.html#instance-set-m31",
+    "class/js/math/Matrix44.js~Matrix44.html#instance-get-m31",
     "js/math/Matrix44.js~Matrix44#m31",
     "member"
   ],
   [
     "js/math/matrix44.js~matrix44#m31",
-    "class/js/math/Matrix44.js~Matrix44.html#instance-get-m31",
+    "class/js/math/Matrix44.js~Matrix44.html#instance-set-m31",
     "js/math/Matrix44.js~Matrix44#m31",
     "member"
   ],
@@ -2601,6 +2589,12 @@ window.esdocSearchIndex = [
     "js/math/matrix44.js~matrix44#tomatrix33",
     "class/js/math/Matrix44.js~Matrix44.html#instance-method-toMatrix33",
     "js/math/Matrix44.js~Matrix44#toMatrix33",
+    "method"
+  ],
+  [
+    "js/math/matrix44.js~matrix44#tostring",
+    "class/js/math/Matrix44.js~Matrix44.html#instance-method-toString",
+    "js/math/Matrix44.js~Matrix44#toString",
     "method"
   ],
   [
@@ -3000,6 +2994,126 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "js/meshes/mesh.js",
+    "file/js/meshes/Mesh.js.html",
+    "js/meshes/Mesh.js",
+    "file"
+  ],
+  [
+    "js/meshes/mesh.js~mesh#bakeinversetransformtogeometry",
+    "class/js/meshes/Mesh.js~Mesh.html#instance-method-bakeInverseTransformToGeometry",
+    "js/meshes/Mesh.js~Mesh#bakeInverseTransformToGeometry",
+    "method"
+  ],
+  [
+    "js/meshes/mesh.js~mesh#baketransformtogeometry",
+    "class/js/meshes/Mesh.js~Mesh.html#instance-method-bakeTransformToGeometry",
+    "js/meshes/Mesh.js~Mesh#bakeTransformToGeometry",
+    "method"
+  ],
+  [
+    "js/meshes/mesh.js~mesh#constructor",
+    "class/js/meshes/Mesh.js~Mesh.html#instance-constructor-constructor",
+    "js/meshes/Mesh.js~Mesh#constructor",
+    "method"
+  ],
+  [
+    "js/meshes/mesh.js~mesh#draw",
+    "class/js/meshes/Mesh.js~Mesh.html#instance-method-draw",
+    "js/meshes/Mesh.js~Mesh#draw",
+    "method"
+  ],
+  [
+    "js/meshes/mesh.js~mesh#geometry",
+    "class/js/meshes/Mesh.js~Mesh.html#instance-get-geometry",
+    "js/meshes/Mesh.js~Mesh#geometry",
+    "member"
+  ],
+  [
+    "js/meshes/mesh.js~mesh#geometry",
+    "class/js/meshes/Mesh.js~Mesh.html#instance-set-geometry",
+    "js/meshes/Mesh.js~Mesh#geometry",
+    "member"
+  ],
+  [
+    "js/meshes/mesh.js~mesh#material",
+    "class/js/meshes/Mesh.js~Mesh.html#instance-get-material",
+    "js/meshes/Mesh.js~Mesh#material",
+    "member"
+  ],
+  [
+    "js/meshes/mesh.js~mesh#material",
+    "class/js/meshes/Mesh.js~Mesh.html#instance-set-material",
+    "js/meshes/Mesh.js~Mesh#material",
+    "member"
+  ],
+  [
+    "js/meshes/mesh.js~mesh#merge",
+    "class/js/meshes/Mesh.js~Mesh.html#instance-method-merge",
+    "js/meshes/Mesh.js~Mesh#merge",
+    "method"
+  ],
+  [
+    "js/meshes/mesh.js~mesh#mergeharder",
+    "class/js/meshes/Mesh.js~Mesh.html#instance-method-mergeHarder",
+    "js/meshes/Mesh.js~Mesh#mergeHarder",
+    "method"
+  ],
+  [
+    "js/meshes/mesh.js~mesh#prepareforrender",
+    "class/js/meshes/Mesh.js~Mesh.html#instance-method-prepareForRender",
+    "js/meshes/Mesh.js~Mesh#prepareForRender",
+    "method"
+  ],
+  [
+    "js/meshes/skeletalmesh.js",
+    "file/js/meshes/SkeletalMesh.js.html",
+    "js/meshes/SkeletalMesh.js",
+    "file"
+  ],
+  [
+    "js/meshes/skeletalmesh.js~skeletalmesh#constructor",
+    "class/js/meshes/SkeletalMesh.js~SkeletalMesh.html#instance-constructor-constructor",
+    "js/meshes/SkeletalMesh.js~SkeletalMesh#constructor",
+    "method"
+  ],
+  [
+    "js/meshes/skeletalmesh.js~skeletalmesh#inversebindmatrices",
+    "class/js/meshes/SkeletalMesh.js~SkeletalMesh.html#instance-get-inverseBindMatrices",
+    "js/meshes/SkeletalMesh.js~SkeletalMesh#inverseBindMatrices",
+    "member"
+  ],
+  [
+    "js/meshes/skeletalmesh.js~skeletalmesh#inversebindmatrices",
+    "class/js/meshes/SkeletalMesh.js~SkeletalMesh.html#instance-set-inverseBindMatrices",
+    "js/meshes/SkeletalMesh.js~SkeletalMesh#inverseBindMatrices",
+    "member"
+  ],
+  [
+    "js/meshes/skeletalmesh.js~skeletalmesh#jointshierarchy",
+    "class/js/meshes/SkeletalMesh.js~SkeletalMesh.html#instance-set-jointsHierarchy",
+    "js/meshes/SkeletalMesh.js~SkeletalMesh#jointsHierarchy",
+    "member"
+  ],
+  [
+    "js/meshes/skeletalmesh.js~skeletalmesh#jointshierarchy",
+    "class/js/meshes/SkeletalMesh.js~SkeletalMesh.html#instance-get-jointsHierarchy",
+    "js/meshes/SkeletalMesh.js~SkeletalMesh#jointsHierarchy",
+    "member"
+  ],
+  [
+    "js/meshes/skeletalmesh.js~skeletalmesh#prepareforrender",
+    "class/js/meshes/SkeletalMesh.js~SkeletalMesh.html#instance-method-prepareForRender",
+    "js/meshes/SkeletalMesh.js~SkeletalMesh#prepareForRender",
+    "method"
+  ],
+  [
+    "js/meshes/skeletalmesh.js~skeletalmesh#rootjointname",
+    "class/js/meshes/SkeletalMesh.js~SkeletalMesh.html#instance-get-rootJointName",
+    "js/meshes/SkeletalMesh.js~SkeletalMesh#rootJointName",
+    "member"
+  ],
+  [
     "js/misc/animationutil.js",
     "file/js/misc/AnimationUtil.js.html",
     "js/misc/AnimationUtil.js",
@@ -3325,13 +3439,13 @@ window.esdocSearchIndex = [
   ],
   [
     "js/shaders/phongshader.js~phongshader#kd",
-    "class/js/shaders/PhongShader.js~PhongShader.html#instance-set-Kd",
+    "class/js/shaders/PhongShader.js~PhongShader.html#instance-get-Kd",
     "js/shaders/PhongShader.js~PhongShader#Kd",
     "member"
   ],
   [
     "js/shaders/phongshader.js~phongshader#kd",
-    "class/js/shaders/PhongShader.js~PhongShader.html#instance-get-Kd",
+    "class/js/shaders/PhongShader.js~PhongShader.html#instance-set-Kd",
     "js/shaders/PhongShader.js~PhongShader#Kd",
     "member"
   ],
@@ -3355,13 +3469,13 @@ window.esdocSearchIndex = [
   ],
   [
     "js/shaders/phongshader.js~phongshader#power",
-    "class/js/shaders/PhongShader.js~PhongShader.html#instance-set-power",
+    "class/js/shaders/PhongShader.js~PhongShader.html#instance-get-power",
     "js/shaders/PhongShader.js~PhongShader#power",
     "member"
   ],
   [
     "js/shaders/phongshader.js~phongshader#power",
-    "class/js/shaders/PhongShader.js~PhongShader.html#instance-get-power",
+    "class/js/shaders/PhongShader.js~PhongShader.html#instance-set-power",
     "js/shaders/PhongShader.js~PhongShader#power",
     "member"
   ],
@@ -3445,13 +3559,13 @@ window.esdocSearchIndex = [
   ],
   [
     "js/shaders/shader.js~shader#dirty",
-    "class/js/shaders/Shader.js~Shader.html#instance-get-dirty",
+    "class/js/shaders/Shader.js~Shader.html#instance-set-dirty",
     "js/shaders/Shader.js~Shader#dirty",
     "member"
   ],
   [
     "js/shaders/shader.js~shader#dirty",
-    "class/js/shaders/Shader.js~Shader.html#instance-set-dirty",
+    "class/js/shaders/Shader.js~Shader.html#instance-get-dirty",
     "js/shaders/Shader.js~Shader#dirty",
     "member"
   ],
@@ -3558,6 +3672,42 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "js/shaders/skeletalshader.js",
+    "file/js/shaders/SkeletalShader.js.html",
+    "js/shaders/SkeletalShader.js",
+    "file"
+  ],
+  [
+    "js/shaders/skeletalshader.js~skeletalshadersource#vsdefine_skeletalshadersource",
+    "class/js/shaders/SkeletalShader.js~SkeletalShaderSource.html#instance-method-VSDefine_SkeletalShaderSource",
+    "js/shaders/SkeletalShader.js~SkeletalShaderSource#VSDefine_SkeletalShaderSource",
+    "method"
+  ],
+  [
+    "js/shaders/skeletalshader.js~skeletalshadersource#vstransform_skeletalshadersource",
+    "class/js/shaders/SkeletalShader.js~SkeletalShaderSource.html#instance-method-VSTransform_SkeletalShaderSource",
+    "js/shaders/SkeletalShader.js~SkeletalShaderSource#VSTransform_SkeletalShaderSource",
+    "method"
+  ],
+  [
+    "js/shaders/skeletalshader.js~skeletalshadersource#prepare_skeletalshadersource",
+    "class/js/shaders/SkeletalShader.js~SkeletalShaderSource.html#instance-method-prepare_SkeletalShaderSource",
+    "js/shaders/SkeletalShader.js~SkeletalShaderSource#prepare_SkeletalShaderSource",
+    "method"
+  ],
+  [
+    "js/skeletons/joint.js",
+    "file/js/skeletons/Joint.js.html",
+    "js/skeletons/Joint.js",
+    "file"
+  ],
+  [
+    "js/skeletons/joint.js~joint#constructor",
+    "class/js/skeletons/Joint.js~Joint.html#instance-constructor-constructor",
+    "js/skeletons/Joint.js~Joint#constructor",
+    "method"
+  ],
+  [
     "js/textures/abstracttexture.js",
     "file/js/textures/AbstractTexture.js.html",
     "js/textures/AbstractTexture.js",
@@ -3589,13 +3739,13 @@ window.esdocSearchIndex = [
   ],
   [
     "js/textures/abstracttexture.js~abstracttexture#name",
-    "class/js/textures/AbstractTexture.js~AbstractTexture.html#instance-get-name",
+    "class/js/textures/AbstractTexture.js~AbstractTexture.html#instance-set-name",
     "js/textures/AbstractTexture.js~AbstractTexture#name",
     "member"
   ],
   [
     "js/textures/abstracttexture.js~abstracttexture#name",
-    "class/js/textures/AbstractTexture.js~AbstractTexture.html#instance-set-name",
+    "class/js/textures/AbstractTexture.js~AbstractTexture.html#instance-get-name",
     "js/textures/AbstractTexture.js~AbstractTexture#name",
     "member"
   ],
