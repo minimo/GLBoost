@@ -1,4 +1,4 @@
-import GLBoost from '../globals';
+import GLBoost from '../../globals';
 
 export default class GLExtensionsManager {
 
@@ -96,3 +96,5 @@ export default class GLExtensionsManager {
 
 }
 GLExtensionsManager._instances = new Object();
+
+GLBoost['GLExtensionsManager'] = GLExtensionsManager;

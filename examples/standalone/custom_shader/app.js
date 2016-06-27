@@ -106,10 +106,10 @@
     zNear: 0.1,
     zFar: 500.0
   });
-  scene.add(camera);
+  scene.addChild(camera);
 
   var directionalLight = new GLBoost.DirectionalLight(new GLBoost.Vector3(1.0, 1.0, 1.0), new GLBoost.Vector3(0, 0, -10));
-  scene.add(directionalLight);
+  scene.addChild(directionalLight);
 
   var MyCustomShaderSource = function () {
     function MyCustomShaderSource() {
@@ -193,7 +193,7 @@
   promise.then(function (mesh) {
     //            console.log(mesh);
 
-    scene.add(mesh);
+    scene.addChild(mesh);
 
     scene.prepareForRender();
 

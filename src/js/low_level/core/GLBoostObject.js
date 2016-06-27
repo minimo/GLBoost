@@ -1,4 +1,4 @@
-import GLBoostContext from './GLBoostContext';
+import GLBoostMonitor from './GLBoostMonitor';
 
 export default class GLBoostObject {
   constructor() {
@@ -6,8 +6,8 @@ export default class GLBoostObject {
       throw new TypeError('Cannot construct GLBoostObject instances directly.');
     }
     this._setName();
-    this._glBoostContext = GLBoostContext.getInstance();
-    this._glBoostContext.registerGLBoostObject(this);
+    this._glBoostMonitor = GLBoostMonitor.getInstance();
+    this._glBoostMonitor.registerGLBoostObject(this);
     this._userFlavorName = '';
   }
 
@@ -16,6 +16,11 @@ export default class GLBoostObject {
     this._instanceName = this.constructor.name + '_' + this.constructor._instanceCount;
   }
 
+  /**
+   * [en] Return instance name.
+   * [ja] インスタンス名を返します。
+   * @returns {string} [en] the instance name. [ja] インスタンス名
+   */
   toString() {
     return this._instanceName;
   }

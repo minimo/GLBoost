@@ -27,6 +27,7 @@ for(var i = 0; pair[i] ; i++) {
 }
 
 GLBoost.TARGET_WEBGL_VERSION = arg.webglver ? parseInt(arg.webglver) : 1;
+//GLBoost.CONSOLE_OUT_FOR_DEBUGGING = false;
 
 var canvas = document.getElementById("world");
 
@@ -60,7 +61,7 @@ group3.addChild( cube );
 group2.addChild(group3);
 group.addChild(group2);
 
-scene.add(group);
+scene.addChild(group);
 
 var pointLight = new GLBoost.PointLight(new GLBoost.Vector3(0.5, 0.5, 0.5));
 pointLight.translate = new GLBoost.Vector3(5, 1, 0);
@@ -82,8 +83,6 @@ var camera = new GLBoost.Camera(
       zFar: 300.0
     }
 );
-//scene.add( camera );
-
 
 var group4 = new GLBoost.Group();
 var group5 = new GLBoost.Group();
@@ -92,10 +91,14 @@ group5.rotate = new GLBoost.Vector3(0, 0.5, 0);
 group4.addChild( camera );
 group5.addChild( group4 );
 
-scene.add( group5 );
+scene.addChild( group5 );
 
 scene.prepareForRender();
 
+var glBoostMonitor = GLBoost.GLBoostMonitor.getInstance();
+glBoostMonitor.printGLBoostObjectsOrderByName();
+glBoostMonitor.printWebGLResources();
+glBoostMonitor.printHierarchy();
 
 var render = function(){
   renderer.clearCanvas();

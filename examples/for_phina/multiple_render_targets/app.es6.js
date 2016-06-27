@@ -52,8 +52,9 @@ phina.define('MainScene', {
       height: SCREEN_HEIGHT
     }).addChildTo(this);
 
-    var renderTextures = layer.renderer.createTexturesForRenderTarget(SCREEN_WIDTH, SCREEN_HEIGHT, 2);
-    var renderPasses = layer.renderer.createRenderPasses(2);
+    var glBoostContext = GLBoost.GLBoostContext.getInstance();
+    var renderTextures = glBoostContext.createTexturesForRenderTarget(SCREEN_WIDTH, SCREEN_HEIGHT, 2);
+    var renderPasses = glBoostContext.createRenderPasses(2);
 
     var positions = [
       new GLBoost.Vector3(-0.5, -0.5, 0.0),
@@ -104,7 +105,7 @@ phina.define('MainScene', {
       shapetarget_1: shapetarget_1,
       shapetarget_2: shapetarget_2
     });
-    layer.scene.add( mesh );
+    layer.scene.addChild( mesh );
 
     renderPasses[0].addElements([mesh]);
     renderPasses[0].setClearColor(new GLBoost.Vector4(0, 0, 0, 1));
@@ -114,14 +115,14 @@ phina.define('MainScene', {
     var material2_1 = new GLBoost.ClassicMaterial();
     material2_1.diffuseTexture = renderTextures[0];
     var mesh2_1 = new GLBoost.Mesh(geometry2_1, material2_1);
-    layer.scene.add( mesh2_1 );
+    layer.scene.addChild( mesh2_1 );
     mesh2_1.translate = new GLBoost.Vector3(-1, 0, 0);
 
     var geometry2_2 = new GLBoost.Cube(new GLBoost.Vector3(1,1,1), new GLBoost.Vector4(1,1,1,1));
     var material2_2 = new GLBoost.ClassicMaterial();
     material2_2.diffuseTexture = renderTextures[1];
     var mesh2_2 = new GLBoost.Mesh(geometry2_2, material2_2);
-    layer.scene.add( mesh2_2 );
+    layer.scene.addChild( mesh2_2 );
     mesh2_2.translate = new GLBoost.Vector3(1, 0, 0);
 
     renderPasses[1].addElements([mesh2_1, mesh2_2]);
@@ -139,7 +140,7 @@ phina.define('MainScene', {
       zNear: 0.1,
       zFar: 1000.0
     });
-    layer.scene.add( camera );
+    layer.scene.addChild( camera );
 
     layer.scene.prepareForRender();
 
@@ -155,10 +156,10 @@ phina.define('MainScene', {
     var tweener = phina.accessory.Tweener();
     tweener.setTarget(geometry);
     tweener
-      .set({blendWeight_1: 0.0}).to({blendWeight_1: 1.0,}, 500, 'easeInCirc')
-      .set({blendWeight_2: 0.0}).to({blendWeight_2: 1.0,}, 500, 'easeOutElastic')
-      .to({blendWeight_1: 0.0,}, 500, 'easeInOutBack')
-      .to({blendWeight_2: 0.0,}, 500, 'easeOutCirc')
+      .set({blendWeight_1: 0.0}).to({blendWeight_1: 1.0}, 500, 'easeInCirc')
+      .set({blendWeight_2: 0.0}).to({blendWeight_2: 1.0}, 500, 'easeOutElastic')
+      .to({blendWeight_1: 0.0}, 500, 'easeInOutBack')
+      .to({blendWeight_2: 0.0}, 500, 'easeOutCirc')
       .setLoop(true);
 
     let angleDelta = 0;

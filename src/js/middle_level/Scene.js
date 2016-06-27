@@ -1,7 +1,7 @@
 import GLBoost from '../globals';
 import Element from '../low_level/Element';
 import Camera from '../low_level/Camera';
-import GLContext from '../low_level/GLContext';
+import GLContext from '../low_level/core/GLContext';
 import AbstractLight from '../low_level/lights/AbstractLight';
 import Mesh from './meshes/Mesh';
 import Group from './Group';
@@ -14,7 +14,7 @@ import RenderPass from './RenderPass';
  * [ja] このSceneクラスはシーングラフ階層のトップレベルに位置する要素です。
  *       シーンをレンダリングするには、このscene要素をRenderer.drawメソッドに渡します。
  */
-export default class Scene extends Element {
+export default class Scene extends Group {
 
   /**
    * [en] constructor
@@ -24,59 +24,12 @@ export default class Scene extends Element {
   constructor(canvas = GLBoost.CURRENT_CANVAS_ID) {
     super();
     this._gl = GLContext.getInstance(canvas).gl;
-    this._elements = [];
     this._meshes = [];
     this._lights = [];
     this._cameras = [];
     this._renderPasses = [new RenderPass(this._gl)];
     this._currentAnimationInputValues = {};
-
-    Scene._instanceCount = (typeof Scene._instanceCount === 'undefined') ? 0 : (Scene._instanceCount + 1);
-    this._instanceName = Scene.name + '_' + Scene._instanceCount;
   }
-
-  /**
-   * [en] Add the element to this scene as a child.<br>
-   * [ja] このシーンにelementを子供として追加します。
-   * @param {Element} element [en] a instance of Element class [ja] Elementクラスのインスタンス
-   */
-  add(element) {
-    this._elements.push(element);
-    element._parent = this;
-  }
-
-  /**
-   * [en] Add the element to this scene as a child.<br>
-   * [ja] このシーンにelementを子供として追加します。
-   * @param {Element} element  [en] a instance of Element class [ja] Elementクラスのインスタンス
-   */
-  addChild(element) {
-    this._elements.push(element);
-    element._parent = this;
-  }
-
-  /**
-   * [en] remove the element from this scene.
-   * [ja] このシーンから指定した要素を削除します。
-   * @param {Element} element [en] the element to remove [ja] 削除したい要素
-   */
-  removeChild(element) {
-    this._elements = this._elements.filter(function(elem) {
-      if (elem === element) {
-        element._parent = null;
-      }
-      return elem !== element;
-    });
-  }
-
-  /**
-   * [en] remove all elements from this scene.
-   * [ja] このシーンから全ての要素を削除します。
-   */
-  removeAll() {
-    this._elements.length = 0;
-  }
-
 
   _setDirtyToAnimatedElement(inputName, element = this) {
     if (element.hasAnimation(inputName)) {
@@ -260,14 +213,6 @@ export default class Scene extends Element {
     return this._cameras;
   }
 
-  /**
-   * [en] Return instance name.
-   * [ja] インスタンス名を返します。
-   * @returns {string} [en] the instance name. [ja] インスタンス名
-   */
-  toString() {
-    return this._instanceName;
-  }
 }
 
 GLBoost['Scene'] = Scene;

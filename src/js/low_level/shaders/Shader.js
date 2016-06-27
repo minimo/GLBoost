@@ -1,7 +1,8 @@
-import GLContext from '../GLContext';
+import GLContext from '../core/GLContext';
 import PointLight from '../lights/PointLight';
 import Hash from '../misc/Hash';
 import GLBoostObject from '../core/GLBoostObject';
+import MiscUtil from '../misc/MiscUtil';
 
 export default class Shader extends GLBoostObject {
   constructor(canvas) {
@@ -290,9 +291,9 @@ export default class Shader extends GLBoostObject {
     var shader;
 
     if (type == 'x-shader/x-fragment') {
-      shader = gl.createShader(gl.FRAGMENT_SHADER);
+      shader = this._glContext.createShader(this, gl.FRAGMENT_SHADER);
     } else if (type == 'x-shader/x-vertex') {
-      shader = gl.createShader(gl.VERTEX_SHADER);
+      shader = this._glContext.createShader(this, gl.VERTEX_SHADER);
     } else {
       // Unknown shader type
       return null;
@@ -313,16 +314,16 @@ export default class Shader extends GLBoostObject {
   }
 
   _initShaders(gl, vertexShaderStr, fragmentShaderStr) {
-    console.log('Vertex Shader:');
-    console.log(vertexShaderStr);
-    console.log('Fragment Shader:');
-    console.log(fragmentShaderStr);
+    MiscUtil.consoleLog('Vertex Shader:');
+    MiscUtil.consoleLog(vertexShaderStr);
+    MiscUtil.consoleLog('Fragment Shader:');
+    MiscUtil.consoleLog(fragmentShaderStr);
 
     var vertexShader = this._getShader(gl, vertexShaderStr, 'x-shader/x-vertex');
     var fragmentShader = this._getShader(gl, fragmentShaderStr, 'x-shader/x-fragment');
 
     // Create the shader program
-    var shaderProgram = gl.createProgram();
+    var shaderProgram = this._glContext.createProgram(this);
     gl.attachShader(shaderProgram, vertexShader);
     gl.attachShader(shaderProgram, fragmentShader);
     gl.linkProgram(shaderProgram);
@@ -392,7 +393,10 @@ export default class Shader extends GLBoostObject {
   static getDefaultPointLightIfNotExsist(gl, lights, canvas) {
 
     if (lights.length === 0) {
-      return [new PointLight(GLBoost.DEFAULT_POINTLIGHT_INTENSITY, canvas)]
+      if (Shader._defaultLight === null) {
+        Shader._defaultLight = new PointLight(GLBoost.DEFAULT_POINTLIGHT_INTENSITY, canvas);
+      }
+      return [Shader._defaultLight];
     } else {
       return lights;
     }
@@ -446,3 +450,4 @@ export default class Shader extends GLBoostObject {
 
 Shader._instances = new Object();
 Shader._shaderHashTable = {};
+Shader._defaultLight = null;
