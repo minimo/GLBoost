@@ -14,6 +14,7 @@ export default class Shader extends GLBoostObject {
 
     this._glContext = GLContext.getInstance(canvas);
 
+    this._glslProgram = null;
     this._dirty = true;
   }
 
@@ -327,6 +328,8 @@ export default class Shader extends GLBoostObject {
     gl.attachShader(shaderProgram, vertexShader);
     gl.attachShader(shaderProgram, fragmentShader);
     gl.linkProgram(shaderProgram);
+    this._glContext.deleteShader(this, vertexShader);
+    this._glContext.deleteShader(this, fragmentShader);
 
     // If creating the shader program failed, alert
     if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {
@@ -369,7 +372,7 @@ export default class Shader extends GLBoostObject {
       }
     }
 
-    if (programToReturn === null) {
+    if (programToReturn === null || !gl.isProgram(programToReturn)) {
     // if the current shader codes is not in shaderHashTable, create GLSL Shader Program.
       programToReturn = this._initShaders(gl, vertexShaderText, fragmentShaderText);
 
@@ -382,9 +385,11 @@ export default class Shader extends GLBoostObject {
       }
       hashTable[indexStr] = {code:baseText, program:programToReturn, collisionN:0};
       Shader._shaderHashTable[canvas.id] = hashTable;
+
     } else {
       //gl.useProgram(programToReturn);
     }
+    this._glslProgram = programToReturn;
     programToReturn.optimizedVertexAttribs = this._prepareAssetsForShaders(gl, programToReturn, vertexAttribs, existCamera_f, lights, extraData, canvas);
 
     return programToReturn;
@@ -444,6 +449,11 @@ export default class Shader extends GLBoostObject {
   }
   static _set_glFragData_inGLVer1(gl, i) {
     return !GLBoost.isThisGLVersion_2(gl) ? `  gl_FragData[${i}] = rt${i};\n` : '';
+  }
+
+  readyForDiscard() {
+    super.readyForDiscard();
+    this._glContext.deleteProgram(this, this._glslProgram);
   }
 
 }

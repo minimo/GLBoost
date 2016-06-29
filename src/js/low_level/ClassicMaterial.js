@@ -39,7 +39,14 @@ export default class ClassicMaterial extends GLBoostObject {
   }
 
   set shaderClass(shaderClass) {
+    if (this._shaderClass === shaderClass) {
+      return;
+    }
     this._shaderClass = shaderClass;
+    if (this._shaderInstance) {
+      this._shaderInstance.readyForDiscard();
+    }
+    this._shaderInstance = null;
   }
 
   get shaderClass() {
@@ -101,15 +108,6 @@ export default class ClassicMaterial extends GLBoostObject {
   get name() {
     return this._name;
   }
-  /*
-  set faceN(num) {
-    this._faceN = num;
-  }
-
-  get faceN() {
-    return this._faceN;
-  }
-  */
 
   setVertexN(geom, num) {
     this._vertexNofGeometries[geom] = num;
