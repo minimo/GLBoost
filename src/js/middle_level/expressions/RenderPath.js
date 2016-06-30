@@ -1,19 +1,19 @@
-import GLBoost from '../globals';
-import GLContext from '../low_level/core/GLContext';
-import Mesh from './meshes/Mesh';
-import Group from './Group';
-import GLBoostObject from '../low_level/core/GLBoostObject';
+import GLBoost from '../../globals';
+import GLContext from '../../low_level/core/GLContext';
+import Mesh from '../meshes/Mesh';
+import Group from '../Group';
+import GLBoostObject from '../../low_level/core/GLBoostObject';
 
-export default class RenderPass extends GLBoostObject {
+export default class RenderPath extends GLBoostObject {
 
-  constructor(gl) {
-    super();
+  constructor(glBoostContext) {
+    super(glBoostContext);
 
     this._elements = [];
     this._meshes = [];
     this._opacityMeshes = [];
     this._transparentMeshes = [];
-    this._drawBuffers = [gl.BACK];
+    this._drawBuffers = [this._glContext.gl.BACK];
     this._clearColor = null;
     this._clearDepth = 1.0;
     this._renderTargetTextures = null;
@@ -22,7 +22,7 @@ export default class RenderPass extends GLBoostObject {
   addElements(elements) {
     elements.forEach((elem)=>{
       if(!(elem instanceof Mesh || elem instanceof Group)) {
-        throw new TypeError('RenderPass accepts Mesh or Group element only.');
+        throw new TypeError('RenderPath accepts Mesh or Group element only.');
       }
       this._elements.push(elem);
     });
@@ -152,4 +152,4 @@ export default class RenderPass extends GLBoostObject {
   }
 }
 
-GLBoost['RenderPass'] = RenderPass;
+GLBoost['RenderPath'] = RenderPath;

@@ -5,7 +5,7 @@ import GLContext from '../low_level/core/GLContext';
 import AbstractLight from '../low_level/lights/AbstractLight';
 import Mesh from './meshes/Mesh';
 import Group from './Group';
-import RenderPass from './RenderPass';
+import RenderPath from './expressions/RenderPath';
 
 
 /**
@@ -21,11 +21,11 @@ export default class Scene extends Group {
    * [ja] コンストラクタ
    * @param {HTMLCanvas|string} canvas [en] canvas or canvas' id string. [ja] canvasまたはcanvasのid文字列
    */
-  constructor(canvas = GLBoost.CURRENT_CANVAS_ID) {
-    super();
-    this._gl = GLContext.getInstance(canvas).gl;
+  constructor(glBoostContext) {
+    super(glBoostContext);
+    this._gl = this._glContext.gl;
     this._currentAnimationInputValues = {};
-    this._renderPasses = [new RenderPass(this._gl)];
+    this._renderPaths = glBoostContext.createRenderPaths(1);
     this._reset();
   }
 
@@ -69,6 +69,16 @@ export default class Scene extends Group {
    */
   prepareForRender() {
     this._reset();
+
+    (function setParentRecursively(elem) {
+      if (elem instanceof Group) {
+        var children = elem.getChildren();
+        for(let i=0; i<children.length; i++) {
+          children[i]._parent = elem;
+          setParentRecursively(children[i]);
+        }
+      }
+    })(this);
 
     let collectMeshes = function(elem) {
       if (elem instanceof Group) {
@@ -139,17 +149,17 @@ export default class Scene extends Group {
     }
 
     // If there is only one renderPass, register meshes to the renderPass automatically.
-    if (this._renderPasses.length === 1) {
-      this._renderPasses[0].clearElements();
-      this._renderPasses[0].addElements(this._meshes);
+    if (this._renderPaths.length === 1) {
+      this._renderPaths[0].clearElements();
+      this._renderPaths[0].addElements(this._meshes);
     }
 
-    this._renderPasses.forEach((renderPass)=> {
+    this._renderPaths.forEach((renderPass)=> {
       renderPass.prepareForRender();
     });
 
     this._meshes.forEach((mesh)=> {
-      mesh.prepareForRender(existCamera_f, this._lights, this._renderPasses);
+      mesh.prepareForRender(existCamera_f, this._lights, this._renderPaths);
     });
 
 
@@ -158,19 +168,19 @@ export default class Scene extends Group {
   /**
    * [en] Set render passes for rendering. if you don't set render passes, this scene has a default render pass.
    * [ja] レンダリングに使うレンダーパスの配列をセットします。もしレンダーパスをセットしない場合は、このシーンはデフォルトの単一レンダーパスを持っています。
-   * @param {Array<RenderPass>} renderPasses [en] render passes. [ja] レンダーパスの配列
+   * @param {Array<RenderPath>} renderPaths [en] render passes. [ja] レンダーパスの配列
    */
-  set renderPasses(renderPasses) {
-    this._renderPasses = renderPasses;
+  set renderPaths(renderPaths) {
+    this._renderPaths = renderPaths;
   }
 
   /**
    * [en] Get render passes for rendering.
    * [ja] レンダリングに使うレンダーパスの配列を取得します。
-   * @returns {Array<RenderPass>}
+   * @returns {Array<RenderPath>}
    */
-  get renderPasses() {
-    return this._renderPasses;
+  get renderPaths() {
+    return this._renderPaths;
   }
 
   /**
@@ -219,5 +229,3 @@ export default class Scene extends Group {
   }
 
 }
-
-GLBoost['Scene'] = Scene;

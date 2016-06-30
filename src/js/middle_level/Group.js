@@ -2,8 +2,8 @@ import GLBoost from '../globals';
 import Element from '../low_level/Element';
 
 export default class Group extends Element {
-  constructor() {
-    super();
+  constructor(glBoostContext) {
+    super(glBoostContext);
     this._elements = [];
   }
 
@@ -15,7 +15,6 @@ export default class Group extends Element {
   addChild(element) {
     this.removeChild(element);
     this._elements.push(element);
-    element._parent = this;
   }
 
   /**
@@ -85,5 +84,3 @@ export default class Group extends Element {
     return null;
   }
 }
-
-GLBoost['Group'] = Group;
