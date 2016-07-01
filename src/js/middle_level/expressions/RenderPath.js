@@ -9,7 +9,9 @@ export default class RenderPath extends GLBoostObject {
   constructor(glBoostContext) {
     super(glBoostContext);
 
-    this._elements = [];
+    this._expression = null;
+    this._scene = null;
+    //this._elements = [];
     this._meshes = [];
     this._opacityMeshes = [];
     this._transparentMeshes = [];
@@ -19,21 +21,16 @@ export default class RenderPath extends GLBoostObject {
     this._renderTargetTextures = null;
   }
 
-  addElements(elements) {
-    elements.forEach((elem)=>{
-      if(!(elem instanceof Mesh || elem instanceof Group)) {
-        throw new TypeError('RenderPath accepts Mesh or Group element only.');
-      }
-      this._elements.push(elem);
-    });
+  get expression() {
+    return this._expression;
   }
 
-  clearElements() {
-    this._elements.length = 0;
+  set scene(scene) {
+    this._scene = scene;
   }
 
-  get elements() {
-    return this._elements;
+  get scene() {
+    return this._scene;
   }
 
   get meshes() {
@@ -48,8 +45,8 @@ export default class RenderPath extends GLBoostObject {
     return this._transparentMeshes;
   }
 
-  specifyRenderTargetTextures(renderTargetTextures, canvas = GLBoost.CURRENT_CANVAS_ID) {
-    var gl = GLContext.getInstance(canvas).gl;
+  specifyRenderTargetTextures(renderTargetTextures) {
+    var gl = this._glContext.gl;
 
     if (renderTargetTextures) {
       this._drawBuffers = [];
@@ -95,7 +92,7 @@ export default class RenderPath extends GLBoostObject {
     return this._clearDepth;
   }
 
-  prepareForRender() {
+  prepareToRender() {
     let collectMeshes = function(elem) {
       if (elem instanceof Group) {
         var children = elem.getChildren();
@@ -113,9 +110,11 @@ export default class RenderPath extends GLBoostObject {
     };
 
     this._meshes = [];
-    this._elements.forEach((elm)=> {
-      this._meshes = this._meshes.concat(collectMeshes(elm));
-    });
+    if (this._scene) {
+      this._scene.getChildren().forEach((elm)=> {
+        this._meshes = this._meshes.concat(collectMeshes(elm));
+      });
+    }
 
     this._opacityMeshes = [];
     this._transparentMeshes = [];
@@ -126,6 +125,10 @@ export default class RenderPath extends GLBoostObject {
         this._opacityMeshes.push(mesh);
       }
     });
+
+    if (this._scene) {
+      this._scene.prepareToRender();
+    }
   }
 
   sortTransparentMeshes(camera) {
@@ -142,14 +145,6 @@ export default class RenderPath extends GLBoostObject {
 
   }
 
-  containsMeshAfterPrepareForRender(mesh) {
-    for(let i=0; i<this._meshes.length; i++) {
-      if (this._meshes[i] === mesh) {
-        return true;
-      }
-    }
-    return false;
-  }
 }
 
 GLBoost['RenderPath'] = RenderPath;

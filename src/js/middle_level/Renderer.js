@@ -13,8 +13,6 @@ export default class Renderer extends GLBoostObject {
     super(glBoostContext);
     var _clearColor = parameters.clearColor;
 
-    GLBoost.CURRENT_CANVAS_ID = '#' + this._glContext.canvas.id;
-
     var gl = this._glContext.gl;
 
     var setDefaultGLStates = function setDefaultGLStates() {
@@ -40,20 +38,23 @@ export default class Renderer extends GLBoostObject {
    * ja: sceneが持つオブジェクトを描画します
    * @param {Scene} scene a instance of Scene class
    */
-  draw(scene) {
-    var camera = false;
-    scene.cameras.forEach((elm)=> {
-      if (elm.isMainCamera(scene)) {
-        camera = elm;
+  draw(expression) {
+    expression.renderPaths.forEach((renderPath)=>{
+      if (!renderPath.scene) {
+        return;
       }
-    });
 
-    var gl = this._glContext.gl;
-    var glem = GLExtensionsManager.getInstance(this._glContext);
+      var camera = false;
+      renderPath.scene.cameras.forEach((elm)=> {
+        if (elm.isMainCamera(renderPath.scene)) {
+          camera = elm;
+        }
+      });
 
-    let lights = scene.lights;
+      var gl = this._glContext.gl;
+      var glem = GLExtensionsManager.getInstance(this._glContext);
 
-    scene.renderPaths.forEach((renderPath, index)=>{
+      let lights = renderPath.scene.lights;
 
       if (renderPath.fboOfRenderTargetTextures) {
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -71,7 +72,7 @@ export default class Renderer extends GLBoostObject {
       // draw opacity meshes.
       var opacityMeshes = renderPath.opacityMeshes;
       opacityMeshes.forEach((mesh)=> {
-        mesh.draw(lights, camera, scene, index);
+        mesh.draw(lights, camera, renderPath.scene);
       });
 
       if (camera) {
@@ -80,7 +81,7 @@ export default class Renderer extends GLBoostObject {
       // draw transparent meshes.
       var transparentMeshes = renderPath.transparentMeshes;
       transparentMeshes.forEach((mesh)=> {
-        mesh.draw(lights, camera, scene, index);
+        mesh.draw(lights, camera, renderPath.scene);
       });
 
       gl.bindFramebuffer(gl.FRAMEBUFFER, null);

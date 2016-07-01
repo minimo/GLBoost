@@ -94,7 +94,7 @@ var scene = glBoostContext.createScene();
 
 // setup material
 var material = glBoostContext.createClassicMaterial();
-var texture = glBoostContext.create('resources/texture.png');
+var texture = glBoostContext.createTexture('resources/texture.png');
 material.diffuseTexture = texture;
 material.shaderClass = GLBoost.PhongShader;
 
@@ -104,12 +104,12 @@ var geometry = glBoostContext.createSphere(20, 24, 24, null);
 // set Sphere geometry and material to make a Mesh.
 var earth = glBoostContext.createMesh(geometry, material);
 // add the earth mesh to the scene
-scene.add(earth);
+scene.addChild(earth);
 
 // make a directonal light
 var directionalLight = glBoostContext.createDirectionalLight(new GLBoost.Vector3(1, 1, 1), new GLBoost.Vector3(-1, -1, -1));
 // add the light to the scene
-scene.add( directionalLight );
+scene.addChild( directionalLight );
 
 // setup camera
 var camera = glBoostContext.createCamera({
@@ -123,16 +123,24 @@ var camera = glBoostContext.createCamera({
   zFar: 1000.0
 });
 // add the camera to the scene
-scene.add(camera);
+scene.addChild(camera);
+
+// create an expression (which is composed of several rendering paths)
+var expression = glBoostContext.createExpressionAndRenderPaths(1);
+
+// set scene to render path of expression
+expression.renderPaths[0].scene = scene;
 
 // call this method before rendering
-scene.prepareForRender();
+expression.prepareToRender();
 
 // rendering loop
 var render = function() {
-  // render the scene
+  // clear canvas
   renderer.clearCanvas();
-  renderer.draw(scene);
+
+  // render the expression
+  renderer.draw(expression);
 
   // rotate camera
   var rotateMatrixY = GLBoost.Matrix33.rotateY(-1.0);
