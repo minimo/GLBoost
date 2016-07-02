@@ -7,6 +7,10 @@
 
 A New WebGL Rendering Library for 3D Graphics Geeks
 
+Our concept is ...
+
+### "__Convenience like Three.js, Infinite Flexibility like raw WebGL, We get both.__"
+
 ## Attention
 
 [en]
@@ -125,11 +129,11 @@ var camera = glBoostContext.createCamera({
 // add the camera to the scene
 scene.addChild(camera);
 
-// create an expression (which is composed of several rendering paths)
-var expression = glBoostContext.createExpressionAndRenderPaths(1);
+// create an expression (which is composed of several rendering passes)
+var expression = glBoostContext.createExpressionAndRenderPasses(1);
 
-// set scene to render path of expression
-expression.renderPaths[0].scene = scene;
+// set scene to render pass of expression
+expression.renderPasses[0].scene = scene;
 
 // call this method before rendering
 expression.prepareToRender();

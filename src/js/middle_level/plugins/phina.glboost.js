@@ -22,7 +22,7 @@ phina.namespace(function() {
     canvas: null,
 
     /** 子供を 自分のCanvasRenderer で描画するか */
-    renderChildBySelf: false,
+    renderChildBySelf: true,
 
     init: function(params) {
       this.superInit(params);
@@ -41,8 +41,8 @@ phina.namespace(function() {
       // レンダラーを生成
       this.renderer = this.glBoostContext.createRenderer({clearColor: {red:1, green:1, blue:1, alpha:1}});
       this.scene = this.glBoostContext.createScene();
-      this.expression = this.glBoostContext.createExpressionAndRenderPaths(1);
-      this.expression.renderPaths[0].scene = this.scene;
+      this.expression = this.glBoostContext.createExpressionAndRenderPasses(1);
+      this.expression.renderPasses[0].scene = this.scene;
 
       this.on('enterframe', function() {
         if (this.scene) {
@@ -96,6 +96,7 @@ phina.namespace(function() {
 
     renderObject: function(obj) {
       var layer = DisplayElement();
+      obj.flare('enterframe');
       obj.addChildTo(layer);
       this.renderer2d.renderObject(layer);
     },
