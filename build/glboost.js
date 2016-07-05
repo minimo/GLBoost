@@ -139,6 +139,8 @@
   global.GLBoost['BLENDTARGET10'] = 'shapetarget_10';
   global.GLBoost['RADIAN'] = 'radian';
   global.GLBoost['DEGREE'] = 'degree';
+  global.GLBoost['RENDER_TARGET_NONE_COLOR'] = 0; // gl.NONE
+  global.GLBoost['COLOR_ATTACHMENT0'] = 0x8CE0; // gl.COLOR_ATTACHMENT0
 
   var GLBoost$1 = global.GLBoost;
 
@@ -198,14 +200,14 @@
        */
 
     }, {
-      key: 'length',
-      value: function length() {
-        return Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
-      }
-    }, {
       key: 'clone',
       value: function clone() {
         return new Vector3(this.x, this.y, this.z);
+      }
+    }, {
+      key: 'length',
+      value: function length() {
+        return Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
       }
 
       /*
@@ -232,17 +234,20 @@
        */
 
     }, {
-      key: 'lengthSquared',
-      value: function lengthSquared(vec3) {
-        return vec3.x * vec3.x + vec3.y * vec3.y + vec3.z * vec3.z;
+      key: 'lengthTo',
+      value: function lengthTo(vec3) {
+        var deltaX = vec3.x - this.x;
+        var deltaY = vec3.y - this.y;
+        var deltaZ = vec3.z - this.z;
+        return Math.sqrt(deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ);
       }
+    }, {
+      key: 'dotProduct',
+
 
       /**
        * 内積
        */
-
-    }, {
-      key: 'dotProduct',
       value: function dotProduct(vec3) {
         return this.x * vec3.x + this.y * vec3.y + this.z * vec3.z;
       }
@@ -371,6 +376,19 @@
       key: 'zero',
       value: function zero() {
         return new Vector3(0, 0, 0);
+      }
+    }, {
+      key: 'lengthSquared',
+      value: function lengthSquared(vec3) {
+        return vec3.x * vec3.x + vec3.y * vec3.y + vec3.z * vec3.z;
+      }
+    }, {
+      key: 'lengthBtw',
+      value: function lengthBtw(lhv, rhv) {
+        var deltaX = rhv.x - lhv.x;
+        var deltaY = rhv.y - lhv.y;
+        var deltaZ = rhv.z - lhv.z;
+        return Math.sqrt(deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ);
       }
     }, {
       key: 'dotProduct',
@@ -1619,14 +1637,14 @@
     return MiscUtil;
   }();
 
-  var singleton$2 = Symbol();
-  var singletonEnforcer$2 = Symbol();
+  var singleton$4 = Symbol();
+  var singletonEnforcer$4 = Symbol();
 
   var GLBoostMonitor = function () {
     function GLBoostMonitor(enforcer) {
       babelHelpers.classCallCheck(this, GLBoostMonitor);
 
-      if (enforcer !== singletonEnforcer$2) {
+      if (enforcer !== singletonEnforcer$4) {
         throw new Error('This is a Singleton class. get the instance using \'getInstance\' static method.');
       }
 
@@ -1758,10 +1776,10 @@
     }], [{
       key: 'getInstance',
       value: function getInstance() {
-        if (!this[singleton$2]) {
-          this[singleton$2] = new GLBoostMonitor(singletonEnforcer$2);
+        if (!this[singleton$4]) {
+          this[singleton$4] = new GLBoostMonitor(singletonEnforcer$4);
         }
-        return this[singleton$2];
+        return this[singleton$4];
       }
     }]);
     return GLBoostMonitor;
@@ -2508,6 +2526,7 @@
       var _this = babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(Group).call(this, glBoostContext));
 
       _this._elements = [];
+      _this._;
       return _this;
     }
 
@@ -2624,8 +2643,10 @@
       _this._transparentMeshes = [];
       _this._drawBuffers = [_this._glContext.gl.BACK];
       _this._clearColor = null;
-      _this._clearDepth = 1.0;
-      _this._renderTargetTextures = null;
+      _this._clearDepth = null; // default is 1.0
+      _this._renderTargetColorTextures = null;
+      _this._renderTargetDepthTexture = null;
+      _this._fbo = null;
       return _this;
     }
 
@@ -2636,15 +2657,34 @@
 
         var gl = this._glContext.gl;
 
-        if (renderTargetTextures) {
+        var colorRenderTargetTextures = renderTargetTextures.filter(function (renderTargetTexture) {
+          if (renderTargetTexture.colorAttachment) {
+            return true;
+          } else {
+            return false;
+          }
+        });
+
+        if (colorRenderTargetTextures.length > 0) {
           this._drawBuffers = [];
-          renderTargetTextures.forEach(function (texture) {
-            _this2._drawBuffers.push(texture.attachment);
+          colorRenderTargetTextures.forEach(function (texture) {
+            var attachment = texture.colorAttachment;
+            _this2._drawBuffers.push(attachment);
           });
-          this._renderTargetTextures = renderTargetTextures;
+          this._renderTargetColorTextures = colorRenderTargetTextures;
         } else {
-          this._drawBuffers = [gl.BACK];
+          this._drawBuffers = [gl.NONE];
         }
+
+        var depthRenderTargetTextures = renderTargetTextures.filter(function (renderTargetTexture) {
+          if (renderTargetTexture.depthAttachment) {
+            return true;
+          } else {
+            return false;
+          }
+        });
+
+        this._renderTargetDepthTexture = depthRenderTargetTextures[0];
       }
     }, {
       key: 'setClearColor',
@@ -2746,18 +2786,20 @@
         return this._drawBuffers;
       }
     }, {
-      key: 'fboOfRenderTargetTextures',
+      key: 'fbo',
       get: function get() {
-        if (this._renderTargetTextures) {
-          return this._renderTargetTextures[0].fbo;
+        if (this._renderTargetColorTextures) {
+          return this._renderTargetColorTextures[0].fbo;
+        } else if (this._renderTargetDepthTexture) {
+          return this._renderTargetDepthTexture.fbo;
         } else {
           return null;
         }
       }
     }, {
-      key: 'renderTargetTextures',
+      key: 'renderTargetColorTextures',
       get: function get() {
-        return this._renderTargetTextures;
+        return this._renderTargetColorTextures;
       }
     }, {
       key: 'clearColor',
@@ -2845,6 +2887,8 @@
         this._extTFA = gl.getExtension('EXT_texture_filter_anisotropic') || gl.getExtension('WEBKIT_EXT_texture_filter_anisotropic') || gl.getExtension('MOZ_EXT_texture_filter_anisotropic');
 
         this._extEIUI = gl.getExtension('OES_element_index_uint');
+
+        this._extDepthTex = gl.getExtension('WEBGL_depth_texture');
       }
 
       GLExtensionsManager._instances[glContext.canvas.id] = this;
@@ -2884,6 +2928,11 @@
           this.extDBs.drawBuffersWEBGL(buffers);
           return true;
         } else {
+          if (buffers[0] === gl.NONE) {
+            gl.colorMask(false, false, false, false);
+          } else {
+            gl.colorMask(true, true, true, true);
+          }
           return false;
         }
       }
@@ -3549,6 +3598,31 @@
 
   GLBoost['VertexLocalShaderSource'] = VertexLocalShaderSource;
 
+  /**
+   * [en] This is the abstract class for all lights classes. Don't use this class directly.<br>
+   * [ja] 全ての光源クラスのための抽象クラスです。直接このクラスは使わないでください。
+   */
+
+  var AbstractLight = function (_Element) {
+    babelHelpers.inherits(AbstractLight, _Element);
+
+    function AbstractLight(glBoostContext) {
+      babelHelpers.classCallCheck(this, AbstractLight);
+
+      var _this = babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(AbstractLight).call(this, glBoostContext));
+
+      if (_this.constructor === AbstractLight) {
+        throw new TypeError("Cannot construct AbstractLight instances directly.");
+      }
+
+      _this._gl = _this._glContext.gl;
+      _this._name = "";
+      return _this;
+    }
+
+    return AbstractLight;
+  }(Element);
+
   var GLContextImpl = function () {
     function GLContextImpl(canvas, parent) {
       babelHelpers.classCallCheck(this, GLContextImpl);
@@ -3744,31 +3818,6 @@
   GLContext._instances = new Object();
 
   /**
-   * [en] This is the abstract class for all lights classes. Don't use this class directly.<br>
-   * [ja] 全ての光源クラスのための抽象クラスです。直接このクラスは使わないでください。
-   */
-
-  var AbstractLight = function (_Element) {
-    babelHelpers.inherits(AbstractLight, _Element);
-
-    function AbstractLight(glBoostContext) {
-      babelHelpers.classCallCheck(this, AbstractLight);
-
-      var _this = babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(AbstractLight).call(this, glBoostContext));
-
-      if (_this.constructor === AbstractLight) {
-        throw new TypeError("Cannot construct AbstractLight instances directly.");
-      }
-
-      _this._gl = _this._glContext.gl;
-      _this._name = "";
-      return _this;
-    }
-
-    return AbstractLight;
-  }(Element);
-
-  /**
    * [en] This is a Directional Light class.<br>
    * [ja] 平行光源クラスです。
    */
@@ -3854,14 +3903,14 @@
     return PointLight;
   }(AbstractLight);
 
-  var singleton$3 = Symbol();
-  var singletonEnforcer$3 = Symbol();
+  var singleton$2 = Symbol();
+  var singletonEnforcer$2 = Symbol();
 
   var DrawKickerLocal = function () {
     function DrawKickerLocal(enforcer) {
       babelHelpers.classCallCheck(this, DrawKickerLocal);
 
-      if (enforcer !== singletonEnforcer$3) {
+      if (enforcer !== singletonEnforcer$2) {
         throw new Error('This is a Singleton class. get the instance using \'getInstance\' static method.');
       }
       this._glslProgram = null;
@@ -3972,10 +4021,10 @@
     }], [{
       key: 'getInstance',
       value: function getInstance() {
-        if (!this[singleton$3]) {
-          this[singleton$3] = new DrawKickerLocal(singletonEnforcer$3);
+        if (!this[singleton$2]) {
+          this[singleton$2] = new DrawKickerLocal(singletonEnforcer$2);
         }
-        return this[singleton$3];
+        return this[singleton$2];
       }
     }]);
     return DrawKickerLocal;
@@ -4077,14 +4126,14 @@
 
   GLBoost['VertexWorldShaderSource'] = VertexWorldShaderSource;
 
-  var singleton$4 = Symbol();
-  var singletonEnforcer$4 = Symbol();
+  var singleton$3 = Symbol();
+  var singletonEnforcer$3 = Symbol();
 
   var DrawKickerWorld = function () {
     function DrawKickerWorld(enforcer) {
       babelHelpers.classCallCheck(this, DrawKickerWorld);
 
-      if (enforcer !== singletonEnforcer$4) {
+      if (enforcer !== singletonEnforcer$3) {
         throw new Error('This is a Singleton class. get the instance using \'getInstance\' static method.');
       }
       this._glslProgram = null;
@@ -4193,10 +4242,10 @@
     }], [{
       key: 'getInstance',
       value: function getInstance() {
-        if (!this[singleton$4]) {
-          this[singleton$4] = new DrawKickerWorld(singletonEnforcer$4);
+        if (!this[singleton$3]) {
+          this[singleton$3] = new DrawKickerWorld(singletonEnforcer$3);
         }
-        return this[singleton$4];
+        return this[singleton$3];
       }
     }]);
     return DrawKickerWorld;
@@ -4234,6 +4283,60 @@
     }]);
     return ArrayUtil;
   }();
+
+  var AABB = function () {
+    function AABB() {
+      babelHelpers.classCallCheck(this, AABB);
+
+      this._AABB_min = new Vector3(Number.MAX_VALUE, Number.MAX_VALUE, Number.MAX_VALUE);
+      this._AABB_max = new Vector3(Number.MIN_VALUE, Number.MIN_VALUE, Number.MIN_VALUE);
+      this._centerPoint = null;
+      this._lengthCenterToCorner = null;
+    }
+
+    babelHelpers.createClass(AABB, [{
+      key: 'addPosition',
+      value: function addPosition(positionVector) {
+        this._AABB_min.x = positionVector.x < this._AABB_min.x ? positionVector.x : this._AABB_min.x;
+        this._AABB_min.y = positionVector.y < this._AABB_min.y ? positionVector.y : this._AABB_min.y;
+        this._AABB_min.z = positionVector.z < this._AABB_min.z ? positionVector.z : this._AABB_min.z;
+        this._AABB_max.x = this._AABB_max.x < positionVector.x ? positionVector.x : this._AABB_max.x;
+        this._AABB_max.y = this._AABB_max.y < positionVector.y ? positionVector.y : this._AABB_max.y;
+        this._AABB_max.z = this._AABB_max.z < positionVector.z ? positionVector.z : this._AABB_max.z;
+
+        return positionVector;
+      }
+    }, {
+      key: 'updateAllInfo',
+      value: function updateAllInfo() {
+        this._centerPoint = Vector3.add(this._AABB_min, this._AABB_max).divide(2);
+        this._lengthCenterToCorner = Vector3.lengthBtw(this._centerPoint, this._AABB_max);
+      }
+    }, {
+      key: 'minPoint',
+      get: function get() {
+        return this._AABB_min;
+      }
+    }, {
+      key: 'maxPoint',
+      get: function get() {
+        return this._AABB_max;
+      }
+    }, {
+      key: 'centerPoint',
+      get: function get() {
+        return this._centerPoint;
+      }
+    }, {
+      key: 'lengthCenterToCorner',
+      get: function get() {
+        return this._lengthCenterToCorner;
+      }
+    }]);
+    return AABB;
+  }();
+
+  GLBoost$1['AABB'] = AABB;
 
   var FragmentSimpleShaderSource = function () {
     function FragmentSimpleShaderSource() {
@@ -4551,9 +4654,7 @@
       _this._defaultMaterial = glBoostContext.createClassicMaterial();
       _this._vertexData = [];
       _this._extraDataForShader = {};
-      _this._AABB_min = new Vector3(Number.MAX_VALUE, Number.MAX_VALUE, Number.MAX_VALUE);
-      _this._AABB_max = new Vector3(Number.MIN_VALUE, Number.MIN_VALUE, Number.MIN_VALUE);
-      _this._centerPosition = Vector3.zero();
+      _this._AABB = new AABB();
       _this._drawKicker = DrawKickerWorld.getInstance();
 
       if (_this._drawKicker instanceof DrawKickerWorld) {} else if (_this._drawKicker instanceof DrawKickerLocal) {}
@@ -4608,23 +4709,6 @@
         return attribNameArray;
       }
     }, {
-      key: '_updateAABB',
-      value: function _updateAABB(positionVector) {
-        this._AABB_min.x = positionVector.x < this._AABB_min.x ? positionVector.x : this._AABB_min.x;
-        this._AABB_min.y = positionVector.y < this._AABB_min.y ? positionVector.y : this._AABB_min.y;
-        this._AABB_min.z = positionVector.z < this._AABB_min.z ? positionVector.z : this._AABB_min.z;
-        this._AABB_max.x = this._AABB_max.x < positionVector.x ? positionVector.x : this._AABB_max.x;
-        this._AABB_max.y = this._AABB_max.y < positionVector.y ? positionVector.y : this._AABB_max.y;
-        this._AABB_max.z = this._AABB_max.z < positionVector.z ? positionVector.z : this._AABB_max.z;
-
-        return positionVector;
-      }
-    }, {
-      key: '_updateCenterPosition',
-      value: function _updateCenterPosition() {
-        this._centerPosition = Vector3.divide(Vector3.subtract(this._AABB_max, this._AABB_min), 2);
-      }
-    }, {
       key: 'setVerticesData',
       value: function setVerticesData(vertices, indicesArray) {
         var _this2 = this;
@@ -4643,12 +4727,12 @@
             _this2._vertices[attribName][index] = MathUtil.arrayToVector(element);
 
             if (attribName === 'position') {
-              _this2._updateAABB(_this2._vertices[attribName][index]);
+              _this2._AABB.addPosition(_this2._vertices[attribName][index]);
             }
           });
         });
 
-        this._updateCenterPosition();
+        this._AABB.updateAllInfo();
 
         this._indicesArray = indicesArray;
         this._primitiveType = primitiveType;
@@ -4697,7 +4781,7 @@
                 _this3._vertices[attribName][index] = element = MathUtil.arrayToVector(element);
 
                 if (attribName === 'position') {
-                  _this3._updateAABB(_this3._vertices[attribName][index]);
+                  _this3._AABB.addPosition(_this3._vertices[attribName][index]);
                 }
 
                 vertexData[idx++] = element.x;
@@ -4711,7 +4795,7 @@
               });
             });
 
-            _this3._updateCenterPosition();
+            _this3._AABB.updateAllInfo();
 
             if (!isCached) {
               _this3.Float32AryVertexData = new Float32Array(vertexData);
@@ -4979,7 +5063,7 @@
     }, {
       key: 'centerPosition',
       get: function get() {
-        return this._centerPosition;
+        return this._AABB.centerPoint;
       }
     }], [{
       key: 'clearMaterialCache',
@@ -5042,14 +5126,14 @@
       value: function draw(expression) {
         var _this2 = this;
 
-        expression.renderPasses.forEach(function (renderPath) {
-          if (!renderPath.scene) {
+        expression.renderPasses.forEach(function (renderPass) {
+          if (!renderPass.scene) {
             return;
           }
 
           var camera = false;
-          renderPath.scene.cameras.forEach(function (elm) {
-            if (elm.isMainCamera(renderPath.scene)) {
+          renderPass.scene.cameras.forEach(function (elm) {
+            if (elm.isMainCamera(renderPass.scene)) {
               camera = elm;
             }
           });
@@ -5057,38 +5141,47 @@
           var gl = _this2._glContext.gl;
           var glem = GLExtensionsManager.getInstance(_this2._glContext);
 
-          var lights = renderPath.scene.lights;
+          var lights = renderPass.scene.lights;
 
-          if (renderPath.fboOfRenderTargetTextures) {
+          if (renderPass.fbo) {
             gl.bindTexture(gl.TEXTURE_2D, null);
             Geometry.clearMaterialCache();
-            gl.bindFramebuffer(gl.FRAMEBUFFER, renderPath.fboOfRenderTargetTextures);
+            gl.bindFramebuffer(gl.FRAMEBUFFER, renderPass.fbo);
           }
-          glem.drawBuffers(gl, renderPath.buffersToDraw); // set render target buffers for each RenderPass.
+          glem.drawBuffers(gl, renderPass.buffersToDraw); // set render target buffers for each RenderPass.
 
-          if (renderPath.clearColor) {
-            var color = renderPath.clearColor;
-            gl.clearColor(color.x, color.y, color.z, color.w);
+          var clearColor = renderPass.clearColor;
+          var clearDepth = renderPass.clearDepth;
+          if (clearColor) {
+            gl.clearColor(clearColor.x, clearColor.y, clearColor.z, clearColor.w);
+          }
+          if (clearDepth) {
+            gl.clearDepth(clearDepth);
+          }
+          if (clearColor || clearDepth) {
             gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+          } else if (clearColor) {
+            gl.clear(gl.COLOR_BUFFER_BIT);
+          } else {
+            gl.clear(gl.DEPTH_BUFFER_BIT);
           }
-
           // draw opacity meshes.
-          var opacityMeshes = renderPath.opacityMeshes;
+          var opacityMeshes = renderPass.opacityMeshes;
           opacityMeshes.forEach(function (mesh) {
-            mesh.draw(lights, camera, renderPath.scene);
+            mesh.draw(lights, camera, renderPass.scene);
           });
 
           if (camera) {
-            renderPath.sortTransparentMeshes(camera);
+            renderPass.sortTransparentMeshes(camera);
           }
           // draw transparent meshes.
-          var transparentMeshes = renderPath.transparentMeshes;
+          var transparentMeshes = renderPass.transparentMeshes;
           transparentMeshes.forEach(function (mesh) {
-            mesh.draw(lights, camera, renderPath.scene);
+            mesh.draw(lights, camera, renderPass.scene);
           });
 
           gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-          glem.drawBuffers(gl, [gl.BACK]);
+          //      glem.drawBuffers(gl, [gl.BACK]);
         });
       }
 
@@ -5754,7 +5847,8 @@
       _this._width = width;
       _this._height = height;
       _this._fbo = null;
-      _this._attachmentId = null;
+      _this._colorAttachmentId = null;
+      _this._depthAttachmentId = null;
 
       var gl = _this._glContext.gl;
 
@@ -5773,12 +5867,20 @@
     }
 
     babelHelpers.createClass(MutableTexture, [{
-      key: 'attachment',
-      set: function set(attachmentId) {
-        this._attachmentId = attachmentId;
+      key: 'colorAttachment',
+      set: function set(colorAttachmentId) {
+        this._colorAttachmentId = colorAttachmentId;
       },
       get: function get() {
-        return this._attachmentId;
+        return this._colorAttachmentId;
+      }
+    }, {
+      key: 'depthAttachment',
+      set: function set(depthAttachmentId) {
+        this._depthAttachmentId = depthAttachmentId;
+      },
+      get: function get() {
+        return this._depthAttachmentId;
       }
     }, {
       key: 'frameBufferObject',
@@ -7218,7 +7320,7 @@
         renderTargetTextures.forEach(function (texture, i) {
           var glTexture = texture.glTextureResource;
           var attachimentId = glem.colorAttachiment(gl, i);
-          texture.attachment = attachimentId;
+          texture.colorAttachment = attachimentId;
           gl.framebufferTexture2D(gl.FRAMEBUFFER, attachimentId, gl.TEXTURE_2D, glTexture, 0);
         });
         gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, gl.RENDERBUFFER, renderbuffer);
@@ -7243,13 +7345,23 @@
         fbo.width = width ? width : canvas.width;
         fbo.height = height ? height : canvas.height;
 
-        var depthTexture = new MutableTexture(this, fbo.width, fbo.height);
+        // Create color RenderBuffer
+        var colorBuffer = gl.createRenderbuffer();
+        gl.bindRenderbuffer(gl.RENDERBUFFER, colorBuffer);
+        gl.renderbufferStorage(gl.RENDERBUFFER, gl.RGBA4, fbo.width, fbo.width);
+
+        // Create MutableTexture for Depth Texture
+        var depthTexture = new MutableTexture(this, fbo.width, fbo.height, 0, gl.DEPTH_COMPONENT, gl.DEPTH_COMPONENT, gl.UNSIGNED_INT, gl.NEAREST, gl.NEAREST, gl.CLAMP_TO_EDGE, gl.CLAMP_TO_EDGE);
         depthTexture.fbo = fbo;
 
-        // Attach Buffers
+        /// Attach Buffers
+        // color
+        gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.RENDERBUFFER, colorBuffer);
+
+        // depth
         var glTexture = depthTexture.glTextureResource;
         var attachimentId = gl.DEPTH_ATTACHMENT;
-        depthTexture.attachment = attachimentId;
+        depthTexture.depthAttachment = attachimentId;
         gl.framebufferTexture2D(gl.FRAMEBUFFER, attachimentId, gl.TEXTURE_2D, glTexture, 0);
 
         gl.bindFramebuffer(gl.FRAMEBUFFER, null);
@@ -7304,6 +7416,11 @@
       key: 'createRenderer',
       value: function createRenderer(parameters) {
         return new Renderer(this, parameters);
+      }
+    }, {
+      key: 'createExpression',
+      value: function createExpression() {
+        return this.createExpressionAndRenderPasses(1);
       }
     }, {
       key: 'createExpressionAndRenderPasses',
@@ -7449,167 +7566,6 @@
   }(DecalShader);
 
   GLBoost['PhongShader'] = PhongShader;
-
-  var LambertShaderSource = function () {
-    function LambertShaderSource() {
-      babelHelpers.classCallCheck(this, LambertShaderSource);
-    }
-
-    babelHelpers.createClass(LambertShaderSource, [{
-      key: 'FSDefine_LambertShaderSource',
-      value: function FSDefine_LambertShaderSource(in_, f, lights) {
-        var shaderText = '';
-        shaderText += 'uniform vec4 Kd;\n';
-
-        return shaderText;
-      }
-    }, {
-      key: 'FSShade_LambertShaderSource',
-      value: function FSShade_LambertShaderSource(f, gl, lights) {
-        var shaderText = '';
-
-        shaderText += '  vec4 surfaceColor = rt0;\n';
-        shaderText += '  rt0 = vec4(0.0, 0.0, 0.0, 0.0);\n';
-        shaderText += '  vec3 normal = normalize(v_normal);\n';
-
-        shaderText += '  for (int i=0; i<' + lights.length + '; i++) {\n';
-        // if PointLight: lightPosition[i].w === 1.0      if DirectionalLight: lightPosition[i].w === 0.0
-        shaderText += '    vec3 light = normalize(lightPosition[i].xyz - position.xyz * lightPosition[i].w);\n';
-        shaderText += '    float diffuse = max(dot(light, normal), 0.0);\n';
-        shaderText += '    rt0 += Kd * lightDiffuse[i] * vec4(diffuse, diffuse, diffuse, 1.0) * surfaceColor;\n';
-        shaderText += '  }\n';
-        //shaderText += '  rt0.a = 1.0;\n';
-        //shaderText += '  rt0 = vec4(position.xyz, 1.0);\n';
-
-        return shaderText;
-      }
-    }, {
-      key: 'prepare_LambertShaderSource',
-      value: function prepare_LambertShaderSource(gl, shaderProgram, vertexAttribs, existCamera_f, lights, extraData, canvas) {
-
-        var vertexAttribsAsResult = [];
-        vertexAttribs.forEach(function (attribName) {
-          if (attribName === GLBoost.NORMAL) {
-            shaderProgram['vertexAttribute_' + attribName] = gl.getAttribLocation(shaderProgram, 'aVertex_' + attribName);
-            gl.enableVertexAttribArray(shaderProgram['vertexAttribute_' + attribName]);
-            vertexAttribsAsResult.push(attribName);
-          }
-        });
-
-        shaderProgram.Kd = gl.getUniformLocation(shaderProgram, 'Kd');
-
-        return vertexAttribsAsResult;
-      }
-    }]);
-    return LambertShaderSource;
-  }();
-
-  var LambertShader = function (_DecalShader) {
-    babelHelpers.inherits(LambertShader, _DecalShader);
-
-    function LambertShader(glBoostContext, basicShader) {
-      babelHelpers.classCallCheck(this, LambertShader);
-
-      var _this = babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(LambertShader).call(this, glBoostContext, basicShader));
-
-      LambertShader.mixin(LambertShaderSource);
-      return _this;
-    }
-
-    babelHelpers.createClass(LambertShader, [{
-      key: 'setUniforms',
-      value: function setUniforms(gl, glslProgram, material) {
-        babelHelpers.get(Object.getPrototypeOf(LambertShader.prototype), 'setUniforms', this).call(this, gl, glslProgram, material);
-
-        var Kd = material.diffuseColor;
-        gl.uniform4f(glslProgram.Kd, Kd.x, Kd.y, Kd.z, Kd.w);
-      }
-    }]);
-    return LambertShader;
-  }(DecalShader);
-
-  GLBoost['LambertShader'] = LambertShader;
-
-  var HalfLambertShaderSource = function () {
-    function HalfLambertShaderSource() {
-      babelHelpers.classCallCheck(this, HalfLambertShaderSource);
-    }
-
-    babelHelpers.createClass(HalfLambertShaderSource, [{
-      key: 'FSDefine_HalfLambertShaderSource',
-      value: function FSDefine_HalfLambertShaderSource(in_, f, lights) {
-        var shaderText = '';
-        shaderText += 'uniform vec4 Kd;\n';
-
-        return shaderText;
-      }
-    }, {
-      key: 'FSShade_HalfLambertShaderSource',
-      value: function FSShade_HalfLambertShaderSource(f, gl, lights) {
-        var shaderText = '';
-
-        shaderText += '  vec4 surfaceColor = rt0;\n';
-        shaderText += '  rt0 = vec4(0.0, 0.0, 0.0, 0.0);\n';
-        shaderText += '  vec3 normal = normalize(v_normal);\n';
-
-        shaderText += '  for (int i=0; i<' + lights.length + '; i++) {\n';
-        // if PointLight: lightPosition[i].w === 1.0      if DirectionalLight: lightPosition[i].w === 0.0
-        shaderText += '    vec3 light = normalize(lightPosition[i].xyz - position.xyz * lightPosition[i].w);\n';
-        shaderText += '    float halfLambert = max(dot(light, normal), 0.0)*0.5+0.5;\n';
-        shaderText += '    float diffuse = halfLambert*halfLambert;\n';
-        shaderText += '    rt0 += Kd * lightDiffuse[i] * vec4(diffuse, diffuse, diffuse, 1.0) * surfaceColor;\n';
-        shaderText += '  }\n';
-        //shaderText += '  rt0.a = 1.0;\n';
-        //shaderText += '  rt0 = vec4(position.xyz, 1.0);\n';
-
-        return shaderText;
-      }
-    }, {
-      key: 'prepare_HalfLambertShaderSource',
-      value: function prepare_HalfLambertShaderSource(gl, shaderProgram, vertexAttribs, existCamera_f, lights, extraData, canvas) {
-
-        var vertexAttribsAsResult = [];
-        vertexAttribs.forEach(function (attribName) {
-          if (attribName === GLBoost.NORMAL) {
-            shaderProgram['vertexAttribute_' + attribName] = gl.getAttribLocation(shaderProgram, 'aVertex_' + attribName);
-            gl.enableVertexAttribArray(shaderProgram['vertexAttribute_' + attribName]);
-            vertexAttribsAsResult.push(attribName);
-          }
-        });
-
-        shaderProgram.Kd = gl.getUniformLocation(shaderProgram, 'Kd');
-
-        return vertexAttribsAsResult;
-      }
-    }]);
-    return HalfLambertShaderSource;
-  }();
-
-  var HalfLambertShader = function (_DecalShader) {
-    babelHelpers.inherits(HalfLambertShader, _DecalShader);
-
-    function HalfLambertShader(glBoostContext, basicShader) {
-      babelHelpers.classCallCheck(this, HalfLambertShader);
-
-      var _this = babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(HalfLambertShader).call(this, glBoostContext, basicShader));
-
-      HalfLambertShader.mixin(HalfLambertShaderSource);
-      return _this;
-    }
-
-    babelHelpers.createClass(HalfLambertShader, [{
-      key: 'setUniforms',
-      value: function setUniforms(gl, glslProgram, material) {
-        babelHelpers.get(Object.getPrototypeOf(HalfLambertShader.prototype), 'setUniforms', this).call(this, gl, glslProgram, material);
-
-        var Kd = material.diffuseColor;
-        gl.uniform4f(glslProgram.Kd, Kd.x, Kd.y, Kd.z, Kd.w);
-      }
-    }]);
-    return HalfLambertShader;
-  }(DecalShader);
-
-  GLBoost['HalfLambertShader'] = HalfLambertShader;
 
   var singleton = Symbol();
   var singletonEnforcer = Symbol();
@@ -8833,5 +8789,205 @@
       });
     });
   }
+
+  var LambertShaderSource = function () {
+    function LambertShaderSource() {
+      babelHelpers.classCallCheck(this, LambertShaderSource);
+    }
+
+    babelHelpers.createClass(LambertShaderSource, [{
+      key: 'FSDefine_LambertShaderSource',
+      value: function FSDefine_LambertShaderSource(in_, f, lights) {
+        var shaderText = '';
+        shaderText += 'uniform vec4 Kd;\n';
+
+        return shaderText;
+      }
+    }, {
+      key: 'FSShade_LambertShaderSource',
+      value: function FSShade_LambertShaderSource(f, gl, lights) {
+        var shaderText = '';
+
+        shaderText += '  vec4 surfaceColor = rt0;\n';
+        shaderText += '  rt0 = vec4(0.0, 0.0, 0.0, 0.0);\n';
+        shaderText += '  vec3 normal = normalize(v_normal);\n';
+
+        shaderText += '  for (int i=0; i<' + lights.length + '; i++) {\n';
+        // if PointLight: lightPosition[i].w === 1.0      if DirectionalLight: lightPosition[i].w === 0.0
+        shaderText += '    vec3 light = normalize(lightPosition[i].xyz - position.xyz * lightPosition[i].w);\n';
+        shaderText += '    float diffuse = max(dot(light, normal), 0.0);\n';
+        shaderText += '    rt0 += Kd * lightDiffuse[i] * vec4(diffuse, diffuse, diffuse, 1.0) * surfaceColor;\n';
+        shaderText += '  }\n';
+        //shaderText += '  rt0.a = 1.0;\n';
+        //shaderText += '  rt0 = vec4(position.xyz, 1.0);\n';
+
+        return shaderText;
+      }
+    }, {
+      key: 'prepare_LambertShaderSource',
+      value: function prepare_LambertShaderSource(gl, shaderProgram, vertexAttribs, existCamera_f, lights, extraData, canvas) {
+
+        var vertexAttribsAsResult = [];
+        vertexAttribs.forEach(function (attribName) {
+          if (attribName === GLBoost.NORMAL) {
+            shaderProgram['vertexAttribute_' + attribName] = gl.getAttribLocation(shaderProgram, 'aVertex_' + attribName);
+            gl.enableVertexAttribArray(shaderProgram['vertexAttribute_' + attribName]);
+            vertexAttribsAsResult.push(attribName);
+          }
+        });
+
+        shaderProgram.Kd = gl.getUniformLocation(shaderProgram, 'Kd');
+
+        return vertexAttribsAsResult;
+      }
+    }]);
+    return LambertShaderSource;
+  }();
+
+  var LambertShader = function (_DecalShader) {
+    babelHelpers.inherits(LambertShader, _DecalShader);
+
+    function LambertShader(glBoostContext, basicShader) {
+      babelHelpers.classCallCheck(this, LambertShader);
+
+      var _this = babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(LambertShader).call(this, glBoostContext, basicShader));
+
+      LambertShader.mixin(LambertShaderSource);
+      return _this;
+    }
+
+    babelHelpers.createClass(LambertShader, [{
+      key: 'setUniforms',
+      value: function setUniforms(gl, glslProgram, material) {
+        babelHelpers.get(Object.getPrototypeOf(LambertShader.prototype), 'setUniforms', this).call(this, gl, glslProgram, material);
+
+        var Kd = material.diffuseColor;
+        gl.uniform4f(glslProgram.Kd, Kd.x, Kd.y, Kd.z, Kd.w);
+      }
+    }]);
+    return LambertShader;
+  }(DecalShader);
+
+  GLBoost['LambertShader'] = LambertShader;
+
+  var HalfLambertShaderSource = function () {
+    function HalfLambertShaderSource() {
+      babelHelpers.classCallCheck(this, HalfLambertShaderSource);
+    }
+
+    babelHelpers.createClass(HalfLambertShaderSource, [{
+      key: 'FSDefine_HalfLambertShaderSource',
+      value: function FSDefine_HalfLambertShaderSource(in_, f, lights) {
+        var shaderText = '';
+        shaderText += 'uniform vec4 Kd;\n';
+
+        return shaderText;
+      }
+    }, {
+      key: 'FSShade_HalfLambertShaderSource',
+      value: function FSShade_HalfLambertShaderSource(f, gl, lights) {
+        var shaderText = '';
+
+        shaderText += '  vec4 surfaceColor = rt0;\n';
+        shaderText += '  rt0 = vec4(0.0, 0.0, 0.0, 0.0);\n';
+        shaderText += '  vec3 normal = normalize(v_normal);\n';
+
+        shaderText += '  for (int i=0; i<' + lights.length + '; i++) {\n';
+        // if PointLight: lightPosition[i].w === 1.0      if DirectionalLight: lightPosition[i].w === 0.0
+        shaderText += '    vec3 light = normalize(lightPosition[i].xyz - position.xyz * lightPosition[i].w);\n';
+        shaderText += '    float halfLambert = max(dot(light, normal), 0.0)*0.5+0.5;\n';
+        shaderText += '    float diffuse = halfLambert*halfLambert;\n';
+        shaderText += '    rt0 += Kd * lightDiffuse[i] * vec4(diffuse, diffuse, diffuse, 1.0) * surfaceColor;\n';
+        shaderText += '  }\n';
+        //shaderText += '  rt0.a = 1.0;\n';
+        //shaderText += '  rt0 = vec4(position.xyz, 1.0);\n';
+
+        return shaderText;
+      }
+    }, {
+      key: 'prepare_HalfLambertShaderSource',
+      value: function prepare_HalfLambertShaderSource(gl, shaderProgram, vertexAttribs, existCamera_f, lights, extraData, canvas) {
+
+        var vertexAttribsAsResult = [];
+        vertexAttribs.forEach(function (attribName) {
+          if (attribName === GLBoost.NORMAL) {
+            shaderProgram['vertexAttribute_' + attribName] = gl.getAttribLocation(shaderProgram, 'aVertex_' + attribName);
+            gl.enableVertexAttribArray(shaderProgram['vertexAttribute_' + attribName]);
+            vertexAttribsAsResult.push(attribName);
+          }
+        });
+
+        shaderProgram.Kd = gl.getUniformLocation(shaderProgram, 'Kd');
+
+        return vertexAttribsAsResult;
+      }
+    }]);
+    return HalfLambertShaderSource;
+  }();
+
+  var HalfLambertShader = function (_DecalShader) {
+    babelHelpers.inherits(HalfLambertShader, _DecalShader);
+
+    function HalfLambertShader(glBoostContext, basicShader) {
+      babelHelpers.classCallCheck(this, HalfLambertShader);
+
+      var _this = babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(HalfLambertShader).call(this, glBoostContext, basicShader));
+
+      HalfLambertShader.mixin(HalfLambertShaderSource);
+      return _this;
+    }
+
+    babelHelpers.createClass(HalfLambertShader, [{
+      key: 'setUniforms',
+      value: function setUniforms(gl, glslProgram, material) {
+        babelHelpers.get(Object.getPrototypeOf(HalfLambertShader.prototype), 'setUniforms', this).call(this, gl, glslProgram, material);
+
+        var Kd = material.diffuseColor;
+        gl.uniform4f(glslProgram.Kd, Kd.x, Kd.y, Kd.z, Kd.w);
+      }
+    }]);
+    return HalfLambertShader;
+  }(DecalShader);
+
+  GLBoost['HalfLambertShader'] = HalfLambertShader;
+
+  var DepthDisplayShaderSource = function () {
+    function DepthDisplayShaderSource() {
+      babelHelpers.classCallCheck(this, DepthDisplayShaderSource);
+    }
+
+    babelHelpers.createClass(DepthDisplayShaderSource, [{
+      key: 'FSShade_DepthDisplayShaderSource',
+      value: function FSShade_DepthDisplayShaderSource(f, gl, lights) {
+        var shaderText = '';
+
+        shaderText += '  vec4 surfaceColor = rt0;\n';
+        shaderText += '  rt0 = vec4(surfaceColor.r, surfaceColor.r, surfaceColor.r, 1.0);\n';
+
+        //shaderText += '  rt0.a = 1.0;\n';
+        //shaderText += '  rt0 = vec4(position.xyz, 1.0);\n';
+
+        return shaderText;
+      }
+    }]);
+    return DepthDisplayShaderSource;
+  }();
+
+  var DepthDisplayShader = function (_DecalShader) {
+    babelHelpers.inherits(DepthDisplayShader, _DecalShader);
+
+    function DepthDisplayShader(glBoostContext, basicShader) {
+      babelHelpers.classCallCheck(this, DepthDisplayShader);
+
+      var _this = babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(DepthDisplayShader).call(this, glBoostContext, basicShader));
+
+      DepthDisplayShader.mixin(DepthDisplayShaderSource);
+      return _this;
+    }
+
+    return DepthDisplayShader;
+  }(DecalShader);
+
+  GLBoost['DepthDisplayShader'] = DepthDisplayShader;
 
 }));
