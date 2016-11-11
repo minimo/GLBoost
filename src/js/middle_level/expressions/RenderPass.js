@@ -1,15 +1,14 @@
-import Mesh from '../elements/meshes/Mesh';
-import Group from '../elements/Group';
+import M_Mesh from '../elements/meshes/M_Mesh';
+import M_Group from '../elements/M_Group';
 import GLBoostObject from '../../low_level/core/GLBoostObject';
+import Vector4 from '../../low_level/math/Vector4';
 
 export default class RenderPass extends GLBoostObject {
 
   constructor(glBoostContext) {
     super(glBoostContext);
 
-    this._expression = null;
     this._scene = null;
-    //this._elements = [];
     this._meshes = [];
     this._opacityMeshes = [];
     this._transparentMeshes = [];
@@ -18,7 +17,10 @@ export default class RenderPass extends GLBoostObject {
     this._clearDepth = null;  // default is 1.0
     this._renderTargetColorTextures = null;
     this._renderTargetDepthTexture = null;
+    this._expression = null;
     this._fbo = null;
+
+    this._customFunction = null;
   }
 
   get expression() {
@@ -93,8 +95,23 @@ export default class RenderPass extends GLBoostObject {
     }
   }
 
+  get viewport() {
+    var texture = null;
+    if (this._renderTargetColorTextures) {
+      texture = this._renderTargetColorTextures[0];
+    } else if (this._renderTargetDepthTexture) {
+      texture = this._renderTargetDepthTexture;
+    }
+
+    return new Vector4(0, 0, texture.width, texture.height);
+  }
+
   get renderTargetColorTextures() {
     return this._renderTargetColorTextures;
+  }
+
+  get renderTargetDepthTexture() {
+    return this._renderTargetDepthTexture;
   }
 
   setClearColor(color) {
@@ -113,9 +130,20 @@ export default class RenderPass extends GLBoostObject {
     return this._clearDepth;
   }
 
+  /**
+   * this function is called final part of prepareToRender
+   */
+  set customFunction(func) {
+    this._customFunction = func;
+  }
+
+  get customFunction() {
+    return this._customFunction;
+  }
+
   prepareToRender() {
     let collectMeshes = function(elem) {
-      if (elem instanceof Group) {
+      if (elem instanceof M_Group) {
         var children = elem.getChildren();
         var meshes = [];
         children.forEach(function(child) {
@@ -123,7 +151,7 @@ export default class RenderPass extends GLBoostObject {
           meshes = meshes.concat(childMeshes);
         });
         return meshes;
-      } else if (elem instanceof Mesh) {
+      } else if (elem instanceof M_Mesh) {
         return [elem];
       } else {
         return [];
@@ -149,6 +177,10 @@ export default class RenderPass extends GLBoostObject {
 
     if (this._scene) {
       this._scene.prepareToRender();
+    }
+
+    if (this._customFunction) {
+      this._customFunction();
     }
   }
 

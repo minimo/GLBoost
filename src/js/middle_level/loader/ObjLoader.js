@@ -19,9 +19,9 @@ export default class ObjLoader {
    * @param {Symbol} enforcer [en] a Symbol to forbid calling this constructor directly [ja] このコンストラクタの直接呼び出しを禁止するためのシンボル
    */
   constructor(enforcer) {
-      if (enforcer !== singletonEnforcer) {
-          throw new Error("This is a Singleton class. get the instance using 'getInstance' static method.");
-      }
+    if (enforcer !== singletonEnforcer) {
+      throw new Error("This is a Singleton class. get the instance using 'getInstance' static method.");
+    }
   }
 
   /**
@@ -30,10 +30,10 @@ export default class ObjLoader {
    * @return {ObjLoader} [en] the singleton instance of ObjLoader class [ja] ObjLoaderクラスのシングルトンインスタンス
    */
   static getInstance() {
-      if (!this[singleton]) {
-          this[singleton] = new ObjLoader(singletonEnforcer);
-      }
-      return this[singleton];
+    if (!this[singleton]) {
+      this[singleton] = new ObjLoader(singletonEnforcer);
+    }
+    return this[singleton];
   }
 
   /**
@@ -133,7 +133,7 @@ export default class ObjLoader {
       if (matchArray[1].toLowerCase() === "map_kd")
       {
         matchArray = mtlTextRows[i].match(/(\w+) ([\w:\/\-\.]+)/);
-        var texture = glBoostContext.createTexture(basePath + matchArray[2], {flipY: true});
+        var texture = glBoostContext.createTexture(basePath + matchArray[2], {'UNPACK_FLIP_Y_WEBGL': true});
         texture.name = matchArray[2];
         materials[iMCount].diffuseTexture = texture;
       }

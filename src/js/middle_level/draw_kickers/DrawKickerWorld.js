@@ -1,5 +1,5 @@
-import PointLight from '../../low_level/lights/PointLight';
-import DirectionalLight from '../../low_level/lights/DirectionalLight';
+import M_PointLight from '../elements/lights/M_PointLight';
+import M_DirectionalLight from '../elements/lights/M_DirectionalLight';
 import Vector4 from '../../low_level/math/Vector4';
 
 let singleton = Symbol();
@@ -20,15 +20,15 @@ export default class DrawKickerWorld {
     return this[singleton];
   }
 
-  draw(gl, glem, glContext, mesh, materials, camera, lights, scene, vertices, vaoDic, vboDic, iboArrayDic, geometry, geometryName, primitiveType, vertexN) {
+  draw(gl, glem, glContext, mesh, materials, camera, lights, scene, vertices, vaoDic, vboDic, iboArrayDic, geometry, geometryName, primitiveType, vertexN, renderPassIndex) {
     var isVAOBound = false;
     if (DrawKickerWorld._lastGeometry !== geometryName) {
       isVAOBound = glem.bindVertexArray(gl, vaoDic[geometryName]);
     }
 
     for (let i=0; i<materials.length;i++) {
-      let shaderName = materials[i].shaderInstance.toString();
-      if (shaderName !== DrawKickerWorld._lastShaderName) {
+      let materialUpdateStateString = materials[i].getUpdateStateString();
+      if (materialUpdateStateString !== DrawKickerWorld._lastMaterialUpdateStateString) {
         this._glslProgram = materials[i].shaderInstance.glslProgram;
         gl.useProgram(this._glslProgram);
       }
@@ -51,7 +51,7 @@ export default class DrawKickerWorld {
       if (camera) {
         let cameraMatrix = camera.lookAtRHMatrix();
         let viewMatrix = cameraMatrix.multiply(camera.inverseTransformMatrixAccumulatedAncestryWithoutMySelf);
-        let projectionMatrix = camera.perspectiveRHMatrix();
+        let projectionMatrix = camera.projectionRHMatrix();
         gl.uniformMatrix4fv(glslProgram.viewMatrix, false, viewMatrix.flatten());
         gl.uniformMatrix4fv(glslProgram.projectionMatrix, false, projectionMatrix.flatten());
       }
@@ -70,11 +70,11 @@ export default class DrawKickerWorld {
           if (glslProgram[`lightPosition_${j}`] && glslProgram[`lightDiffuse_${j}`]) {
             let lightVec = null;
             let isPointLight = -9999;
-            if (lights[j] instanceof PointLight) {
+            if (lights[j] instanceof M_PointLight) {
               lightVec = new Vector4(0, 0, 0, 1);
               lightVec = lights[j].transformMatrixAccumulatedAncestry.multiplyVector(lightVec);
               isPointLight = 1.0;
-            } else if (lights[j] instanceof DirectionalLight) {
+            } else if (lights[j] instanceof M_DirectionalLight) {
               lightVec = new Vector4(-lights[j].direction.x, -lights[j].direction.y, -lights[j].direction.z, 1);
               lightVec = lights[j].rotateMatrixAccumulatedAncestry.multiplyVector(lightVec);
               lightVec.w = 0.0;
@@ -89,19 +89,22 @@ export default class DrawKickerWorld {
 
       let isMaterialSetupDone = true;
 
-      if (materials[i].shaderInstance.dirty || shaderName !== DrawKickerWorld._lastShaderName) {
-        var needTobeStillDirty = materials[i].shaderInstance.setUniforms(gl, glslProgram, materials[i], camera, mesh);
+      if (materials[i].shaderInstance.dirty || materialUpdateStateString !== DrawKickerWorld._lastMaterialUpdateStateString) {
+        var needTobeStillDirty = materials[i].shaderInstance.setUniforms(gl, glslProgram, materials[i], camera, mesh, lights);
         materials[i].shaderInstance.dirty = needTobeStillDirty ? true : false;
       }
 
-      if (shaderName !== DrawKickerWorld._lastShaderName) {
+      if (materialUpdateStateString !== DrawKickerWorld._lastMaterialUpdateStateString || DrawKickerWorld._lastRenderPassIndex !== renderPassIndex) {
         if (materials[i]) {
           isMaterialSetupDone = materials[i].setUp();
         }
       }
+
       if (!isMaterialSetupDone) {
         return;
       }
+
+      this._setupOtherTextures(lights);
 
       if (iboArrayDic[geometryName].length > 0) {
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, iboArrayDic[geometryName][i]);
@@ -111,15 +114,34 @@ export default class DrawKickerWorld {
         gl.drawArrays(gl[primitiveType], 0, vertexN);
       }
 
+      this._tearDownOtherTextures(lights);
 
-      DrawKickerWorld._lastShaderName = isMaterialSetupDone ? shaderName : null;
+      DrawKickerWorld._lastMaterialUpdateStateString = isMaterialSetupDone ? materialUpdateStateString : null;
     }
 
     gl.bindBuffer(gl.ARRAY_BUFFER, null);
 
+    DrawKickerWorld._lastRenderPassIndex = renderPassIndex;
     DrawKickerWorld._lastGeometry = geometryName;
+  }
+
+  _setupOtherTextures(lights) {
+    for(let i=0; i<lights.length; i++) {
+      if (lights[i].camera && lights[i].camera.texture) {
+        lights[i].camera.texture.setUp();
+      }
+    }
+  }
+
+  _tearDownOtherTextures(lights) {
+    for(let i=0; i<lights.length; i++) {
+      if (lights[i].camera && lights[i].camera.texture) {
+        lights[i].camera.texture.tearDown();
+      }
+    }
   }
 }
 
-DrawKickerWorld._lastShaderName = null;
+DrawKickerWorld._lastMaterialUpdateStateString = null;
 DrawKickerWorld._lastGeometry = null;
+DrawKickerWorld._lastRenderPassIndex = -1;

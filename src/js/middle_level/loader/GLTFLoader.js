@@ -1,6 +1,6 @@
 import GLBoost from '../../globals';
 import GLContext from '../../low_level/core/GLContext';
-import SkeletalMesh from '../elements/meshes/SkeletalMesh';
+import M_SkeletalMesh from '../elements/meshes/M_SkeletalMesh';
 import PhongShader from '../shaders/PhongShader';
 import Vector3 from '../../low_level/math/Vector3';
 import Vector2 from '../../low_level/math/Vector2';
@@ -8,7 +8,7 @@ import Vector4 from '../../low_level/math/Vector4';
 import Matrix44 from '../../low_level/math/Matrix44';
 import Quaternion from '../../low_level/math/Quaternion';
 import ArrayUtil from '../../low_level/misc/ArrayUtil';
-
+import DataUtil from '../../low_level/misc/DataUtil';
 
 let singleton = Symbol();
 let singletonEnforcer = Symbol();
@@ -86,16 +86,9 @@ export default class GLTFLoader {
     }
   }
 
-  _loadBinaryFile(glBoostContext, dataUrI, basePath, json, canvas, scale, defaultShader, resolve) {
-    dataUrI = dataUrI.split(',');
-    var type = dataUrI[0].split(':')[1].split(';')[0];
-    var byteString = atob(dataUrI[1]);
-    var byteStringLength = byteString.length;
-    var arrayBuffer = new ArrayBuffer(byteStringLength);
-    var intArray = new Uint8Array(arrayBuffer);
-    for (var i = 0; i < byteStringLength; i++) {
-      intArray[i] = byteString.charCodeAt(i);
-    }
+  _loadBinaryFile(glBoostContext, dataUri, basePath, json, canvas, scale, defaultShader, resolve) {
+    dataUri = dataUri.split(',');
+    var arrayBuffer = DataUtil.base64ToArrayBuffer(dataUri);
 
     if (arrayBuffer) {
       this._IterateNodeOfScene(glBoostContext, arrayBuffer, basePath, json, canvas, scale, defaultShader, resolve);
@@ -120,7 +113,8 @@ export default class GLTFLoader {
   }
 
   _IterateNodeOfScene(glBoostContext, arrayBuffer, basePath, json, canvas, scale, defaultShader, resolve) {
-    let sceneJson = json.scenes.defaultScene;
+    let sceneStr = json.scene;
+    let sceneJson = json.scenes[sceneStr];
 
     let group = glBoostContext.createGroup();
     group.userFlavorName = 'TopGroup';
@@ -134,7 +128,7 @@ export default class GLTFLoader {
     }
 
     // register joints hierarchy to skeletal mesh
-    let skeletalMeshes = group.searchElementsByType(SkeletalMesh);
+    let skeletalMeshes = group.searchElementsByType(M_SkeletalMesh);
     skeletalMeshes.forEach((skeletalMesh)=>{
       var rootJoint = group.searchElement(skeletalMesh.rootJointName);
       skeletalMesh.jointsHierarchy = rootJoint;
@@ -165,19 +159,21 @@ export default class GLTFLoader {
     }
 
     if (nodeJson.meshes) {
-      // this node has mashes...
-      let meshStr = nodeJson.meshes[0];
-      let meshJson = json.meshes[meshStr];
+      for (let i = 0; i < nodeJson.meshes.length; i++) {
+        // this node has mashes...
+        let meshStr = nodeJson.meshes[i];
+        let meshJson = json.meshes[meshStr];
 
-      let rootJointStr = null;
-      let skinStr = null;
-      if (nodeJson.skeletons) {
-        rootJointStr = nodeJson.skeletons[0];
-        skinStr = nodeJson.skin;
+        let rootJointStr = null;
+        let skinStr = null;
+        if (nodeJson.skeletons) {
+          rootJointStr = nodeJson.skeletons[0];
+          skinStr = nodeJson.skin;
+        }
+        let mesh = this._loadMesh(glBoostContext, meshJson, arrayBuffer, basePath, json, canvas, scale, defaultShader, rootJointStr, skinStr);
+        mesh.userFlavorName = meshStr;
+        group.addChild(mesh);
       }
-      let mesh = this._loadMesh(glBoostContext, meshJson, arrayBuffer, basePath, json, canvas, scale, defaultShader, rootJointStr, skinStr);
-      mesh.userFlavorName = meshStr;
-      group.addChild(mesh);
     } else if (nodeJson.jointName) {
       let joint = glBoostContext.createJoint();
       joint.userFlavorName = nodeJson.jointName;
@@ -202,7 +198,8 @@ export default class GLTFLoader {
       mesh = glBoostContext.createSkeletalMesh(geometry, null, rootJointStr);
       let skin = json.skins[skinStr];
 
-      mesh.multiplyMatrix(new Matrix44(skin.bindShapeMatrix, true));
+      mesh.bindShapeMatrix = new Matrix44(skin.bindShapeMatrix, true);
+      mesh.jointNames = skin.jointNames;
 
       let inverseBindMatricesAccessorStr = skin.inverseBindMatrices;
       mesh.inverseBindMatrices = this._accessBinary(inverseBindMatricesAccessorStr, json, arrayBuffer, 1.0, gl);
@@ -210,89 +207,147 @@ export default class GLTFLoader {
       geometry = glBoostContext.createGeometry(canvas);
       mesh = glBoostContext.createMesh(geometry);
     }
-    var material = glBoostContext.createClassicMaterial(canvas);
 
-    let primitiveJson = meshJson.primitives[0];
-
-    // Geometry
-    let indicesAccessorStr = primitiveJson.indices;
-    var indices = this._accessBinary(indicesAccessorStr, json, arrayBuffer, 1.0, gl);
-
-    let positionsAccessorStr = primitiveJson.attributes.POSITION;
-    let positions = this._accessBinary(positionsAccessorStr, json, arrayBuffer, scale, gl);
-
-    let normalsAccessorStr = primitiveJson.attributes.NORMAL;
-    let normals = this._accessBinary(normalsAccessorStr, json, arrayBuffer, 1.0, gl);
-
-    var additional = {};
-
-    /// if Skeletal
-    let jointAccessorStr = primitiveJson.attributes.JOINT;
-    if (jointAccessorStr) {
-      let joints = this._accessBinary(jointAccessorStr, json, arrayBuffer, 1.0, gl);
-      additional['joint'] = joints;
-    }
-    let weightAccessorStr = primitiveJson.attributes.WEIGHT;
-    if (weightAccessorStr) {
-      let weights = this._accessBinary(weightAccessorStr, json, arrayBuffer, 1.0, gl);
-      additional['weight'] = weights;
-    }
-
-    // Texture
-    let texcoords0AccessorStr = primitiveJson.attributes.TEXCOORD_0;
-    var texcoords = null;
-
-    let materialStr = primitiveJson.material;
-    let materialJson = json.materials[materialStr];
-    let diffuseValue = materialJson.values.diffuse;
-    // Diffuse Texture
-    if (texcoords0AccessorStr) {
-      texcoords = this._accessBinary(texcoords0AccessorStr, json, arrayBuffer, 1.0, gl);
-      additional['texcoord'] = texcoords;
-
-      if (typeof diffuseValue === 'string') {
-        let textureStr = diffuseValue;
-        let textureJson = json.textures[textureStr];
-        let imageStr = textureJson.source;
-        let imageJson = json.images[imageStr];
-        let imageFileStr = imageJson.uri;
-
-        var texture = glBoostContext.createTexture(basePath + imageFileStr);
-        texture.name = textureStr;
-        material.diffuseTexture = texture;
-      }
-    }
-    // Diffuse
-    if (diffuseValue && typeof diffuseValue !== 'string') {
-      material.diffuseColor = new Vector4(diffuseValue[0], diffuseValue[1], diffuseValue[2], diffuseValue[3]);
-    }
-    // Ambient
-    let ambientValue = materialJson.values.ambient;
-    if (ambientValue && typeof ambientValue !== 'string') {
-      material.ambientColor = new Vector4(ambientValue[0], ambientValue[1], ambientValue[2], ambientValue[3]);
-    }
-    // Specular
-    let specularValue = materialJson.values.specular;
-    if (specularValue && typeof specularValue !== 'string') {
-      material.specularColor = new Vector4(specularValue[0], specularValue[1], specularValue[2], specularValue[3]);
-    }
-
-    let opacityValue = 1.0 - materialJson.values.transparency;
-
-    var vertexData = {
-      position: positions,
-      normal: normals
+    let _indicesArray = [];
+    let _positions = [];
+    let _normals = [];
+    let additional = {
+      'joint':[],
+      'weight':[],
+      'texcoord':[]
     };
 
-    geometry.setVerticesData(ArrayUtil.merge(vertexData, additional), [indices]);
+    let materials = [];
 
-    material.setVertexN(geometry, indices.length);
-    if (defaultShader) {
-      material.shaderClass = defaultShader;
-    } else {
-      material.shaderClass = PhongShader;
+    for (let i=0; i<meshJson.primitives.length; i++) {
+      let primitiveJson = meshJson.primitives[i];
+
+      // Geometry
+      let indices = null;
+      if (typeof primitiveJson.indices !== 'undefined') {
+        let indicesAccessorStr = primitiveJson.indices;
+        indices = this._accessBinary(indicesAccessorStr, json, arrayBuffer, 1.0, gl);
+        _indicesArray.push(indices);
+      }
+
+      let positionsAccessorStr = primitiveJson.attributes.POSITION;
+      let positions = this._accessBinary(positionsAccessorStr, json, arrayBuffer, scale, gl);
+      Array.prototype.push.apply(_positions, positions);
+
+      let normalsAccessorStr = primitiveJson.attributes.NORMAL;
+      let normals = this._accessBinary(normalsAccessorStr, json, arrayBuffer, 1.0, gl);
+      Array.prototype.push.apply(_normals, normals);
+
+
+      /// if Skeletal
+      let jointAccessorStr = primitiveJson.attributes.JOINT;
+      if (jointAccessorStr) {
+        let joints = this._accessBinary(jointAccessorStr, json, arrayBuffer, 1.0, gl);
+        Array.prototype.push.apply(additional['joint'], joints);
+      }
+      let weightAccessorStr = primitiveJson.attributes.WEIGHT;
+      if (weightAccessorStr) {
+        let weights = this._accessBinary(weightAccessorStr, json, arrayBuffer, 1.0, gl);
+        Array.prototype.push.apply(additional['weight'], weights);
+      }
+
+      // Texture
+      let texcoords0AccessorStr = primitiveJson.attributes.TEXCOORD_0;
+      var texcoords = null;
+
+      let material = glBoostContext.createClassicMaterial(canvas);
+
+      let materialStr = primitiveJson.material;
+      let materialJson = json.materials[materialStr];
+      let diffuseValue = materialJson.values.diffuse;
+      // Diffuse Texture
+      if (texcoords0AccessorStr) {
+        texcoords = this._accessBinary(texcoords0AccessorStr, json, arrayBuffer, 1.0, gl);
+        Array.prototype.push.apply(additional['texcoord'], texcoords);
+
+        if (typeof diffuseValue === 'string') {
+          let textureStr = diffuseValue;
+          let textureJson = json.textures[textureStr];
+          let imageStr = textureJson.source;
+          let imageJson = json.images[imageStr];
+          let imageFileStr = imageJson.uri;
+
+          let textureUri = null;
+          if ( imageFileStr.match(/^data:/) ) {
+            textureUri = imageFileStr;
+          } else {
+            textureUri = basePath + imageFileStr;
+          }
+          let samplerStr = textureJson.sampler;
+          let samplerJson = json.samplers[samplerStr];
+
+          var texture = glBoostContext.createTexture(textureUri, {
+            'TEXTURE_MAG_FILTER': samplerJson.magFilter,
+            'TEXTURE_MIN_FILTER': samplerJson.minFilter,
+            'TEXTURE_WRAP_S': samplerJson.wrapS,
+            'TEXTURE_WRAP_T': samplerJson.wrapT
+          });
+          texture.name = textureStr;
+          material.diffuseTexture = texture;
+        }
+      } else {
+        if (additional['texcoord'].length > 0) {
+          let emptyTexcoords = [];
+          for (let k=0; k<positions.length; k++) {
+            emptyTexcoords.push(new Vector2(0, 0));
+          }
+          Array.prototype.push.apply(additional['texcoord'], emptyTexcoords);
+        }
+      }
+
+      // Diffuse
+      if (diffuseValue && typeof diffuseValue !== 'string') {
+        material.diffuseColor = new Vector4(diffuseValue[0], diffuseValue[1], diffuseValue[2], diffuseValue[3]);
+      }
+      // Ambient
+      let ambientValue = materialJson.values.ambient;
+      if (ambientValue && typeof ambientValue !== 'string') {
+        material.ambientColor = new Vector4(ambientValue[0], ambientValue[1], ambientValue[2], ambientValue[3]);
+      }
+      // Specular
+      let specularValue = materialJson.values.specular;
+      if (specularValue && typeof specularValue !== 'string') {
+        material.specularColor = new Vector4(specularValue[0], specularValue[1], specularValue[2], specularValue[3]);
+      }
+
+      let opacityValue = 1.0 - materialJson.values.transparency;
+
+      if (indices !== null) {
+        material.setVertexN(geometry, indices.length);
+      }
+      if (defaultShader) {
+        material.shaderClass = defaultShader;
+      } else {
+        material.shaderClass = PhongShader;
+      }
+      materials.push(material);
+
     }
-    geometry.materials = [material];
+    if (additional['joint'].length === 0) {
+      delete additional['joint'];
+    }
+    if (additional['weight'].length === 0) {
+      delete additional['weight'];
+    }
+    if (additional['texcoord'].length === 0) {
+      delete additional['texcoord'];
+    }
+    var vertexData = {
+      position: _positions,
+      normal: _normals
+    };
+
+    if (_indicesArray.length === 0) {
+      _indicesArray = null;
+    }
+
+    geometry.setVerticesData(ArrayUtil.merge(vertexData, additional), _indicesArray);
+    geometry.materials = materials;
 
     return mesh;
   }
@@ -319,12 +374,13 @@ export default class GLTFLoader {
 
           let gl = GLContext.getInstance(canvas).gl;
           var animInputArray = this._accessBinary(animInputAccessorStr, json, arrayBuffer, 1.0, gl);
+          let animOutputArray = null;
           if (animOutputStr === 'translation') {
-            var animOutputArray = this._accessBinary(animOutputAccessorStr, json, arrayBuffer, scale, gl);
+            animOutputArray = this._accessBinary(animOutputAccessorStr, json, arrayBuffer, scale, gl);
           } else if (animOutputStr === 'rotation') {
-            var animOutputArray = this._accessBinary(animOutputAccessorStr, json, arrayBuffer, 1.0, gl, true);
+            animOutputArray = this._accessBinary(animOutputAccessorStr, json, arrayBuffer, 1.0, gl, true);
           } else {
-            var animOutputArray = this._accessBinary(animOutputAccessorStr, json, arrayBuffer, 1.0, gl);
+            animOutputArray = this._accessBinary(animOutputAccessorStr, json, arrayBuffer, 1.0, gl);
           }
 
           let animationAttributeName = '';

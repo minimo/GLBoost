@@ -1,7 +1,7 @@
 import GLBoostMonitor from './GLBoostMonitor';
 
 export default class GLBoostObject {
-  constructor(glBoostContext) {
+  constructor(glBoostContext, toRegister = true) {
     if (this.constructor === GLBoostObject) {
       throw new TypeError('Cannot construct GLBoostObject instances directly.');
     }
@@ -9,7 +9,10 @@ export default class GLBoostObject {
     this._glBoostContext = glBoostContext;
     this._glContext = glBoostContext.glContext;
     this._glBoostMonitor = GLBoostMonitor.getInstance();
-    this._glBoostMonitor.registerGLBoostObject(this);
+    this._toRegister = toRegister;
+    if (this._toRegister) {
+      this._glBoostMonitor.registerGLBoostObject(this);
+    }
     this._userFlavorName = '';
     this._readyForDiscard = false;
   }
@@ -41,12 +44,14 @@ export default class GLBoostObject {
   }
 
   get instanceNameWithUserFlavor() {
-    this._instanceName + '_' + this._userFlavorName;
+    return this._instanceName + '_' + this._userFlavorName;
   }
 
   readyForDiscard() {
     this._readyForDiscard = true;
-    this._glBoostMonitor.deregisterGLBoostObject(this);
+    if (this._toRegister) {
+      this._glBoostMonitor.deregisterGLBoostObject(this);
+    }
   }
 
   get isReadyForDiscard() {

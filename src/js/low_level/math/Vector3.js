@@ -91,7 +91,9 @@ export default class Vector3 {
     var y = this.z*v.x - this.x*v.z;
     var z = this.x*v.y - this.y*v.x;
 
-    this.setComponents(x, y, z);
+    this.x = x;
+    this.y = y;
+    this.z = z;
 
     return this;
   }
@@ -201,6 +203,10 @@ export default class Vector3 {
 
   toVector4() {
     return new Vector4(this.x, this.y, this.z, 1.0);
+  }
+
+  toString() {
+    return '(' + this.x + ', ' + this.y + ', ' + this.z +')';
   }
 }
 

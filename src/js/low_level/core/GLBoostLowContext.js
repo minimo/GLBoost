@@ -2,18 +2,15 @@ import GLContext from './GLContext';
 import GLExtensionsManager from './GLExtensionsManager';
 import Geometry from '../geometries/Geometry';
 import BlendShapeGeometry from '../geometries/BlendShapeGeometry';
-import SkeletalGeometry from '../geometries/SkeletalGeometry';
 import ClassicMaterial from '../ClassicMaterial';
-import Camera from '../elements/Camera';
+import L_PerspectiveCamera from '../elements/cameras/L_PerspectiveCamera';
+import L_OrthoCamera from '../elements/cameras/L_OrthoCamera';
 import MutableTexture from '../textures/MutableTexture';
 import Texture from '../textures/Texture';
 import Cube from '../primitives/Cube';
 import Plane from '../primitives/Plane';
 import Sphere from '../primitives/Sphere';
 import Particle from '../primitives/Particle';
-import DirectionalLight from '../lights/DirectionalLight';
-import PointLight from '../lights/PointLight';
-import Joint from '../skeletons/Joint';
 
 export default class GLBoostLowContext {
   constructor(canvas) {
@@ -42,16 +39,12 @@ export default class GLBoostLowContext {
     return new BlendShapeGeometry(this);
   }
 
-  createSkeletalGeometry() {
-    return new SkeletalGeometry(this);
-  }
-
   createCube(widthVector, vertexColor) {
     return new Cube(this, widthVector, vertexColor);
   }
 
-  createPlane(width, height, uSpan, vSpan, customVertexAttributes) {
-    return new Plane(this, width, height, uSpan, vSpan, customVertexAttributes);
+  createPlane(width, height, uSpan, vSpan, customVertexAttributes, isUVRepeat) {
+    return new Plane(this, width, height, uSpan, vSpan, customVertexAttributes, isUVRepeat);
   }
 
   createSphere(radius, widthSegments, heightSegments, vertexColor) {
@@ -66,24 +59,16 @@ export default class GLBoostLowContext {
     return new ClassicMaterial(this);
   }
 
-  createCamera(lookat, perspective) {
-    return new Camera(this, lookat, perspective);
+  createPerspectiveCamera(lookat, perspective) {
+    return new L_PerspectiveCamera(this, true, lookat, perspective);
+  }
+
+  createOrthoCamera(lookat, ortho) {
+    return new L_OrthoCamera(this, true, lookat, ortho);
   }
 
   createTexture(src, parameters = null) {
     return new Texture(this, src, parameters);
-  }
-
-  createDirectionalLight(intensity, direction) {
-    return new DirectionalLight(this, intensity, direction);
-  }
-
-  createPointLight(intensity) {
-    return new PointLight(this, intensity);
-  }
-
-  createJoint() {
-    return new Joint(this);
   }
 
   /**
