@@ -5,8 +5,10 @@ import BlendShapeGeometry from '../geometries/BlendShapeGeometry';
 import ClassicMaterial from '../ClassicMaterial';
 import L_PerspectiveCamera from '../elements/cameras/L_PerspectiveCamera';
 import L_OrthoCamera from '../elements/cameras/L_OrthoCamera';
+import L_CameraController from '../auxiliaries/camera_controllers/L_CameraController'
 import MutableTexture from '../textures/MutableTexture';
 import Texture from '../textures/Texture';
+import PhinaTexture from '../textures/PhinaTexture';
 import Cube from '../primitives/Cube';
 import Plane from '../primitives/Plane';
 import Sphere from '../primitives/Sphere';
@@ -67,8 +69,16 @@ export default class GLBoostLowContext {
     return new L_OrthoCamera(this, true, lookat, ortho);
   }
 
-  createTexture(src, parameters = null) {
-    return new Texture(this, src, parameters);
+  createCameraController(isSymmetryMode, doResetWhenCameraSettingChanged, isForceGrab, efficiency) {
+    return new L_CameraController(this, isSymmetryMode, doResetWhenCameraSettingChanged, isForceGrab, efficiency);
+  }
+
+  createTexture(src, userFlavorName, parameters = null) {
+    return new Texture(this, src, userFlavorName, parameters);
+  }
+
+  createPhinaTexture(width, height, fillStyle, parameters = null) {
+    return new PhinaTexture(this, width, height, fillStyle, parameters);
   }
 
   /**

@@ -27,7 +27,7 @@
     arg[kv[0]] = kv[1];
   }
 
-  GLBoost.TARGET_WEBGL_VERSION = arg.webglver ? parseInt(arg.webglver) : 1;
+  GLBoost.VALUE_TARGET_WEBGL_VERSION = arg.webglver ? parseInt(arg.webglver) : 1;
 
   var canvas = document.getElementById("world");
 
@@ -90,7 +90,7 @@
 
       gtime += gtimeDelta;
 
-      if (gtime > 1.0) {
+      if (gtime > 1.3) {
           gtime = 0;
       }
       var rotateMatrix = GLBoost.Matrix33.rotateY(0.75);

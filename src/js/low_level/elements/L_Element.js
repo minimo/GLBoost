@@ -29,6 +29,11 @@ export default class L_Element extends GLBoostObject {
     if (this._translate.isEqual(vec)) {
       return;
     }
+    if (this._currentCalcMode === 'matrix') {
+      this.matrix.m03 = vec.x;
+      this.matrix.m13 = vec.y;
+      this.matrix.m23 = vec.z;
+    }
     this._translate = vec;
     this._needUpdate();
   }
@@ -70,6 +75,10 @@ export default class L_Element extends GLBoostObject {
     this._matrix = mat.clone();
     this._currentCalcMode = 'matrix';
     this._needUpdate();
+  }
+
+  get matrix() {
+    return this._matrix;
   }
 
   set quaternion(quat) {
@@ -123,5 +132,18 @@ export default class L_Element extends GLBoostObject {
 
   get currentCalcMode() {
     return this._currentCalcMode;
+  }
+
+  _copy(instance) {
+    super._copy(instance);
+
+    instance._translate = this._translate.clone();
+    instance._scale = this._scale.clone();
+    instance._rotate = this._rotate.clone();
+    instance._quaternion = this._quaternion.clone();
+    instance._matrix = this._matrix.clone();
+    instance._finalMatrix = this._finalMatrix.clone();
+    instance._dirtyAsElement = this._dirtyAsElement;
+    instance._currentCalcMode = this._currentCalcMode;
   }
 }

@@ -16,6 +16,14 @@ export default class M_AbstractCamera extends M_Element {
     this._texture = null; // for example, depth texture
   }
 
+  set cameraController(controller) {
+    this._lowLevelCamera.cameraController = controller;
+  }
+
+  get cameraController() {
+    return this._lowLevelCamera.cameraController;
+  }
+
   _needUpdateView() {
     this._lowLevelCamera._needUpdateView();
     this._updateCountAsCameraView++;
@@ -48,8 +56,6 @@ export default class M_AbstractCamera extends M_Element {
     return this._texture;
   }
 
-// ===================== delegate to low level class ========================
-
   lookAtRHMatrix() {
     return this._lowLevelCamera.lookAtRHMatrix();
   }
@@ -62,12 +68,20 @@ export default class M_AbstractCamera extends M_Element {
     return this._lowLevelCamera.translate;
   }
 
+  get translateInner() {
+    return this._lowLevelCamera.translateInner;
+  }
+
   set eye(vec) {
     this._lowLevelCamera.eye = vec;
   }
 
   get eye() {
     return this._lowLevelCamera.eye;
+  }
+
+  get eyeInner() {
+    return this._lowLevelCamera.eyeInner;
   }
 
   set center(vec) {
@@ -78,11 +92,19 @@ export default class M_AbstractCamera extends M_Element {
     return this._lowLevelCamera.center;
   }
 
+  get centerInner() {
+    return this._lowLevelCamera.centerInner;
+  }
+
   set up(vec) {
     this._lowLevelCamera.up = vec;
   }
 
   get up() {
     return this._lowLevelCamera.up;
+  }
+
+  get upInner() {
+    return this._lowLevelCamera.upInner;
   }
 }

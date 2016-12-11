@@ -21,8 +21,6 @@ export default class AbstractTexture extends GLBoostObject {
       throw new TypeError('Cannot construct AbstractTexture instances directly.');
     }
 
-    this._name = '';
-
     this._textureUnitIndex = 0;
   }
 
@@ -61,14 +59,6 @@ export default class AbstractTexture extends GLBoostObject {
     gl.bindTexture(gl.TEXTURE_2D, null);
   }
 
-  set name(name) {
-    this._name = name;
-  }
-
-  get name() {
-    return this._name;
-  }
-
   get width() {
     return this._width;
   }
@@ -85,6 +75,20 @@ export default class AbstractTexture extends GLBoostObject {
     return this._textureUnitIndex;
   }
 
+  getTexturePixelData() {
+    // Create a framebuffer backed by the texture
+    var framebuffer = this._glContext.createFramebuffer(this);
+    gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
+    gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, this._texture, 0);
+
+    // Read the contents of the framebuffer (data stores the pixel data)
+    var data = new Uint8Array(this.width * this.height * 4);
+    gl.readPixels(0, 0, this.width, this.height, gl.RGBA, gl.UNSIGNED_BYTE, data);
+
+    this._glContext.deleteFramebuffer(this, framebuffer);
+
+    return data;
+  }
 
   _getResizedCanvas(image) {
     var canvas = document.createElement("canvas");

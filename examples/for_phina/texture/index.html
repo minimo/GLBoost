@@ -18,7 +18,7 @@
       arg[kv[0]] = kv[1];
     }
 
-    GLBoost.TARGET_WEBGL_VERSION = arg.webglver ? parseInt(arg.webglver) : 1;
+    GLBoost.VALUE_TARGET_WEBGL_VERSION = arg.webglver ? parseInt(arg.webglver) : 1;
     var SCREEN_WIDTH = 640;
     var SCREEN_HEIGHT = 640;
 
@@ -70,7 +70,7 @@
         var geometry = glBoostContext.createGeometry();
         var texture = glBoostContext.createTexture('resources/texture.png');
         var material = glBoostContext.createClassicMaterial();
-        material.diffuseTexture = texture;
+        material.setTexture(texture);
         geometry.setVerticesData({
           position: positions,
           color: colors,

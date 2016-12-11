@@ -23,6 +23,8 @@ export default class M_Element extends L_Element {
     this.opacity = 1.0;
 
     this._activeAnimationLineName = null;
+    this._currentAnimationInputValues = {};
+    this._toInheritCurrentAnimationInputValue = true;
 
     this._camera = null;
     this._customFunction = null;
@@ -37,6 +39,46 @@ export default class M_Element extends L_Element {
 
   get updateCountAsElement() {
     return this._updateCountAsElement;
+  }
+
+  set toInheritCurrentAnimationInputValue(flg) {
+    this._toInheritCurrentAnimationInputValue = flg;
+  }
+
+  get toInheritCurrentAnimationInputValue() {
+    return this._toInheritCurrentAnimationInputValue;
+  }
+
+  /**
+   * [en] Set animation input value (for instance frame value), This value affect all child elements in this scene graph (recursively).<br>
+   * [ja] アニメーションのための入力値（例えばフレーム値）をセットします。この値はシーングラフに属する全ての子孫に影響します。
+   * @param {string} inputName [en] inputName name of input value. [ja] 入力値の名前
+   * @param {number|Vector2|Vector3|Vector4|*} inputValue [en] input value of animation. [ja] アニメーションの入力値
+   */
+  setCurrentAnimationValue(inputName, inputValue) {
+    this._setDirtyToAnimatedElement(inputName);
+    this._currentAnimationInputValues[inputName] = inputValue;
+  }
+
+  _getCurrentAnimationInputValue(inputName) {
+    let value = this._currentAnimationInputValues[inputName];
+    if (typeof value !== 'undefined') {
+      return value;
+    } else if (this._toInheritCurrentAnimationInputValue) {
+      return this._parent._getCurrentAnimationInputValue(inputName);
+    } else {
+      return -1;
+    }
+  }
+
+  removeCurrentAnimationValue(inputName) {
+    delete this._currentAnimationInputValues[inputName];
+  }
+
+  _setDirtyToAnimatedElement(inputName) {
+    if (this.hasAnimation(inputName)) {
+      this._needUpdate();
+    }
   }
 
   _getAnimatedTransformValue(value, animation, type) {
@@ -55,12 +97,13 @@ export default class M_Element extends L_Element {
     if (this._translate.isEqual(vec)) {
       return;
     }
+    if (this._currentCalcMode === 'matrix') {
+      this.matrix.m03 = vec.x;
+      this.matrix.m13 = vec.y;
+      this.matrix.m23 = vec.z;
+    }
     this._translate = vec;
     this._needUpdate();
-  }
-
-  _getCurrentAnimationInputValue(inputName) {
-    return this._parent._getCurrentAnimationInputValue(inputName);
   }
 
   get translate() {
@@ -176,12 +219,13 @@ export default class M_Element extends L_Element {
   }
 
   get transformMatrix() {
-    var input = null;
+    var input = -1;
     if (this._activeAnimationLineName !== null) {
       input = this._getCurrentAnimationInputValue(this._activeAnimationLineName);
     }
-    if (this._dirtyAsElement || input === null || this._matrixGetMode !== 'animated_' + input) {
+    if (this._dirtyAsElement || input < 0 || this._matrixGetMode !== 'animated_' + input) {
       var matrix = Matrix44.identity();
+
       if (this._currentCalcMode === 'matrix') {
         this._finalMatrix = matrix.multiply(this.matrix);
         this._dirtyAsElement = false;
@@ -209,104 +253,6 @@ export default class M_Element extends L_Element {
     return this._finalMatrix.clone();
   }
 
-  get transformMatrixGLTFStyle() {
-    var input = null;
-    if (this._activeAnimationLineName !== null) {
-      input = this._getCurrentAnimationInputValue(this._activeAnimationLineName);
-    }
-    if (this._dirtyAsElement || input === null || this._matrixGetMode !== 'animated_' + input) {
-      var matrix = Matrix44.identity();
-      if (this._currentCalcMode === 'matrix') {
-        this._finalMatrix = matrix.multiply(this.matrix);
-        this._dirtyAsElement = false;
-        return this._finalMatrix.clone();
-      }
-
-      var rotationMatrix = null;
-      if (this._currentCalcMode === 'quaternion') {
-        //let quaternion = new Quaternion(this.quaternion.w, this.quaternion.z, this.quaternion.y, this.quaternion.x);
-        rotationMatrix = this.quaternion.rotationMatrix;
-      } else {
-        rotationMatrix = Matrix44.rotateX(this.rotate.x).
-        multiply(Matrix44.rotateY(this.rotate.y)).
-        multiply(Matrix44.rotateZ(this.rotate.z));
-      }
-
-      this._finalMatrix = Matrix44.identity();
-      this._finalMatrix.m03 = this.translate.x;
-      this._finalMatrix.m13 = this.translate.y;
-      this._finalMatrix.m23 = this.translate.z;
-      this._finalMatrix = this._finalMatrix.multiply(rotationMatrix).multiply(Matrix44.scale(this.scale));
-
-
-      this._dirtyAsElement = false;
-      this._matrixGetMode = 'animated_' + input;
-    }
-
-    return this._finalMatrix.clone();
-  }
-
-
-
-  get transformMatrixOnInit() {
-    if (this._dirtyAsElement || this._matrixGetMode !== 'animated_0') {
-      var matrix = Matrix44.identity();
-      if (this._currentCalcMode === 'matrix') {
-        this._finalMatrix = matrix.multiply(this.getMatrixAt('time', 0));
-        this._dirtyAsElement = false;
-        return this._finalMatrix.clone();
-      }
-
-      var rotationMatrix = null;
-      if (this._currentCalcMode === 'quaternion') {
-        rotationMatrix = this.getQuaternionAt('time', 0).rotationMatrix;
-      } else {
-        rotationMatrix = Matrix44.rotateX(this.getRotateAt('time', 0).x).
-        multiply(Matrix44.rotateY(this.getRotateAt('time', 0).y)).
-        multiply(Matrix44.rotateZ(this.getRotateAt('time', 0).z));
-      }
-
-      this._finalMatrix = matrix.multiply(Matrix44.scale(this.getScaleAt('time', 0))).multiply(rotationMatrix);
-      this._finalMatrix.m03 = this.getTranslateAt('time', 0).x;
-      this._finalMatrix.m13 = this.getTranslateAt('time', 0).y;
-      this._finalMatrix.m23 = this.getTranslateAt('time', 0).z;
-
-      this._dirtyAsElement = false;
-      this._matrixGetMode = 'animated_0';
-    }
-
-    return this._finalMatrix.clone();
-  }
-
-  getTransformMatrixNotAnimated() {
-    if (this._dirtyAsElement || this._matrixGetMode !== 'notanimated') {
-      var matrix = Matrix44.identity();
-      if (this._currentCalcMode === 'matrix') {
-        this._finalMatrix = matrix.multiply(this.getMatrixNotAnimated());
-        this._dirtyAsElement = false;
-        return this._finalMatrix.clone();
-      }
-
-      var rotationMatrix = null;
-      if (this._currentCalcMode === 'quaternion') {
-        rotationMatrix = this.getQuaternionNotAnimated().rotationMatrix;
-      } else {
-        rotationMatrix = Matrix44.rotateX(this.getRotateNotAnimated().x).
-        multiply(Matrix44.rotateY(this.getRotateNotAnimated().y)).
-        multiply(Matrix44.rotateZ(this.getRotateNotAnimated().z));
-      }
-
-      this._finalMatrix = matrix.multiply(Matrix44.scale(this.getScaleNotAnimated())).multiply(rotationMatrix);
-      this._finalMatrix.m03 = this.getTranslateNotAnimated().x;
-      this._finalMatrix.m13 = this.getTranslateNotAnimated().y;
-      this._finalMatrix.m23 = this.getTranslateNotAnimated().z;
-
-      this._dirtyAsElement = false;
-      this._matrixGetMode = 'notanimated';
-    }
-
-    return this._finalMatrix.clone();
-  }
 
   get transformMatrixOnlyRotate() {
 
@@ -351,28 +297,6 @@ export default class M_Element extends L_Element {
       rotationMatrix = Matrix44.rotateX(this.getRotate('time', value).x).
       multiply(Matrix44.rotateY(this.getRotateAt('time', value).y)).
       multiply(Matrix44.rotateZ(this.getRotateAt('time', value).z));
-    }
-
-    return rotationMatrix.clone();
-  }
-
-  getTransformMatrixOnlyRotateNotAnimated() {
-
-    var rotationMatrix = null;
-    if (this._currentCalcMode === 'quaternion') {
-      rotationMatrix = this.getQuaternionNotAnimated().rotationMatrix;
-    } else if (this._currentCalcMode === 'matrix') {
-      rotationMatrix = this.getMatrixNotAnimated();
-      rotationMatrix.m03 = 0;
-      rotationMatrix.m13 = 0;
-      rotationMatrix.m23 = 0;
-      rotationMatrix.m30 = 0;
-      rotationMatrix.m31 = 0;
-      rotationMatrix.m32 = 0;
-    } else {
-      rotationMatrix = Matrix44.rotateX(this.getRotateNotAnimated().x).
-      multiply(Matrix44.rotateY(this.getRotateNotAnimated().y)).
-      multiply(Matrix44.rotateZ(this.getRotateNotAnimated().z));
     }
 
     return rotationMatrix.clone();
@@ -600,5 +524,52 @@ export default class M_Element extends L_Element {
 
   prepareToRender() {
 
+  }
+
+  _copy(instance) {
+    super._copy(instance);
+
+    instance._parent = this._parent;
+    instance._invMatrix = this._invMatrix.clone();
+    instance._matrixGetMode = this._matrixGetMode;
+    instance._calculatedInverseMatrix = this._calculatedInverseMatrix;
+    instance._updateCountAsElement = this._updateCountAsElement;
+    instance._accumulatedAncestryNameWithUpdateInfoString = this._accumulatedAncestryNameWithUpdateInfoString;
+    instance._accumulatedAncestryNameWithUpdateInfoStringNormal = this._accumulatedAncestryNameWithUpdateInfoStringNormal;
+    instance._accumulatedAncestryNameWithUpdateInfoStringInv = this._accumulatedAncestryNameWithUpdateInfoStringInv;
+    instance._animationLine = {};
+
+    for (let lineName in this._animationLine) {
+      instance._animationLine[lineName] = {};
+      for (let attributeName in this._animationLine[lineName]) {
+        instance._animationLine[lineName][attributeName] = {};
+        instance._animationLine[lineName][attributeName].input = this._animationLine[lineName][attributeName].input.concat();
+
+        let instanceOutput = [];
+        let thisOutput = this._animationLine[lineName][attributeName].output;
+        for (let i=0; i<thisOutput.length; i++) {
+          instanceOutput.push((typeof thisOutput[i] === 'number') ? thisOutput[i] : thisOutput[i].clone());
+        }
+        instance._animationLine[lineName][attributeName].output = instanceOutput;
+
+        instance._animationLine[lineName][attributeName].outputAttribute = this._animationLine[lineName][attributeName].outputAttribute;
+
+        instance._animationLine[lineName][attributeName].outputComponentN = this._animationLine[lineName][attributeName].outputComponentN;
+      }
+    }
+
+    instance._transparentByUser = this._transparentByUser;
+    instance.opacity = this.opacity;
+    instance._activeAnimationLineName = this._activeAnimationLineName;
+
+    instance._currentAnimationInputValues = {};
+    for (let inputName in this._currentAnimationInputValues) {
+      instance._currentAnimationInputValues[inputName] = this._currentAnimationInputValues[inputName];
+    }
+
+    instance._toInheritCurrentAnimationInputValue = this._toInheritCurrentAnimationInputValue;
+
+    instance._camera = this._camera;
+    instance._customFunction = this._customFunction;
   }
 }

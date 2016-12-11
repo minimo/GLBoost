@@ -11,16 +11,6 @@ Our concept is ...
 
 ### "__Convenience like Three.js, Infinite Flexibility like raw WebGL, We get both.__"
 
-## Attention
-
-[en]
-This library is now the earliest stage of development.
-Please wait until it becomes usable level.
-
-[ja]
-このライブラリはまだ開発の最初期段階です。
-使い物になる状態になるまで、もうしばらくお待ちください。
-
 ## Concept
 
 [en]
@@ -34,7 +24,7 @@ WebGLの面倒くさい部分を肩代わりしつつ、それでいて表現の
 
 ## Demo
 
-[Check our examples page!](https://gitcdn.xyz/repo/emadurandal/GLBoost/master/examples/index.html)
+[Check our examples page!](http://gitcdn.xyz/repo/emadurandal/GLBoost/master/examples/index.html)
 
 If you want to watch examples in local. Go to GLBoost top directory by terminal and start local web server up.
 
@@ -51,6 +41,7 @@ Then, access http://localhost:3000/examples by your web browser.
 * Shader classes Mixin mechanism (You can customize your shader like LEGO bricks!)
 * WebGL2.0 Ready (Currently, Firefox nightly and Chrome Canary)
 * User's Custom Shader Support
+* Obj and glTF loader
 
 ## Supported Browsers
 
@@ -58,6 +49,7 @@ Then, access http://localhost:3000/examples by your web browser.
 * Firefox (even WebGL 2.0 mode)
 * Safari
 * iOS Safari
+* Android Chrome
 * Microsoft Edge (Xbox One included)
 * Internet Explorer 11 (note that [browser-polyfill.min.js](https://cdnjs.com/libraries/babel-core/5.8.34) is required)
 
@@ -99,7 +91,7 @@ var scene = glBoostContext.createScene();
 // setup material
 var material = glBoostContext.createClassicMaterial();
 var texture = glBoostContext.createTexture('resources/texture.png');
-material.diffuseTexture = texture;
+material.setTexture(texture);
 material.shaderClass = GLBoost.PhongShader;
 
 // make a Sphere geometry

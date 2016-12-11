@@ -14,16 +14,55 @@ export default class L_AbstractCamera extends L_Element {
     this._center = lookat.center;
     this._up = lookat.up;
 
+
+    this._cameraController = null;
+
     this._dirtyView = true;
+
+    this._middleLevelCamera = null;
   }
 
-  _needUpdateView() {
+  set cameraController(controller) {
+    this._cameraController = controller;
+    if (this._middleLevelCamera !== null) {
+      controller.addCamera(this._middleLevelCamera);
+    } else {
+      controller.addCamera(this);
+    }
+  }
+
+  get cameraController() {
+    return this._cameraController;
+  }
+
+  _affectedByCameraController() {
+    if (this._cameraController !== null) {
+      let results = this._cameraController.convert(this);
+      this._translateInner = results[0];
+      this._centerInner = results[1];
+      this._upInner = results[2];
+    } else {
+      this._translateInner = super.translate.clone();
+      this._centerInner = this._center.clone();
+      this._upInner = this._up.clone();
+    }
+  }
+
+  get middleLevelCamera() {
+    return this._middleLevelCamera;
+  }
+
+  _needUpdateView(withTryingResetOfCameraController = true) {
+    if (this._cameraController !== null && withTryingResetOfCameraController) {
+      this._cameraController.tryReset();
+    }
     this._dirtyView = true;
   }
 
   lookAtRHMatrix() {
     if (this._dirtyView) {
-      this._viewMatrix = L_AbstractCamera.lookAtRHMatrix(this._translate, this._center, this._up);
+      this._affectedByCameraController();
+      this._viewMatrix = L_AbstractCamera.lookAtRHMatrix(this.translateInner, this.centerInner, this.upInner);
       this._dirtyView = false;
       return this._viewMatrix.clone();
     } else {
@@ -57,7 +96,11 @@ export default class L_AbstractCamera extends L_Element {
   }
 
   get translate() {
-    return super.translate;
+    return this._translate;
+  }
+
+  get translateInner() {
+    return this._translateInner;
   }
 
   set eye(vec) {
@@ -67,6 +110,10 @@ export default class L_AbstractCamera extends L_Element {
 
   get eye() {
     return this._translate;
+  }
+
+  get eyeInner() {
+    return this._translateInner;
   }
 
   set center(vec) {
@@ -81,6 +128,10 @@ export default class L_AbstractCamera extends L_Element {
     return this._center;
   }
 
+  get centerInner() {
+    return this._centerInner;
+  }
+
   set up(vec) {
     if (this._up.isEqual(vec)) {
       return;
@@ -91,6 +142,10 @@ export default class L_AbstractCamera extends L_Element {
 
   get up() {
     return this._up;
+  }
+
+  get upInner() {
+    return this._upInner;
   }
 
   set texture(texture) {

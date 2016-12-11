@@ -4,24 +4,31 @@ import GLExtensionsManager from '../core/GLExtensionsManager';
 import MiscUtil from '../misc/MiscUtil';
 
 export default class Texture extends AbstractTexture {
-  constructor(glBoostContext, src, parameters = null) {
+  constructor(glBoostContext, src, userFlavorName, parameters = null) {
     super(glBoostContext);
 
     this._isTextureReady = false;
     this._texture = null;
-
-    this._parameters = parameters;
-
-    if (typeof src === 'string') {
-      this.generateTextureFromUri(src);
+    if (typeof userFlavorName === 'undefined' || userFlavorName === null) {
+      this.userFlavorName = this._instanceName;
     } else {
-      this.generateTextureFromImageData(src);
+      this.userFlavorName = userFlavorName;
+    }
+
+    this._parameters = (parameters) ? parameters : {};
+
+    if (typeof src === 'undefined' || src === null) {
+      // do nothing
+    } else if (typeof src === 'string') {
+        this._generateTextureFromUri(src);
+    } else {
+        this._generateTextureFromImageData(src);
     }
   }
 
   _getParameter(paramName) {
     var isParametersExist = false;
-    if (this._parameters != null) {
+    if (this._parameters) {
       isParametersExist = true;
     }
     var params = this._parameters;
@@ -43,10 +50,10 @@ export default class Texture extends AbstractTexture {
   }
 
   _getParamWithAlternative(param, alternative) {
-    return MiscUtil.getTheValueOrAlternative(this._getParameter(GLBoost[param], alternative));
+    return MiscUtil.getTheValueOrAlternative(this._getParameter(GLBoost[param]), alternative);
   }
 
-  generateTextureFromUri(imageUri) {
+  _generateTextureFromUri(imageUri, isKeepBound = false) {
     this._img = new Image();
     if ( !imageUri.match(/^data:/) ) {
       this._img.crossOrigin = 'Anonymous';
@@ -74,17 +81,21 @@ export default class Texture extends AbstractTexture {
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, this._getParamWithAlternative('TEXTURE_WRAP_T', gl.REPEAT));
       gl.generateMipmap(gl.TEXTURE_2D);
 
-      gl.bindTexture(gl.TEXTURE_2D, null);
+      if (!isKeepBound) {
+        gl.bindTexture(gl.TEXTURE_2D, null);
+      }
 
       this._texture = texture;
       this._isTextureReady = true;
+
+      this._onLoad();
     };
 
     this._img.src = imageUri;
   }
 
-  generateTextureFromImageData(imageData) {
-    var gl = this.this._glContext.gl;
+  _generateTextureFromImageData(imageData) {
+    var gl = this._glContext.gl;
     var glem = GLExtensionsManager.getInstance(this._glContext);
 
     var imgCanvas = this._getResizedCanvas(imageData);
@@ -110,6 +121,12 @@ export default class Texture extends AbstractTexture {
     this._isTextureReady = true;
 
     this._img = imageData;
+
+    this._onLoad();
+  }
+
+  _onLoad() {
+
   }
 
   get isTextureReady() {
@@ -120,12 +137,5 @@ export default class Texture extends AbstractTexture {
     return typeof this._img == 'undefined';
   }
 
-  get width() {
-    return this._width;
-  }
-
-  get height() {
-    return this._height;
-  }
 
 }

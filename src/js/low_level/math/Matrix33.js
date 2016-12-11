@@ -83,7 +83,7 @@ export default class Matrix33 {
    */
   rotateX(angle) {
     var radian = 0;
-    if (GLBoost["ANGLE_UNIT"] === GLBoost.DEGREE) {
+    if (GLBoost["VALUE_ANGLE_UNIT"] === GLBoost.DEGREE) {
       radian = MathUtil.degreeToRadian(angle);
     } else {
       radian = angle;
@@ -102,7 +102,7 @@ export default class Matrix33 {
    */
   static rotateX(angle) {
     var radian = 0;
-    if (GLBoost["ANGLE_UNIT"] === GLBoost.DEGREE) {
+    if (GLBoost["VALUE_ANGLE_UNIT"] === GLBoost.DEGREE) {
       radian = MathUtil.degreeToRadian(angle);
     } else {
       radian = angle;
@@ -122,7 +122,7 @@ export default class Matrix33 {
    */
   rotateY(angle) {
     var radian = 0;
-    if (GLBoost["ANGLE_UNIT"] === GLBoost.DEGREE) {
+    if (GLBoost["VALUE_ANGLE_UNIT"] === GLBoost.DEGREE) {
       radian = MathUtil.degreeToRadian(angle);
     } else {
       radian = angle;
@@ -142,7 +142,7 @@ export default class Matrix33 {
    */
   static rotateY(angle) {
     var radian = 0;
-    if (GLBoost["ANGLE_UNIT"] === GLBoost.DEGREE) {
+    if (GLBoost["VALUE_ANGLE_UNIT"] === GLBoost.DEGREE) {
       radian = MathUtil.degreeToRadian(angle);
     } else {
       radian = angle;
@@ -162,7 +162,7 @@ export default class Matrix33 {
    */
   rotateZ(angle) {
     var radian = 0;
-    if (GLBoost["ANGLE_UNIT"] === GLBoost.DEGREE) {
+    if (GLBoost["VALUE_ANGLE_UNIT"] === GLBoost.DEGREE) {
       radian = MathUtil.degreeToRadian(angle);
     } else {
       radian = angle;
@@ -181,7 +181,7 @@ export default class Matrix33 {
    */
   static rotateZ(angle) {
     var radian = 0;
-    if (GLBoost["ANGLE_UNIT"] === GLBoost.DEGREE) {
+    if (GLBoost["VALUE_ANGLE_UNIT"] === GLBoost.DEGREE) {
       radian = MathUtil.degreeToRadian(angle);
     } else {
       radian = angle;
@@ -423,6 +423,28 @@ export default class Matrix33 {
     return this.m[8];
   }
 
+  toString() {
+    return this.m00 + ' ' + this.m01 + ' ' + this.m02 + '\n' +
+      this.m10 + ' ' + this.m11 + ' ' + this.m12 + '\n' +
+      this.m20 + ' ' + this.m21 + ' ' + this.m22 + '\n';
+  }
+
+  nearZeroToZero(value) {
+    if (Math.abs(value) < 0.00001) {
+      value = 0;
+    } else if (0.99999 < value && value < 1.00001) {
+      value = 1;
+    } else if (-1.00001 < value && value < -0.99999) {
+      value = -1;
+    }
+    return value;
+  }
+
+  toStringApproximately() {
+    return this.nearZeroToZero(this.m00) + ' ' + this.nearZeroToZero(this.m01) + ' ' + this.nearZeroToZero(this.m02) + '\n' +
+      this.nearZeroToZero(this.m10) + ' ' + this.nearZeroToZero(this.m11) + ' ' + this.nearZeroToZero(this.m12) + ' \n' +
+      this.nearZeroToZero(this.m20) + ' ' + this.nearZeroToZero(this.m21) + ' ' + this.nearZeroToZero(this.m22) + '\n';
+  }
 }
 
 GLBoost['Matrix33'] = Matrix33;

@@ -251,16 +251,21 @@ export default class Shader extends GLBoostObject {
   }
 
   _prepareAssetsForShaders(gl, shaderProgram, vertexAttribs, existCamera_f, lights, material, extraData, canvas) {
-    var vertexAttribsAsResult = [];
-
+    var temp = [];
     // and shade as mixin Prepare Functions
     this._classNamesOfPrepare.forEach((className)=> {
       var method = this['prepare_' + className];
       if (method) {
         var verAttirbs = method.bind(this, gl, shaderProgram, vertexAttribs, existCamera_f, lights, material, extraData, canvas)();
-        vertexAttribsAsResult = vertexAttribsAsResult.concat(verAttirbs);
+        temp = temp.concat(verAttirbs);
       }
     });
+    let set = new Set(temp);
+
+    let vertexAttribsAsResult = [];
+    for (let elem of set) {
+      vertexAttribsAsResult.push(elem);
+    }
 
     return vertexAttribsAsResult;
   }
@@ -304,10 +309,10 @@ export default class Shader extends GLBoostObject {
   }
 
   _initShaders(gl, vertexShaderStr, fragmentShaderStr) {
-    MiscUtil.consoleLog('Vertex Shader:');
-    MiscUtil.consoleLog(vertexShaderStr);
-    MiscUtil.consoleLog('Fragment Shader:');
-    MiscUtil.consoleLog(fragmentShaderStr);
+    MiscUtil.consoleLog(GLBoost.LOG_SHADER_CODE, 'Vertex Shader:');
+    MiscUtil.consoleLog(GLBoost.LOG_SHADER_CODE, vertexShaderStr);
+    MiscUtil.consoleLog(GLBoost.LOG_SHADER_CODE, 'Fragment Shader:');
+    MiscUtil.consoleLog(GLBoost.LOG_SHADER_CODE, fragmentShaderStr);
 
     var vertexShader = this._getShader(gl, vertexShaderStr, 'x-shader/x-vertex');
     var fragmentShader = this._getShader(gl, fragmentShaderStr, 'x-shader/x-fragment');
@@ -379,6 +384,10 @@ export default class Shader extends GLBoostObject {
       //gl.useProgram(programToReturn);
     }
     this._glslProgram = programToReturn;
+
+    material._semanticsDic = {};
+    material.uniformTextureSamplerDic = {};
+    programToReturn._material = material;
     programToReturn.optimizedVertexAttribs = this._prepareAssetsForShaders(gl, programToReturn, vertexAttribs, existCamera_f, lights, material, extraData, canvas);
 
     return programToReturn;
@@ -388,7 +397,7 @@ export default class Shader extends GLBoostObject {
 
     if (lights.length === 0) {
       if (Shader._defaultLight === null) {
-        Shader._defaultLight = this._glBoostContext.createPointLight(GLBoost.DEFAULT_POINTLIGHT_INTENSITY);
+        Shader._defaultLight = this._glBoostContext.createPointLight(GLBoost.VALUE_DEFAULT_POINTLIGHT_INTENSITY);
       }
       return [Shader._defaultLight];
     } else {
@@ -464,13 +473,44 @@ export default class Shader extends GLBoostObject {
     return !GLBoost.isThisGLVersion_2(gl) ? `  gl_FragData[${i}] = rt${i};\n` : '';
   }
 
+  static trySettingMatrix44ToUniform(gl, material, semanticsDir, semantics, matrixArray) {
+    if (typeof semanticsDir[semantics] === 'undefined') {
+      return;
+    }
+    if (typeof semanticsDir[semantics] === 'string') {
+      gl.uniformMatrix4fv(material['uniform_'+semanticsDir[semantics]], false, matrixArray);
+      return;
+    }
+
+    // it must be an Array...
+    semanticsDir[semantics].forEach((uniformName)=>{
+      gl.uniformMatrix4fv(material['uniform_'+uniformName], false, matrixArray);
+    });
+  }
+
+  static trySettingMatrix33ToUniform(gl, material, semanticsDir, semantics, matrixArray) {
+    if (typeof semanticsDir[semantics] === 'undefined') {
+      return;
+    }
+    if (typeof semanticsDir[semantics] === 'string') {
+      gl.uniformMatrix3fv(material['uniform_'+semanticsDir[semantics]], false, matrixArray);
+      return;
+    }
+
+    // it must be an Array...
+    semanticsDir[semantics].forEach((uniformName)=>{
+      gl.uniformMatrix3fv(material['uniform_'+uniformName], false, matrixArray);
+    });
+  }
+
+
   get glslProgram() {
     return this._glslProgram;
   }
 
   readyForDiscard() {
-    super.readyForDiscard();
     this._glContext.deleteProgram(this, this._glslProgram);
+    super.readyForDiscard();
   }
 
 }

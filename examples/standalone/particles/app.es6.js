@@ -7,7 +7,7 @@ for(var i = 0; pair[i] ; i++) {
   arg[kv[0]] = kv[1];
 }
 
-GLBoost.TARGET_WEBGL_VERSION = arg.webglver ? parseInt(arg.webglver) : 1;
+GLBoost.VALUE_TARGET_WEBGL_VERSION = arg.webglver ? parseInt(arg.webglver) : 1;
 
 var canvas = document.getElementById("world");
 
@@ -134,7 +134,7 @@ var particleGeometry = glBoostContext.createParticle(
 var material = glBoostContext.createClassicMaterial();
 material.shaderClass = MyCustomShader;
 var texture = glBoostContext.createTexture('resources/iceball.png');
-material.diffuseTexture = texture;
+material.setTexture(texture);
 var particle = glBoostContext.createMesh(particleGeometry, material);
 
 scene.addChild(particle);

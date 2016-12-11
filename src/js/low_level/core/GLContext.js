@@ -10,9 +10,9 @@ export default class GLContext {
       return GLContext._instances[canvas.id];
     }
 
-    if (GLBoost.TARGET_WEBGL_VERSION === 1) {
+    if (GLBoost.VALUE_TARGET_WEBGL_VERSION === 1) {
       this.impl = new GLContextWebGL1Impl(canvas, this);
-    } else if (GLBoost.TARGET_WEBGL_VERSION === 2) {
+    } else if (GLBoost.VALUE_TARGET_WEBGL_VERSION === 2) {
       this.impl = new GLContextWebGL2Impl(canvas, this);
     }
 
@@ -58,6 +58,12 @@ export default class GLContext {
     return glResource;
   }
 
+  deleteFramebuffer(glBoostObject, frameBuffer) {
+    this._monitor.deregisterWebGLResource(glBoostObject, frameBuffer);
+    this.gl.deleteFramebuffer(frameBuffer);
+    frameBuffer = null;
+  }
+
   createRenderbuffer(glBoostObject) {
     var glResource = this.gl.createRenderbuffer();
     this._monitor.registerWebGLResource(glBoostObject, glResource);
@@ -91,6 +97,12 @@ export default class GLContext {
     var glResource = this.gl.createTexture();
     this._monitor.registerWebGLResource(glBoostObject, glResource);
     return glResource;
+  }
+
+  deleteTexture(glBoostObject, texture) {
+    this._monitor.deregisterWebGLResource(glBoostObject, texture);
+    this.gl.deleteTexture(texture);
+    texture = null;
   }
 
 }
